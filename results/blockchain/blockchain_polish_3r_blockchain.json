@@ -1,0 +1,286 @@
+{
+  "experiment_name": "blockchain_polish_3r",
+  "created_at": "2026-07-05T18:07:38.790153+00:00",
+  "project_version": "secure-dfl-thesis-part6-blockchain-audit",
+  "configuration": {
+    "experiment_name": "blockchain_polish_3r",
+    "security_mode": "adaptive_hybrid",
+    "seed": 42,
+    "num_clients": 5,
+    "num_rounds": 3,
+    "local_epochs": 1,
+    "batch_size": 32,
+    "learning_rate": 0.01,
+    "topology": "ring",
+    "split_type": "iid",
+    "device": "cuda",
+    "he_scheme": "ckks",
+    "he_poly_modulus_degree": 8192,
+    "he_scale_bits": 40,
+    "he_coeff_mod_bits": "60,40,40,60",
+    "he_selected_layer": "final",
+    "adaptive_policy": "topk_risk",
+    "adaptive_he_target_ratio": 0.4,
+    "adaptive_risk_threshold": 0.0,
+    "adaptive_he_every_n_rounds": 5,
+    "adaptive_min_he_targets": 1
+  },
+  "configuration_hash": "7b1b0ee065a6a531eb0a0079ae7350861f29fac329b3f317dcc06ff1ee131da9",
+  "client_public_keys": {
+    "client_0": "client_0_db81c7b64358737a",
+    "client_1": "client_1_5bff0aa9da6eb822",
+    "client_2": "client_2_ad25325c34aec78a",
+    "client_3": "client_3_609673faad4fc364",
+    "client_4": "client_4_bed04ba632788eff"
+  },
+  "blocks": [
+    {
+      "block_index": 0,
+      "timestamp": "2026-07-05T18:07:38.790153+00:00",
+      "experiment_name": "blockchain_polish_3r",
+      "round_number": 0,
+      "previous_hash": "GENESIS",
+      "current_hash": "c46b50da0a0c895a0af08892d1443053cda063ffe0bffa06527c68375d5daa95",
+      "security_mode": "adaptive_hybrid",
+      "split_type": "iid",
+      "topology": "ring",
+      "num_clients": 5,
+      "batch_size": 32,
+      "num_rounds": 3,
+      "adaptive_policy": "topk_risk",
+      "adaptive_he_target_ratio": 0.4,
+      "adaptive_selected_targets": [],
+      "adaptive_risk_scores": {},
+      "train_loss": 0.0,
+      "test_loss": 0.0,
+      "test_accuracy": 0.0,
+      "communication_bytes": 0,
+      "masking_time_seconds": 0.0,
+      "he_total_time_seconds": 0.0,
+      "he_encryption_time_seconds": 0.0,
+      "he_decryption_time_seconds": 0.0,
+      "he_ciphertext_bytes": 0,
+      "pairwise_cancellation_error": 0.0,
+      "model_hashes": {},
+      "client_signatures": {},
+      "configuration_hash": "7b1b0ee065a6a531eb0a0079ae7350861f29fac329b3f317dcc06ff1ee131da9",
+      "block_generation_time_seconds": 0.022965599986491725,
+      "nonce": 0,
+      "extra_metadata": {
+        "project_version": "secure-dfl-thesis-part6-blockchain-audit",
+        "git_commit": "unknown",
+        "purpose": "independent audit and integrity layer"
+      }
+    },
+    {
+      "block_index": 1,
+      "timestamp": "2026-07-05T18:07:47.933481+00:00",
+      "experiment_name": "blockchain_polish_3r",
+      "round_number": 1,
+      "previous_hash": "c46b50da0a0c895a0af08892d1443053cda063ffe0bffa06527c68375d5daa95",
+      "current_hash": "8efb558b954b31fb11fd19306f71de1f2e047ebce6da2345d26ca2debc194a76",
+      "security_mode": "adaptive_hybrid",
+      "split_type": "iid",
+      "topology": "ring",
+      "num_clients": 5,
+      "batch_size": 32,
+      "num_rounds": 3,
+      "adaptive_policy": "topk_risk",
+      "adaptive_he_target_ratio": 0.4,
+      "adaptive_selected_targets": [
+        1,
+        2
+      ],
+      "adaptive_risk_scores": {
+        "0": 1.0120833666209972,
+        "1": 1.0125629755498027,
+        "2": 1.0128448985299754,
+        "3": 1.0107914808881646,
+        "4": 1.0092222423700097
+      },
+      "train_loss": 1.8046065724372866,
+      "test_loss": 1.2115775548934935,
+      "test_accuracy": 78.53999999999999,
+      "communication_bytes": 5388365,
+      "masking_time_seconds": 0.04295169998658821,
+      "he_total_time_seconds": 0.023673800023971125,
+      "he_encryption_time_seconds": 0.019461999996565282,
+      "he_decryption_time_seconds": 0.0022336000110954046,
+      "he_ciphertext_bytes": 1337725,
+      "pairwise_cancellation_error": 2.905726432800293e-07,
+      "model_hashes": {
+        "client_0_hash": "fc94886edaaaa413e3e45300ec2ddb2d4dc81b4af2694a2b0a64fd20e60adfc3",
+        "client_1_hash": "e4657857bdfa4b039bb4d07de4dcc7fc69a5d350842fd4b91ecee5dd479c0720",
+        "client_2_hash": "3b536cdf36c71fa6cf53d25467131f93cf64c7846af5917fc860349d54d3c4ba",
+        "client_3_hash": "1955f2040421dd5aa966cae464623363fc2051cbf9168e4805b4dea70ec41739",
+        "client_4_hash": "499e7bc108210cf9fe1d0c8d0c59d9837a3e02ce50cd94daf113e6f09c5f1dcf"
+      },
+      "client_signatures": {
+        "client_0": {
+          "public_key_id": "client_0_db81c7b64358737a",
+          "signature": "5ca8494710a5c1557222d725ccb909d68ef129860327e8f634910ccaabb8fa52"
+        },
+        "client_1": {
+          "public_key_id": "client_1_5bff0aa9da6eb822",
+          "signature": "2df79e99d566e4feb6b7500a4e17b9b5b7e152c5ef171707ecf0c15525edcb87"
+        },
+        "client_2": {
+          "public_key_id": "client_2_ad25325c34aec78a",
+          "signature": "ba76934c8b4cf91ba90f75ab189f14d588ae5cc0938fe8642e33188576daf063"
+        },
+        "client_3": {
+          "public_key_id": "client_3_609673faad4fc364",
+          "signature": "83cfa931e3206a310edc5e7746440ae339c21fb27b6b66c4f66562bdcfd6f199"
+        },
+        "client_4": {
+          "public_key_id": "client_4_bed04ba632788eff",
+          "signature": "76712d4b964cda37e0f11d47ff99fc34bc1ec383c3e7a09db2ed24f4155f57a6"
+        }
+      },
+      "configuration_hash": "7b1b0ee065a6a531eb0a0079ae7350861f29fac329b3f317dcc06ff1ee131da9",
+      "block_generation_time_seconds": 0.0008741999918129295,
+      "nonce": 1,
+      "extra_metadata": {}
+    },
+    {
+      "block_index": 2,
+      "timestamp": "2026-07-05T18:07:55.375083+00:00",
+      "experiment_name": "blockchain_polish_3r",
+      "round_number": 2,
+      "previous_hash": "8efb558b954b31fb11fd19306f71de1f2e047ebce6da2345d26ca2debc194a76",
+      "current_hash": "0b939f3e4d9c8696f2cc74ae2d3fc943c774eab69167ca888d7543cb4c95bbac",
+      "security_mode": "adaptive_hybrid",
+      "split_type": "iid",
+      "topology": "ring",
+      "num_clients": 5,
+      "batch_size": 32,
+      "num_rounds": 3,
+      "adaptive_policy": "topk_risk",
+      "adaptive_he_target_ratio": 0.4,
+      "adaptive_selected_targets": [
+        0,
+        4
+      ],
+      "adaptive_risk_scores": {
+        "0": 0.8870889952254402,
+        "1": 0.886742797882123,
+        "2": 0.8833586938009864,
+        "3": 0.8824011849186812,
+        "4": 0.8869981640687654
+      },
+      "train_loss": 0.9129710426489511,
+      "test_loss": 0.6836619175910951,
+      "test_accuracy": 84.71000000000001,
+      "communication_bytes": 5388067,
+      "masking_time_seconds": 0.00852060000761412,
+      "he_total_time_seconds": 0.020937299996148795,
+      "he_encryption_time_seconds": 0.01755089999642223,
+      "he_decryption_time_seconds": 0.0019632999901659787,
+      "he_ciphertext_bytes": 1337427,
+      "pairwise_cancellation_error": 2.812594175338745e-07,
+      "model_hashes": {
+        "client_0_hash": "460d5ecc391c7f20dc800ab8f76998bbfe7014af5fc7b386a52c4ebaeab3e1f9",
+        "client_1_hash": "af9f9c44ecbf56ff0dcbefa15c04e9ffc05ea88dd0d4e50b3c7cbb2ee1fc3754",
+        "client_2_hash": "3f0f2795344a520143d6fa25512b0c6d7fa0335eddc62462ff67c1e414923e68",
+        "client_3_hash": "9fb2fb3843f86929805ea5d4a1cb9898cb50fc8b7e963d89bb1f96b50bcc35e7",
+        "client_4_hash": "a665fe862cb5055d6f536d19eb68ad8dd044c98a3e7c82ab666de04cfe167fb8"
+      },
+      "client_signatures": {
+        "client_0": {
+          "public_key_id": "client_0_db81c7b64358737a",
+          "signature": "45feebb5514c1a1bbbc6f8f6900061333a05340812f811c22841c4246cf73566"
+        },
+        "client_1": {
+          "public_key_id": "client_1_5bff0aa9da6eb822",
+          "signature": "602ebefd0ed42318eea481e1274573407d10e1ae9ebde6be607cdc78f9c64b0b"
+        },
+        "client_2": {
+          "public_key_id": "client_2_ad25325c34aec78a",
+          "signature": "8bec03a8460ccec2ab0b4f6b77b3966ac7da4d296e93345e4cfb2b8580aaeb52"
+        },
+        "client_3": {
+          "public_key_id": "client_3_609673faad4fc364",
+          "signature": "905e574bf14b5d170b8e1aa366c941b8b7ea05af95f6b502a329acdf8d836d29"
+        },
+        "client_4": {
+          "public_key_id": "client_4_bed04ba632788eff",
+          "signature": "7af43d7214a549906e63a0679115457d4960246b57ccf76b5f8f1fc2bfb5ba78"
+        }
+      },
+      "configuration_hash": "7b1b0ee065a6a531eb0a0079ae7350861f29fac329b3f317dcc06ff1ee131da9",
+      "block_generation_time_seconds": 0.0007123999821487814,
+      "nonce": 2,
+      "extra_metadata": {}
+    },
+    {
+      "block_index": 3,
+      "timestamp": "2026-07-05T18:08:02.915611+00:00",
+      "experiment_name": "blockchain_polish_3r",
+      "round_number": 3,
+      "previous_hash": "0b939f3e4d9c8696f2cc74ae2d3fc943c774eab69167ca888d7543cb4c95bbac",
+      "current_hash": "7d937b949bf0feba4f1b97f78623f392e17e5434c9e35f431e124ee5143e600c",
+      "security_mode": "adaptive_hybrid",
+      "split_type": "iid",
+      "topology": "ring",
+      "num_clients": 5,
+      "batch_size": 32,
+      "num_rounds": 3,
+      "adaptive_policy": "topk_risk",
+      "adaptive_he_target_ratio": 0.4,
+      "adaptive_selected_targets": [
+        0,
+        4
+      ],
+      "adaptive_risk_scores": {
+        "0": 0.5032015173599934,
+        "1": 0.5031801312749509,
+        "2": 0.4970978917562663,
+        "3": 0.4966400329613181,
+        "4": 0.5031821884938091
+      },
+      "train_loss": 0.6151290558258692,
+      "test_loss": 0.5223566775131225,
+      "test_accuracy": 87.348,
+      "communication_bytes": 5387903,
+      "masking_time_seconds": 0.010911099991062656,
+      "he_total_time_seconds": 0.0213085999712348,
+      "he_encryption_time_seconds": 0.01775969995651394,
+      "he_decryption_time_seconds": 0.00216159998672083,
+      "he_ciphertext_bytes": 1337263,
+      "pairwise_cancellation_error": 2.7101486921310425e-07,
+      "model_hashes": {
+        "client_0_hash": "06749f2e6d6d9e9e6003f692bc08972dd29292bd31b1cb380140b1638f4cd0e3",
+        "client_1_hash": "6e5aa19f26efe7154fb35c7b41fe24f280d04e2d642679c1678c2261a7fea74f",
+        "client_2_hash": "ea27300dcb7934312c01942d5b7525fe2ab483d1d74677617406dc7f90569819",
+        "client_3_hash": "f729d5135ccc13f812c1ecd5ce8fabbc2da44d333a796f4983aad6fdb23e5c97",
+        "client_4_hash": "01ab7a39fc0ac3c27d0d9de3b4df0627d5735bc740e5aba1dc0e16a9e1b6a2df"
+      },
+      "client_signatures": {
+        "client_0": {
+          "public_key_id": "client_0_db81c7b64358737a",
+          "signature": "ea43a0f2071ab31216e08b85ebc1d4419391d9d862b2499260953ca2ea018276"
+        },
+        "client_1": {
+          "public_key_id": "client_1_5bff0aa9da6eb822",
+          "signature": "5aa3363e5199731973d25f60f5985cd4850fe76d726d559c5da898c5d53023a4"
+        },
+        "client_2": {
+          "public_key_id": "client_2_ad25325c34aec78a",
+          "signature": "e79b732c004e6e65ddef57eecdaf427a8c33e85ac3fe41e820bd8ddeab5005fd"
+        },
+        "client_3": {
+          "public_key_id": "client_3_609673faad4fc364",
+          "signature": "ffb7255e31e1ff0b8269cdd0036b0ec04e3edc6d14ac0aec1509d830d23739a1"
+        },
+        "client_4": {
+          "public_key_id": "client_4_bed04ba632788eff",
+          "signature": "8b7fa0cbfc8144b79ca0cc4fbf8ed412220bdc5f95b03fb2d9a101a01c910985"
+        }
+      },
+      "configuration_hash": "7b1b0ee065a6a531eb0a0079ae7350861f29fac329b3f317dcc06ff1ee131da9",
+      "block_generation_time_seconds": 0.0007759000000078231,
+      "nonce": 3,
+      "extra_metadata": {}
+    }
+  ]
+}

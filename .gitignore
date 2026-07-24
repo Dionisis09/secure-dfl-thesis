@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.py[cod]
+
+# Downloaded datasets and generated experiment artifacts
+data/
+results/logs/*.csv
+results/plots/*.png
+results/plots/**/*.png
+platform_mvp/.runtime/
+platform_mvp/results/
+platform_mvp/deployment_keys/
+platform_mvp/**/__pycache__/

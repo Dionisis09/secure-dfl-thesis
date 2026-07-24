@@ -1,0 +1,77 @@
+services:
+  node0:
+    build: .
+    environment:
+      DFL_NODE_ID: node0
+      DFL_PORT: "9000"
+      DFL_EXPERIMENT_ID: docker_ring_demo
+      DFL_PEERS_JSON: '{"node1":"http://node1:9000","node2":"http://node2:9000"}'
+      DFL_DATA_DIR: /data
+      DFL_ADMIN_TOKEN: demo-admin-token
+      DFL_DEMO_IDENTITY_SEED: local-docker-demo-only
+    ports: ["9100:9000"]
+    volumes: ["node0-data:/data"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:9000/health', timeout=2)"]
+      interval: 3s
+      timeout: 2s
+      retries: 20
+
+  node1:
+    build: .
+    environment:
+      DFL_NODE_ID: node1
+      DFL_PORT: "9000"
+      DFL_EXPERIMENT_ID: docker_ring_demo
+      DFL_PEERS_JSON: '{"node0":"http://node0:9000","node2":"http://node2:9000"}'
+      DFL_DATA_DIR: /data
+      DFL_ADMIN_TOKEN: demo-admin-token
+      DFL_DEMO_IDENTITY_SEED: local-docker-demo-only
+    ports: ["9101:9000"]
+    volumes: ["node1-data:/data"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:9000/health', timeout=2)"]
+      interval: 3s
+      timeout: 2s
+      retries: 20
+
+  node2:
+    build: .
+    environment:
+      DFL_NODE_ID: node2
+      DFL_PORT: "9000"
+      DFL_EXPERIMENT_ID: docker_ring_demo
+      DFL_PEERS_JSON: '{"node0":"http://node0:9000","node1":"http://node1:9000"}'
+      DFL_DATA_DIR: /data
+      DFL_ADMIN_TOKEN: demo-admin-token
+      DFL_DEMO_IDENTITY_SEED: local-docker-demo-only
+    ports: ["9102:9000"]
+    volumes: ["node2-data:/data"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:9000/health', timeout=2)"]
+      interval: 3s
+      timeout: 2s
+      retries: 20
+
+  demo:
+    build: .
+    depends_on:
+      node0: {condition: service_healthy}
+      node1: {condition: service_healthy}
+      node2: {condition: service_healthy}
+    command:
+      - python
+      - -m
+      - secure_dfl_platform.orchestrator
+      - --nodes
+      - node0=http://node0:9000,node1=http://node1:9000,node2=http://node2:9000
+      - --rounds
+      - "3"
+      - --admin-token
+      - demo-admin-token
+
+volumes:
+  node0-data:
+  node1-data:
+  node2-data:
+

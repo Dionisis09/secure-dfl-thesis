@@ -1,0 +1,14 @@
+{
+  "client_0": {
+    "client_id": 0,
+    "public_key_id": "client_0_50d79a2cf44403b7",
+    "public_key": "TId5F3j8o2+b9e/XW7JSZOdRRvzgAEq1n/lKWQIwZ/E=",
+    "algorithm": "Ed25519"
+  },
+  "client_1": {
+    "client_id": 1,
+    "public_key_id": "client_1_612435dec17f4252",
+    "public_key": "6YI06eyEkwe8Dn3vq/Lpn0nPF/k/TdjAUtbCwwJE9cA=",
+    "algorithm": "Ed25519"
+  }
+}

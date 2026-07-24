@@ -1,0 +1,11 @@
+# NVIDIA GPU build (CUDA 13.0) used by the RTX 5070 test machine.
+--extra-index-url https://download.pytorch.org/whl/cu130
+torch==2.12.1+cu130
+torchvision==0.27.1+cu130
+numpy
+matplotlib
+tqdm
+pandas
+tenseal==0.3.16
+cryptography
+python-pptx

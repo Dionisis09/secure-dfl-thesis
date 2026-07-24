@@ -1,0 +1,32 @@
+{
+  "client_0": {
+    "client_id": 0,
+    "public_key_id": "client_0_96abe05825bda308",
+    "public_key": "opvHt7mEEBW/9rKia7R0TkEZizsstrExXmTIISMFEw0=",
+    "algorithm": "Ed25519"
+  },
+  "client_1": {
+    "client_id": 1,
+    "public_key_id": "client_1_d8d7c07887c43c85",
+    "public_key": "S6QK+dbq6v6+f8Iy6462E7iQ6tfAqqrOyh7Yj7jlbHk=",
+    "algorithm": "Ed25519"
+  },
+  "client_2": {
+    "client_id": 2,
+    "public_key_id": "client_2_92834d7837cfd2ef",
+    "public_key": "t2mSmTTQWEj2oCfQ3um/cvW4xr9pCgWitGAV9PAIU9Y=",
+    "algorithm": "Ed25519"
+  },
+  "client_3": {
+    "client_id": 3,
+    "public_key_id": "client_3_87f8b4c9c97d226f",
+    "public_key": "QmIQ4K56Qell03sS2FDJLquRDigdUgT0kQaJxyhYgn4=",
+    "algorithm": "Ed25519"
+  },
+  "client_4": {
+    "client_id": 4,
+    "public_key_id": "client_4_485ae687a6fa8847",
+    "public_key": "cB9Z0NV6h3dwJLF4Nrtc+cKO71yUOVX22tjhvWB4S4A=",
+    "algorithm": "Ed25519"
+  }
+}
