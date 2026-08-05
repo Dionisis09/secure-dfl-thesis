@@ -82,13 +82,16 @@ def main() -> None:
     stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     baseline_id = f"validation_baseline_{stamp}"
     masking_id = f"validation_masking_{stamp}"
+    pairwise_id = f"validation_pairwise_{stamp}"
     quorum_id = f"validation_quorum_{stamp}"
 
     py = sys.executable
     commands = [
         [py, "-m", "unittest", "discover", "-s", "tests", "-v"],
+        ["docker-compose", "-f", "docker-compose.real-keys.yml", "config"],
         [py, "demo_stack.py", "--experiment-id", baseline_id, "--rounds", "1", "--security-mode", "none", "--keep-alive-seconds", "0"],
         [py, "demo_stack.py", "--experiment-id", masking_id, "--rounds", "1", "--security-mode", "masking", "--keep-alive-seconds", "0"],
+        [py, "demo_stack.py", "--experiment-id", pairwise_id, "--rounds", "1", "--security-mode", "pairwise_masking", "--keep-alive-seconds", "0"],
         [py, "demo_stack.py", "--experiment-id", quorum_id, "--rounds", "1", "--security-mode", "masking", "--min-peer-updates-to-finalize", "1", "--keep-alive-seconds", "0"],
         [py, "tamper_audit_demo.py", "--runtime-dir", f"results/demo_stack/{masking_id}/runtime", "--trusted-keys", f"results/demo_stack/{masking_id}/deployment_keys/trusted_keys.json"],
         [py, "compare_demo_stack_results.py", f"results/demo_stack/{baseline_id}", f"results/demo_stack/{masking_id}", "--output-dir", f"results/platform_validation/comparison_{stamp}"],

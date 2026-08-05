@@ -27,6 +27,9 @@ operator visibility and reproducible demonstrations.
 - Release bundle generation.
 - Deployment `.env.example` templates.
 - Compact platform validation matrix.
+- Docker real-key compose demo.
+- Pairwise masking mode with target-specific mask cancellation.
+- One-click Docker real-key evidence export script.
 
 ## Security and audit features
 
@@ -47,6 +50,13 @@ This is currently a controlled masking simulation. It demonstrates the workflow
 and overhead accounting but is not yet a full cryptographic secure aggregation
 protocol.
 
+## Pairwise masking mode
+
+The platform also supports `DFL_SECURITY_MODE=pairwise_masking`. In this mode,
+raw masks are not sent in the envelope. Each contributor derives
+target-specific pairwise masks, sends a masked payload and the masks cancel only
+when the target node finalizes over the complete contributor set.
+
 ## Demonstration commands
 
 Baseline product demo:
@@ -59,6 +69,18 @@ Masking product demo:
 
 ```text
 ..\.venv\Scripts\python.exe demo_stack.py --rounds 3 --security-mode masking --keep-alive-seconds 120
+```
+
+Pairwise masking product demo:
+
+```text
+..\.venv\Scripts\python.exe demo_stack.py --rounds 3 --security-mode pairwise_masking --keep-alive-seconds 120
+```
+
+Docker real-key evidence demo:
+
+```powershell
+.\run_docker_real_key_demo.ps1
 ```
 
 Validation matrix:
@@ -78,11 +100,13 @@ Release bundle:
 The compact validation matrix currently checks:
 
 1. unit tests,
-2. baseline demo stack,
-3. masking demo stack,
-4. masking plus quorum demo stack,
-5. audit tamper detection,
-6. baseline-vs-masking comparison.
+2. Docker real-key compose config validation,
+3. baseline demo stack,
+4. masking demo stack,
+5. pairwise masking demo stack,
+6. masking plus quorum demo stack,
+7. audit tamper detection,
+8. baseline-vs-masking comparison.
 
 The latest local validation run passed all checks.
 
@@ -92,12 +116,11 @@ The latest local validation run passed all checks.
   enterprise authentication.
 - TLS/mTLS is configurable in the node server but not yet packaged as the
   default demo path.
-- Masking is a simulation and should be replaced or extended with true
-  secure-aggregation protocol work.
+- Controlled masking is a simulation. Pairwise masking improves this by avoiding
+  raw mask transport, but it currently requires a complete contributor set.
 - There is no persistent external database or multi-tenant SaaS layer yet.
 
 ## Recommended next step
 
-The next major engineering step is to implement a stronger networked secure
-aggregation protocol, such as pairwise mask cancellation across contributors or
-a dropout-aware secure aggregation scheme.
+The next major engineering step is dropout-aware pairwise masking and external
+audit anchoring.

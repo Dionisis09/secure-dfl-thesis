@@ -17,7 +17,9 @@ from .codec import decode_state, encode_state, hash_payload, hash_state
 from .crypto import canonical_json_bytes, public_key_id, sign_b64, verify_b64
 from .masking import (
     apply_mask,
+    apply_pairwise_canceling_mask,
     estimate_masking_overhead_bytes,
+    estimate_pairwise_seed_overhead_bytes,
     generate_mask_for_state,
     remove_mask,
 )
@@ -45,6 +47,7 @@ class UpdateEnvelope:
     mask_payload_hash: str = ""
     mask_payload_b64: str = ""
     masking_overhead_bytes: int = 0
+    mask_contributor_ids: tuple[str, ...] = ()
 
     def signing_fields(self) -> dict[str, Any]:
         return {
@@ -63,6 +66,7 @@ class UpdateEnvelope:
             "mask_payload_hash": self.mask_payload_hash,
             "mask_payload_b64": self.mask_payload_b64,
             "masking_overhead_bytes": self.masking_overhead_bytes,
+            "mask_contributor_ids": list(self.mask_contributor_ids),
         }
 
     def to_dict(self) -> dict[str, Any]:
@@ -90,6 +94,7 @@ class UpdateEnvelope:
             mask_payload_hash=str(value.get("mask_payload_hash", "")),
             mask_payload_b64=str(value.get("mask_payload_b64", "")),
             masking_overhead_bytes=int(value.get("masking_overhead_bytes", 0)),
+            mask_contributor_ids=tuple(str(item) for item in value.get("mask_contributor_ids", [])),
         )
 
 
@@ -104,12 +109,14 @@ def create_envelope(
     security_mode: str = "none",
     max_payload_bytes: int = 32 * 1024 * 1024,
     mask_seed: int | None = None,
+    pairwise_contributor_ids: list[str] | None = None,
 ) -> UpdateEnvelope:
     sent_at = time.time()
     original_payload_digest = hash_payload(payload)
     transmitted_payload = payload
     mask_payload = b""
     masking_overhead_bytes = 0
+    mask_contributor_ids: tuple[str, ...] = ()
     if security_mode == "masking":
         state = decode_state(payload, max_payload_bytes)
         original_payload_digest = hash_state(state)
@@ -117,6 +124,24 @@ def create_envelope(
         transmitted_payload = encode_state(apply_mask(state, mask))
         mask_payload = encode_state(mask)
         masking_overhead_bytes = estimate_masking_overhead_bytes(mask)
+    elif security_mode == "pairwise_masking":
+        state = decode_state(payload, max_payload_bytes)
+        original_payload_digest = hash_state(state)
+        contributors = sorted(set(pairwise_contributor_ids or [sender_id, recipient_id]))
+        if sender_id not in contributors or recipient_id not in contributors:
+            raise ValueError("pairwise contributor set must include sender and recipient")
+        transmitted_payload = encode_state(
+            apply_pairwise_canceling_mask(
+                state,
+                experiment_id=experiment_id,
+                round_number=round_number,
+                target_id=recipient_id,
+                contributor_id=sender_id,
+                contributor_ids=contributors,
+            )
+        )
+        mask_contributor_ids = tuple(contributors)
+        masking_overhead_bytes = estimate_pairwise_seed_overhead_bytes(contributors)
     elif security_mode != "none":
         raise ValueError(f"unsupported security mode: {security_mode}")
 
@@ -146,6 +171,7 @@ def create_envelope(
         mask_payload_hash=mask_payload_hash,
         mask_payload_b64=base64.b64encode(mask_payload).decode("ascii") if mask_payload else "",
         masking_overhead_bytes=masking_overhead_bytes,
+        mask_contributor_ids=mask_contributor_ids,
     )
     signature = sign_b64(private_key, canonical_json_bytes(unsigned.signing_fields()))
     return UpdateEnvelope(**{**unsigned.to_dict(), "signature_b64": signature})
@@ -194,4 +220,12 @@ def verify_envelope(
         mask = decode_state(mask_payload, max_payload_bytes)
         unmasked_state = remove_mask(masked_state, mask)
         return encode_state(unmasked_state)
+    if envelope.security_mode == "pairwise_masking":
+        if envelope.mask_payload_b64 or envelope.mask_payload_hash:
+            raise ValueError("pairwise masking must not transport raw mask payloads")
+        if envelope.sender_id not in envelope.mask_contributor_ids:
+            raise ValueError("sender is missing from pairwise contributor set")
+        if envelope.recipient_id not in envelope.mask_contributor_ids:
+            raise ValueError("recipient is missing from pairwise contributor set")
+        return payload
     raise ValueError(f"unsupported security mode: {envelope.security_mode}")

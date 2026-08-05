@@ -88,8 +88,8 @@ class NodeConfig:
             raise ValueError(
                 "DFL_MIN_PEER_UPDATES_TO_FINALIZE must be between 0 and the number of peers"
             )
-        if self.security_mode not in {"none", "masking"}:
-            raise ValueError("DFL_SECURITY_MODE must be one of: none, masking")
+        if self.security_mode not in {"none", "masking", "pairwise_masking"}:
+            raise ValueError("DFL_SECURITY_MODE must be one of: none, masking, pairwise_masking")
         if self.admin_token == "change-me":
             print("WARNING: DFL_ADMIN_TOKEN uses the development default.")
         if not self.demo_identity_seed and not self.private_key_file:

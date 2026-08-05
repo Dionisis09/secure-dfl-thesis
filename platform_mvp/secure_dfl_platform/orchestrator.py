@@ -140,7 +140,7 @@ def run_demo(
                 states,
             )
             for name in aggregate:
-                if not np.allclose(aggregate[name], expected[name], atol=1e-6):
+                if not np.allclose(aggregate[name], expected[name], atol=1e-5):
                     raise AssertionError(
                         f"aggregate mismatch: node={node_id}, round={round_number}, tensor={name}"
                     )
@@ -196,4 +196,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

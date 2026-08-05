@@ -18,6 +18,7 @@ Current capabilities:
 - Lightweight operator web dashboard.
 - Optional TLS and mutual TLS configuration.
 - Docker Compose demonstration with three nodes.
+- Pairwise masking mode with target-specific mask cancellation.
 
 ## Local smoke test
 
@@ -98,6 +99,17 @@ Masking mode additively masks outgoing model-state tensors before transport,
 then reconstructs them at the receiver before aggregation. This is a controlled
 masking simulation for workflow and overhead measurement, not final secure
 aggregation.
+
+Pairwise masking mode:
+
+```text
+..\.venv\Scripts\python.exe demo_stack.py --rounds 3 --security-mode pairwise_masking --keep-alive-seconds 60
+```
+
+Pairwise masking sends target-specific masked model-state payloads without
+transporting the raw masks. The final aggregate remains valid because the masks
+cancel over the complete contributor set during decentralized finalization.
+This mode currently requires all configured contributors to be present.
 
 ## Real PyTorch/MNIST network demo
 
@@ -244,9 +256,10 @@ Run a compact validation matrix:
 ..\.venv\Scripts\python.exe run_platform_validation.py
 ```
 
-It executes unit tests, baseline demo stack, masking demo stack, quorum masking
-demo stack, audit tamper detection and baseline-vs-masking comparison. Results
-are written under:
+It executes unit tests, baseline demo stack, controlled masking demo stack,
+pairwise masking demo stack, quorum masking demo stack, Docker real-key compose
+config validation, audit tamper detection and baseline-vs-masking comparison.
+Results are written under:
 
 ```text
 platform_mvp/results/platform_validation/
@@ -271,10 +284,48 @@ http://localhost:9102
 
 Stop the demo with `docker-compose down`. Add `-v` only when the stored node audit volumes should also be removed.
 
+## Docker real-key demo
+
+This variant generates real Ed25519 keys in a Docker volume, starts three nodes
+with mounted private keys and a trusted-key manifest, runs pairwise-masking
+signed rounds by default, starts the operator dashboard and verifies audit logs.
+
+```text
+docker-compose -f docker-compose.real-keys.yml up --build --exit-code-from audit_verifier
+```
+
+Presentation-ready one-click run with evidence export:
+
+```powershell
+.\run_docker_real_key_demo.ps1
+```
+
+This writes:
+
+```text
+results/docker_real_key_demo_latest/
+```
+
+The evidence folder contains Docker service status, combined logs, the demo
+summary, the audit verification report and the three exported node audit logs.
+
+Dashboard:
+
+```text
+http://localhost:9200?token=docker-dashboard-token
+```
+
+Clean generated Docker volumes:
+
+```text
+docker-compose -f docker-compose.real-keys.yml down -v
+```
+
 ## Security note
 
-Docker Compose uses deterministic development identities and HTTP to keep the local demo reproducible. A real deployment must use mounted Ed25519 keys, a trusted public-key manifest, unique admin credentials, TLS or mTLS, secret management and external audit anchoring.
+The default Docker Compose demo uses deterministic development identities and HTTP to keep the local demo reproducible. The real-key Docker demo uses mounted Ed25519 keys, a trusted public-key manifest and pairwise masked payload exchange, but it still uses HTTP for local demonstration. A production deployment must add TLS or mTLS, secret management, hardened dashboard authentication and external audit anchoring.
 
 ## Next milestone
 
-The next implementation step is adding networked masking / secure aggregation to the platform layer.
+The next implementation step is dropout-resilient pairwise masking and external
+audit anchoring.

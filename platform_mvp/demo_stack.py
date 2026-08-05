@@ -183,6 +183,16 @@ def build_markdown_report(summary: dict[str, Any]) -> str:
                 "The current implementation is a controlled masking simulation. It demonstrates protected-sharing workflow and overhead accounting, but it is not yet a full cryptographic secure aggregation protocol because the mask is transported to the receiver for reconstruction.",
             ]
         )
+    elif security_mode == "pairwise_masking":
+        lines.extend(
+            [
+                "This run used pairwise masking. Each outgoing model-state payload was masked for a specific target aggregate. The raw masks were not transported in the update envelope.",
+                "",
+                "During finalization, the target node applies its own local target-specific mask and averages the masked contributor states. The pairwise masks cancel over the complete contributor set, so the final aggregate remains valid while individual transmitted payloads stay masked.",
+                "",
+                "Current limitation: this mode requires the complete configured contributor set for the target round. Quorum finalization with missing contributors should use baseline or controlled masking until a dropout-resilient pairwise protocol is added.",
+            ]
+        )
     else:
         lines.append(
             "This run used baseline signed transport without masking. It is the compatibility mode and should remain the default behavior."
@@ -205,7 +215,11 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Optional quorum threshold. Default waits for all configured peers.",
     )
-    parser.add_argument("--security-mode", choices=["none", "masking"], default="none")
+    parser.add_argument(
+        "--security-mode",
+        choices=["none", "masking", "pairwise_masking"],
+        default="none",
+    )
     return parser.parse_args()
 
 

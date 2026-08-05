@@ -35,6 +35,16 @@ Open the printed dashboard URL. It includes a temporary token.
 This demonstrates masked model-state transport and exposes masked update counts
 and masking overhead in the dashboard and result package.
 
+## Optional pairwise masking demo
+
+```text
+..\.venv\Scripts\python.exe demo_stack.py --rounds 3 --security-mode pairwise_masking --keep-alive-seconds 120
+```
+
+This demonstrates target-specific pairwise masked payloads. Raw masks are not
+transported; the masks cancel during decentralized finalization over the
+complete contributor set.
+
 ## Comparison output
 
 After running a baseline stack and a masking stack, compare them with:
@@ -66,6 +76,39 @@ Use:
 
 The generated zip excludes runtime artifacts, generated result folders,
 deployment private keys and Python cache files.
+
+## Docker real-key demo
+
+For the recommended containerized presentation path:
+
+```powershell
+.\run_docker_real_key_demo.ps1
+```
+
+This creates a clean evidence folder at:
+
+```text
+results/docker_real_key_demo_latest/
+```
+
+It contains Docker status, logs, the demo summary, signed node audit logs and
+the audit verification result.
+
+Manual Docker Compose run:
+
+```text
+docker-compose -f docker-compose.real-keys.yml up --build --exit-code-from audit_verifier
+```
+
+Open:
+
+```text
+http://localhost:9200?token=docker-dashboard-token
+```
+
+This path demonstrates generated Ed25519 deployment keys, mounted node private
+keys, a trusted-key manifest, pairwise-masking signed rounds, dashboard
+visibility and audit verification inside Docker.
 
 ## Main message
 

@@ -19,6 +19,7 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import (
 
 from .codec import average_states, decode_state, encode_state, hash_payload
 from .crypto import canonical_json_bytes, public_key_b64, public_key_id, sign_b64
+from .masking import apply_pairwise_canceling_mask
 from .protocol import UpdateEnvelope, verify_envelope
 
 
@@ -29,6 +30,8 @@ class RoundState:
     local_payload_hash: str | None = None
     peer_states: dict[str, OrderedDict[str, np.ndarray]] = field(default_factory=dict)
     peer_payload_hashes: dict[str, str] = field(default_factory=dict)
+    peer_security_modes: dict[str, str] = field(default_factory=dict)
+    peer_contributor_sets: dict[str, tuple[str, ...]] = field(default_factory=dict)
     aggregate_state: OrderedDict[str, np.ndarray] | None = None
     aggregate_payload_hash: str | None = None
     finalized_at_unix: float | None = None
@@ -173,10 +176,14 @@ class NodeRuntime:
                     raise ValueError("conflicting update from peer for the same round")
                 item.peer_states[envelope.sender_id] = state
                 item.peer_payload_hashes[envelope.sender_id] = original_payload_hash
+                item.peer_security_modes[envelope.sender_id] = envelope.security_mode
+                item.peer_contributor_sets[envelope.sender_id] = tuple(
+                    sorted(envelope.mask_contributor_ids)
+                )
                 self._seen_message_ids.add(envelope.message_id)
                 self._metrics["received_updates_total"] += 1
                 self._metrics["received_bytes_total"] += len(payload)
-                if envelope.security_mode == "masking":
+                if envelope.security_mode in {"masking", "pairwise_masking"}:
                     self._metrics["masked_updates_received_total"] += 1
                     self._metrics["received_masking_overhead_bytes_total"] += (
                         envelope.masking_overhead_bytes
@@ -191,6 +198,7 @@ class NodeRuntime:
                         "transmitted_payload_hash": envelope.payload_hash,
                         "security_mode": envelope.security_mode,
                         "masking_overhead_bytes": envelope.masking_overhead_bytes,
+                        "mask_contributor_ids": list(envelope.mask_contributor_ids),
                         "bytes": len(payload),
                     },
                 )
@@ -227,9 +235,32 @@ class NodeRuntime:
                     f"missing_peers={missing}"
                 )
             contributing_peers = sorted(item.peer_states)
-            ordered_states = [item.local_state] + [
-                item.peer_states[p] for p in contributing_peers
-            ]
+            contributors = [self.node_id, *contributing_peers]
+            if self.security_mode == "pairwise_masking":
+                if missing:
+                    raise RuntimeError(
+                        "pairwise_masking requires the complete configured contributor set; "
+                        f"missing_peers={missing}"
+                    )
+                expected_contributors = tuple(sorted(contributors))
+                for peer_id in contributing_peers:
+                    if item.peer_security_modes.get(peer_id) != "pairwise_masking":
+                        raise ValueError(f"peer {peer_id} did not use pairwise_masking")
+                    if item.peer_contributor_sets.get(peer_id) != expected_contributors:
+                        raise ValueError(
+                            f"peer {peer_id} used incompatible pairwise contributor set"
+                        )
+                local_state = apply_pairwise_canceling_mask(
+                    item.local_state,
+                    experiment_id=self.experiment_id,
+                    round_number=round_number,
+                    target_id=self.node_id,
+                    contributor_id=self.node_id,
+                    contributor_ids=list(expected_contributors),
+                )
+            else:
+                local_state = item.local_state
+            ordered_states = [local_state] + [item.peer_states[p] for p in contributing_peers]
             aggregate = average_states(ordered_states)
             aggregate_payload = encode_state(aggregate)
             item.aggregate_state = aggregate
@@ -242,7 +273,7 @@ class NodeRuntime:
                 "round_finalized",
                 {
                     "round_number": round_number,
-                    "contributors": [self.node_id, *contributing_peers],
+                    "contributors": contributors,
                     "missing_peers": missing,
                     "required_peer_updates": self.min_peer_updates_to_finalize,
                     "partial_finalization": bool(missing),

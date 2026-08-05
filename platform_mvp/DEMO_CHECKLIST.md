@@ -34,6 +34,12 @@
 ..\.venv\Scripts\python.exe demo_stack.py --rounds 3 --security-mode masking --keep-alive-seconds 120
 ```
 
+- Optional pairwise masking demo:
+
+```text
+..\.venv\Scripts\python.exe demo_stack.py --rounds 3 --security-mode pairwise_masking --keep-alive-seconds 120
+```
+
 - Open the printed dashboard URL.
 - Point out:
   - online nodes
@@ -69,6 +75,14 @@ platform_mvp/results/demo_stack/<experiment-id>/
 ```text
 ..\.venv\Scripts\python.exe make_release_bundle.py
 ```
+
+- Optional Docker real-key demo:
+
+```text
+.\run_docker_real_key_demo.ps1
+```
+
+Evidence is written to `results/docker_real_key_demo_latest/`.
 
 ## Fallback command
 

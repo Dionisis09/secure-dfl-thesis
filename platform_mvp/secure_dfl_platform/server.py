@@ -55,6 +55,7 @@ class NodeService:
 
     def broadcast(self, round_number: int, payload: bytes) -> dict[str, Any]:
         results: dict[str, Any] = {}
+        all_contributors = sorted([self.config.node_id, *self.config.peer_urls.keys()])
         for peer_id, base_url in self.config.peer_urls.items():
             envelope = create_envelope(
                 private_key=self.runtime.private_key,
@@ -65,6 +66,7 @@ class NodeService:
                 payload=payload,
                 security_mode=self.config.security_mode,
                 max_payload_bytes=self.config.max_payload_bytes,
+                pairwise_contributor_ids=all_contributors,
             )
             request = urllib.request.Request(
                 f"{base_url}/v1/rounds/{round_number}/updates",
@@ -79,7 +81,7 @@ class NodeService:
                     results[peer_id] = json.loads(response.read().decode("utf-8"))
                 self.runtime.increment_metric("sent_updates_total")
                 self.runtime.increment_metric("sent_bytes_total", len(payload))
-                if envelope.security_mode == "masking":
+                if envelope.security_mode in {"masking", "pairwise_masking"}:
                     self.runtime.increment_metric("masked_updates_sent_total")
                     self.runtime.increment_metric(
                         "sent_masking_overhead_bytes_total",

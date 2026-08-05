@@ -13,7 +13,12 @@ import torch
 from secure_dfl_platform.codec import average_states, decode_state, encode_state
 from secure_dfl_platform.crypto import derive_demo_private_key
 from secure_dfl_platform.key_management import write_node_keys
-from secure_dfl_platform.masking import apply_mask, generate_mask_for_state, remove_mask
+from secure_dfl_platform.masking import (
+    apply_mask,
+    estimate_pairwise_seed_overhead_bytes,
+    generate_mask_for_state,
+    remove_mask,
+)
 from secure_dfl_platform.protocol import UpdateEnvelope, create_envelope
 from secure_dfl_platform.runtime import NodeRuntime
 from secure_dfl_platform.training_adapter import (
@@ -121,6 +126,69 @@ class RuntimeTests(unittest.TestCase):
             self.assertTrue(status["finalized"])
             metrics = runtime.node_status()["metrics"]
             self.assertEqual(metrics["masked_updates_received_total"], 1)
+            self.assertGreater(metrics["received_masking_overhead_bytes_total"], 0)
+
+    def test_pairwise_masking_cancels_at_finalize_without_raw_mask_transport(self):
+        seed = "test-seed"
+        key0 = derive_demo_private_key("node0", seed)
+        key1 = derive_demo_private_key("node1", seed)
+        key2 = derive_demo_private_key("node2", seed)
+        contributors = ["node0", "node1", "node2"]
+        with tempfile.TemporaryDirectory() as tmp:
+            runtime = NodeRuntime(
+                node_id="node0",
+                experiment_id="exp",
+                peer_ids=["node1", "node2"],
+                private_key=key0,
+                trusted_keys={"node1": key1.public_key(), "node2": key2.public_key()},
+                data_dir=Path(tmp),
+                max_payload_bytes=1024 * 1024,
+                security_mode="pairwise_masking",
+            )
+            local = OrderedDict([("weight", np.asarray([1.0, 3.0], dtype=np.float32))])
+            peer1 = OrderedDict([("weight", np.asarray([3.0, 5.0], dtype=np.float32))])
+            peer2 = OrderedDict([("weight", np.asarray([5.0, 7.0], dtype=np.float32))])
+            runtime.register_local_payload(1, encode_state(local))
+            envelope1 = create_envelope(
+                private_key=key1,
+                experiment_id="exp",
+                round_number=1,
+                sender_id="node1",
+                recipient_id="node0",
+                payload=encode_state(peer1),
+                security_mode="pairwise_masking",
+                max_payload_bytes=1024 * 1024,
+                pairwise_contributor_ids=contributors,
+            )
+            envelope2 = create_envelope(
+                private_key=key2,
+                experiment_id="exp",
+                round_number=1,
+                sender_id="node2",
+                recipient_id="node0",
+                payload=encode_state(peer2),
+                security_mode="pairwise_masking",
+                max_payload_bytes=1024 * 1024,
+                pairwise_contributor_ids=contributors,
+            )
+
+            self.assertEqual(envelope1.security_mode, "pairwise_masking")
+            self.assertEqual(envelope1.mask_payload_b64, "")
+            self.assertEqual(envelope1.mask_payload_hash, "")
+            self.assertEqual(tuple(sorted(envelope1.mask_contributor_ids)), tuple(contributors))
+            self.assertEqual(
+                envelope1.masking_overhead_bytes,
+                estimate_pairwise_seed_overhead_bytes(contributors),
+            )
+
+            runtime.accept_peer_envelope(envelope1)
+            runtime.accept_peer_envelope(envelope2)
+            aggregate_payload, status = runtime.finalize_round(1)
+            aggregate = decode_state(aggregate_payload, 1024 * 1024)
+            np.testing.assert_allclose(aggregate["weight"], [3.0, 5.0], atol=1e-5)
+            self.assertTrue(status["finalized"])
+            metrics = runtime.node_status()["metrics"]
+            self.assertEqual(metrics["masked_updates_received_total"], 2)
             self.assertGreater(metrics["received_masking_overhead_bytes_total"], 0)
 
     def test_tampered_mask_in_envelope_is_rejected(self):
