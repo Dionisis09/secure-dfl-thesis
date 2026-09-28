@@ -39,6 +39,22 @@ def create_fully_connected_topology(num_clients: int) -> Topology:
     }
 
 
+def create_star_topology(num_clients: int, hub_id: int = 0) -> Topology:
+    """Connect every client to a single hub client."""
+
+    if num_clients <= 0:
+        raise ValueError("num_clients must be greater than zero")
+    if not 0 <= hub_id < num_clients:
+        raise ValueError("hub_id must identify an existing client")
+    topology = {client_id: set() for client_id in range(num_clients)}
+    for client_id in range(num_clients):
+        if client_id == hub_id:
+            continue
+        topology[hub_id].add(client_id)
+        topology[client_id].add(hub_id)
+    return {client_id: sorted(neighbors) for client_id, neighbors in topology.items()}
+
+
 def create_random_topology(
     num_clients: int, degree: int = 2, seed: int = 42
 ) -> Topology:
@@ -81,3 +97,42 @@ def create_random_topology(
         for client_id, neighbors in topology.items()
     }
 
+
+def create_small_world_topology(
+    num_clients: int, shortcut_count: int | None = None, seed: int = 42
+) -> Topology:
+    """Create a ring plus a few reproducible long-range shortcut links."""
+
+    if num_clients <= 0:
+        raise ValueError("num_clients must be greater than zero")
+    topology = {
+        client_id: set(neighbors)
+        for client_id, neighbors in create_ring_topology(num_clients).items()
+    }
+    if num_clients <= 3:
+        return {client_id: sorted(neighbors) for client_id, neighbors in topology.items()}
+
+    if shortcut_count is None:
+        shortcut_count = max(1, num_clients // 2)
+    if shortcut_count < 0:
+        raise ValueError("shortcut_count cannot be negative")
+
+    existing_edges = {
+        tuple(sorted((client_id, neighbor_id)))
+        for client_id, neighbors in topology.items()
+        for neighbor_id in neighbors
+    }
+    candidate_edges = [
+        (left, right)
+        for left in range(num_clients)
+        for right in range(left + 1, num_clients)
+        if (left, right) not in existing_edges
+    ]
+    rng = random.Random(seed)
+    rng.shuffle(candidate_edges)
+
+    for left, right in candidate_edges[:shortcut_count]:
+        topology[left].add(right)
+        topology[right].add(left)
+
+    return {client_id: sorted(neighbors) for client_id, neighbors in topology.items()}

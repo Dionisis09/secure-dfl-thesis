@@ -12,7 +12,7 @@ class Config:
     local_epochs: int = 1
     batch_size: int = 32
     learning_rate: float = 0.01
-    dataset: str = "MNIST"
+    dataset: str = "mnist"
     split_type: str = "iid"
     topology: str = "ring"
     security_mode: str = "none"

@@ -53,8 +53,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--num_rounds", type=int, default=20)
     parser.add_argument("--batch_size", type=int, default=32)
     parser.add_argument(
+        "--dataset",
+        choices=["mnist", "fashion_mnist", "fmnist", "cifar10"],
+        default="mnist",
+    )
+    parser.add_argument(
         "--topology",
-        choices=["ring", "fully_connected", "random"],
+        choices=["ring", "fully_connected", "star", "random", "small_world"],
         default="ring",
     )
     parser.add_argument("--output_prefix", default="adaptive_ratio")
@@ -104,13 +109,15 @@ def effective_prefix(output_prefix: str) -> str:
 def build_experiment_name(
     prefix: str,
     ratio: float,
+    dataset: str,
     split_type: str,
     num_clients: int,
     num_rounds: int,
     batch_size: int,
 ) -> str:
+    dataset_token = "" if dataset == "mnist" else f"{dataset}_"
     return (
-        f"{prefix}_{ratio_token(ratio)}_{split_type}_"
+        f"{prefix}_{ratio_token(ratio)}_{dataset_token}{split_type}_"
         f"{num_clients}c_{num_rounds}r_b{batch_size}"
     )
 
@@ -128,6 +135,7 @@ def build_experiment_args(
         batch_size=cli_args.batch_size,
         lr=defaults.learning_rate,
         device=defaults.device,
+        dataset=cli_args.dataset,
         split_type=cli_args.split_type,
         topology=cli_args.topology,
         security_mode="adaptive_hybrid",
@@ -143,6 +151,8 @@ def build_experiment_args(
         adaptive_min_he_targets=defaults.adaptive_min_he_targets,
         experiment_name=experiment_name,
         seed=defaults.seed,
+        enable_blockchain=False,
+        enable_audit=False,
     )
 
 
@@ -431,6 +441,7 @@ def main() -> None:
         experiment_name = build_experiment_name(
             prefix=prefix,
             ratio=ratio,
+            dataset=args.dataset,
             split_type=args.split_type,
             num_clients=args.num_clients,
             num_rounds=args.num_rounds,

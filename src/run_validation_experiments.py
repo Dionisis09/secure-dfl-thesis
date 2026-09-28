@@ -28,7 +28,8 @@ ALLOWED_SECURITY_MODES = {
     "selective_he",
     "adaptive_hybrid",
 }
-ALLOWED_TOPOLOGIES = {"ring", "fully_connected", "random"}
+ALLOWED_DATASETS = {"mnist", "fashion_mnist", "fmnist", "cifar10"}
+ALLOWED_TOPOLOGIES = {"ring", "fully_connected", "star", "random", "small_world"}
 ALLOWED_SPLITS = {"iid", "non_iid"}
 METHOD_ORDER = [
     "none",
@@ -49,6 +50,7 @@ SPLIT_LABELS = {"iid": "IID", "non_iid": "Non-IID"}
 RUN_SUMMARY_COLUMNS = [
     "experiment_name",
     "seed",
+    "dataset",
     "num_clients",
     "topology",
     "split_type",
@@ -70,6 +72,7 @@ RUN_SUMMARY_COLUMNS = [
 
 GROUPED_COLUMNS = [
     "security_mode",
+    "dataset",
     "split_type",
     "topology",
     "num_clients",
@@ -93,6 +96,7 @@ GROUPED_COLUMNS = [
 @dataclass(frozen=True)
 class ValidationExperiment:
     seed: int
+    dataset: str
     num_clients: int
     topology: str
     split_type: str
@@ -104,8 +108,9 @@ class ValidationExperiment:
 
     @property
     def name(self) -> str:
+        dataset_token = "" if self.dataset == "mnist" else f"{self.dataset}_"
         return (
-            f"validation_{self.security_mode}_{self.split_type}_{self.topology}_"
+            f"validation_{self.security_mode}_{dataset_token}{self.split_type}_{self.topology}_"
             f"{self.num_clients}c_{self.num_rounds}r_b{self.batch_size}_"
             f"seed{self.seed}"
         )
@@ -116,6 +121,7 @@ def parse_args() -> argparse.Namespace:
         description="Part 5 robustness and validation experiment runner"
     )
     parser.add_argument("--seeds", default="1,2,3")
+    parser.add_argument("--datasets", default="mnist")
     parser.add_argument("--num_clients_list", default="5,10")
     parser.add_argument("--topologies", default="ring,fully_connected")
     parser.add_argument("--split_types", default="iid,non_iid")
@@ -177,12 +183,14 @@ def resolve_project_path(value: str, project_root: Path) -> Path:
 
 def build_experiments(args: argparse.Namespace) -> List[ValidationExperiment]:
     seeds = parse_positive_ints(args.seeds, "seeds")
+    datasets = parse_csv_values(args.datasets, "datasets")
     client_counts = parse_positive_ints(args.num_clients_list, "num_clients_list")
     topologies = parse_csv_values(args.topologies, "topologies")
     split_types = parse_csv_values(args.split_types, "split_types")
     security_modes = parse_csv_values(args.security_modes, "security_modes")
     if args.include_simple_masking and "masking" not in security_modes:
         security_modes.append("masking")
+    validate_choices(datasets, ALLOWED_DATASETS, "datasets")
     validate_choices(topologies, ALLOWED_TOPOLOGIES, "topologies")
     validate_choices(split_types, ALLOWED_SPLITS, "split_types")
     validate_choices(security_modes, ALLOWED_SECURITY_MODES, "security_modes")
@@ -196,6 +204,7 @@ def build_experiments(args: argparse.Namespace) -> List[ValidationExperiment]:
     experiments = [
         ValidationExperiment(
             seed=seed,
+            dataset=dataset,
             num_clients=num_clients,
             topology=topology,
             split_type=split_type,
@@ -205,8 +214,8 @@ def build_experiments(args: argparse.Namespace) -> List[ValidationExperiment]:
             adaptive_policy=args.adaptive_policy,
             adaptive_he_target_ratio=args.adaptive_he_target_ratio,
         )
-        for seed, num_clients, topology, split_type, security_mode in itertools.product(
-            seeds, client_counts, topologies, split_types, security_modes
+        for seed, dataset, num_clients, topology, split_type, security_mode in itertools.product(
+            seeds, datasets, client_counts, topologies, split_types, security_modes
         )
     ]
     if args.max_runs is not None:
@@ -224,6 +233,8 @@ def command_for(experiment: ValidationExperiment, main_path: Path) -> List[str]:
         str(experiment.num_rounds),
         "--batch_size",
         str(experiment.batch_size),
+        "--dataset",
+        experiment.dataset,
         "--split_type",
         experiment.split_type,
         "--topology",
@@ -275,6 +286,7 @@ def summarize_run(
     return {
         "experiment_name": experiment.name,
         "seed": experiment.seed,
+        "dataset": experiment.dataset,
         "num_clients": experiment.num_clients,
         "topology": experiment.topology,
         "split_type": experiment.split_type,
@@ -299,13 +311,13 @@ def build_grouped_summary(summary: pd.DataFrame) -> pd.DataFrame:
     if summary.empty:
         return pd.DataFrame(columns=GROUPED_COLUMNS)
     groups = summary.groupby(
-        ["security_mode", "split_type", "topology", "num_clients"],
+        ["security_mode", "dataset", "split_type", "topology", "num_clients"],
         sort=False,
         dropna=False,
     )
     records: List[Dict[str, object]] = []
     for keys, frame in groups:
-        mode, split, topology, clients = keys
+        mode, dataset, split, topology, clients = keys
 
         def mean(column: str) -> float:
             return float(pd.to_numeric(frame[column], errors="coerce").mean())
@@ -317,6 +329,7 @@ def build_grouped_summary(summary: pd.DataFrame) -> pd.DataFrame:
         records.append(
             {
                 "security_mode": mode,
+                "dataset": dataset,
                 "split_type": split,
                 "topology": topology,
                 "num_clients": int(clients),
@@ -340,7 +353,7 @@ def build_grouped_summary(summary: pd.DataFrame) -> pd.DataFrame:
     mode_rank = {mode: index for index, mode in enumerate(METHOD_ORDER)}
     grouped["_mode_rank"] = grouped["security_mode"].map(mode_rank).fillna(999)
     grouped = grouped.sort_values(
-        ["split_type", "topology", "num_clients", "_mode_rank"]
+        ["dataset", "split_type", "topology", "num_clients", "_mode_rank"]
     ).drop(columns="_mode_rank")
     return grouped.reset_index(drop=True)
 
@@ -373,6 +386,7 @@ def mean_std_markdown(grouped: pd.DataFrame) -> str:
     display = pd.DataFrame(
         {
             "method": grouped["security_mode"].map(METHOD_LABELS),
+            "dataset": grouped["dataset"],
             "split": grouped["split_type"].map(SPLIT_LABELS),
             "topology": grouped["topology"],
             "clients": grouped["num_clients"],
@@ -409,7 +423,7 @@ def automatic_observations(summary: pd.DataFrame, grouped: pd.DataFrame) -> List
         )
 
     pivot = grouped.pivot_table(
-        index=["split_type", "topology", "num_clients"],
+        index=["dataset", "split_type", "topology", "num_clients"],
         columns="security_mode",
         values=["communication_mib_mean", "he_total_time_mean"],
         aggfunc="mean",
@@ -506,6 +520,7 @@ def save_reports(
         [
             {
                 "seeds": ",".join(str(item) for item in sorted({e.seed for e in experiments})),
+                "datasets": ",".join(sorted({e.dataset for e in experiments})),
                 "clients": ",".join(str(item) for item in sorted({e.num_clients for e in experiments})),
                 "topologies": ",".join(sorted({e.topology for e in experiments})),
                 "splits": ",".join(sorted({e.split_type for e in experiments})),

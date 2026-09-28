@@ -16,8 +16,9 @@ from config import Config
 from data_utils import (
     create_iid_client_loaders,
     create_non_iid_client_loaders,
-    get_mnist_datasets,
+    get_datasets,
     get_test_loader,
+    normalize_dataset_name,
     set_seed,
 )
 from he_utils import (
@@ -50,6 +51,8 @@ from topology import (
     create_fully_connected_topology,
     create_random_topology,
     create_ring_topology,
+    create_small_world_topology,
+    create_star_topology,
 )
 from train_utils import evaluate_all_clients
 
@@ -57,7 +60,7 @@ from train_utils import evaluate_all_clients
 def parse_args() -> argparse.Namespace:
     defaults = Config()
     parser = argparse.ArgumentParser(
-        description="Baseline decentralized federated learning on MNIST"
+        description="Decentralized federated learning experiment runner"
     )
     parser.add_argument("--num_clients", type=int, default=defaults.num_clients)
     parser.add_argument("--num_rounds", type=int, default=defaults.num_rounds)
@@ -71,8 +74,14 @@ def parse_args() -> argparse.Namespace:
         "--split_type", choices=["iid", "non_iid"], default=defaults.split_type
     )
     parser.add_argument(
+        "--dataset",
+        choices=["mnist", "fashion_mnist", "fmnist", "cifar10"],
+        default=defaults.dataset,
+        help="Dataset used by the DFL experiment",
+    )
+    parser.add_argument(
         "--topology",
-        choices=["ring", "fully_connected", "random"],
+        choices=["ring", "fully_connected", "star", "random", "small_world"],
         default=defaults.topology,
     )
     parser.add_argument(
@@ -174,6 +183,7 @@ def validate_args(args: argparse.Namespace) -> None:
         or Path(args.experiment_name).name != args.experiment_name
     ):
         raise ValueError("experiment_name must not contain path separators")
+    args.dataset = normalize_dataset_name(args.dataset)
 
 
 def build_topology(name: str, num_clients: int, seed: int) -> Topology:
@@ -181,6 +191,10 @@ def build_topology(name: str, num_clients: int, seed: int) -> Topology:
         return create_ring_topology(num_clients)
     if name == "fully_connected":
         return create_fully_connected_topology(num_clients)
+    if name == "star":
+        return create_star_topology(num_clients)
+    if name == "small_world":
+        return create_small_world_topology(num_clients, seed=seed)
     return create_random_topology(num_clients, degree=2, seed=seed)
 
 
@@ -205,6 +219,7 @@ def build_blockchain_configuration(
         "local_epochs": args.local_epochs,
         "batch_size": args.batch_size,
         "learning_rate": args.lr,
+        "dataset": args.dataset,
         "topology": args.topology,
         "split_type": args.split_type,
         "device": device,
@@ -244,6 +259,7 @@ def run_experiment(args: argparse.Namespace) -> MetricsLogger:
     plots_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"Experiment: {args.experiment_name}")
+    print(f"Dataset: {args.dataset}")
     print(f"Security mode: {args.security_mode}")
     print(f"Device: {device}")
     if device == "cuda":
@@ -270,8 +286,8 @@ def run_experiment(args: argparse.Namespace) -> MetricsLogger:
             output_root=results_dir / "audit_packages",
         )
         print("Product audit package: enabled")
-    print("Loading MNIST...")
-    train_dataset, test_dataset = get_mnist_datasets(str(data_dir))
+    print(f"Loading {args.dataset}...")
+    train_dataset, test_dataset, dataset_spec = get_datasets(args.dataset, str(data_dir))
 
     if args.split_type == "iid":
         client_loaders = create_iid_client_loaders(
@@ -291,13 +307,19 @@ def run_experiment(args: argparse.Namespace) -> MetricsLogger:
     print_topology(topology)
 
     # Every peer begins from exactly the same seeded initialization.
-    initial_model = SimpleMLP()
+    initial_model = SimpleMLP(
+        input_shape=dataset_spec.input_shape,
+        num_classes=dataset_spec.num_classes,
+    )
     initial_state = {
         key: value.detach().clone() for key, value in initial_model.state_dict().items()
     }
     clients: List[Client] = []
     for client_id, train_loader in enumerate(client_loaders):
-        model = SimpleMLP()
+        model = SimpleMLP(
+            input_shape=dataset_spec.input_shape,
+            num_classes=dataset_spec.num_classes,
+        )
         model.load_state_dict(initial_state)
         clients.append(
             Client(

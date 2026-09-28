@@ -1,10 +1,35 @@
 Secure Decentralized Federated Learning
 
-This project is a thesis prototype for decentralized federated learning on MNIST.
+This project is a thesis prototype for decentralized federated learning.
 
-Five clients train local models and exchange model parameters with their neighbors. There is no central aggregation server. The default topology is a ring. IID and non-IID data splits are supported.
+Five clients train local models and exchange model parameters with their neighbors. There is no central aggregation server. The default dataset is MNIST and the default topology is a ring. IID and non-IID data splits are supported.
 
 The available security modes are none, masking, pairwise_masking, selective_he and adaptive_hybrid.
+
+Datasets:
+
+mnist
+fashion_mnist
+fmnist
+cifar10
+
+Topologies:
+
+ring
+fully_connected
+star
+random
+small_world
+
+Use a different dataset with:
+
+python src/main.py --dataset fashion_mnist --security_mode none --experiment_name fmnist_baseline
+
+Use a different topology with:
+
+python src/main.py --topology small_world --security_mode pairwise_masking --experiment_name small_world_pairwise
+
+Fashion-MNIST uses the same 28x28 grayscale input format as MNIST, so it is a safe second benchmark. CIFAR-10 uses 32x32 RGB images, so the model input size is adjusted automatically. The training logic remains the same.
 
 Installation on Windows:
 
@@ -45,11 +70,15 @@ The final technical report is stored in the docs folder.
 
 Part 5 - Robustness and Validation Experiments
 
-The validation runner checks the results with different random seeds, client counts, topologies and IID or non-IID data. Multiple seeds are used to measure how much the final metrics change between runs.
+The validation runner checks the results with different datasets, random seeds, client counts, topologies and IID or non-IID data. Multiple seeds are used to measure how much the final metrics change between runs.
 
 Smoke test:
 
-python src/run_validation_experiments.py --seeds 1 --num_clients_list 5 --topologies ring --split_types iid --security_modes none,pairwise_masking,adaptive_hybrid --num_rounds 3 --max_runs 3
+python src/run_validation_experiments.py --seeds 1 --datasets mnist --num_clients_list 5 --topologies ring --split_types iid --security_modes none,pairwise_masking,adaptive_hybrid --num_rounds 3 --max_runs 3
+
+Dataset and topology smoke test:
+
+python src/run_validation_experiments.py --seeds 1 --datasets mnist,fashion_mnist --num_clients_list 5 --topologies ring,star,small_world --split_types iid --security_modes none --num_rounds 1 --dry_run
 
 Show the planned commands without running them:
 

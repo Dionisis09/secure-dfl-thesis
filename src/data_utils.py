@@ -1,5 +1,6 @@
 """Dataset loading, reproducibility, and client partitioning utilities."""
 
+from dataclasses import dataclass
 import random
 from typing import List, Tuple
 
@@ -7,6 +8,25 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader, Dataset, Subset
 from torchvision import datasets, transforms
+
+
+@dataclass(frozen=True)
+class DatasetSpec:
+    """Metadata needed to build a compatible model for a dataset."""
+
+    name: str
+    input_shape: Tuple[int, int, int]
+    num_classes: int
+
+
+DATASET_SPECS = {
+    "mnist": DatasetSpec(name="mnist", input_shape=(1, 28, 28), num_classes=10),
+    "fashion_mnist": DatasetSpec(
+        name="fashion_mnist", input_shape=(1, 28, 28), num_classes=10
+    ),
+    "fmnist": DatasetSpec(name="fashion_mnist", input_shape=(1, 28, 28), num_classes=10),
+    "cifar10": DatasetSpec(name="cifar10", input_shape=(3, 32, 32), num_classes=10),
+}
 
 
 def set_seed(seed: int) -> None:
@@ -22,16 +42,51 @@ def set_seed(seed: int) -> None:
     torch.backends.cudnn.benchmark = False
 
 
-def get_mnist_datasets(data_dir: str) -> Tuple[Dataset, Dataset]:
-    """Download (when necessary) and return MNIST train/test datasets."""
+def normalize_dataset_name(name: str) -> str:
+    """Return the canonical dataset token accepted by the experiment runner."""
 
+    key = name.strip().lower().replace("-", "_")
+    if key not in DATASET_SPECS:
+        allowed = ", ".join(sorted({"mnist", "fashion_mnist", "fmnist", "cifar10"}))
+        raise ValueError(f"unsupported dataset: {name}; allowed values: {allowed}")
+    return DATASET_SPECS[key].name
+
+
+def get_dataset_spec(name: str) -> DatasetSpec:
+    """Return model metadata for a supported dataset."""
+
+    return DATASET_SPECS[normalize_dataset_name(name)]
+
+
+def get_datasets(name: str, data_dir: str) -> Tuple[Dataset, Dataset, DatasetSpec]:
+    """Download when necessary and return train/test datasets plus metadata."""
+
+    dataset_name = normalize_dataset_name(name)
+    spec = get_dataset_spec(dataset_name)
     transform = transforms.ToTensor()
-    train_dataset = datasets.MNIST(
+
+    if dataset_name == "mnist":
+        dataset_class = datasets.MNIST
+    elif dataset_name == "fashion_mnist":
+        dataset_class = datasets.FashionMNIST
+    elif dataset_name == "cifar10":
+        dataset_class = datasets.CIFAR10
+    else:  # pragma: no cover - normalize_dataset_name guards this branch.
+        raise ValueError(f"unsupported dataset: {name}")
+
+    train_dataset = dataset_class(
         root=data_dir, train=True, download=True, transform=transform
     )
-    test_dataset = datasets.MNIST(
+    test_dataset = dataset_class(
         root=data_dir, train=False, download=True, transform=transform
     )
+    return train_dataset, test_dataset, spec
+
+
+def get_mnist_datasets(data_dir: str) -> Tuple[Dataset, Dataset]:
+    """Download when necessary and return MNIST train/test datasets."""
+
+    train_dataset, test_dataset, _ = get_datasets("mnist", data_dir)
     return train_dataset, test_dataset
 
 
@@ -139,4 +194,3 @@ def get_test_loader(test_dataset: Dataset, batch_size: int) -> DataLoader:
     if batch_size <= 0:
         raise ValueError("batch_size must be greater than zero")
     return DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
-
