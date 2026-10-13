@@ -12,3 +12,10 @@ platform_mvp/.runtime/
 platform_mvp/results/
 platform_mvp/deployment_keys/
 platform_mvp/**/__pycache__/
+
+# Local editor state and document previews
+.codex/
+.claude/
+.pytest_cache/
+.ruff_cache/
+docs/presentation_preview/
