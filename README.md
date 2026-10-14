@@ -68,6 +68,30 @@ python src/run_adaptive_sensitivity.py --split_type non_iid
 
 The final technical report is stored in the docs folder.
 
+Run the same validation matrix on MNIST, Fashion-MNIST and CIFAR-10:
+
+python scripts/run_dataset_suite.py --workflow validation -- --skip_existing
+
+For a smaller first run (one seed, three clients, one round, all four security modes):
+
+python scripts/run_dataset_suite.py --workflow validation -- --seeds 1 --num_clients_list 3 --topologies ring --split_types iid --num_rounds 1
+
+Run adaptive sensitivity on all three datasets:
+
+python scripts/run_dataset_suite.py --workflow sensitivity -- --split_type iid
+python scripts/run_dataset_suite.py --workflow sensitivity -- --split_type non_iid
+
+Run the real network training demo on all three datasets:
+
+python scripts/run_dataset_suite.py --workflow network -- --rounds 2
+
+Preview any suite without training by adding --dry-run before the separator `--`.
+Suite summaries are stored in separate dataset folders to avoid overwriting results.
+The existing `platform_mvp/mnist_network_demo.py` command remains compatible and
+now accepts --dataset fashion_mnist and --dataset cifar10. CIFAR-10 uses an RGB
+32x32 input and the same lightweight MLP baseline; these are benchmark runs,
+not a specialized CIFAR-10 accuracy model. Datasets download on first use.
+
 Part 5 - Robustness and Validation Experiments
 
 The validation runner checks the results with different datasets, random seeds, client counts, topologies and IID or non-IID data. Multiple seeds are used to measure how much the final metrics change between runs.

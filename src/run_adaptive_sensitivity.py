@@ -63,6 +63,7 @@ def parse_args() -> argparse.Namespace:
         default="ring",
     )
     parser.add_argument("--output_prefix", default="adaptive_ratio")
+    parser.add_argument("--output_dir", default="results/adaptive_sensitivity")
     parser.add_argument("--skip_existing", action="store_true")
     return parser.parse_args()
 
@@ -433,7 +434,9 @@ def main() -> None:
     prefix = effective_prefix(args.output_prefix)
     project_root = Path(__file__).resolve().parent.parent
     logs_dir = project_root / "results" / "logs"
-    output_dir = project_root / "results" / "adaptive_sensitivity"
+    output_dir = Path(args.output_dir)
+    if not output_dir.is_absolute():
+        output_dir = project_root / output_dir
     logs_dir.mkdir(parents=True, exist_ok=True)
 
     experiment_specs = []

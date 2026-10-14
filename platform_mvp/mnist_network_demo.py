@@ -35,7 +35,8 @@ from client import Client  # noqa: E402
 from data_utils import (  # noqa: E402
     create_iid_client_loaders,
     create_non_iid_client_loaders,
-    get_mnist_datasets,
+    get_datasets,
+    get_dataset_spec,
     get_test_loader,
     set_seed,
 )
@@ -82,8 +83,8 @@ def load_demo_datasets(
     max_test_samples: int | None,
     seed: int,
 ) -> tuple[Dataset, Dataset]:
-    if dataset_name == "mnist":
-        train_dataset, test_dataset = get_mnist_datasets(str(data_dir))
+    if dataset_name != "fake":
+        train_dataset, test_dataset, _ = get_datasets(dataset_name, str(data_dir))
     elif dataset_name == "fake":
         transform = transforms.ToTensor()
         train_size = max(max_train_samples or 300, 30)
@@ -110,8 +111,6 @@ def load_demo_datasets(
             [int(test_dataset[index][1]) for index in range(len(test_dataset))],
             dtype=torch.long,
         )
-    else:
-        raise ValueError(f"unsupported dataset: {dataset_name}")
 
     train_dataset = limited_subset(train_dataset, max_train_samples, seed)
     test_dataset = limited_subset(test_dataset, max_test_samples, seed + 1)
@@ -241,7 +240,6 @@ def finalize_and_load_aggregates(
         response = request_json(
             f"{nodes[node_id]}/v1/rounds/{round_number}/finalize",
             method="POST",
-            body={},
             admin_token=admin_token,
             timeout=20.0,
         )
@@ -318,9 +316,9 @@ def run_network_training_demo(args: argparse.Namespace) -> dict[str, Any]:
     set_seed(args.seed)
     device = select_device(args.device)
     experiment_id = args.experiment_id or (
-        f"mnist_network_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+        f"{args.dataset}_network_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
     )
-    output_dir = Path(args.output_dir) / experiment_id
+    output_dir = Path(args.output_dir).resolve() / experiment_id
     runtime_dir = output_dir / "runtime"
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -350,10 +348,11 @@ def run_network_training_demo(args: argparse.Namespace) -> dict[str, Any]:
             seed=args.seed,
         )
     test_loader = get_test_loader(test_dataset, args.batch_size)
+    spec = get_dataset_spec("mnist" if args.dataset == "fake" else args.dataset)
     clients = {
         f"node{i}": Client(
             client_id=i,
-            model=SimpleMLP(),
+            model=SimpleMLP(input_shape=spec.input_shape, num_classes=spec.num_classes),
             train_loader=client_loaders[i],
             device=device,
             learning_rate=args.learning_rate,
@@ -376,7 +375,7 @@ def run_network_training_demo(args: argparse.Namespace) -> dict[str, Any]:
     try:
         wait_for_nodes(nodes, timeout_seconds=args.timeout)
         print(
-            f"Network MNIST demo started: experiment={experiment_id}, "
+            f"Network {args.dataset} demo started: experiment={experiment_id}, "
             f"clients={args.num_clients}, topology={args.topology}, device={device}"
         )
         for round_number in range(1, args.rounds + 1):
@@ -471,7 +470,7 @@ def parse_args() -> argparse.Namespace:
         description="Run real PyTorch training over the Secure DFL Platform MVP network"
     )
     parser.add_argument("--experiment-id", default="")
-    parser.add_argument("--dataset", choices=["mnist", "fake"], default="mnist")
+    parser.add_argument("--dataset", choices=["mnist", "fashion_mnist", "fmnist", "cifar10", "fake"], default="mnist")
     parser.add_argument("--num-clients", type=int, default=3)
     parser.add_argument("--rounds", type=int, default=2)
     parser.add_argument("--local-epochs", type=int, default=1)
