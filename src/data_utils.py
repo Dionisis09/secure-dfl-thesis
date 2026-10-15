@@ -58,7 +58,33 @@ def get_dataset_spec(name: str) -> DatasetSpec:
     return DATASET_SPECS[normalize_dataset_name(name)]
 
 
-def get_datasets(name: str, data_dir: str) -> Tuple[Dataset, Dataset, DatasetSpec]:
+class CachedImageDataset(Dataset):
+    """Cache deterministic ToTensor images without changing values or sample order."""
+
+    def __init__(self, dataset: Dataset, device: str = "cpu") -> None:
+        if not isinstance(dataset.transform, transforms.ToTensor):
+            raise ValueError("image caching requires the deterministic ToTensor transform")
+        images = torch.as_tensor(dataset.data)
+        if images.dtype != torch.uint8:
+            raise ValueError("image caching requires uint8 source images")
+        if images.ndim == 3:
+            images = images.unsqueeze(1)
+        elif images.ndim == 4:
+            images = images.permute(0, 3, 1, 2).contiguous()
+        else:
+            raise ValueError("unsupported image dimensions")
+        # Match ToTensor's CPU conversion and division before transferring to CUDA.
+        self.images = images.to(dtype=torch.get_default_dtype()).div(255).to(device)
+        self.targets = torch.as_tensor(dataset.targets, dtype=torch.long).cpu()
+
+    def __len__(self) -> int:
+        return len(self.targets)
+
+    def __getitem__(self, index):
+        return self.images[index], int(self.targets[index])
+
+
+def get_datasets(name: str, data_dir: str, cache_device: str | None = None) -> Tuple[Dataset, Dataset, DatasetSpec]:
     """Download when necessary and return train/test datasets plus metadata."""
 
     dataset_name = normalize_dataset_name(name)
@@ -80,6 +106,9 @@ def get_datasets(name: str, data_dir: str) -> Tuple[Dataset, Dataset, DatasetSpe
     test_dataset = dataset_class(
         root=data_dir, train=False, download=True, transform=transform
     )
+    if cache_device is not None:
+        train_dataset = CachedImageDataset(train_dataset, cache_device)
+        test_dataset = CachedImageDataset(test_dataset, cache_device)
     return train_dataset, test_dataset, spec
 
 

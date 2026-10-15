@@ -1,0 +1,3 @@
+round,train_loss,test_loss,test_accuracy_percent,round_time_seconds,sent_updates_total,received_updates_total,network_bytes_total,finalized_rounds_total,partial_finalizations_total,send_failures_total,masked_updates_total,masking_overhead_bytes_total
+1,1.7169889109929404,2.3277476584116616,9.8,3.0995054244995117,6,6,17463776,3,0,0,6,8777658
+2,1.673998430887858,2.340364124933879,10.0,2.8404812812805176,12,12,35040977,6,0,0,12,17556297

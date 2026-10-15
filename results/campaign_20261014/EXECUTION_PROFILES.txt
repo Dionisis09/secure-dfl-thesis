@@ -1,0 +1,30 @@
+Execution profiles, 14 October 2026
+
+The first 27 completed campaign runs retain their original CSVs and legacy
+execution. Subsequent full validation and sensitivity runs use cached_gpu.
+Network demos retain their original execution.
+
+cached_gpu caches the deterministic ToTensor image values on CUDA and defers
+scalar metric transfers until training/evaluation finishes. The Python loss
+accumulation order, seeds, client partitions, shuffled batch order, full datasets,
+20 rounds, model, SGD parameters and security algorithms are unchanged. No AMP,
+TF32 changes, reduced rounds, sample reduction or larger batches are introduced.
+
+Exact regression checks passed for pixels, labels, shuffled partitions, CUDA
+model weights, training loss, evaluation loss and accuracy, including uneven
+batches and IID/non-IID partitions. Full 20-round, five-client IID ring baseline
+runs on MNIST, Fashion-MNIST and CIFAR-10 matched every original non-timing CSV
+column exactly in all rounds. Paired source CSVs and measured speed factors are
+in execution_profile_validation/. These checks establish equivalence for the
+tested cases; the measured factor is a baseline measurement, not a guarantee
+for all security modes. CKKS retains its existing approximate arithmetic.
+
+Baseline average round times (original -> cached_gpu):
+MNIST:         6.1830 -> 2.0973 seconds, 2.948x
+Fashion-MNIST: 6.8063 -> 2.1157 seconds, 3.217x
+CIFAR-10:      5.7439 -> 1.8719 seconds, 3.068x
+
+grouped_summary.csv and the dashboard group timings by execution_profile.
+The presentation shows separate original and accelerated timing slides.
+performance_summary.csv and presentation accuracy curves pool equivalent
+execution profiles for algorithmic measures only. Never pool profile timings.

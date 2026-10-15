@@ -1,0 +1,16 @@
+{
+  "dataset": "cifar10",
+  "device": "cuda",
+  "experiment_id": "campaign_20261014_network_cifar10_iid_masking",
+  "final_accuracy_percent": 10.2,
+  "final_test_loss": 2.2840033524831136,
+  "metrics_csv": "C:\\Users\\dioni\\Documents\\secure-dfl-github-update\\results\\campaign_20261014\\network\\campaign_20261014_network_cifar10_iid_masking\\metrics.csv",
+  "min_peer_updates_to_finalize": null,
+  "num_clients": 3,
+  "output_dir": "C:\\Users\\dioni\\Documents\\secure-dfl-github-update\\results\\campaign_20261014\\network\\campaign_20261014_network_cifar10_iid_masking",
+  "rounds": 2,
+  "security_mode": "masking",
+  "split_type": "iid",
+  "status": "PASS",
+  "topology": "ring"
+}

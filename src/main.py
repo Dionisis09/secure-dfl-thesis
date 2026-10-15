@@ -71,6 +71,10 @@ def parse_args() -> argparse.Namespace:
         "--device", choices=["cuda", "cpu"], default=defaults.device
     )
     parser.add_argument(
+        "--execution_profile", choices=["legacy", "cached_cpu", "cached_gpu"],
+        default="legacy", help="Cache deterministic images and defer CUDA metric transfers",
+    )
+    parser.add_argument(
         "--split_type", choices=["iid", "non_iid"], default=defaults.split_type
     )
     parser.add_argument(
@@ -223,6 +227,7 @@ def build_blockchain_configuration(
         "topology": args.topology,
         "split_type": args.split_type,
         "device": device,
+        "execution_profile": getattr(args, "execution_profile", "legacy"),
         "he_scheme": args.he_scheme,
         "he_poly_modulus_degree": args.he_poly_modulus_degree,
         "he_scale_bits": args.he_scale_bits,
@@ -247,6 +252,9 @@ def run_experiment(args: argparse.Namespace) -> MetricsLogger:
     defaults = Config()
     set_seed(args.seed)
     device = resolve_device(args.device)
+    execution_profile = getattr(args, "execution_profile", "legacy")
+    if execution_profile == "cached_gpu" and device != "cuda":
+        raise ValueError("cached_gpu requires CUDA; choose cached_cpu for CPU execution")
     if args.security_mode in {"selective_he", "adaptive_hybrid"}:
         import_tenseal_or_raise()
 
@@ -287,7 +295,9 @@ def run_experiment(args: argparse.Namespace) -> MetricsLogger:
         )
         print("Product audit package: enabled")
     print(f"Loading {args.dataset}...")
-    train_dataset, test_dataset, dataset_spec = get_datasets(args.dataset, str(data_dir))
+    cache_device = None if execution_profile == "legacy" else ("cuda" if execution_profile == "cached_gpu" else "cpu")
+    print(f"Execution profile: {execution_profile}")
+    train_dataset, test_dataset, dataset_spec = get_datasets(args.dataset, str(data_dir), cache_device=cache_device)
 
     if args.split_type == "iid":
         client_loaders = create_iid_client_loaders(
@@ -329,6 +339,7 @@ def run_experiment(args: argparse.Namespace) -> MetricsLogger:
                 test_loader=test_loader,
                 device=device,
                 learning_rate=args.lr,
+                defer_metrics=execution_profile != "legacy",
             )
         )
 
@@ -700,6 +711,7 @@ def run_experiment(args: argparse.Namespace) -> MetricsLogger:
 
         logger.log(
             round_number=round_index,
+            execution_profile=execution_profile,
             avg_train_loss=avg_train_loss,
             avg_test_loss=avg_test_loss,
             avg_test_accuracy=avg_test_accuracy,

@@ -19,9 +19,11 @@ class Client:
         device: str,
         learning_rate: float,
         test_loader: Optional[DataLoader] = None,
+        defer_metrics: bool = False,
     ) -> None:
         self.client_id = client_id
         self.device = torch.device(device)
+        self.defer_metrics = defer_metrics and self.device.type == "cuda"
         self.model = model.to(self.device)
         self.train_loader = train_loader
         self.test_loader = test_loader
@@ -38,6 +40,8 @@ class Client:
         total_loss = 0.0
         total_samples = 0
 
+        deferred_losses = []
+
         for _ in range(local_epochs):
             for inputs, targets in self.train_loader:
                 inputs = inputs.to(self.device)
@@ -50,9 +54,16 @@ class Client:
                 self.optimizer.step()
 
                 batch_size = targets.size(0)
-                total_loss += loss.item() * batch_size
+                if self.defer_metrics:
+                    deferred_losses.append((loss.detach(), batch_size))
+                else:
+                    total_loss += loss.item() * batch_size
                 total_samples += batch_size
 
+        if deferred_losses:
+            values = torch.stack([loss for loss, _ in deferred_losses]).cpu().tolist()
+            for value, (_, batch_size) in zip(values, deferred_losses):
+                total_loss += value * batch_size
         return total_loss / total_samples if total_samples else 0.0
 
     @torch.no_grad()
@@ -68,6 +79,9 @@ class Client:
         total_correct = 0
         total_samples = 0
 
+        deferred_losses = []
+        deferred_correct = []
+
         for inputs, targets in loader:
             inputs = inputs.to(self.device)
             targets = targets.to(self.device)
@@ -75,10 +89,20 @@ class Client:
             loss = self.criterion(outputs, targets)
 
             batch_size = targets.size(0)
-            total_loss += loss.item() * batch_size
-            total_correct += (outputs.argmax(dim=1) == targets).sum().item()
+            if self.defer_metrics:
+                deferred_losses.append((loss.detach(), batch_size))
+                deferred_correct.append((outputs.argmax(dim=1) == targets).sum())
+            else:
+                total_loss += loss.item() * batch_size
+                total_correct += (outputs.argmax(dim=1) == targets).sum().item()
             total_samples += batch_size
 
+        if deferred_losses:
+            values = torch.stack([loss for loss, _ in deferred_losses]).cpu().tolist()
+            for value, (_, batch_size) in zip(values, deferred_losses):
+                total_loss += value * batch_size
+            for value in torch.stack(deferred_correct).cpu().tolist():
+                total_correct += value
         if total_samples == 0:
             return 0.0, 0.0
         return total_loss / total_samples, 100.0 * total_correct / total_samples

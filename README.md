@@ -1,5 +1,17 @@
 Secure Decentralized Federated Learning
 
+## Final results and artifacts
+
+The final MNIST, Fashion-MNIST and CIFAR-10 campaign completed **402/402 runs**: 360 validation, 30 sensitivity and 12 local HTTP network demos. The [campaign guide](results/campaign_20261014/README.md) documents the design, source CSVs, reproduction commands, findings and limitations.
+
+- [Final PowerPoint](docs/Secure_DFL_Thesis_Presentation_UPDATED.pptx): 38 slides and 27 editable charts. `Secure_DFL_Thesis_Presentation.pptx` contains the same final deck for compatibility.
+- [Final Word technical report](docs/Secure_DFL_Technical_Report_COMPLETE_WITH_PLATFORM_FINAL.docx): updated results, sample SD, conclusions and methodological boundaries.
+- [Offline dashboard](dashboard/README.md): download the self-contained HTML to explore all results, filters and source records.
+
+Validation/sensitivity use full datasets and 20 rounds. Network demos use local HTTP, two rounds and subsets. Non-time metrics combine validated execution profiles; original and accelerated timings remain separate. The approximately 60% saving refers only to HE processing compared with selective HE in matching runs. Accuracy preservation does not establish privacy equivalence.
+
+The longer thesis manuscript and historical audit/Docker examples remain separate documents; the final technical report and campaign guide govern the 402-run evaluation.
+
 This project is a thesis prototype for decentralized federated learning.
 
 Five clients train local models and exchange model parameters with their neighbors. There is no central aggregation server. The default dataset is MNIST and the default topology is a ring. IID and non-IID data splits are supported.
@@ -168,6 +180,32 @@ Expected result:
 Chain INVALID
 
 This shows that changing a saved block without recomputing hashes breaks the chain.
+
+Optional faster execution
+
+The original execution remains the default (`--execution_profile legacy`). For
+MNIST, Fashion-MNIST and CIFAR-10, deterministic ToTensor images can be cached
+once while retaining the same seeds, partitions, batch order, model, optimizer
+and number of rounds:
+
+```sh
+python src/main.py --dataset cifar10 --device cuda --execution_profile cached_gpu --num_rounds 20 --experiment_name cifar10_cached_gpu
+```
+
+`cached_gpu` stores the converted images on CUDA (approximately 0.2 GiB for
+MNIST/Fashion-MNIST or 0.7 GiB for CIFAR-10, in addition to model/runtime memory).
+`cached_cpu` stores them in host memory. Both defer CUDA metric transfers until
+the end of local training/evaluation, preserving the original Python accumulation
+order. No mixed precision, batch-size or dataset reduction is used. The CSV and
+audit configuration record `execution_profile`; compare timing measurements
+within the same profile and keep earlier runs intact. Network demos retain their
+original execution.
+
+Regression checks for pixels, partitions, batch order, weights, losses and accuracy:
+
+```sh
+python -m unittest discover -s platform_mvp/tests -p test_execution_profiles.py -v
+```
 
 Advanced Audit Package
 

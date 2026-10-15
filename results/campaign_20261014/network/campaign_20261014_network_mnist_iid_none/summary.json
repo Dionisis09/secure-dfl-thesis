@@ -1,0 +1,16 @@
+{
+  "dataset": "mnist",
+  "device": "cuda",
+  "experiment_id": "campaign_20261014_network_mnist_iid_none",
+  "final_accuracy_percent": 29.399999999999995,
+  "final_test_loss": 2.250589942932129,
+  "metrics_csv": "C:\\Users\\dioni\\Documents\\secure-dfl-github-update\\results\\campaign_20261014\\network\\campaign_20261014_network_mnist_iid_none\\metrics.csv",
+  "min_peer_updates_to_finalize": null,
+  "num_clients": 3,
+  "output_dir": "C:\\Users\\dioni\\Documents\\secure-dfl-github-update\\results\\campaign_20261014\\network\\campaign_20261014_network_mnist_iid_none",
+  "rounds": 2,
+  "security_mode": "none",
+  "split_type": "iid",
+  "status": "PASS",
+  "topology": "ring"
+}

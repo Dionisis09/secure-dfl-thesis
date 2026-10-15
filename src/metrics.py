@@ -54,12 +54,14 @@ class MetricsLogger:
         adaptive_min_risk_score: float = 0.0,
         adaptive_selected_targets: str = "",
         adaptive_threshold_used: float = 0.0,
+        execution_profile: str = "legacy",
     ) -> None:
         if total_communication_bytes == 0:
             total_communication_bytes = communication_bytes + masking_overhead_bytes
         self.metrics.append(
             {
                 "round": round_number,
+                "execution_profile": execution_profile,
                 "security_mode": security_mode,
                 "avg_train_loss": avg_train_loss,
                 "avg_test_loss": avg_test_loss,

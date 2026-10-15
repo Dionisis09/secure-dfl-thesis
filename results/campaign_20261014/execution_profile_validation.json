@@ -1,0 +1,35 @@
+[
+  {
+    "dataset": "mnist",
+    "rounds": 20,
+    "exact_all_non_timing_columns": true,
+    "original_round_seconds": 6.1830443299986655,
+    "optimized_round_seconds": 2.097309014995699,
+    "speedup": 2.9480845625466143,
+    "optimized_wall_seconds": 45.28357390000019,
+    "original_csv": "results/logs/campaign_20261014_validation_none_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "optimized_csv": "results/logs/speedcheck_20261014_mnist_metrics.csv"
+  },
+  {
+    "dataset": "fashion_mnist",
+    "rounds": 20,
+    "exact_all_non_timing_columns": true,
+    "original_round_seconds": 6.806327804997272,
+    "optimized_round_seconds": 2.115694070000609,
+    "speedup": 3.2170661635381497,
+    "optimized_wall_seconds": 45.86359750002157,
+    "original_csv": "results/logs/campaign_20261014_validation_none_fashion_mnist_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "optimized_csv": "results/logs/speedcheck_20261014_fashion_mnist_metrics.csv"
+  },
+  {
+    "dataset": "cifar10",
+    "rounds": 20,
+    "exact_all_non_timing_columns": true,
+    "original_round_seconds": 5.743867009994574,
+    "optimized_round_seconds": 1.8719422600028337,
+    "speedup": 3.0683996684736843,
+    "optimized_wall_seconds": 42.00604969999404,
+    "original_csv": "results/logs/campaign_20261014_validation_none_cifar10_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "optimized_csv": "results/logs/speedcheck_20261014_cifar10_metrics.csv"
+  }
+]

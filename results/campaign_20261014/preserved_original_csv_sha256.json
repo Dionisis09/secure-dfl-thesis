@@ -1,0 +1,137 @@
+[
+  {
+    "id": "campaign_20261014_validation_none_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_none_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "418C8765B5C49EC30CEBD7B5F1FB764937D8B9843E067C48A6B9E3673D2881D2"
+  },
+  {
+    "id": "campaign_20261014_validation_none_fashion_mnist_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_none_fashion_mnist_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "B99517F2CDF2118E43EF0779407005E63AF17E90F90DA1F26CFFC080C1391DC6"
+  },
+  {
+    "id": "campaign_20261014_validation_none_cifar10_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_none_cifar10_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "6C00AF5A3F21FF0366447003AFC8B86B9DA20A13E3EA9BE88FBE0911733536A3"
+  },
+  {
+    "id": "campaign_20261014_validation_masking_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_masking_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "34DAEEEB1C868EE7EB83A47A299DCF6210FB4F9F391401635B4D20A889F167EA"
+  },
+  {
+    "id": "campaign_20261014_validation_masking_fashion_mnist_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_masking_fashion_mnist_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "B495E40A483D724006010D2492CABB54AA2DBECA3958340A92DCA25E1571A26C"
+  },
+  {
+    "id": "campaign_20261014_validation_masking_cifar10_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_masking_cifar10_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "B767111118FC1D9CB95AF72A13820A9A7C00BA8D713DA73D5E97006D366D0BAA"
+  },
+  {
+    "id": "campaign_20261014_validation_pairwise_masking_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_pairwise_masking_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "F3049E2D7D98C8AD092DF512E637944077816D825814B5DA0828EB2A47A572A0"
+  },
+  {
+    "id": "campaign_20261014_validation_pairwise_masking_fashion_mnist_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_pairwise_masking_fashion_mnist_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "6FFB9FDAB1237F7961BC5EB8328269D4B5325A1D331CBD191223562C8E7207E9"
+  },
+  {
+    "id": "campaign_20261014_validation_pairwise_masking_cifar10_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_pairwise_masking_cifar10_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "6D60E124DC33EDA8534C1136D25E85D946B4F1966DF4880C2B94545C6F4150E5"
+  },
+  {
+    "id": "campaign_20261014_validation_selective_he_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_selective_he_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "6D9C2E6384DE2315CB44CE77ABD309FDEA59C5F6C0BACBA1B9AB8913C11F2682"
+  },
+  {
+    "id": "campaign_20261014_validation_selective_he_fashion_mnist_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_selective_he_fashion_mnist_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "F3F7D1DB3B7093ED6EDBFEFC660AF64B79BE6AF11E04971E9FBB4E0814DD33B7"
+  },
+  {
+    "id": "campaign_20261014_validation_selective_he_cifar10_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_selective_he_cifar10_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "5B029F1CAF6222056ED97299856AA2508504AA6E57B1373A9E069DE3C24CAC17"
+  },
+  {
+    "id": "campaign_20261014_validation_adaptive_hybrid_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_adaptive_hybrid_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "8615EAD900229958270A19D11453BBB5F932E943EF0DDC435F973620A90B8FC2"
+  },
+  {
+    "id": "campaign_20261014_validation_adaptive_hybrid_fashion_mnist_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_adaptive_hybrid_fashion_mnist_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "A27919A769C26DD14AF14419C71ECEB7C12563A73CEA9BE9FA9CF6B3568287B7"
+  },
+  {
+    "id": "campaign_20261014_validation_adaptive_hybrid_cifar10_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_adaptive_hybrid_cifar10_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "9D721966C66F2BE195E963EBC50E06E5FB4347582B685D27AA1286753FABA873"
+  },
+  {
+    "id": "campaign_20261014_validation_none_non_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_none_non_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "9B6CCC3D80238F24163365C829DE30592DBB6CD4A3FA982607CDCCD4DA1C018B"
+  },
+  {
+    "id": "campaign_20261014_validation_none_fashion_mnist_non_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_none_fashion_mnist_non_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "E7D571640D78E6933632E9B155B69DD023E88FB093F0B700DF094015D8E0579C"
+  },
+  {
+    "id": "campaign_20261014_validation_none_cifar10_non_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_none_cifar10_non_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "A0F4005AB1B33F1D36087334AFBAD67E88EB0B1F2A96141FA03DA90FCF6BC71B"
+  },
+  {
+    "id": "campaign_20261014_validation_masking_non_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_masking_non_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "7864097F45F6CDECF2668A261BA6B7FCC84AB67E6F7BAD21985F6BAC9B33A2D9"
+  },
+  {
+    "id": "campaign_20261014_validation_masking_fashion_mnist_non_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_masking_fashion_mnist_non_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "E6153D45554CCBC71F470E308C0F0A7628106BB324E5ECAFF135A7DEC3E38D8B"
+  },
+  {
+    "id": "campaign_20261014_validation_masking_cifar10_non_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_masking_cifar10_non_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "F70E65AC87D0320BE0C5117DE33B2E6CC2D9CE7136CEC43E5F29837AE8A627C3"
+  },
+  {
+    "id": "campaign_20261014_validation_pairwise_masking_non_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_pairwise_masking_non_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "E57A9CCA19533C099AB6D06ACF17BE93D55ECAFE7682C046CC145B27BFF3EA5B"
+  },
+  {
+    "id": "campaign_20261014_validation_pairwise_masking_fashion_mnist_non_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_pairwise_masking_fashion_mnist_non_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "6E531012247FE62F4AC81AD160A4C337C7E8856E20BAF91F4EC1FD96B7F8E8B7"
+  },
+  {
+    "id": "campaign_20261014_validation_pairwise_masking_cifar10_non_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_pairwise_masking_cifar10_non_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "3E18FE61D3179CF23F80CA8AD82561743FBEA73120138738F212142A380D8988"
+  },
+  {
+    "id": "campaign_20261014_validation_selective_he_non_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_selective_he_non_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "D362F2E9DA19700AE71D44E13285B1E5C0EAE1B1220586A8FF6C87FF82ED0054"
+  },
+  {
+    "id": "campaign_20261014_validation_selective_he_fashion_mnist_non_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_selective_he_fashion_mnist_non_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "87F3BE150FF70D0CA0E63EE856AD1792F58AACF38CA19607851F0B8B270D3DC2"
+  },
+  {
+    "id": "campaign_20261014_validation_selective_he_cifar10_non_iid_ring_5c_20r_b32_seed1",
+    "metrics_path": "results/logs/campaign_20261014_validation_selective_he_cifar10_non_iid_ring_5c_20r_b32_seed1_metrics.csv",
+    "sha256": "D6DC46D4A59131EF355630B26E19EC79CD290F85EA329A9EA7843DB128022789"
+  }
+]

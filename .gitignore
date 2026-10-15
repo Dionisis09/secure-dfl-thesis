@@ -19,3 +19,10 @@ platform_mvp/**/__pycache__/
 .pytest_cache/
 .ruff_cache/
 docs/presentation_preview/
+
+# Local campaign controller diagnostics (final evidence is committed separately)
+results/campaign_20261014/execution_logs/
+results/campaign_20261014/network/**/runtime/
+results/campaign_20261014/pipeline_error.json
+results/campaign_20261014/progress.json
+results/campaign_20261014/queue_order.json

@@ -1,7 +1,7 @@
-# NVIDIA GPU build (CUDA 13.0) used by the RTX 5070 test machine.
---extra-index-url https://download.pytorch.org/whl/cu130
-torch==2.12.1+cu130
-torchvision==0.27.1+cu130
+# NVIDIA GPU build recorded for the final RTX 5070 campaign (Python 3.12).
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0+cu128
+torchvision==0.26.0+cu128
 numpy
 matplotlib
 tqdm

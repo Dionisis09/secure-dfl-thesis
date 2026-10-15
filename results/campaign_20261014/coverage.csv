@@ -1,0 +1,10 @@
+workflow,dataset,completed
+network,cifar10,4
+network,fashion_mnist,4
+network,mnist,4
+sensitivity,cifar10,10
+sensitivity,fashion_mnist,10
+sensitivity,mnist,10
+validation,cifar10,120
+validation,fashion_mnist,120
+validation,mnist,120

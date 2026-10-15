@@ -1,0 +1,11 @@
+{
+  "planned": 402,
+  "configurations_unchanged": true,
+  "completed": {
+    "validation": 273,
+    "network": 12,
+    "sensitivity": 0
+  },
+  "failed": [],
+  "network_successful_finalizations_verified": true
+}
