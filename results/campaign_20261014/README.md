@@ -40,6 +40,7 @@ Validation and sensitivity execute clients serially in one process, with calcula
 
 ## Final artifacts
 
+- [Final main thesis](../../docs/Secure_DFL_Diplomatiki_Teliki_100plus_FINAL.docx): 103 pages, 35 figures, 38 tables; all 120 validation configuration summaries and all 30 sensitivity runs
 - [Interactive offline dashboard](../../dashboard/README.md)
 - [Final presentation](../../docs/Secure_DFL_Thesis_Presentation_UPDATED.pptx): 38 slides, 27 native editable charts
 - [Final technical report](../../docs/Secure_DFL_Technical_Report_COMPLETE_WITH_PLATFORM_FINAL.docx): 45 pages, 20 tables, 26 figures

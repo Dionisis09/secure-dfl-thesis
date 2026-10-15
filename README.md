@@ -4,13 +4,14 @@ Secure Decentralized Federated Learning
 
 The final MNIST, Fashion-MNIST and CIFAR-10 campaign completed **402/402 runs**: 360 validation, 30 sensitivity and 12 local HTTP network demos. The [campaign guide](results/campaign_20261014/README.md) documents the design, source CSVs, reproduction commands, findings and limitations.
 
+- [Final main thesis](docs/Secure_DFL_Diplomatiki_Teliki_100plus_FINAL.docx): 103 pages, 35 figures and 38 tables, including the 402-run evaluation, revised abstracts and conclusions, full validation and sensitivity tables, and automatic contents and lists.
 - [Final PowerPoint](docs/Secure_DFL_Thesis_Presentation_UPDATED.pptx): 38 slides and 27 editable charts. `Secure_DFL_Thesis_Presentation.pptx` contains the same final deck for compatibility.
 - [Final Word technical report](docs/Secure_DFL_Technical_Report_COMPLETE_WITH_PLATFORM_FINAL.docx): updated results, sample SD, conclusions and methodological boundaries.
 - [Offline dashboard](dashboard/README.md): download the self-contained HTML to explore all results, filters and source records.
 
 Validation/sensitivity use full datasets and 20 rounds. Network demos use local HTTP, two rounds and subsets. Non-time metrics combine validated execution profiles; original and accelerated timings remain separate. The approximately 60% saving refers only to HE processing compared with selective HE in matching runs. Accuracy preservation does not establish privacy equivalence.
 
-The longer thesis manuscript and historical audit/Docker examples remain separate documents; the final technical report and campaign guide govern the 402-run evaluation.
+The main thesis, technical report, presentation and dashboard use the same final 402-run campaign. Historical audit and Docker examples are explicitly identified as separate demonstrations.
 
 This project is a thesis prototype for decentralized federated learning.
 
