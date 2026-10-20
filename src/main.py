@@ -1,6 +1,7 @@
 """Command-line runner for the baseline decentralized FL experiment."""
 
 import argparse
+import json
 import time
 from collections import OrderedDict
 from pathlib import Path
@@ -16,6 +17,7 @@ from config import Config
 from data_utils import (
     create_iid_client_loaders,
     create_non_iid_client_loaders,
+    create_client_loaders,
     get_datasets,
     get_test_loader,
     normalize_dataset_name,
@@ -47,6 +49,8 @@ from masking import (
 )
 from model import SimpleMLP
 from topology import (
+    TOPOLOGY_NAMES,
+    build_topology,
     Topology,
     create_fully_connected_topology,
     create_random_topology,
@@ -75,8 +79,14 @@ def parse_args() -> argparse.Namespace:
         default="legacy", help="Cache deterministic images and defer CUDA metric transfers",
     )
     parser.add_argument(
-        "--split_type", choices=["iid", "non_iid"], default=defaults.split_type
+        "--split_type", choices=["iid", "non_iid", "dirichlet"], default=defaults.split_type
     )
+    parser.add_argument("--dirichlet_alpha", type=float, default=defaults.dirichlet_alpha)
+    parser.add_argument("--dirichlet_min_samples", type=int, default=defaults.dirichlet_min_samples)
+    parser.add_argument("--shards_per_client", type=int, default=defaults.shards_per_client)
+    parser.add_argument("--caveman_cliques", type=int, default=defaults.caveman_cliques)
+    parser.add_argument("--barabasi_m", type=int, default=defaults.barabasi_m)
+    parser.add_argument("--diagnostics", action="store_true", help="Save final per-class and per-client diagnostics")
     parser.add_argument(
         "--dataset",
         choices=["mnist", "fashion_mnist", "fmnist", "cifar10"],
@@ -85,7 +95,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--topology",
-        choices=["ring", "fully_connected", "star", "random", "small_world"],
+        choices=TOPOLOGY_NAMES,
         default=defaults.topology,
     )
     parser.add_argument(
@@ -163,6 +173,15 @@ def parse_args() -> argparse.Namespace:
 
 
 def validate_args(args: argparse.Namespace) -> None:
+    # Older programmatic callers keep the original defaults.
+    for name in ("dirichlet_alpha", "dirichlet_min_samples", "shards_per_client",
+                 "caveman_cliques", "barabasi_m"):
+        if not hasattr(args, name):
+            setattr(args, name, getattr(Config(), name))
+    if not torch.isfinite(torch.tensor(args.dirichlet_alpha)) or args.dirichlet_alpha <= 0:
+        raise ValueError("dirichlet_alpha must be finite and positive")
+    if args.dirichlet_min_samples <= 0 or args.shards_per_client <= 0:
+        raise ValueError("minimum samples and shards_per_client must be positive")
     positive_values = {
         "num_clients": args.num_clients,
         "num_rounds": args.num_rounds,
@@ -188,18 +207,8 @@ def validate_args(args: argparse.Namespace) -> None:
     ):
         raise ValueError("experiment_name must not contain path separators")
     args.dataset = normalize_dataset_name(args.dataset)
-
-
-def build_topology(name: str, num_clients: int, seed: int) -> Topology:
-    if name == "ring":
-        return create_ring_topology(num_clients)
-    if name == "fully_connected":
-        return create_fully_connected_topology(num_clients)
-    if name == "star":
-        return create_star_topology(num_clients)
-    if name == "small_world":
-        return create_small_world_topology(num_clients, seed=seed)
-    return create_random_topology(num_clients, degree=2, seed=seed)
+    build_topology(args.topology, args.num_clients, args.seed,
+                   args.caveman_cliques, args.barabasi_m)
 
 
 def resolve_device(requested_device: str) -> str:
@@ -226,6 +235,11 @@ def build_blockchain_configuration(
         "dataset": args.dataset,
         "topology": args.topology,
         "split_type": args.split_type,
+        "dirichlet_alpha": args.dirichlet_alpha if args.split_type == "dirichlet" else None,
+        "dirichlet_min_samples": args.dirichlet_min_samples if args.split_type == "dirichlet" else None,
+        "shards_per_client": args.shards_per_client if args.split_type == "non_iid" else None,
+        "caveman_cliques": args.caveman_cliques if args.topology == "caveman" else None,
+        "barabasi_m": args.barabasi_m if args.topology == "barabasi_albert" else None,
         "device": device,
         "execution_profile": getattr(args, "execution_profile", "legacy"),
         "he_scheme": args.he_scheme,
@@ -299,22 +313,24 @@ def run_experiment(args: argparse.Namespace) -> MetricsLogger:
     print(f"Execution profile: {execution_profile}")
     train_dataset, test_dataset, dataset_spec = get_datasets(args.dataset, str(data_dir), cache_device=cache_device)
 
-    if args.split_type == "iid":
-        client_loaders = create_iid_client_loaders(
-            train_dataset, args.num_clients, args.batch_size, args.seed
-        )
-    else:
-        client_loaders = create_non_iid_client_loaders(
-            train_dataset,
-            args.num_clients,
-            args.batch_size,
-            shards_per_client=2,
-            seed=args.seed,
-        )
+    client_loaders = create_client_loaders(
+        train_dataset, args.num_clients, args.batch_size, args.split_type,
+        seed=args.seed, dirichlet_alpha=args.dirichlet_alpha,
+        dirichlet_min_samples=args.dirichlet_min_samples,
+        shards_per_client=args.shards_per_client,
+    )
     test_loader = get_test_loader(test_dataset, args.batch_size)
 
-    topology = build_topology(args.topology, args.num_clients, args.seed)
+    topology = build_topology(args.topology, args.num_clients, args.seed,
+                              args.caveman_cliques, args.barabasi_m)
     print_topology(topology)
+    from experiment_diagnostics import partition_metadata, final_diagnostics
+    metadata = build_blockchain_configuration(args, device)
+    metadata.update(partition_metadata(train_dataset, client_loaders, topology))
+    metadata["model"] = "SimpleMLP(Flatten, Linear(input,128), ReLU, Linear(128,10))"
+    metadata["input_shape"] = list(dataset_spec.input_shape)
+    metadata_path = logs_dir / f"{args.experiment_name}_metadata.json"
+    metadata_path.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
 
     # Every peer begins from exactly the same seeded initialization.
     initial_model = SimpleMLP(
@@ -805,6 +821,12 @@ def run_experiment(args: argparse.Namespace) -> MetricsLogger:
 
     csv_path = logs_dir / f"{args.experiment_name}_metrics.csv"
     logger.save_csv(str(csv_path))
+    if getattr(args, "diagnostics", False):
+        details = final_diagnostics(clients, train_dataset, test_loader)
+        details["metadata"] = metadata
+        (logs_dir / f"{args.experiment_name}_diagnostics.json").write_text(
+            json.dumps(details, indent=2), encoding="utf-8"
+        )
     plot_accuracy(logger.metrics, str(plots_dir / "accuracy.png"))
     plot_loss(logger.metrics, str(plots_dir / "loss.png"))
     plot_round_time(logger.metrics, str(plots_dir / "round_time.png"))

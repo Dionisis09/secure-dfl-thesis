@@ -1,0 +1,290 @@
+{
+  "completed": 8,
+  "independent_confusion_matrix_reconciliation": "pass",
+  "original_curve_reproductions": [
+    {
+      "case": "shards_ring_40r",
+      "reference": "results/logs/campaign_20261014_validation_none_cifar10_non_iid_ring_5c_20r_b32_seed1_metrics.csv",
+      "max_abs_non_time_metric_difference_first20": 0.0
+    },
+    {
+      "case": "iid_ring_40r",
+      "reference": "results/logs/campaign_20261014_validation_none_cifar10_iid_ring_5c_20r_b32_seed1_metrics.csv",
+      "max_abs_non_time_metric_difference_first20": 0.0
+    },
+    {
+      "case": "shards_full_20r",
+      "reference": "results/logs/campaign_20261014_validation_none_cifar10_non_iid_fully_connected_5c_20r_b32_seed1_metrics.csv",
+      "max_abs_non_time_metric_difference_first20": 0.0
+    }
+  ],
+  "same_dir05_partition_across_new_topologies": true,
+  "original_cifar_matched_security_pairs": 96,
+  "max_absolute_security_delta_pp": 0.23000000000000043,
+  "diagnostics": {
+    "shards_ring_40r": {
+      "mean_local_train_accuracy": 77.20599999999999,
+      "mean_global_test_accuracy": 24.32,
+      "virtual_mean_model_test_accuracy": 32.8,
+      "local_classes_present": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "local_sample_counts": [
+        10000,
+        10000,
+        10000,
+        10000,
+        10000
+      ],
+      "partition_hashes": [
+        "675ca287e328304741978edd900386f1cb37d2984e4648fc95ab16fa106fc105",
+        "1396db6257ad36caf463c8606ca54f484428e34556e3d2784d61290d889d4633",
+        "f7751c2f2e02ab44352464c42780d260af088a71e7d8e23aecd5b55ae5ec30a8",
+        "8c7520564b66b1e34e7135810ab1829424ed231b05e99641b1c1a3444758c9e3",
+        "0e885adc1c7fde719481d07baa072fe0684038899b6103419ff14c110fa257cd"
+      ],
+      "degree_plus_self_stationary_weights": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ]
+    },
+    "iid_ring_40r": {
+      "mean_local_train_accuracy": 49.492000000000004,
+      "mean_global_test_accuracy": 47.454,
+      "virtual_mean_model_test_accuracy": 47.84,
+      "local_classes_present": [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "local_sample_counts": [
+        10000,
+        10000,
+        10000,
+        10000,
+        10000
+      ],
+      "partition_hashes": [
+        "541b2c3dd5126092f3d40ea152f76164305f48bc72f8505276e4620b156a2dee",
+        "c51c749d443b4573af258f6c0365d92a541c939010449e630ad74cb6def9b2d8",
+        "11bdb16e8d1563575db0ad21d8fb4f30f029fad11adc341ab4cbd2426c972793",
+        "2afe1aca468b465cffa23b05d475a12fea85fdab8a1f80915a105b5be0eb3a35",
+        "c3815d3fbd8f583a6d1197d5d9ec3288c5a4dc8d7c5743b6997afb5fc5c95e64"
+      ],
+      "degree_plus_self_stationary_weights": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ]
+    },
+    "shards_full_20r": {
+      "mean_local_train_accuracy": 31.266,
+      "mean_global_test_accuracy": 31.589999999999996,
+      "virtual_mean_model_test_accuracy": 31.59,
+      "local_classes_present": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "local_sample_counts": [
+        10000,
+        10000,
+        10000,
+        10000,
+        10000
+      ],
+      "partition_hashes": [
+        "675ca287e328304741978edd900386f1cb37d2984e4648fc95ab16fa106fc105",
+        "1396db6257ad36caf463c8606ca54f484428e34556e3d2784d61290d889d4633",
+        "f7751c2f2e02ab44352464c42780d260af088a71e7d8e23aecd5b55ae5ec30a8",
+        "8c7520564b66b1e34e7135810ab1829424ed231b05e99641b1c1a3444758c9e3",
+        "0e885adc1c7fde719481d07baa072fe0684038899b6103419ff14c110fa257cd"
+      ],
+      "degree_plus_self_stationary_weights": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ]
+    },
+    "dir01_ring_20r": {
+      "mean_local_train_accuracy": 42.80521122367538,
+      "mean_global_test_accuracy": 26.654000000000003,
+      "virtual_mean_model_test_accuracy": 27.96,
+      "local_classes_present": [
+        8,
+        6,
+        7,
+        8,
+        3
+      ],
+      "local_sample_counts": [
+        4780,
+        14776,
+        16549,
+        8943,
+        4952
+      ],
+      "partition_hashes": [
+        "cac9e1534a4edabbd4ccf50aa7a93e661376eb8146d23d85e79385205be7b226",
+        "a8c902d299ca425b97303a931bf55e2e8cd59798df2437909b0c2d2f168b16a6",
+        "765b61a8492bda49e3d2ed2b4d3f2f23fb59f08f426e750ba9ad00fe538ef208",
+        "b4867241bc9b823d2e952da16dcf708be8ea452f0f45caefa1ac51719c95b9c9",
+        "d4e132b9a03c2d293651d2300d4e4773f5f83fa065eff674c0f71ce269c0ca39"
+      ],
+      "degree_plus_self_stationary_weights": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ]
+    },
+    "dir05_ring_20r": {
+      "mean_local_train_accuracy": 42.02281815095447,
+      "mean_global_test_accuracy": 34.089999999999996,
+      "virtual_mean_model_test_accuracy": 37.02,
+      "local_classes_present": [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "local_sample_counts": [
+        6044,
+        13409,
+        14715,
+        9550,
+        6282
+      ],
+      "partition_hashes": [
+        "5253b0942195fc9ff73e1d07d164945a87278914d577e9ad8a5b6f3c5f91d2bc",
+        "496135637029dbc8710d66e383039137317cbb5fc345447a8ed224a1ab99cfc8",
+        "bdd6bd31a6fbe67241aaa195f7d730b28214b9a12edb5d74519b20d02bfa39cf",
+        "d0747b46be9777039f421d46f940c02aab45afdd28f70222a4d01b111301fd78",
+        "9afbc04fb07ca4852e8d5a95cde7f521de8e667914c27807765af99c40962c8f"
+      ],
+      "degree_plus_self_stationary_weights": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ]
+    },
+    "dir10_ring_20r": {
+      "mean_local_train_accuracy": 44.409081915129356,
+      "mean_global_test_accuracy": 38.510000000000005,
+      "virtual_mean_model_test_accuracy": 42.08,
+      "local_classes_present": [
+        10,
+        9,
+        10,
+        10,
+        10
+      ],
+      "local_sample_counts": [
+        11618,
+        11297,
+        10059,
+        7322,
+        9704
+      ],
+      "partition_hashes": [
+        "642e9c6f2c97268bce49dc8eb5ee7d192664420f18df38b4bfac6c317488e972",
+        "6761404f3ad1a3c901c6c2e5fc2db4d7a470b9f47ca0a91d14b15a8538b0ecf0",
+        "c9ac9cd2f34b493b85160da226406ada4b3d95c4caff9501aa1f1e438bc33291",
+        "8cdc7137dc3d936b32a61d20ef6c1d224d9407edbd40ced40f3450b5250983c5",
+        "0bf20cd5dce4ed10e6b5c4070cfd7656763c06ed42a6718674574607b15c8c4e"
+      ],
+      "degree_plus_self_stationary_weights": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ]
+    },
+    "dir05_caveman_20r": {
+      "mean_local_train_accuracy": 42.46889958532339,
+      "mean_global_test_accuracy": 33.418,
+      "virtual_mean_model_test_accuracy": 35.53,
+      "local_classes_present": [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "local_sample_counts": [
+        6044,
+        13409,
+        14715,
+        9550,
+        6282
+      ],
+      "partition_hashes": [
+        "5253b0942195fc9ff73e1d07d164945a87278914d577e9ad8a5b6f3c5f91d2bc",
+        "496135637029dbc8710d66e383039137317cbb5fc345447a8ed224a1ab99cfc8",
+        "bdd6bd31a6fbe67241aaa195f7d730b28214b9a12edb5d74519b20d02bfa39cf",
+        "d0747b46be9777039f421d46f940c02aab45afdd28f70222a4d01b111301fd78",
+        "9afbc04fb07ca4852e8d5a95cde7f521de8e667914c27807765af99c40962c8f"
+      ],
+      "degree_plus_self_stationary_weights": [
+        0.2,
+        0.2,
+        0.2,
+        0.13333333333333333,
+        0.26666666666666666
+      ]
+    },
+    "dir05_barabasi_20r": {
+      "mean_local_train_accuracy": 42.821246656578694,
+      "mean_global_test_accuracy": 34.236000000000004,
+      "virtual_mean_model_test_accuracy": 35.58,
+      "local_classes_present": [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "local_sample_counts": [
+        6044,
+        13409,
+        14715,
+        9550,
+        6282
+      ],
+      "partition_hashes": [
+        "5253b0942195fc9ff73e1d07d164945a87278914d577e9ad8a5b6f3c5f91d2bc",
+        "496135637029dbc8710d66e383039137317cbb5fc345447a8ed224a1ab99cfc8",
+        "bdd6bd31a6fbe67241aaa195f7d730b28214b9a12edb5d74519b20d02bfa39cf",
+        "d0747b46be9777039f421d46f940c02aab45afdd28f70222a4d01b111301fd78",
+        "9afbc04fb07ca4852e8d5a95cde7f521de8e667914c27807765af99c40962c8f"
+      ],
+      "degree_plus_self_stationary_weights": [
+        0.29411764705882354,
+        0.17647058823529413,
+        0.11764705882352941,
+        0.23529411764705882,
+        0.17647058823529413
+      ]
+    }
+  }
+}

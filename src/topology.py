@@ -1,10 +1,13 @@
 """Peer-to-peer topology construction for decentralized learning."""
 
 import random
+import networkx as nx
 from typing import Dict, List
 
 
 Topology = Dict[int, List[int]]
+TOPOLOGY_NAMES = ("ring", "fully_connected", "star", "random", "small_world",
+                  "caveman", "barabasi_albert")
 
 
 def create_ring_topology(num_clients: int) -> Topology:
@@ -136,3 +139,60 @@ def create_small_world_topology(
         topology[right].add(left)
 
     return {client_id: sorted(neighbors) for client_id, neighbors in topology.items()}
+
+
+def create_caveman_topology(num_clients: int, cliques: int = 2, seed: int = 42) -> Topology:
+    """Connected caveman: one edge per clique rewired to the previous clique.
+
+    Balanced clique sizes differ by at most one when n is not divisible by l.
+    Equal cliques of size >=3 follow NetworkX connected_caveman_graph.
+    Size-two cliques keep their internal edge so the graph stays connected.
+    A seeded node relabeling avoids fixing communities to contiguous client IDs.
+    """
+    if cliques <= 0 or num_clients < 2 * cliques:
+        raise ValueError("caveman requires at least two clients per clique")
+    sizes = [num_clients // cliques + (i < num_clients % cliques) for i in range(cliques)]
+    graph = nx.Graph()
+    offset = 0
+    groups = []
+    for size in sizes:
+        group = list(range(offset, offset + size))
+        groups.append(group)
+        graph.add_edges_from((a, b) for a in group for b in group if a < b)
+        offset += size
+    if cliques > 1:
+        for i, group in enumerate(groups):
+            if len(group) > 2:
+                graph.remove_edge(group[0], group[1])
+            graph.add_edge(group[0], groups[i - 1][-1])
+    labels = list(range(num_clients))
+    random.Random(seed).shuffle(labels)
+    graph = nx.relabel_nodes(graph, dict(enumerate(labels)))
+    return {i: sorted(graph.neighbors(i)) for i in range(num_clients)}
+
+
+def create_barabasi_albert_topology(num_clients: int, m: int = 2, seed: int = 42) -> Topology:
+    """NetworkX preferential attachment with its default star initial graph."""
+    if not 1 <= m < num_clients:
+        raise ValueError("Barabasi-Albert requires 1 <= m < num_clients")
+    graph = nx.barabasi_albert_graph(num_clients, m, seed=seed)
+    return {i: sorted(graph.neighbors(i)) for i in range(num_clients)}
+
+
+def build_topology(name: str, num_clients: int, seed: int = 42,
+                   caveman_cliques: int = 2, barabasi_m: int = 2) -> Topology:
+    if name == "ring":
+        return create_ring_topology(num_clients)
+    if name == "fully_connected":
+        return create_fully_connected_topology(num_clients)
+    if name == "star":
+        return create_star_topology(num_clients)
+    if name == "random":
+        return create_random_topology(num_clients, degree=2, seed=seed)
+    if name == "small_world":
+        return create_small_world_topology(num_clients, seed=seed)
+    if name == "caveman":
+        return create_caveman_topology(num_clients, caveman_cliques, seed)
+    if name == "barabasi_albert":
+        return create_barabasi_albert_topology(num_clients, barabasi_m, seed)
+    raise ValueError(f"unsupported topology: {name}")

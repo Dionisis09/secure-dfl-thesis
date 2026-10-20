@@ -22,8 +22,8 @@ class ImageDatasetTests(unittest.TestCase):
                     train, test = demo.load_demo_datasets(dataset_name=name, data_dir=Path("unused"), max_train_samples=30, max_test_samples=12, seed=42)
                 loader.assert_called_once_with(name, "unused")
                 self.assertEqual((len(train), len(test)), (30, 12))
-                for partition in (demo.create_iid_client_loaders, demo.create_non_iid_client_loaders):
-                    clients = partition(train, 3, 4, seed=42)
+                for split in ("iid", "non_iid", "dirichlet"):
+                    clients = demo.create_client_loaders(train, 3, 4, split, seed=42, dirichlet_min_samples=1)
                     images, labels = next(iter(clients[0]))
                     model = demo.SimpleMLP(input_shape=spec.input_shape, num_classes=spec.num_classes)
                     output = model(images)

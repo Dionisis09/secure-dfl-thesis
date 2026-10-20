@@ -1,0 +1,183 @@
+{
+  "unit_tests": {
+    "core": 9,
+    "platform": 15,
+    "status": "pass"
+  },
+  "network_smokes": [
+    {
+      "barabasi_m": null,
+      "caveman_cliques": 2,
+      "dataset": "fake",
+      "device": "cpu",
+      "dirichlet_alpha": 0.5,
+      "dirichlet_min_samples": 2,
+      "experiment_id": "extension_caveman_dirichlet_smoke",
+      "final_accuracy_percent": 5.333333333333334,
+      "final_test_loss": 2.318704891204834,
+      "min_peer_updates_to_finalize": null,
+      "num_clients": 5,
+      "rounds": 2,
+      "security_mode": "masking",
+      "shards_per_client": null,
+      "split_type": "dirichlet",
+      "status": "PASS",
+      "topology": "caveman"
+    },
+    {
+      "barabasi_m": 2,
+      "batch_size": 32,
+      "caveman_cliques": null,
+      "dataset": "fake",
+      "device": "cpu",
+      "dirichlet_alpha": 0.5,
+      "dirichlet_min_samples": 2,
+      "experiment_id": "extension_barabasi_dirichlet_final_smoke",
+      "final_accuracy_percent": 6.0,
+      "final_test_loss": 2.3120237827301025,
+      "learning_rate": 0.05,
+      "local_epochs": 1,
+      "min_peer_updates_to_finalize": null,
+      "num_clients": 5,
+      "partition": {
+        "aggregation": "uniform_self_and_neighbors (equal model weight, not sample weight)",
+        "directed_transmissions_per_round": 12,
+        "fixed_graph_stationary_weights": [
+          0.23529411764705882,
+          0.23529411764705882,
+          0.17647058823529413,
+          0.17647058823529413,
+          0.17647058823529413
+        ],
+        "partition_clients": [
+          {
+            "class_counts": {
+              "0": 8,
+              "1": 1,
+              "2": 3,
+              "3": 6,
+              "4": 1,
+              "5": 0,
+              "6": 3,
+              "7": 1,
+              "8": 0,
+              "9": 3
+            },
+            "classes_present": 8,
+            "client_id": 0,
+            "indices_sha256": "6b554660676aa9414395fc2a3c5dd5462d14e6979e62244760195e4a212067ca",
+            "samples": 26
+          },
+          {
+            "class_counts": {
+              "0": 1,
+              "1": 0,
+              "2": 3,
+              "3": 8,
+              "4": 4,
+              "5": 7,
+              "6": 5,
+              "7": 2,
+              "8": 0,
+              "9": 0
+            },
+            "classes_present": 7,
+            "client_id": 1,
+            "indices_sha256": "632d6f77bd8af4947ce2381a119e31c7b6dc0fb8270d4040f212199331600883",
+            "samples": 30
+          },
+          {
+            "class_counts": {
+              "0": 0,
+              "1": 4,
+              "2": 3,
+              "3": 1,
+              "4": 5,
+              "5": 8,
+              "6": 1,
+              "7": 3,
+              "8": 10,
+              "9": 0
+            },
+            "classes_present": 8,
+            "client_id": 2,
+            "indices_sha256": "9c808cbea7384ae359e590f0a5f76e652c2c3109f77b84fe2e4da6866568049c",
+            "samples": 35
+          },
+          {
+            "class_counts": {
+              "0": 6,
+              "1": 13,
+              "2": 5,
+              "3": 2,
+              "4": 3,
+              "5": 0,
+              "6": 5,
+              "7": 0,
+              "8": 0,
+              "9": 4
+            },
+            "classes_present": 7,
+            "client_id": 3,
+            "indices_sha256": "35dc455855385545f756e9dccb06f1868f73e9030fdbbffea356c17d41cb666e",
+            "samples": 38
+          },
+          {
+            "class_counts": {
+              "0": 2,
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 4,
+              "5": 4,
+              "6": 0,
+              "7": 0,
+              "8": 5,
+              "9": 6
+            },
+            "classes_present": 5,
+            "client_id": 4,
+            "indices_sha256": "76454f09ac3461eedafb3229f0ab2ebd928264a6234169b7137f1ab199474982",
+            "samples": 21
+          }
+        ],
+        "partition_complete": true,
+        "stationary_weight_note": "For repeated mixing without training on an undirected graph. Irregular degrees do not yield uniform consensus weights.",
+        "topology_adjacency": {
+          "0": [
+            1,
+            2,
+            3
+          ],
+          "1": [
+            0,
+            3,
+            4
+          ],
+          "2": [
+            0,
+            4
+          ],
+          "3": [
+            0,
+            1
+          ],
+          "4": [
+            1,
+            2
+          ]
+        }
+      },
+      "rounds": 2,
+      "security_mode": "masking",
+      "seed": 42,
+      "shards_per_client": null,
+      "split_type": "dirichlet",
+      "status": "PASS",
+      "test_samples": 30,
+      "topology": "barabasi_albert",
+      "train_samples": 150
+    }
+  ],
+  "preserved_original_csv_count": 27
+}

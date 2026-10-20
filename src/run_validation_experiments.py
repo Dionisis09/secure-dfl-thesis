@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import itertools
+import math
 import subprocess
 import sys
 from dataclasses import dataclass
@@ -29,8 +30,9 @@ ALLOWED_SECURITY_MODES = {
     "adaptive_hybrid",
 }
 ALLOWED_DATASETS = {"mnist", "fashion_mnist", "fmnist", "cifar10"}
-ALLOWED_TOPOLOGIES = {"ring", "fully_connected", "star", "random", "small_world"}
-ALLOWED_SPLITS = {"iid", "non_iid"}
+from topology import TOPOLOGY_NAMES
+ALLOWED_TOPOLOGIES = set(TOPOLOGY_NAMES)
+ALLOWED_SPLITS = {"iid", "non_iid", "dirichlet"}
 METHOD_ORDER = [
     "none",
     "masking",
@@ -45,7 +47,9 @@ METHOD_LABELS = {
     "selective_he": "Selective HE",
     "adaptive_hybrid": "Adaptive Hybrid",
 }
-SPLIT_LABELS = {"iid": "IID", "non_iid": "Non-IID"}
+SPLIT_LABELS = {"iid": "IID", "non_iid": "Non-IID shards", "dirichlet": "Dirichlet"}
+PARTITION_COLUMNS = ["dirichlet_alpha", "dirichlet_min_samples", "shards_per_client",
+                     "caveman_cliques", "barabasi_m"]
 
 RUN_SUMMARY_COLUMNS = [
     "experiment_name",
@@ -91,6 +95,8 @@ GROUPED_COLUMNS = [
     "cancellation_error_max_mean",
     "adaptive_he_targets_mean",
 ]
+RUN_SUMMARY_COLUMNS += PARTITION_COLUMNS + ["execution_profile"]
+GROUPED_COLUMNS += PARTITION_COLUMNS + ["execution_profile"]
 
 
 @dataclass(frozen=True)
@@ -105,14 +111,35 @@ class ValidationExperiment:
     batch_size: int
     adaptive_policy: str
     adaptive_he_target_ratio: float
+    dirichlet_alpha: float = 0.5
+    dirichlet_min_samples: int = 10
+    shards_per_client: int = 2
+    caveman_cliques: int = 2
+    barabasi_m: int = 2
+    execution_profile: str = "legacy"
 
     @property
     def name(self) -> str:
         dataset_token = "" if self.dataset == "mnist" else f"{self.dataset}_"
+        suffix = ""
+        if self.split_type == "dirichlet":
+            suffix += f"_alpha{self.dirichlet_alpha}_min{self.dirichlet_min_samples}"
+        if self.split_type == "non_iid" and self.shards_per_client != 2:
+            suffix += f"_shards{self.shards_per_client}"
+        if self.topology == "caveman":
+            suffix += f"_cliques{self.caveman_cliques}"
+        if self.topology == "barabasi_albert":
+            suffix += f"_m{self.barabasi_m}"
+        if self.execution_profile != "legacy":
+            suffix += f"_{self.execution_profile}"
+        if self.security_mode == "adaptive_hybrid" and (
+            self.adaptive_policy != "topk_risk" or self.adaptive_he_target_ratio != 0.4
+        ):
+            suffix += f"_{self.adaptive_policy}_heratio{self.adaptive_he_target_ratio}"
         return (
             f"validation_{self.security_mode}_{dataset_token}{self.split_type}_{self.topology}_"
             f"{self.num_clients}c_{self.num_rounds}r_b{self.batch_size}_"
-            f"seed{self.seed}"
+            f"seed{self.seed}{suffix}"
         )
 
 
@@ -125,6 +152,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--num_clients_list", default="5,10")
     parser.add_argument("--topologies", default="ring,fully_connected")
     parser.add_argument("--split_types", default="iid,non_iid")
+    parser.add_argument("--dirichlet_alpha", type=float, default=0.5)
+    parser.add_argument("--dirichlet_min_samples", type=int, default=10)
+    parser.add_argument("--shards_per_client", type=int, default=2)
+    parser.add_argument("--caveman_cliques", type=int, default=2)
+    parser.add_argument("--barabasi_m", type=int, default=2)
+    parser.add_argument("--execution_profile", choices=["legacy", "cached_cpu", "cached_gpu"], default="legacy")
     parser.add_argument("--security_modes", default=DEFAULT_SECURITY_MODES)
     parser.add_argument(
         "--include_simple_masking",
@@ -200,6 +233,13 @@ def build_experiments(args: argparse.Namespace) -> List[ValidationExperiment]:
         raise ValueError("adaptive_he_target_ratio must be between zero and one")
     if args.max_runs is not None and args.max_runs < 0:
         raise ValueError("max_runs cannot be negative")
+    if not math.isfinite(getattr(args, "dirichlet_alpha", 0.5)) or getattr(args, "dirichlet_alpha", 0.5) <= 0:
+        raise ValueError("dirichlet_alpha must be finite and positive")
+    if getattr(args, "dirichlet_min_samples", 10) <= 0 or getattr(args, "shards_per_client", 2) <= 0:
+        raise ValueError("minimum samples and shards_per_client must be positive")
+    from topology import build_topology
+    for n, t in itertools.product(client_counts, topologies):
+        build_topology(t, n, seeds[0], getattr(args, "caveman_cliques", 2), getattr(args, "barabasi_m", 2))
 
     experiments = [
         ValidationExperiment(
@@ -213,6 +253,10 @@ def build_experiments(args: argparse.Namespace) -> List[ValidationExperiment]:
             batch_size=args.batch_size,
             adaptive_policy=args.adaptive_policy,
             adaptive_he_target_ratio=args.adaptive_he_target_ratio,
+            **{key: getattr(args, key, default) for key, default in (
+                ("dirichlet_alpha", 0.5), ("dirichlet_min_samples", 10),
+                ("shards_per_client", 2), ("caveman_cliques", 2), ("barabasi_m", 2),
+                ("execution_profile", "legacy"))},
         )
         for seed, dataset, num_clients, topology, split_type, security_mode in itertools.product(
             seeds, datasets, client_counts, topologies, split_types, security_modes
@@ -249,6 +293,12 @@ def command_for(experiment: ValidationExperiment, main_path: Path) -> List[str]:
         str(experiment.seed),
         "--experiment_name",
         experiment.name,
+        "--dirichlet_alpha", str(experiment.dirichlet_alpha),
+        "--dirichlet_min_samples", str(experiment.dirichlet_min_samples),
+        "--shards_per_client", str(experiment.shards_per_client),
+        "--caveman_cliques", str(experiment.caveman_cliques),
+        "--barabasi_m", str(experiment.barabasi_m),
+        "--execution_profile", experiment.execution_profile,
     ]
 
 
@@ -268,6 +318,10 @@ def summarize_run(
     frame = pd.read_csv(csv_path)
     if frame.empty:
         raise ValueError("metrics CSV contains no rows")
+    if len(frame) != experiment.num_rounds or sorted(frame['round'].tolist()) != list(range(1, experiment.num_rounds + 1)):
+        raise ValueError("metrics CSV must contain exactly one row per requested round")
+    if not np.isfinite(frame[['avg_test_accuracy','avg_test_loss','avg_train_loss']].to_numpy(dtype=float)).all():
+        raise ValueError("metrics CSV contains nonfinite learning metrics")
     if "round" in frame.columns:
         frame = frame.assign(
             _round=pd.to_numeric(frame["round"], errors="coerce")
@@ -291,6 +345,8 @@ def summarize_run(
         "topology": experiment.topology,
         "split_type": experiment.split_type,
         "security_mode": experiment.security_mode,
+        "execution_profile": experiment.execution_profile,
+        **partition_fields(experiment),
         "final_accuracy_percent": final_number("avg_test_accuracy"),
         "final_test_loss": final_number("avg_test_loss"),
         "final_train_loss": final_number("avg_train_loss"),
@@ -307,28 +363,45 @@ def summarize_run(
     }
 
 
+def partition_fields(experiment):
+    return {"dirichlet_alpha": experiment.dirichlet_alpha if experiment.split_type == "dirichlet" else None,
+            "dirichlet_min_samples": experiment.dirichlet_min_samples if experiment.split_type == "dirichlet" else None,
+            "shards_per_client": experiment.shards_per_client if experiment.split_type == "non_iid" else None,
+            "caveman_cliques": experiment.caveman_cliques if experiment.topology == "caveman" else None,
+            "barabasi_m": experiment.barabasi_m if experiment.topology == "barabasi_albert" else None}
+
+
 def build_grouped_summary(summary: pd.DataFrame) -> pd.DataFrame:
     if summary.empty:
         return pd.DataFrame(columns=GROUPED_COLUMNS)
+    summary = summary.copy()
+    if "execution_profile" not in summary:
+        summary["execution_profile"] = "legacy"
+    for column in PARTITION_COLUMNS:
+        if column not in summary:
+            summary[column] = np.nan
     groups = summary.groupby(
-        ["security_mode", "dataset", "split_type", "topology", "num_clients"],
+        ["security_mode", "dataset", "split_type", "topology", "num_clients", *PARTITION_COLUMNS, "execution_profile"],
         sort=False,
         dropna=False,
     )
     records: List[Dict[str, object]] = []
     for keys, frame in groups:
-        mode, dataset, split, topology, clients = keys
+        mode, dataset, split, topology, clients, *extra_values = keys
+        partition_values, profile = extra_values[:-1], extra_values[-1]
 
         def mean(column: str) -> float:
             return float(pd.to_numeric(frame[column], errors="coerce").mean())
 
         def std(column: str) -> float:
             values = pd.to_numeric(frame[column], errors="coerce").dropna()
-            return float(values.std(ddof=1)) if len(values) > 1 else 0.0
+            return float(values.std(ddof=1)) if len(values) > 1 else float("nan")
 
         records.append(
             {
                 "security_mode": mode,
+                **dict(zip(PARTITION_COLUMNS, partition_values)),
+                "execution_profile": profile,
                 "dataset": dataset,
                 "split_type": split,
                 "topology": topology,
@@ -391,6 +464,7 @@ def mean_std_markdown(grouped: pd.DataFrame) -> str:
             "topology": grouped["topology"],
             "clients": grouped["num_clients"],
             "runs": grouped["runs_count"],
+            **{c: grouped[c] for c in PARTITION_COLUMNS + ["execution_profile"]},
             "accuracy mean ± std": grouped.apply(
                 lambda r: f"{r['accuracy_mean']:.3f} ± {r['accuracy_std']:.3f}", axis=1
             ),
@@ -422,8 +496,13 @@ def automatic_observations(summary: pd.DataFrame, grouped: pd.DataFrame) -> List
             "This is a robustness measurement, not a proof of stability."
         )
 
-    pivot = grouped.pivot_table(
-        index=["dataset", "split_type", "topology", "num_clients"],
+    matching = ["dataset", "split_type", "topology", "num_clients", *PARTITION_COLUMNS, "execution_profile"]
+    comparable = grouped.copy()
+    for c in PARTITION_COLUMNS + ["execution_profile"]:
+        if c not in comparable:comparable[c] = "unspecified"
+        comparable[c] = comparable[c].fillna("not_applicable")
+    pivot = comparable.pivot_table(
+        index=matching,
         columns="security_mode",
         values=["communication_mib_mean", "he_total_time_mean"],
         aggfunc="mean",
@@ -508,7 +587,7 @@ def save_reports(
     grouped_report = (
         "# Part 5 - Grouped Validation Results\n\n"
         "Values are reported as mean ± standard deviation across completed seeds. "
-        "A single-run group has a displayed standard deviation of zero.\n\n"
+        "Single-run groups have undefined sample standard deviation (NaN).\n\n"
         + mean_std_markdown(grouped)
         + "\n"
     )
@@ -616,9 +695,10 @@ def split_bar_plot(
         return
     mode_values = ordered_modes(data["security_mode"])
     x = np.arange(len(mode_values))
-    width = 0.36
+    splits = [s for s in SPLIT_LABELS if s in set(data["split_type"])]
+    width = 0.8 / len(splits)
     plt.figure(figsize=(9, 5.5))
-    for offset, split in enumerate(["iid", "non_iid"]):
+    for offset, split in enumerate(splits):
         means, errors = [], []
         for mode in mode_values:
             values = pd.to_numeric(
@@ -628,7 +708,7 @@ def split_bar_plot(
             means.append(float(values.mean()) if len(values) else np.nan)
             errors.append(float(values.std(ddof=1)) if len(values) > 1 else 0.0)
         plt.bar(
-            x + (offset - 0.5) * width,
+            x + (offset - (len(splits)-1)/2) * width,
             means,
             width,
             yerr=errors,
@@ -719,7 +799,7 @@ def accuracy_distribution_plot(summary: pd.DataFrame, path: Path) -> None:
         return
     data, labels = [], []
     for mode in ordered_modes(summary["security_mode"]):
-        for split in ["iid", "non_iid"]:
+        for split in SPLIT_LABELS:
             values = pd.to_numeric(
                 summary[(summary["security_mode"] == mode) & (summary["split_type"] == split)]["final_accuracy_percent"],
                 errors="coerce",
@@ -785,8 +865,13 @@ def main() -> int:
     for index, (experiment, command) in enumerate(commands, start=1):
         csv_path = logs_dir / f"{experiment.name}_metrics.csv"
         if args.skip_existing and csv_path.is_file():
-            print(f"[SKIP {index}/{len(commands)}] Existing CSV: {csv_path}", flush=True)
-            continue
+            try:
+                summarize_run(csv_path, experiment)
+            except (ValueError, KeyError, pd.errors.ParserError):
+                print(f"[RETRY {index}/{len(commands)}] Existing CSV is incomplete or invalid", flush=True)
+            else:
+                print(f"[SKIP {index}/{len(commands)}] Complete CSV: {csv_path}", flush=True)
+                continue
         print(f"[RUN {index}/{len(commands)}] {experiment.name}", flush=True)
         print(command_text(command), flush=True)
         try:

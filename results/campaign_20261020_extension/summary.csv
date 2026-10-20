@@ -1,0 +1,9 @@
+case,split_type,topology,dirichlet_alpha,num_rounds,seed,dataset,num_clients,batch_size,lr,local_epochs,security_mode,execution_profile,caveman_cliques,barabasi_m,experiment_name,accuracy_round20,final_accuracy,final_test_loss,round1_accuracy,final_5_round_improvement
+shards_ring_40r,non_iid,ring,0.5,40,1,cifar10,5,32,0.01,1,none,cached_gpu,2,2,extension_20261020_shards_ring_40r_seed1,22.69,24.32,2.8910245135498047,18.728,0.4920000000000009
+iid_ring_40r,iid,ring,0.5,40,1,cifar10,5,32,0.01,1,none,cached_gpu,2,2,extension_20261020_iid_ring_40r_seed1,43.97,47.454,1.4877943144226071,28.604000000000003,0.5960000000000036
+shards_full_20r,non_iid,fully_connected,0.5,20,1,cifar10,5,32,0.01,1,none,cached_gpu,2,2,extension_20261020_shards_full_20r_seed1,31.59,31.59,1.874279030456543,19.84,2.6099999999999994
+dir01_ring_20r,dirichlet,ring,0.1,20,1,cifar10,5,32,0.01,1,none,cached_gpu,2,2,extension_20261020_dir01_ring_20r_seed1,26.654000000000003,26.654000000000003,2.400228805847168,15.446000000000002,0.5980000000000025
+dir05_ring_20r,dirichlet,ring,0.5,20,1,cifar10,5,32,0.01,1,none,cached_gpu,2,2,extension_20261020_dir05_ring_20r_seed1,34.09,34.09,1.8797785914230345,21.204,2.9040000000000035
+dir10_ring_20r,dirichlet,ring,1.0,20,1,cifar10,5,32,0.01,1,none,cached_gpu,2,2,extension_20261020_dir10_ring_20r_seed1,38.510000000000005,38.510000000000005,1.7287405864715577,21.336,2.5800000000000054
+dir05_caveman_20r,dirichlet,caveman,0.5,20,1,cifar10,5,32,0.01,1,none,cached_gpu,2,2,extension_20261020_dir05_caveman_20r_seed1,33.418,33.418,1.9148504701614375,20.26,1.6660000000000004
+dir05_barabasi_20r,dirichlet,barabasi_albert,0.5,20,1,cifar10,5,32,0.01,1,none,cached_gpu,2,2,extension_20261020_dir05_barabasi_20r_seed1,34.236000000000004,34.236000000000004,1.9413982724761965,18.472,2.418000000000003

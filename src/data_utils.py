@@ -223,3 +223,59 @@ def get_test_loader(test_dataset: Dataset, batch_size: int) -> DataLoader:
     if batch_size <= 0:
         raise ValueError("batch_size must be greater than zero")
     return DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+
+
+def create_dirichlet_client_loaders(
+    train_dataset: Dataset, num_clients: int, batch_size: int,
+    alpha: float = 0.5, seed: int = 42, min_samples: int = 10,
+    max_attempts: int = 1000,
+) -> List[DataLoader]:
+    """Allocate each class across clients with Dir(alpha), without replacement.
+
+    Class counts are multinomial draws. Retry the entire allocation if any
+    client has fewer than min_samples. This is a conditioned Dirichlet split,
+    with both label and quantity skew, not an equal-size partition.
+    """
+    if num_clients <= 0 or batch_size <= 0 or min_samples <= 0 or max_attempts <= 0:
+        raise ValueError("clients, batch size, minimum samples and attempts must be positive")
+    if not np.isfinite(alpha) or alpha <= 0:
+        raise ValueError("dirichlet alpha must be finite and greater than zero")
+    if len(train_dataset) < num_clients * min_samples:
+        raise ValueError("dataset cannot provide min_samples to every client")
+    labels = _extract_targets(train_dataset)
+    rng = np.random.default_rng(seed)
+    for _ in range(max_attempts):
+        partitions = [[] for _ in range(num_clients)]
+        for label in np.unique(labels):
+            indices = rng.permutation(np.flatnonzero(labels == label))
+            proportions = rng.dirichlet(np.full(num_clients, alpha))
+            counts = rng.multinomial(len(indices), proportions)
+            chunks = np.split(indices, np.cumsum(counts)[:-1])
+            for partition, chunk in zip(partitions, chunks):
+                partition.extend(chunk.tolist())
+        if min(map(len, partitions)) >= min_samples:
+            break
+    else:
+        raise ValueError("Dirichlet allocation failed min_samples after max_attempts; "
+                         "increase alpha or reduce the requested minimum")
+    return [DataLoader(
+        Subset(train_dataset, indices), batch_size=batch_size, shuffle=True,
+        generator=torch.Generator().manual_seed(seed + client_id),
+    ) for client_id, indices in enumerate(partitions)]
+
+
+def create_client_loaders(train_dataset, num_clients, batch_size, split_type,
+                          seed=42, dirichlet_alpha=0.5,
+                          dirichlet_min_samples=10, shards_per_client=2):
+    """Shared partition routing for simulation and local HTTP demos."""
+    if split_type == "iid":
+        return create_iid_client_loaders(train_dataset, num_clients, batch_size, seed)
+    if split_type == "non_iid":
+        return create_non_iid_client_loaders(train_dataset, num_clients, batch_size,
+                                              shards_per_client, seed)
+    if split_type == "dirichlet":
+        return create_dirichlet_client_loaders(
+            train_dataset, num_clients, batch_size, dirichlet_alpha, seed,
+            dirichlet_min_samples,
+        )
+    raise ValueError(f"unsupported split_type: {split_type}")

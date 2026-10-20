@@ -8,4 +8,5 @@ tqdm
 pandas
 tenseal==0.3.16
 cryptography
+networkx>=3.2,<4
 python-pptx

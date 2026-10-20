@@ -17,6 +17,7 @@ import torch
 from compare_results import dataframe_to_markdown
 from config import Config
 from main import run_experiment
+from topology import TOPOLOGY_NAMES
 
 
 DEFAULT_RATIOS = "0.2,0.4,0.6,0.8,1.0"
@@ -46,7 +47,7 @@ def parse_args() -> argparse.Namespace:
         description="Adaptive Hybrid HE-target-ratio sensitivity analysis"
     )
     parser.add_argument(
-        "--split_type", choices=["iid", "non_iid"], default="iid"
+        "--split_type", choices=["iid", "non_iid", "dirichlet"], default="iid"
     )
     parser.add_argument("--ratios", default=DEFAULT_RATIOS)
     parser.add_argument("--num_clients", type=int, default=5)
@@ -59,10 +60,16 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--topology",
-        choices=["ring", "fully_connected", "star", "random", "small_world"],
+        choices=TOPOLOGY_NAMES,
         default="ring",
     )
     parser.add_argument("--output_prefix", default="adaptive_ratio")
+    parser.add_argument("--dirichlet_alpha", type=float, default=0.5)
+    parser.add_argument("--dirichlet_min_samples", type=int, default=10)
+    parser.add_argument("--shards_per_client", type=int, default=2)
+    parser.add_argument("--caveman_cliques", type=int, default=2)
+    parser.add_argument("--barabasi_m", type=int, default=2)
+    parser.add_argument("--execution_profile", choices=["legacy", "cached_cpu", "cached_gpu"], default="legacy")
     parser.add_argument("--output_dir", default="results/adaptive_sensitivity")
     parser.add_argument("--skip_existing", action="store_true")
     return parser.parse_args()
@@ -154,6 +161,9 @@ def build_experiment_args(
         seed=defaults.seed,
         enable_blockchain=False,
         enable_audit=False,
+        **{key: getattr(cli_args, key, getattr(defaults, key, "legacy")) for key in (
+            "dirichlet_alpha", "dirichlet_min_samples", "shards_per_client",
+            "caveman_cliques", "barabasi_m", "execution_profile")},
     )
 
 
@@ -450,6 +460,18 @@ def main() -> None:
             num_rounds=args.num_rounds,
             batch_size=args.batch_size,
         )
+        if args.split_type == "dirichlet":
+            experiment_name += f"_alpha{args.dirichlet_alpha}_min{args.dirichlet_min_samples}"
+        if args.split_type == "non_iid" and args.shards_per_client != 2:
+            experiment_name += f"_shards{args.shards_per_client}"
+        if args.topology != "ring":
+            experiment_name += f"_{args.topology}"
+        if args.topology == "caveman":
+            experiment_name += f"_cliques{args.caveman_cliques}"
+        if args.topology == "barabasi_albert":
+            experiment_name += f"_m{args.barabasi_m}"
+        if args.execution_profile != "legacy":
+            experiment_name += f"_{args.execution_profile}"
         csv_path = logs_dir / f"{experiment_name}_metrics.csv"
         experiment_specs.append((ratio, experiment_name, csv_path))
 
@@ -475,6 +497,9 @@ def main() -> None:
         raise RuntimeError("no sensitivity experiment metrics were produced")
 
     summary = pd.DataFrame(records, columns=SUMMARY_COLUMNS)
+    for key in ("dataset", "topology", "dirichlet_alpha", "dirichlet_min_samples",
+                "shards_per_client", "caveman_cliques", "barabasi_m", "execution_profile"):
+        summary[key] = getattr(args, key)
     summary = summary.sort_values("he_target_ratio").reset_index(drop=True)
     save_summary(summary, output_dir)
     generate_plots(summary, output_dir / "plots")

@@ -14,7 +14,12 @@ class Config:
     learning_rate: float = 0.01
     dataset: str = "mnist"
     split_type: str = "iid"
+    dirichlet_alpha: float = 0.5
+    dirichlet_min_samples: int = 10
+    shards_per_client: int = 2
     topology: str = "ring"
+    caveman_cliques: int = 2
+    barabasi_m: int = 2
     security_mode: str = "none"
     he_scheme: str = "ckks"
     he_poly_modulus_degree: int = 8192

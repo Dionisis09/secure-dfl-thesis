@@ -33,6 +33,69 @@ fully_connected
 star
 random
 small_world
+caveman
+barabasi_albert
+
+## Dirichlet partitions and additional topologies
+
+The original `--split_type non_iid` still selects sorted-label shards (two per
+client by default). `--split_type dirichlet` adds a separate class-wise
+Dirichlet allocation with configurable `--dirichlet_alpha` (default 0.5).
+Lower alpha produces more concentrated class proportions in expectation.
+The allocation also changes client sample counts. It retries the whole draw
+if a client has fewer than `--dirichlet_min_samples` (default 10), and fails
+explicitly after 1,000 unsuccessful attempts. Every sample belongs to exactly
+one client. Seeded partitions are reproducible, including on cached images.
+
+`--topology caveman --caveman_cliques 2` uses communities connected in a ring
+by rewiring one edge in each clique. Clique sizes differ by at most one when
+the client count is not divisible by the requested clique count. Cliques must
+contain at least two clients; size-two cliques retain their internal edge to
+preserve connectivity. This is a connected Caveman variant, rather than
+disconnected cliques. Equal cliques of size three or more match NetworkX's
+connected Caveman construction up to seeded relabeling.
+
+`--topology barabasi_albert --barabasi_m 2` uses NetworkX preferential
+attachment, starting with its default star on `m+1` nodes. Each added node
+attaches to `m` distinct existing nodes, with `1 <= m < num_clients`.
+Small graphs should not be interpreted as evidence of a power-law distribution.
+
+Examples:
+
+```powershell
+python src/main.py --dataset cifar10 --split_type dirichlet --dirichlet_alpha 0.5 --topology caveman --caveman_cliques 2 --execution_profile cached_gpu --diagnostics --experiment_name cifar_dir05_caveman
+python src/main.py --dataset cifar10 --split_type dirichlet --dirichlet_alpha 0.1 --topology barabasi_albert --barabasi_m 2 --execution_profile cached_gpu --diagnostics --experiment_name cifar_dir01_barabasi
+python src/run_validation_experiments.py --datasets mnist,fashion_mnist,cifar10 --split_types dirichlet --dirichlet_alpha 0.5 --topologies caveman,barabasi_albert --num_clients_list 5,10 --seeds 1,2,3 --security_modes none,masking,pairwise_masking,selective_he,adaptive_hybrid --execution_profile cached_gpu --output_dir results/dirichlet_validation --dry_run
+```
+
+Remove `--dry_run` to execute the requested validation grid. The simulation,
+validation and HE sensitivity runners support the new options. Local HTTP
+demos also accept `--split-type dirichlet`, `--dirichlet-alpha`,
+`--topology caveman` and `--topology barabasi_albert` with hyphenated parameter
+names. Caveman demos need at least four clients with the default two cliques.
+
+Each new simulation run writes a `*_metadata.json` with effective partition
+parameters, per-client class counts and index hashes, adjacency lists and
+communication counts. `--diagnostics` adds final per-client local-training and
+global-test confusion matrices plus a separate virtual mean-model probe.
+The reported accuracy remains mean client accuracy on the shared global test
+set. Diagnostic evaluation happens after the timed rounds.
+
+Aggregation remains an equal average of each target and its neighbors,
+across all five security modes. It does not weight models by sample count.
+On irregular graphs repeated mixing favors clients in proportion to
+`degree+1`. Dirichlet quantity skew and nonuniform graph degrees therefore
+need to be reported when interpreting these experiments.
+
+The [separate CIFAR-10 investigation](results/campaign_20261020_extension/README.md)
+compares partitions, topologies and training budgets. Its exploratory runs
+do not replace or augment the 402-run campaign's multi-seed statistics.
+
+Definitions: [NetworkX connected Caveman](https://networkx.org/documentation/stable/reference/generated/networkx.generators.community.connected_caveman_graph.html),
+[NetworkX Barabási–Albert](https://networkx.org/documentation/stable/reference/generated/networkx.generators.random_graphs.barabasi_albert_graph.html),
+[Flower Dirichlet partitioning](https://flower.ai/docs/datasets/ref-api/flwr_datasets.partitioner.DirichletPartitioner.html).
+The partitioner here uses its documented class-wise multinomial allocation,
+without Flower's optional self-balancing heuristic.
 
 Use a different dataset with:
 

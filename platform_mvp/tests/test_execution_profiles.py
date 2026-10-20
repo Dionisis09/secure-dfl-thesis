@@ -12,7 +12,7 @@ from torchvision import transforms
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 from client import Client
-from data_utils import CachedImageDataset, create_iid_client_loaders, create_non_iid_client_loaders, set_seed
+from data_utils import CachedImageDataset, create_iid_client_loaders, create_non_iid_client_loaders, create_dirichlet_client_loaders, set_seed
 from model import SimpleMLP
 
 
@@ -43,7 +43,7 @@ class ExecutionProfiles(unittest.TestCase):
             for index in range(len(original)):
                 self.assertTrue(torch.equal(original[index][0], cached[index][0]))
                 self.assertEqual(original[index][1], cached[index][1])
-            for partition in [create_iid_client_loaders, create_non_iid_client_loaders]:
+            for partition in [create_iid_client_loaders, create_non_iid_client_loaders, create_dirichlet_client_loaders]:
                 left = partition(original, 3, 16, seed=42)
                 right = partition(cached, 3, 16, seed=42)
                 for a, b in zip(left, right):
@@ -54,7 +54,7 @@ class ExecutionProfiles(unittest.TestCase):
     @unittest.skipUnless(torch.cuda.is_available(), "CUDA regression requires a GPU")
     def test_cuda_weights_losses_and_accuracy_exact(self):
         for shape in [(1, 28, 28), (3, 32, 32)]:
-            for partition in [create_iid_client_loaders, create_non_iid_client_loaders]:
+            for partition in [create_iid_client_loaders, create_non_iid_client_loaders, create_dirichlet_client_loaders]:
                 set_seed(42)
                 original = Images(shape)
                 cached = CachedImageDataset(original, "cuda")

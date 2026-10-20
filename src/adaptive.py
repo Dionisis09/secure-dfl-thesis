@@ -52,7 +52,7 @@ def compute_target_risk_scores(
         )
         for client_id in previous_states
     }
-    split_multiplier = 1.2 if split_type == "non_iid" else 1.0
+    split_multiplier = 1.2 if split_type in {"non_iid", "dirichlet"} else 1.0
 
     risk_scores: Dict[int, float] = {}
     for target_client_id, neighbors in topology.items():

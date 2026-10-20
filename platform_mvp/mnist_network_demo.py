@@ -35,13 +35,16 @@ from client import Client  # noqa: E402
 from data_utils import (  # noqa: E402
     create_iid_client_loaders,
     create_non_iid_client_loaders,
+    create_client_loaders,
     get_datasets,
     get_dataset_spec,
     get_test_loader,
     set_seed,
 )
 from model import SimpleMLP  # noqa: E402
+from topology import build_topology, TOPOLOGY_NAMES  # noqa: E402
 from train_utils import evaluate_all_clients  # noqa: E402
+from experiment_diagnostics import partition_metadata  # noqa: E402
 
 from secure_dfl_platform.orchestrator import request_json, wait_for_nodes  # noqa: E402
 from secure_dfl_platform.training_adapter import (  # noqa: E402
@@ -117,7 +120,8 @@ def load_demo_datasets(
     return train_dataset, test_dataset
 
 
-def build_peer_urls(nodes: Mapping[str, str], node_id: str, topology: str) -> dict[str, str]:
+def build_peer_urls(nodes: Mapping[str, str], node_id: str, topology: str,
+                    seed: int = 42, caveman_cliques: int = 2, barabasi_m: int = 2) -> dict[str, str]:
     ordered = sorted(nodes)
     if topology == "full":
         return {peer_id: url for peer_id, url in nodes.items() if peer_id != node_id}
@@ -129,7 +133,8 @@ def build_peer_urls(nodes: Mapping[str, str], node_id: str, topology: str) -> di
         }
         neighbors.discard(node_id)
         return {peer_id: nodes[peer_id] for peer_id in sorted(neighbors)}
-    raise ValueError(f"unsupported topology: {topology}")
+    adjacency = build_topology(topology, len(ordered), seed, caveman_cliques, barabasi_m)
+    return {ordered[i]: nodes[ordered[i]] for i in adjacency[ordered.index(node_id)]}
 
 
 def start_nodes(
@@ -142,6 +147,9 @@ def start_nodes(
     runtime_dir: Path,
     min_peer_updates_to_finalize: int | None,
     security_mode: str,
+    seed: int = 42,
+    caveman_cliques: int = 2,
+    barabasi_m: int = 2,
 ) -> list[subprocess.Popen]:
     processes: list[subprocess.Popen] = []
     for node_id in sorted(nodes):
@@ -152,7 +160,7 @@ def start_nodes(
                 "DFL_HOST": "127.0.0.1",
                 "DFL_PORT": str(ports[node_id]),
                 "DFL_EXPERIMENT_ID": experiment_id,
-                "DFL_PEERS_JSON": json.dumps(build_peer_urls(nodes, node_id, topology)),
+                "DFL_PEERS_JSON": json.dumps(build_peer_urls(nodes, node_id, topology, seed, caveman_cliques, barabasi_m)),
                 "DFL_DATA_DIR": str(runtime_dir / node_id),
                 "DFL_ADMIN_TOKEN": admin_token,
                 "DFL_DEMO_IDENTITY_SEED": f"{experiment_id}-demo-identities",
@@ -333,20 +341,12 @@ def run_network_training_demo(args: argparse.Namespace) -> dict[str, Any]:
         max_test_samples=args.max_test_samples,
         seed=args.seed,
     )
-    if args.split_type == "iid":
-        client_loaders = create_iid_client_loaders(
-            train_dataset,
-            args.num_clients,
-            args.batch_size,
-            seed=args.seed,
-        )
-    else:
-        client_loaders = create_non_iid_client_loaders(
-            train_dataset,
-            args.num_clients,
-            args.batch_size,
-            seed=args.seed,
-        )
+    client_loaders = create_client_loaders(
+        train_dataset, args.num_clients, args.batch_size, args.split_type,
+        seed=args.seed, dirichlet_alpha=getattr(args, "dirichlet_alpha", 0.5),
+        dirichlet_min_samples=getattr(args, "dirichlet_min_samples", 10),
+        shards_per_client=getattr(args, "shards_per_client", 2),
+    )
     test_loader = get_test_loader(test_dataset, args.batch_size)
     spec = get_dataset_spec("mnist" if args.dataset == "fake" else args.dataset)
     clients = {
@@ -370,6 +370,9 @@ def run_network_training_demo(args: argparse.Namespace) -> dict[str, Any]:
         runtime_dir=runtime_dir,
         min_peer_updates_to_finalize=args.min_peer_updates_to_finalize,
         security_mode=args.security_mode,
+        seed=args.seed,
+        caveman_cliques=getattr(args, "caveman_cliques", 2),
+        barabasi_m=getattr(args, "barabasi_m", 2),
     )
     rows: list[dict[str, Any]] = []
     try:
@@ -447,10 +450,25 @@ def run_network_training_demo(args: argparse.Namespace) -> dict[str, Any]:
         "dataset": args.dataset,
         "split_type": args.split_type,
         "topology": args.topology,
+        "dirichlet_alpha": getattr(args, "dirichlet_alpha", 0.5) if args.split_type == "dirichlet" else None,
+        "dirichlet_min_samples": getattr(args, "dirichlet_min_samples", 10) if args.split_type == "dirichlet" else None,
+        "shards_per_client": getattr(args, "shards_per_client", 2) if args.split_type == "non_iid" else None,
+        "caveman_cliques": getattr(args, "caveman_cliques", 2) if args.topology == "caveman" else None,
+        "barabasi_m": getattr(args, "barabasi_m", 2) if args.topology == "barabasi_albert" else None,
         "min_peer_updates_to_finalize": args.min_peer_updates_to_finalize,
         "security_mode": args.security_mode,
         "num_clients": args.num_clients,
         "rounds": args.rounds,
+        "seed": args.seed,
+        "batch_size": args.batch_size,
+        "local_epochs": args.local_epochs,
+        "learning_rate": args.learning_rate,
+        "train_samples": len(train_dataset),
+        "test_samples": len(test_dataset),
+        "partition": partition_metadata(train_dataset, client_loaders, build_topology(
+            "fully_connected" if args.topology == "full" else args.topology,
+            args.num_clients, args.seed, getattr(args, "caveman_cliques", 2),
+            getattr(args, "barabasi_m", 2))),
         "device": device,
         "metrics_csv": str(metrics_path),
         "final_accuracy_percent": rows[-1]["test_accuracy_percent"],
@@ -476,8 +494,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--local-epochs", type=int, default=1)
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--learning-rate", type=float, default=0.05)
-    parser.add_argument("--split-type", choices=["iid", "non_iid"], default="iid")
-    parser.add_argument("--topology", choices=["full", "ring"], default="ring")
+    parser.add_argument("--split-type", choices=["iid", "non_iid", "dirichlet"], default="iid")
+    parser.add_argument("--dirichlet-alpha", type=float, default=0.5)
+    parser.add_argument("--dirichlet-min-samples", type=int, default=10)
+    parser.add_argument("--shards-per-client", type=int, default=2)
+    parser.add_argument("--caveman-cliques", type=int, default=2)
+    parser.add_argument("--barabasi-m", type=int, default=2)
+    parser.add_argument("--topology", choices=["full", *TOPOLOGY_NAMES], default="ring")
     parser.add_argument(
         "--min-peer-updates-to-finalize",
         type=int,

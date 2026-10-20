@@ -6,6 +6,8 @@ __pycache__/
 # Downloaded datasets and generated experiment artifacts
 data/
 results/logs/*.csv
+results/logs/*_metadata.json
+results/logs/*_diagnostics.json
 results/plots/*.png
 results/plots/**/*.png
 platform_mvp/.runtime/
@@ -26,3 +28,5 @@ results/campaign_20261014/network/**/runtime/
 results/campaign_20261014/pipeline_error.json
 results/campaign_20261014/progress.json
 results/campaign_20261014/queue_order.json
+results/campaign_20261020_extension/progress.json
+results/extension_runner_smoke/
