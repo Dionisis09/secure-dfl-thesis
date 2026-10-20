@@ -1,0 +1,6 @@
+.dfl-dashboard .dfl-context { margin:24px 0 0; max-width:1000px; color:var(--secondary); line-height:1.55; font-size:14px; }
+.dfl-dashboard .dfl-campaign { display:flex; flex-wrap:wrap; gap:12px 24px; margin:0 0 20px; font-size:14px; }
+.dfl-dashboard .dfl-note { margin:12px 0 0; font-size:13px; color:var(--secondary); line-height:1.5; }
+.dfl-dashboard .dfl-methods { margin-top:16px; max-width:1050px; font-size:14px; line-height:1.6; }
+.dfl-dashboard .dfl-methods summary { cursor:pointer; font-weight:600; }
+.dfl-dashboard .dfl-methods li { margin:8px 0; }

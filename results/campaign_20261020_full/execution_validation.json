@@ -1,0 +1,12 @@
+{
+  "case": "campaign_20261020_full_validation_none_cifar10_dirichlet_barabasi_albert_5c_20r_b32_seed1_alpha0.5_min10_m2_cached_gpu",
+  "reference": "results/campaign_20261020_extension/extension_20261020_dir05_barabasi_20r_seed1_metrics.csv",
+  "columns": [
+    "avg_test_accuracy",
+    "avg_test_loss",
+    "avg_train_loss"
+  ],
+  "rounds": 20,
+  "max_absolute_difference": 0.0,
+  "scope": "One full CIFAR-10 baseline comparison of immutable cache reuse and parallel_2_workers against serial cached_gpu."
+}

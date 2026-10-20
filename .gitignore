@@ -30,3 +30,8 @@ results/campaign_20261014/progress.json
 results/campaign_20261014/queue_order.json
 results/campaign_20261020_extension/progress.json
 results/extension_runner_smoke/
+results/campaign_20261020_full/execution_logs/
+results/campaign_20261020_full/controller.lock
+results/campaign_20261020_full/progress.json
+results/campaign_20261020_full/dashboard-build.log
+results/campaign_20261020_full/dashboard-error.json

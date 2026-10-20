@@ -2,6 +2,12 @@ Secure Decentralized Federated Learning
 
 ## Final results and artifacts
 
+The [full three-seed Dirichlet/topology extension](results/campaign_20261020_full/README.md)
+is now running: 1,440 new experiments, with Dirichlet alpha 0.1/0.5/1.0 and
+Caveman/Barabasi-Albert comparisons. Its partial measurements are separate
+from the completed 402-run artifacts below. Final slides and the downloadable
+dashboard will be refreshed after the extension finishes and is validated.
+
 The final MNIST, Fashion-MNIST and CIFAR-10 campaign completed **402/402 runs**: 360 validation, 30 sensitivity and 12 local HTTP network demos. The [campaign guide](results/campaign_20261014/README.md) documents the design, source CSVs, reproduction commands, findings and limitations.
 
 - [Final main thesis](docs/Secure_DFL_Diplomatiki_Teliki_100plus_FINAL.docx): 103 pages, 35 figures and 38 tables, including the 402-run evaluation, revised abstracts and conclusions, full validation and sensitivity tables, and automatic contents and lists.
