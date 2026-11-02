@@ -35,3 +35,8 @@ results/campaign_20261020_full/controller.lock
 results/campaign_20261020_full/progress.json
 results/campaign_20261020_full/dashboard-build.log
 results/campaign_20261020_full/dashboard-error.json
+
+# Bounded-session live controller state; final scope/evidence remain versioned.
+results/campaign_20261102_reduced/progress.json
+results/campaign_20261102_reduced/watchdog.log
+results/campaign_20261102_reduced/hard_deadline.json

@@ -2,22 +2,30 @@ Secure Decentralized Federated Learning
 
 ## Final results and artifacts
 
-The [full three-seed Dirichlet/topology extension](results/campaign_20261020_full/README.md)
-is now running: 1,440 new experiments, with Dirichlet alpha 0.1/0.5/1.0 and
-Caveman/Barabasi-Albert comparisons. Its partial measurements are separate
-from the completed 402-run artifacts below. Final slides and the downloadable
-dashboard will be refreshed after the extension finishes and is validated.
+The [reduced three-seed comparison series](results/campaign_20261102_reduced/README.md)
+completed **228/228 selected runs**, with **76 configurations x 3 seeds**.
+It reuses 119 previously completed runs and adds 109 runs within a bounded
+laptop session. Full datasets and original training settings were retained.
+The original 402 plus this subset give **630 unique completed runs**.
+The wider [1440-run design](results/campaign_20261020_full/README.md) is deferred,
+with 1212 runs still pending; it is not a completed campaign.
+The [Greek findings note](results/campaign_20261102_reduced/findings_el.md)
+documents the tested scope, mean/sample SD and limitations.
 
 The final MNIST, Fashion-MNIST and CIFAR-10 campaign completed **402/402 runs**: 360 validation, 30 sensitivity and 12 local HTTP network demos. The [campaign guide](results/campaign_20261014/README.md) documents the design, source CSVs, reproduction commands, findings and limitations.
 
 - [Final main thesis](docs/Secure_DFL_Diplomatiki_Teliki_100plus_FINAL.docx): 103 pages, 35 figures and 38 tables, including the 402-run evaluation, revised abstracts and conclusions, full validation and sensitivity tables, and automatic contents and lists.
-- [Final PowerPoint](docs/Secure_DFL_Thesis_Presentation_UPDATED.pptx): 38 slides and 27 editable charts. `Secure_DFL_Thesis_Presentation.pptx` contains the same final deck for compatibility.
+- [Final PowerPoint](docs/Secure_DFL_Thesis_Presentation_UPDATED.pptx): 47 slides and 38 editable charts, including native sample-SD error bars for the selected extension. `Secure_DFL_Thesis_Presentation.pptx` contains the same final deck for compatibility.
 - [Final Word technical report](docs/Secure_DFL_Technical_Report_COMPLETE_WITH_PLATFORM_FINAL.docx): updated results, sample SD, conclusions and methodological boundaries.
 - [Offline dashboard](dashboard/README.md): download the self-contained HTML to explore all results, filters and source records.
 
 Validation/sensitivity use full datasets and 20 rounds. Network demos use local HTTP, two rounds and subsets. Non-time metrics combine validated execution profiles; original and accelerated timings remain separate. The approximately 60% saving refers only to HE processing compared with selective HE in matching runs. Accuracy preservation does not establish privacy equivalence.
 
-The main thesis, technical report, presentation and dashboard use the same final 402-run campaign. Historical audit and Docker examples are explicitly identified as separate demonstrations.
+The main thesis and Word technical report retain the original 402-run scope.
+The updated presentation and dashboard additionally include the 228-run selected
+extension, with all pending wider-grid cases explicitly identified. Updating
+the Word thesis with this additional evidence remains a separate writing step.
+Historical audit, Docker and server microbenchmarks are separate demonstrations.
 
 This project is a thesis prototype for decentralized federated learning.
 

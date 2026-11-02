@@ -16,11 +16,12 @@ export function grouped(rows, dimensions, measures) {
     out.dataset_label=datasetLabels[out.dataset]??out.dataset;
     const split=out.split_type==='dirichlet'?`Dirichlet α=${out.dirichlet_alpha}`:out.split_type==='non_iid'?'non-IID shards':'IID';
     out.configuration=`${out.campaign==='extension_20261020'?'New':out.campaign?'Original':''} · ${out.workflow??''} · ${out.num_clients}c · ${out.topology==='fully_connected'?'full':out.topology} · ${split}${out.workflow==='sensitivity'&&out.he_ratio!=null?` · ratio ${out.he_ratio}`:''}${out.execution_profile?` · ${out.execution_profile==='cached_gpu'?'Accelerated':'Original'}`:''}${out.timing_environment?` · ${out.timing_environment}`:''}`;
+    if(out.execution_session)out.configuration+=` · ${out.execution_session.replace('session_','')}`;
     out.dataset_configuration=out.dataset_label+' · '+out.configuration;
     return out;
   });
 }
-const matchKey=(r,profile=false)=>JSON.stringify([r.campaign,r.dataset,r.seed,r.num_clients,r.topology,r.split_type,r.dirichlet_alpha??null,r.dirichlet_min_samples??null,r.shards_per_client??null,r.caveman_cliques??null,r.barabasi_m??null,...(profile?[r.execution_profile,r.timing_environment??null]:[])]);
+const matchKey=(r,profile=false)=>JSON.stringify([r.campaign,r.dataset,r.seed,r.num_clients,r.topology,r.split_type,r.dirichlet_alpha??null,r.dirichlet_min_samples??null,r.shards_per_client??null,r.caveman_cliques??null,r.barabasi_m??null,...(profile?[r.execution_profile,r.timing_environment??null,r.execution_session??null]:[])]);
 export function accuracyComparisons(rows){
   const validation=rows.filter(r=>r.workflow==='validation');
   const base=new Map(validation.filter(r=>r.security_mode==='none').map(r=>[matchKey(r),r]));

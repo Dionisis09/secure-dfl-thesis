@@ -1,0 +1,28 @@
+{
+  "captured_at": "2026-10-20T09:57:05.634461+00:00",
+  "files": {
+    "adaptive.py": "2fcfe31e612b38ce1cfb1eef28fb0866725dd3a36616e24b13d6bc2d5c39b3e5",
+    "aggregation.py": "47b07ffe3121b223a7777288a564efaad117cac614505aa0be42d906d7115c73",
+    "analyze_cifar_diagnostics.py": "dd76ebe08246fdefa601528a8242ab64f880b7bd71d2ce83da7521eae9c6c109",
+    "audit_cli.py": "cd8c66ba18413c8511baabadf5143268d0a7021d5828fe2b96ed8ca60e29c20b",
+    "client.py": "62f6b8736ea1ec13c266f0fdd67270586a68aa04a99aabe2bfa54bdef7872334",
+    "compare_results.py": "77406cd91737b3d0db473a7ab43c4adb8b02db905c1268d249c3223778f6dbb1",
+    "config.py": "5f970c1bf569a3eeb207478bf604863c406034c2f226dc344e84241e340c0a73",
+    "data_utils.py": "e580ddb9605157beba5fd2db9d4ab0bccda74d9cae82dc0f4e970241ebf08e23",
+    "demo_blockchain_attack.py": "1aca95a2ea703b754ebbb5291bd6dfb69d04568f7fa60612f122a2e647c23d34",
+    "experiment_diagnostics.py": "e8804299b38f1cf2af250aaeee499aea02eeebe1dc355171131bf28880808396",
+    "he_utils.py": "9cee09fd703c5c899fa790bafb148bccb3de3d64e12ec97a950df5f78b4bb139",
+    "main.py": "c1dbddd924d638f1c4f0d809d4073d1aa467e9805106fbd236d1d24fd695784c",
+    "masking.py": "c913797dbb798e663c636e577f7cfdde18b2f88c288a2915ddcb31f056036055",
+    "metrics.py": "11cc35b1c295a8591949e2a80eefd022c5850de49acd8f40c692bf8bd412e1c0",
+    "model.py": "2da182f9ede3f6b4343dc7484a947545b7222f0feab90de9dd52362b1c081026",
+    "publish_extended_campaign.py": "9781ca5c2fc8130a68423d9640d985fdb81d1d20ad511226a80c83906cdf70e2",
+    "run_adaptive_sensitivity.py": "4a04f3783ae44e6324b6969b9db24c76800a83562e4e2383ca6a18b869fe5308",
+    "run_audit_self_check.py": "a09aa6f03776561c8422b75aee56e522c2b45e48ad4de4025a05b98ee7c63d8b",
+    "run_cifar_diagnostics.py": "366f9964106bfa84b277ab87753d8f89d20768dfd6c8cbb136cca54f36ea6ad5",
+    "run_extended_campaign.py": "ba2eacbe5040668bde30d03d3d3721f3ff106e8f248fa12a68da711320e8b79e",
+    "run_validation_experiments.py": "70ae7eaac67f2ceceb678d47a159d1eaa99679c84251e7e5932f46a1a19b6ea0",
+    "topology.py": "017da2018c0fee1e9642654151168e47202a90dc0e9cb43e1811ae26179b4c2a",
+    "train_utils.py": "aa8780cb9e9285e8c0b8bbf838869ae4e023c806201bea8b6bb5c69fdd7fc02b"
+  }
+}

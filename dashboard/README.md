@@ -1,11 +1,12 @@
-# Results dashboard
+# Secure DFL dashboard
 
-Download `secure-dfl-dashboard.html` and open it in a browser. The file contains the complete reviewed snapshot and runtime; it works offline without a Python or Node server. GitHub's file viewer does not execute the interactive page.
+Open `secure-dfl-dashboard.html` locally for the complete offline artifact.
+The original 402 runs and the selected 228-run extension remain separate.
+The extension is a subset of the broader 1440-run grid; 1212 cases are deferred.
+The default comparison scope is Selected 228, not the unfinished wider plan.
+The selected 228 scope has 76 complete groups with seeds 1/2/3; SD is sample SD.
+Timing comparisons separate execution profile, concurrency and session.
 
-The full campaign has 402 completed runs: 360 validation, 30 sensitivity and 12 local HTTP network demos. Whole-campaign totals remain visible independently of the selected-scope cards. Filters, charts, source inspection and tables use the selected population.
-
-Accuracy, loss and calculated communication combine numerically validated execution profiles at the same configuration. Timing statistics retain separate `legacy` and `cached_gpu` groups. Validation uses three seeds and sample SD. Sensitivity and network demos use one seed; their SD is unavailable.
-
-The matched HE chart compares adaptive ratio 0.4 with selective HE using only matching cached_gpu validation runs. Its approximately 60% time reduction covers HE processing only. The source definitions and methodological notes explain the scope and limitations.
-
-The authoritative source CSVs and manifests are in [the campaign directory](../results/campaign_20261014/README.md). This HTML is the final snapshot; it does not start or rerun experiments.
+The existing authored app identity and protected runtime are retained.
+Local preview: http://127.0.0.1:8767/?view=1&tab=dashboard
+Source evidence: results/campaign_20261102_reduced and campaign_20261020_full.

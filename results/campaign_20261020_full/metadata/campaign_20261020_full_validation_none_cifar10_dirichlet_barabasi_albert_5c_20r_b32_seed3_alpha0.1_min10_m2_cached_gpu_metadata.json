@@ -1,0 +1,168 @@
+{
+  "experiment_name": "campaign_20261020_full_validation_none_cifar10_dirichlet_barabasi_albert_5c_20r_b32_seed3_alpha0.1_min10_m2_cached_gpu",
+  "security_mode": "none",
+  "seed": 3,
+  "num_clients": 5,
+  "num_rounds": 20,
+  "local_epochs": 1,
+  "batch_size": 32,
+  "learning_rate": 0.01,
+  "dataset": "cifar10",
+  "topology": "barabasi_albert",
+  "split_type": "dirichlet",
+  "dirichlet_alpha": 0.1,
+  "dirichlet_min_samples": 10,
+  "shards_per_client": null,
+  "caveman_cliques": null,
+  "barabasi_m": 2,
+  "device": "cuda",
+  "execution_profile": "cached_gpu",
+  "he_scheme": "ckks",
+  "he_poly_modulus_degree": 8192,
+  "he_scale_bits": 40,
+  "he_coeff_mod_bits": "60,40,40,60",
+  "he_selected_layer": "final",
+  "adaptive_policy": "topk_risk",
+  "adaptive_he_target_ratio": 0.4,
+  "adaptive_risk_threshold": 0.0,
+  "adaptive_he_every_n_rounds": 5,
+  "adaptive_min_he_targets": 1,
+  "partition_clients": [
+    {
+      "client_id": 0,
+      "samples": 7178,
+      "class_counts": {
+        "0": 521,
+        "1": 397,
+        "2": 1105,
+        "3": 0,
+        "4": 0,
+        "5": 221,
+        "6": 4478,
+        "7": 0,
+        "8": 58,
+        "9": 398
+      },
+      "classes_present": 7,
+      "indices_sha256": "bef5dd5a6692c3c70f44ef25484f3519f6609ffa4ca204441ea7b349acc3292b"
+    },
+    {
+      "client_id": 1,
+      "samples": 18474,
+      "class_counts": {
+        "0": 1884,
+        "1": 243,
+        "2": 3221,
+        "3": 0,
+        "4": 0,
+        "5": 103,
+        "6": 278,
+        "7": 3783,
+        "8": 4360,
+        "9": 4602
+      },
+      "classes_present": 8,
+      "indices_sha256": "ec0ac0b729ed621ed2ced78d9e95992d7f335cf3ef36fbbcc3125687afd53b05"
+    },
+    {
+      "client_id": 2,
+      "samples": 4405,
+      "class_counts": {
+        "0": 1,
+        "1": 1692,
+        "2": 57,
+        "3": 11,
+        "4": 2320,
+        "5": 21,
+        "6": 203,
+        "7": 0,
+        "8": 100,
+        "9": 0
+      },
+      "classes_present": 8,
+      "indices_sha256": "e564b1ec46dd3eb53c23959ea49fc02d35428e3df10bcf9056483557369951b1"
+    },
+    {
+      "client_id": 3,
+      "samples": 9374,
+      "class_counts": {
+        "0": 0,
+        "1": 2613,
+        "2": 0,
+        "3": 3829,
+        "4": 2680,
+        "5": 156,
+        "6": 41,
+        "7": 47,
+        "8": 8,
+        "9": 0
+      },
+      "classes_present": 7,
+      "indices_sha256": "88faf31295a79c93ad9be2eca070228439efb51eaa587db1cc61a14c005b68a1"
+    },
+    {
+      "client_id": 4,
+      "samples": 10569,
+      "class_counts": {
+        "0": 2594,
+        "1": 55,
+        "2": 617,
+        "3": 1160,
+        "4": 0,
+        "5": 4499,
+        "6": 0,
+        "7": 1170,
+        "8": 474,
+        "9": 0
+      },
+      "classes_present": 7,
+      "indices_sha256": "a84f010022863f5bea8b15228fec09df18219049ea9245d18d34350f4ee9b61f"
+    }
+  ],
+  "partition_complete": true,
+  "topology_adjacency": {
+    "0": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "1": [
+      0,
+      3
+    ],
+    "2": [
+      0
+    ],
+    "3": [
+      0,
+      1,
+      4
+    ],
+    "4": [
+      0,
+      3
+    ]
+  },
+  "directed_transmissions_per_round": 12,
+  "aggregation": "uniform_self_and_neighbors (equal model weight, not sample weight)",
+  "fixed_graph_stationary_weights": [
+    0.29411764705882354,
+    0.17647058823529413,
+    0.11764705882352941,
+    0.23529411764705882,
+    0.17647058823529413
+  ],
+  "stationary_weight_note": "For repeated mixing without training on an undirected graph. Irregular degrees do not yield uniform consensus weights.",
+  "model": "SimpleMLP(Flatten, Linear(input,128), ReLU, Linear(128,10))",
+  "input_shape": [
+    3,
+    32,
+    32
+  ],
+  "timing_environment": "parallel_2_workers",
+  "worker_id": 0,
+  "immutable_image_cache_reused": true,
+  "campaign": "extension_20261020",
+  "execution_session": "session_20261102_bounded"
+}

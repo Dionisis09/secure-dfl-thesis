@@ -1,9 +1,13 @@
-# Full three-seed extension (in progress)
+# Full three-seed extension (wider grid deferred)
 
-The user approved 1,440 new runs, separate from the original 402-run campaign
-and the eight single-seed exploratory diagnostics. Final results are not yet
-available. The local dashboard shows actual completed/pending/failed counts
-and provisional mean/sample SD with the number of completed seeds.
+The original design contains 1,440 runs, separate from the original 402-run
+campaign and the eight single-seed exploratory diagnostics. On November 2,
+2026, a [selected subset of 228 runs](../campaign_20261102_reduced/README.md)
+was completed and verified: 76 configurations with seeds 1/2/3. The other
+1,212 runs remain deferred. No experiment workers are running. The dashboard
+and presentation report the completed subset explicitly; they do not claim
+completion of this wider grid. The selected subset reuses 119 existing outputs
+and adds 109 runs without reducing the full datasets or training settings.
 
 - 1,080 Dirichlet runs: alpha 0.1, 0.5, 1.0 on ring, fully connected, connected
   Caveman (two balanced communities) and Barabasi-Albert (m=2).
@@ -18,14 +22,16 @@ trains its clients serially with the unchanged algorithm. Timings are labeled
 `execution_validation.json` records a full 20-round CIFAR-10 baseline check:
 accuracy, training loss and test loss match the serial cached run exactly.
 
-Run/resume:
+Optional full-grid reproduction (not required for the selected results):
 
 ```powershell
 python src/run_extended_campaign.py --workers 2 --publish_dashboard
 ```
 
-The controller checkpoints progress and retries a failed job at most three
+Running the command above would resume the deferred wider grid. It is not
+started automatically. The controller checkpoints progress and retries a failed job at most three
 times. It refuses a duplicate live controller. Completed jobs are not rerun.
 When all jobs finish, run `src/summarize_extended_campaign.py` to validate all
-480 three-seed groups and write final statistics/evidence. The final PowerPoint
-will be updated after the complete results are verified.
+480 three-seed groups and write full-grid statistics/evidence. Final statistics
+for the completed 76-group subset are already available in
+`../campaign_20261102_reduced/`; the updated PowerPoint includes that subset.

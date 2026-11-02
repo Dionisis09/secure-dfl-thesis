@@ -16,6 +16,8 @@ const adaptive={...base,id:'adaptive',security_mode:'adaptive_hybrid',he_ratio:0
 assert.equal(heComparisons([selective,adaptive])[0].he_saved_percent,60);
 assert.equal(heComparisons([selective,{...adaptive,timing_environment:'serial'}]).length,0);
 assert.equal(heComparisons([selective,{...adaptive,dirichlet_alpha:0.1}]).length,0);
+assert.equal(heComparisons([{...selective,execution_session:'old'},{...adaptive,execution_session:'new'}]).length,0);
+assert.equal(grouped([{...a,execution_session:'old'},{...a,execution_session:'new'}],[...configurationDimensions,'execution_session'],{accuracy:'final_accuracy_percent'}).length,2);
 if(process.argv[2]){
  const snapshot=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
  const all=snapshot.queries.runs.rows,old=all.filter(r=>r.campaign==='original_20261014');
@@ -30,5 +32,10 @@ if(process.argv[2]){
  assert.ok(groups.every(g=>g.n<=3&&g.n>=1));
  assert.ok(groups.filter(g=>g.n===1).every(g=>g.accuracy_sd===null));
  assert.equal(snapshot.queries.campaign.rows.reduce((n,r)=>n+r.planned,0),1842);
+ if(snapshot.queries.reduced_scope){
+  assert.equal(all.filter(r=>r.comparison_scope==='Selected 228').length,228);
+  assert.equal(all.filter(r=>r.comparison_scope==='Deferred extension').length,1212);
+  assert.equal(snapshot.queries.reduced_scope.rows[0].planned,228);
+ }
 }
 console.log('PASS: alpha/campaign/graph/timing separation, pairing, partial seed groups and preserved original statistics.');

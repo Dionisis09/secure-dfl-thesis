@@ -1,0 +1,301 @@
+{
+  "experiment_name": "campaign_20261020_full_validation_none_cifar10_dirichlet_caveman_10c_20r_b32_seed2_alpha1.0_min10_cliques2_cached_gpu",
+  "security_mode": "none",
+  "seed": 2,
+  "num_clients": 10,
+  "num_rounds": 20,
+  "local_epochs": 1,
+  "batch_size": 32,
+  "learning_rate": 0.01,
+  "dataset": "cifar10",
+  "topology": "caveman",
+  "split_type": "dirichlet",
+  "dirichlet_alpha": 1.0,
+  "dirichlet_min_samples": 10,
+  "shards_per_client": null,
+  "caveman_cliques": 2,
+  "barabasi_m": null,
+  "device": "cuda",
+  "execution_profile": "cached_gpu",
+  "he_scheme": "ckks",
+  "he_poly_modulus_degree": 8192,
+  "he_scale_bits": 40,
+  "he_coeff_mod_bits": "60,40,40,60",
+  "he_selected_layer": "final",
+  "adaptive_policy": "topk_risk",
+  "adaptive_he_target_ratio": 0.4,
+  "adaptive_risk_threshold": 0.0,
+  "adaptive_he_every_n_rounds": 5,
+  "adaptive_min_he_targets": 1,
+  "partition_clients": [
+    {
+      "client_id": 0,
+      "samples": 6204,
+      "class_counts": {
+        "0": 736,
+        "1": 923,
+        "2": 156,
+        "3": 262,
+        "4": 116,
+        "5": 718,
+        "6": 427,
+        "7": 1382,
+        "8": 1244,
+        "9": 240
+      },
+      "classes_present": 10,
+      "indices_sha256": "77a33ab2050f626deec75729f114a97c4206d0cfec617b64d0e9057680aff98e"
+    },
+    {
+      "client_id": 1,
+      "samples": 4619,
+      "class_counts": {
+        "0": 181,
+        "1": 158,
+        "2": 709,
+        "3": 80,
+        "4": 984,
+        "5": 468,
+        "6": 392,
+        "7": 332,
+        "8": 1016,
+        "9": 299
+      },
+      "classes_present": 10,
+      "indices_sha256": "df541df5e60b75953f575e3bdfe3f82621b993c3ca0224fdfde36ed249e412b9"
+    },
+    {
+      "client_id": 2,
+      "samples": 2896,
+      "class_counts": {
+        "0": 903,
+        "1": 86,
+        "2": 566,
+        "3": 157,
+        "4": 249,
+        "5": 21,
+        "6": 153,
+        "7": 104,
+        "8": 446,
+        "9": 211
+      },
+      "classes_present": 10,
+      "indices_sha256": "6b54df8245568acc67a4ff43418ea79021473280b32b9e7262d8fe11656c2724"
+    },
+    {
+      "client_id": 3,
+      "samples": 5385,
+      "class_counts": {
+        "0": 189,
+        "1": 1143,
+        "2": 962,
+        "3": 649,
+        "4": 491,
+        "5": 36,
+        "6": 250,
+        "7": 876,
+        "8": 431,
+        "9": 358
+      },
+      "classes_present": 10,
+      "indices_sha256": "50d66afa81c8f253e3e1c7858f4e6e3e837b09a29ef5ada8b65ab93a921ce5a4"
+    },
+    {
+      "client_id": 4,
+      "samples": 3842,
+      "class_counts": {
+        "0": 272,
+        "1": 1058,
+        "2": 9,
+        "3": 924,
+        "4": 61,
+        "5": 473,
+        "6": 394,
+        "7": 36,
+        "8": 289,
+        "9": 326
+      },
+      "classes_present": 10,
+      "indices_sha256": "f11115c1e506a82d3cc37317c075d7137f38009bf09618e72521ac2c871241f5"
+    },
+    {
+      "client_id": 5,
+      "samples": 6924,
+      "class_counts": {
+        "0": 320,
+        "1": 224,
+        "2": 684,
+        "3": 381,
+        "4": 494,
+        "5": 1776,
+        "6": 1200,
+        "7": 819,
+        "8": 798,
+        "9": 228
+      },
+      "classes_present": 10,
+      "indices_sha256": "c9af7efe4e3e8fa4b6809fac27934f513638fca792f8deace6e46a8d11bbc989"
+    },
+    {
+      "client_id": 6,
+      "samples": 7106,
+      "class_counts": {
+        "0": 679,
+        "1": 414,
+        "2": 1019,
+        "3": 346,
+        "4": 1003,
+        "5": 544,
+        "6": 1536,
+        "7": 798,
+        "8": 332,
+        "9": 435
+      },
+      "classes_present": 10,
+      "indices_sha256": "5467d5468c7d1fbf23b84d0593cd397c06ca165d2c53f5fdc6151fc5da978c45"
+    },
+    {
+      "client_id": 7,
+      "samples": 5177,
+      "class_counts": {
+        "0": 732,
+        "1": 205,
+        "2": 210,
+        "3": 1223,
+        "4": 1159,
+        "5": 406,
+        "6": 163,
+        "7": 558,
+        "8": 278,
+        "9": 243
+      },
+      "classes_present": 10,
+      "indices_sha256": "d4b77036b2d54f9facf30e1ad7ba7cdd6ea913ffd134694364ef41f5c9c97e55"
+    },
+    {
+      "client_id": 8,
+      "samples": 5000,
+      "class_counts": {
+        "0": 878,
+        "1": 123,
+        "2": 318,
+        "3": 343,
+        "4": 304,
+        "5": 58,
+        "6": 378,
+        "7": 34,
+        "8": 90,
+        "9": 2474
+      },
+      "classes_present": 10,
+      "indices_sha256": "acb0b39313a148f755cfe0fe8279bc4ffac2c5a44722cc90c9d0721949ba6527"
+    },
+    {
+      "client_id": 9,
+      "samples": 2847,
+      "class_counts": {
+        "0": 110,
+        "1": 666,
+        "2": 367,
+        "3": 635,
+        "4": 139,
+        "5": 500,
+        "6": 107,
+        "7": 61,
+        "8": 76,
+        "9": 186
+      },
+      "classes_present": 10,
+      "indices_sha256": "0c968651d328ef203ef51dbf1f2056a83584de754ed7cfa77fd802bd00304c53"
+    }
+  ],
+  "partition_complete": true,
+  "topology_adjacency": {
+    "0": [
+      1,
+      2,
+      5,
+      7,
+      8
+    ],
+    "1": [
+      0,
+      2,
+      7,
+      8
+    ],
+    "2": [
+      0,
+      1,
+      8
+    ],
+    "3": [
+      4,
+      5,
+      6,
+      9
+    ],
+    "4": [
+      3,
+      5,
+      6,
+      9
+    ],
+    "5": [
+      0,
+      3,
+      4,
+      6
+    ],
+    "6": [
+      3,
+      4,
+      5,
+      7,
+      9
+    ],
+    "7": [
+      0,
+      1,
+      6,
+      8
+    ],
+    "8": [
+      0,
+      1,
+      2,
+      7
+    ],
+    "9": [
+      3,
+      4,
+      6
+    ]
+  },
+  "directed_transmissions_per_round": 40,
+  "aggregation": "uniform_self_and_neighbors (equal model weight, not sample weight)",
+  "fixed_graph_stationary_weights": [
+    0.12,
+    0.1,
+    0.08,
+    0.1,
+    0.1,
+    0.1,
+    0.12,
+    0.1,
+    0.1,
+    0.08
+  ],
+  "stationary_weight_note": "For repeated mixing without training on an undirected graph. Irregular degrees do not yield uniform consensus weights.",
+  "model": "SimpleMLP(Flatten, Linear(input,128), ReLU, Linear(128,10))",
+  "input_shape": [
+    3,
+    32,
+    32
+  ],
+  "timing_environment": "parallel_2_workers",
+  "worker_id": 0,
+  "immutable_image_cache_reused": true,
+  "campaign": "extension_20261020",
+  "execution_session": "session_20261102_bounded"
+}

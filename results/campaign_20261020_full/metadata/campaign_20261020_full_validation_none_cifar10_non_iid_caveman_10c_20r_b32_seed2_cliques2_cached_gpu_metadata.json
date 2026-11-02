@@ -1,0 +1,301 @@
+{
+  "experiment_name": "campaign_20261020_full_validation_none_cifar10_non_iid_caveman_10c_20r_b32_seed2_cliques2_cached_gpu",
+  "security_mode": "none",
+  "seed": 2,
+  "num_clients": 10,
+  "num_rounds": 20,
+  "local_epochs": 1,
+  "batch_size": 32,
+  "learning_rate": 0.01,
+  "dataset": "cifar10",
+  "topology": "caveman",
+  "split_type": "non_iid",
+  "dirichlet_alpha": null,
+  "dirichlet_min_samples": null,
+  "shards_per_client": 2,
+  "caveman_cliques": 2,
+  "barabasi_m": null,
+  "device": "cuda",
+  "execution_profile": "cached_gpu",
+  "he_scheme": "ckks",
+  "he_poly_modulus_degree": 8192,
+  "he_scale_bits": 40,
+  "he_coeff_mod_bits": "60,40,40,60",
+  "he_selected_layer": "final",
+  "adaptive_policy": "topk_risk",
+  "adaptive_he_target_ratio": 0.4,
+  "adaptive_risk_threshold": 0.0,
+  "adaptive_he_every_n_rounds": 5,
+  "adaptive_min_he_targets": 1,
+  "partition_clients": [
+    {
+      "client_id": 0,
+      "samples": 5000,
+      "class_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 2500,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 2500
+      },
+      "classes_present": 2,
+      "indices_sha256": "6108d6e22c981b6c2a48815bbfb23398c0cb2779ee0b46bef123d52e75c9f38a"
+    },
+    {
+      "client_id": 1,
+      "samples": 5000,
+      "class_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 2500,
+        "4": 0,
+        "5": 2500,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "classes_present": 2,
+      "indices_sha256": "3ad6323568a5bdb8c107f9750af04e70582724af0daf6c55903871872cf6c42d"
+    },
+    {
+      "client_id": 2,
+      "samples": 5000,
+      "class_counts": {
+        "0": 0,
+        "1": 2500,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 2500,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "classes_present": 2,
+      "indices_sha256": "96e1259502ded875a6eb00d61ee75aeb1d84cbec81dae3844414118fb864cca1"
+    },
+    {
+      "client_id": 3,
+      "samples": 5000,
+      "class_counts": {
+        "0": 2500,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 2500,
+        "9": 0
+      },
+      "classes_present": 2,
+      "indices_sha256": "39015adeca07e7bf82a74b9bf67c5b2c38fad7d434458c7b8e7cfcb5aa3f7b61"
+    },
+    {
+      "client_id": 4,
+      "samples": 5000,
+      "class_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 2500,
+        "9": 2500
+      },
+      "classes_present": 2,
+      "indices_sha256": "30c2019cb901705966f5aae25dbd85105e1e39ccc44a1c83319d6c5a11fa9b59"
+    },
+    {
+      "client_id": 5,
+      "samples": 5000,
+      "class_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 2500,
+        "5": 0,
+        "6": 2500,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "classes_present": 2,
+      "indices_sha256": "8cbb91a9d759949c25f0279ec262625654e036a930e349a4a8bb3ef53e3f61d2"
+    },
+    {
+      "client_id": 6,
+      "samples": 5000,
+      "class_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 2500,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 2500,
+        "8": 0,
+        "9": 0
+      },
+      "classes_present": 2,
+      "indices_sha256": "a2fd269a917ded64c1cd602fa5d1254844f915b8d22d24745b041ceb7b96be34"
+    },
+    {
+      "client_id": 7,
+      "samples": 5000,
+      "class_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 2500,
+        "7": 2500,
+        "8": 0,
+        "9": 0
+      },
+      "classes_present": 2,
+      "indices_sha256": "6d0d80bd87b5c2318b9c9a793bf68225230565c6726ae2f56206d7c37f927e5e"
+    },
+    {
+      "client_id": 8,
+      "samples": 5000,
+      "class_counts": {
+        "0": 0,
+        "1": 2500,
+        "2": 2500,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "classes_present": 2,
+      "indices_sha256": "4cb25dd669f089c9eff0404067da2e5c5bd367e12a7793136b3b14e7296321e5"
+    },
+    {
+      "client_id": 9,
+      "samples": 5000,
+      "class_counts": {
+        "0": 2500,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 2500,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "classes_present": 2,
+      "indices_sha256": "bbdd8ffc2960cb5c37fb0b4a55c2b6286d1910e4de42ea6cb05c5a0efd1f5e8d"
+    }
+  ],
+  "partition_complete": true,
+  "topology_adjacency": {
+    "0": [
+      1,
+      2,
+      5,
+      7,
+      8
+    ],
+    "1": [
+      0,
+      2,
+      7,
+      8
+    ],
+    "2": [
+      0,
+      1,
+      8
+    ],
+    "3": [
+      4,
+      5,
+      6,
+      9
+    ],
+    "4": [
+      3,
+      5,
+      6,
+      9
+    ],
+    "5": [
+      0,
+      3,
+      4,
+      6
+    ],
+    "6": [
+      3,
+      4,
+      5,
+      7,
+      9
+    ],
+    "7": [
+      0,
+      1,
+      6,
+      8
+    ],
+    "8": [
+      0,
+      1,
+      2,
+      7
+    ],
+    "9": [
+      3,
+      4,
+      6
+    ]
+  },
+  "directed_transmissions_per_round": 40,
+  "aggregation": "uniform_self_and_neighbors (equal model weight, not sample weight)",
+  "fixed_graph_stationary_weights": [
+    0.12,
+    0.1,
+    0.08,
+    0.1,
+    0.1,
+    0.1,
+    0.12,
+    0.1,
+    0.1,
+    0.08
+  ],
+  "stationary_weight_note": "For repeated mixing without training on an undirected graph. Irregular degrees do not yield uniform consensus weights.",
+  "model": "SimpleMLP(Flatten, Linear(input,128), ReLU, Linear(128,10))",
+  "input_shape": [
+    3,
+    32,
+    32
+  ],
+  "timing_environment": "parallel_2_workers",
+  "worker_id": 1,
+  "immutable_image_cache_reused": true,
+  "campaign": "extension_20261020",
+  "execution_session": "session_20261102_bounded"
+}
