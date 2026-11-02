@@ -47,5 +47,20 @@
       "native_word_open_and_export_verified": true,
       "visual_review_complete": true
     }
-  ]
+  ],
+  "presentation": {
+    "repository_path": "docs/Secure_DFL_Thesis_Presentation_UPDATED.pptx",
+    "sha256": "866d2e07b274801cc416eba6712128f7db2a1ea2a8096d55add44a148dc2f037",
+    "slides": 48,
+    "native_charts": 38,
+    "native_tables": 2,
+    "clarification_slides": [
+      22,
+      23
+    ],
+    "original_chart_workbook_parts_preserved": true,
+    "native_powerpoint_open_and_render_verified": true,
+    "new_native_table_edit_save_reopen_verified": true,
+    "unchanged_original_slide_bodies_pixel_identical": true
+  }
 }

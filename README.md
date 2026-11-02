@@ -15,7 +15,7 @@ documents the tested scope, mean/sample SD and limitations.
 The final MNIST, Fashion-MNIST and CIFAR-10 campaign completed **402/402 runs**: 360 validation, 30 sensitivity and 12 local HTTP network demos. The [campaign guide](results/campaign_20261014/README.md) documents the design, source CSVs, reproduction commands, findings and limitations.
 
 - [Final main thesis](docs/Secure_DFL_Diplomatiki_Teliki_100plus_FINAL.docx): 110 pages, 38 figures and 42 tables, including the original 402-run evaluation and the selected 228-run extension, revised Greek/English abstracts and conclusions, sample-SD charts, and updated automatic contents and lists.
-- [Final PowerPoint](docs/Secure_DFL_Thesis_Presentation_UPDATED.pptx): 47 slides and 38 editable charts, including native sample-SD error bars for the selected extension. `Secure_DFL_Thesis_Presentation.pptx` contains the same final deck for compatibility.
+- [Final PowerPoint](docs/Secure_DFL_Thesis_Presentation_UPDATED.pptx): 48 slides and 38 editable charts, including native sample-SD error bars for the selected extension and a CIFAR-10 clarification after slide 22. `Secure_DFL_Thesis_Presentation.pptx` contains the same final deck for compatibility.
 - [Final Word technical report](docs/Secure_DFL_Technical_Report_COMPLETE_WITH_PLATFORM_FINAL.docx): 50 pages, with the original and supplementary results, sample SD, conclusions and methodological boundaries.
 - [Offline dashboard](dashboard/README.md): download the self-contained HTML to explore all results, filters and source records.
 
