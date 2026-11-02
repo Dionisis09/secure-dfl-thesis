@@ -1,0 +1,51 @@
+{
+  "updated_on": "2026-11-02",
+  "documents": [
+    {
+      "document": "thesis",
+      "repository_path": "docs/Secure_DFL_Diplomatiki_Teliki_100plus_FINAL.docx",
+      "pages": 110,
+      "figures": 38,
+      "tables": 42,
+      "sha256": "a371e0b4b401add707be067681274fdd420d5152a95d05d722ace6e415f3f8f5",
+      "new_section": "11.4",
+      "selected_runs": 228,
+      "configurations": 76,
+      "seeds": [
+        1,
+        2,
+        3
+      ],
+      "original_runs": 402,
+      "total_unique_completed": 630,
+      "wider_grid_deferred": 1212,
+      "original_numerical_tables_preserved": true,
+      "original_media_preserved": true,
+      "native_word_open_and_export_verified": true,
+      "visual_review_complete": true
+    },
+    {
+      "document": "report",
+      "repository_path": "docs/Secure_DFL_Technical_Report_COMPLETE_WITH_PLATFORM_FINAL.docx",
+      "pages": 50,
+      "figures": 29,
+      "tables": 24,
+      "sha256": "e94fdf3b0949dfc1366e38b3f9cbf48b0add2179803df26773a3edc1ae1e81f1",
+      "new_section": "13.4",
+      "selected_runs": 228,
+      "configurations": 76,
+      "seeds": [
+        1,
+        2,
+        3
+      ],
+      "original_runs": 402,
+      "total_unique_completed": 630,
+      "wider_grid_deferred": 1212,
+      "original_numerical_tables_preserved": true,
+      "original_media_preserved": true,
+      "native_word_open_and_export_verified": true,
+      "visual_review_complete": true
+    }
+  ]
+}
