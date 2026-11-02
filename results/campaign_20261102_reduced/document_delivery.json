@@ -7,7 +7,7 @@
       "pages": 110,
       "figures": 38,
       "tables": 42,
-      "sha256": "a371e0b4b401add707be067681274fdd420d5152a95d05d722ace6e415f3f8f5",
+      "sha256": "f895039e5cb89b17bbcb9d292105258ecb63dd3aaa84fc52eb93bd496b0e542c",
       "new_section": "11.4",
       "selected_runs": 228,
       "configurations": 76,
@@ -22,15 +22,20 @@
       "original_numerical_tables_preserved": true,
       "original_media_preserved": true,
       "native_word_open_and_export_verified": true,
-      "visual_review_complete": true
+      "visual_review_complete": true,
+      "bibliography_review_date": "2026-11-02",
+      "bibliography_entries": 23,
+      "citation_reference_mapping_verified": true,
+      "uncited_reference_count": 0,
+      "undefined_citation_count": 0
     },
     {
       "document": "report",
       "repository_path": "docs/Secure_DFL_Technical_Report_COMPLETE_WITH_PLATFORM_FINAL.docx",
-      "pages": 50,
+      "pages": 51,
       "figures": 29,
       "tables": 24,
-      "sha256": "e94fdf3b0949dfc1366e38b3f9cbf48b0add2179803df26773a3edc1ae1e81f1",
+      "sha256": "8022f147acb89892db8abf3a9f09f8a7ca33642e134b8fadc7677affc860082f",
       "new_section": "13.4",
       "selected_runs": 228,
       "configurations": 76,
@@ -45,7 +50,12 @@
       "original_numerical_tables_preserved": true,
       "original_media_preserved": true,
       "native_word_open_and_export_verified": true,
-      "visual_review_complete": true
+      "visual_review_complete": true,
+      "bibliography_review_date": "2026-11-02",
+      "bibliography_entries": 23,
+      "citation_reference_mapping_verified": true,
+      "uncited_reference_count": 0,
+      "undefined_citation_count": 0
     }
   ],
   "presentation": {

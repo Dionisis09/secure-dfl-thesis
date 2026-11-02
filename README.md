@@ -16,7 +16,7 @@ The final MNIST, Fashion-MNIST and CIFAR-10 campaign completed **402/402 runs**:
 
 - [Final main thesis](docs/Secure_DFL_Diplomatiki_Teliki_100plus_FINAL.docx): 110 pages, 38 figures and 42 tables, including the original 402-run evaluation and the selected 228-run extension, revised Greek/English abstracts and conclusions, sample-SD charts, and updated automatic contents and lists.
 - [Final PowerPoint](docs/Secure_DFL_Thesis_Presentation_UPDATED.pptx): 48 slides and 38 editable charts, including native sample-SD error bars for the selected extension and a CIFAR-10 clarification after slide 22. `Secure_DFL_Thesis_Presentation.pptx` contains the same final deck for compatibility.
-- [Final Word technical report](docs/Secure_DFL_Technical_Report_COMPLETE_WITH_PLATFORM_FINAL.docx): 50 pages, with the original and supplementary results, sample SD, conclusions and methodological boundaries.
+- [Final Word technical report](docs/Secure_DFL_Technical_Report_COMPLETE_WITH_PLATFORM_FINAL.docx): 51 pages, with the original and supplementary results, sample SD, conclusions, methodological boundaries and automatic contents.
 - [Offline dashboard](dashboard/README.md): download the self-contained HTML to explore all results, filters and source records.
 
 Validation/sensitivity use full datasets and 20 rounds. Network demos use local HTTP, two rounds and subsets. Non-time metrics combine validated execution profiles; original and accelerated timings remain separate. The approximately 60% saving refers only to HE processing compared with selective HE in matching runs. Accuracy preservation does not establish privacy equivalence.
@@ -25,6 +25,7 @@ The main thesis, Word technical report, presentation and dashboard distinguish
 the original 402-run series from the completed 228-run selected extension.
 The documents include the new topology and Dirichlet results, bounded CIFAR-10
 interpretation, mean/sample SD from three seeds, and the deferred wider-grid scope.
+Both Word documents include 23 bibliography entries matched to in-text citations, corrected publication metadata and links to the original and supplementary evidence.
 Original numerical tables and media are preserved. Document integrity and review
 records are in [document_delivery.json](results/campaign_20261102_reduced/document_delivery.json).
 Historical audit, Docker and server microbenchmarks are separate demonstrations.
