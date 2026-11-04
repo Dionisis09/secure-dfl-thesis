@@ -87,9 +87,9 @@
   ],
   "presentation": {
     "repository_path": "docs/Secure_DFL_Thesis_Presentation_UPDATED.pptx",
-    "sha256": "854f09a2f9036eae166de9cc59368bab54079ed1911d0e4b9c98d502d985e7f6",
-    "slides": 48,
-    "native_charts": 39,
+    "sha256": "86454c124eb0bff452a94f4647b91dbf951b46312ce1a852e25f2489bd3213a2",
+    "slides": 58,
+    "native_charts": 64,
     "native_tables": 2,
     "clarification_slides": [
       22,
@@ -116,6 +116,30 @@
       33
     ],
     "learning_curve_values_preserved": 600,
-    "learning_curve_other_slides_pixel_identical": 45
+    "learning_curve_other_slides_pixel_identical": 45,
+    "baseline_curve_slides": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49
+    ],
+    "additional_comparison_slides": [
+      55,
+      56
+    ],
+    "baseline_configurations": 52,
+    "baseline_runs": 156,
+    "new_native_charts": 25,
+    "new_chart_numeric_mismatches": 0,
+    "new_chart_mean_or_maximum_values_checked": 1294,
+    "new_chart_sample_sd_values_checked": 1288,
+    "new_charts_native_edit_resize_save_reopen_verified": true,
+    "source_slide_bodies_preserved": 48,
+    "new_slides_visually_reviewed": true,
+    "source_evidence": "results/campaign_20261102_reduced/presentation_baseline_curves.json"
   }
 }

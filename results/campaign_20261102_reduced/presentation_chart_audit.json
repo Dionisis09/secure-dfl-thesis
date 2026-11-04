@@ -1,9 +1,9 @@
 {
   "updated_on": "2026-11-04",
   "presentation_path": "docs/Secure_DFL_Thesis_Presentation_UPDATED.pptx",
-  "sha256": "854f09a2f9036eae166de9cc59368bab54079ed1911d0e4b9c98d502d985e7f6",
+  "sha256": "86454c124eb0bff452a94f4647b91dbf951b46312ce1a852e25f2489bd3213a2",
   "original_native_charts": 38,
-  "final_native_charts": 39,
+  "final_native_charts": 64,
   "chart_checks": 135,
   "numeric_values_checked": 1009,
   "numeric_mismatches": 0,
@@ -842,5 +842,619 @@
     "marker_display": "one different method glyph per round, cycling through five methods; complete continuous curves retained",
     "other_slides_pixel_identical": 45,
     "all_chart_categories_values_errorbars_and_existing_embedded_workbooks_preserved": true
-  }
+  },
+  "baseline_extension_review": {
+    "sha256": "86454c124eb0bff452a94f4647b91dbf951b46312ce1a852e25f2489bd3213a2",
+    "slides": 58,
+    "native_charts": 64,
+    "new_charts": 25,
+    "new_slides": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      55,
+      56
+    ],
+    "new_mean_or_maximum_values_checked": 1294,
+    "new_sample_sd_values_checked": 1288,
+    "numeric_mismatches": 0,
+    "footers_verified": 58,
+    "original_slide_bodies_pixel_identical": 48,
+    "original_chart_workbook_bytes_preserved": true,
+    "new_charts_native_edit_resize_save_reopen_verified": true,
+    "final_native_powerpoint_render_without_repair": true,
+    "visually_reviewed_new_slides": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      55,
+      56
+    ],
+    "coverage": {
+      "unique_baseline_configurations": 52,
+      "unique_baseline_runs": 156,
+      "seeds": [
+        1,
+        2,
+        3
+      ],
+      "rounds": 20,
+      "raw_accuracy_values_checked": 3120,
+      "displayed_baseline_curves": 64,
+      "displayed_baseline_mean_points": 1280,
+      "matched_accuracy_pairs": 432
+    }
+  },
+  "new_chart_checks": [
+    {
+      "slide": 42,
+      "chart": "ppt/slides/charts/chart15.xml",
+      "series": "Ring",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 42,
+      "chart": "ppt/slides/charts/chart15.xml",
+      "series": "Πλήρης",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 42,
+      "chart": "ppt/slides/charts/chart26.xml",
+      "series": "Ring",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 42,
+      "chart": "ppt/slides/charts/chart26.xml",
+      "series": "Πλήρης",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 42,
+      "chart": "ppt/slides/charts/chart33.xml",
+      "series": "Caveman",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 42,
+      "chart": "ppt/slides/charts/chart33.xml",
+      "series": "Barabási",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 43,
+      "chart": "ppt/slides/charts/chart34.xml",
+      "series": "Ring",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 43,
+      "chart": "ppt/slides/charts/chart34.xml",
+      "series": "Πλήρης",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 43,
+      "chart": "ppt/slides/charts/chart35.xml",
+      "series": "Ring",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 43,
+      "chart": "ppt/slides/charts/chart35.xml",
+      "series": "Πλήρης",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 43,
+      "chart": "ppt/slides/charts/chart36.xml",
+      "series": "Caveman",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 43,
+      "chart": "ppt/slides/charts/chart36.xml",
+      "series": "Barabási",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 44,
+      "chart": "ppt/slides/charts/chart37.xml",
+      "series": "Ring",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 44,
+      "chart": "ppt/slides/charts/chart37.xml",
+      "series": "Πλήρης",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 44,
+      "chart": "ppt/slides/charts/chart38.xml",
+      "series": "Ring",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 44,
+      "chart": "ppt/slides/charts/chart38.xml",
+      "series": "Πλήρης",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 44,
+      "chart": "ppt/slides/charts/chart39.xml",
+      "series": "Caveman",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 44,
+      "chart": "ppt/slides/charts/chart39.xml",
+      "series": "Barabási",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 45,
+      "chart": "ppt/slides/charts/chart16.xml",
+      "series": "Ring",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 45,
+      "chart": "ppt/slides/charts/chart16.xml",
+      "series": "Πλήρης",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 45,
+      "chart": "ppt/slides/charts/chart17.xml",
+      "series": "Ring",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 45,
+      "chart": "ppt/slides/charts/chart17.xml",
+      "series": "Πλήρης",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 45,
+      "chart": "ppt/slides/charts/chart18.xml",
+      "series": "Caveman",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 45,
+      "chart": "ppt/slides/charts/chart18.xml",
+      "series": "Barabási",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 46,
+      "chart": "ppt/slides/charts/chart19.xml",
+      "series": "Ring",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 46,
+      "chart": "ppt/slides/charts/chart19.xml",
+      "series": "Πλήρης",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 46,
+      "chart": "ppt/slides/charts/chart19.xml",
+      "series": "Caveman",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 46,
+      "chart": "ppt/slides/charts/chart19.xml",
+      "series": "Barabási",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 46,
+      "chart": "ppt/slides/charts/chart20.xml",
+      "series": "Ring",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 46,
+      "chart": "ppt/slides/charts/chart20.xml",
+      "series": "Πλήρης",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 46,
+      "chart": "ppt/slides/charts/chart20.xml",
+      "series": "Caveman",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 46,
+      "chart": "ppt/slides/charts/chart20.xml",
+      "series": "Barabási",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 46,
+      "chart": "ppt/slides/charts/chart21.xml",
+      "series": "Caveman",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 46,
+      "chart": "ppt/slides/charts/chart21.xml",
+      "series": "Barabási",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 47,
+      "chart": "ppt/slides/charts/chart22.xml",
+      "series": "Ring",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 47,
+      "chart": "ppt/slides/charts/chart22.xml",
+      "series": "Πλήρης",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 47,
+      "chart": "ppt/slides/charts/chart22.xml",
+      "series": "Caveman",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 47,
+      "chart": "ppt/slides/charts/chart22.xml",
+      "series": "Barabási",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 47,
+      "chart": "ppt/slides/charts/chart23.xml",
+      "series": "Ring",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 47,
+      "chart": "ppt/slides/charts/chart23.xml",
+      "series": "Πλήρης",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 47,
+      "chart": "ppt/slides/charts/chart23.xml",
+      "series": "Caveman",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 47,
+      "chart": "ppt/slides/charts/chart23.xml",
+      "series": "Barabási",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 47,
+      "chart": "ppt/slides/charts/chart24.xml",
+      "series": "Caveman",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 47,
+      "chart": "ppt/slides/charts/chart24.xml",
+      "series": "Barabási",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 48,
+      "chart": "ppt/slides/charts/chart25.xml",
+      "series": "IID",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 48,
+      "chart": "ppt/slides/charts/chart25.xml",
+      "series": "Dir α=0,1",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 48,
+      "chart": "ppt/slides/charts/chart25.xml",
+      "series": "Dir α=0,5",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 48,
+      "chart": "ppt/slides/charts/chart25.xml",
+      "series": "Dir α=1,0",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 48,
+      "chart": "ppt/slides/charts/chart25.xml",
+      "series": "Shards",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 48,
+      "chart": "ppt/slides/charts/chart27.xml",
+      "series": "IID",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 48,
+      "chart": "ppt/slides/charts/chart27.xml",
+      "series": "Dir α=0,1",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 48,
+      "chart": "ppt/slides/charts/chart27.xml",
+      "series": "Dir α=0,5",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 48,
+      "chart": "ppt/slides/charts/chart27.xml",
+      "series": "Dir α=1,0",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 48,
+      "chart": "ppt/slides/charts/chart27.xml",
+      "series": "Shards",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 49,
+      "chart": "ppt/slides/charts/chart28.xml",
+      "series": "IID",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 49,
+      "chart": "ppt/slides/charts/chart28.xml",
+      "series": "Dir α=0,1",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 49,
+      "chart": "ppt/slides/charts/chart28.xml",
+      "series": "Dir α=0,5",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 49,
+      "chart": "ppt/slides/charts/chart28.xml",
+      "series": "Dir α=1,0",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 49,
+      "chart": "ppt/slides/charts/chart28.xml",
+      "series": "Shards",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 49,
+      "chart": "ppt/slides/charts/chart29.xml",
+      "series": "IID",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 49,
+      "chart": "ppt/slides/charts/chart29.xml",
+      "series": "Dir α=0,1",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 49,
+      "chart": "ppt/slides/charts/chart29.xml",
+      "series": "Dir α=0,5",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 49,
+      "chart": "ppt/slides/charts/chart29.xml",
+      "series": "Dir α=1,0",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 49,
+      "chart": "ppt/slides/charts/chart29.xml",
+      "series": "Shards",
+      "values": 20,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 55,
+      "chart": "ppt/slides/charts/chart30.xml",
+      "series": "Αρχικά 402",
+      "values": 3,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 55,
+      "chart": "ppt/slides/charts/chart30.xml",
+      "series": "Επιλεγμένα 228",
+      "values": 3,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 56,
+      "chart": "ppt/slides/charts/chart31.xml",
+      "series": "Selective HE",
+      "values": 2,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 56,
+      "chart": "ppt/slides/charts/chart31.xml",
+      "series": "Adaptive",
+      "values": 2,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 56,
+      "chart": "ppt/slides/charts/chart32.xml",
+      "series": "Selective HE",
+      "values": 2,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "slide": 56,
+      "chart": "ppt/slides/charts/chart32.xml",
+      "series": "Adaptive",
+      "values": 2,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    }
+  ]
 }
