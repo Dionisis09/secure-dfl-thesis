@@ -1,0 +1,834 @@
+{
+  "updated_on": "2026-11-04",
+  "presentation_path": "docs/Secure_DFL_Thesis_Presentation_UPDATED.pptx",
+  "sha256": "40fefe888f56f7033b2980b25fdde513c7d1d641dfaf8024d9c12f1f6e358037",
+  "original_native_charts": 38,
+  "final_native_charts": 39,
+  "chart_checks": 135,
+  "numeric_values_checked": 1009,
+  "numeric_mismatches": 0,
+  "changed_slide": 35,
+  "changed_slide_data_points": 30,
+  "change": "Sensitivity HE time is now grouped by dataset with IID/non-IID curves, matching dashboard organization. Measurements unchanged.",
+  "sources": [
+    "results/campaign_20261014/summary.csv",
+    "results/campaign_20261102_reduced/summary.csv",
+    "results/campaign_20261102_reduced/grouped_learning_curves.csv"
+  ],
+  "native_powerpoint_open_render_passed": true,
+  "new_charts_native_edit_save_reopen_passed": true,
+  "unchanged_other_slide_count": 47,
+  "original_chart_workbook_bytes_preserved": true,
+  "checks": [
+    {
+      "label": "slide22/ppt/charts/chart1.xml/MNIST",
+      "points": 5,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide22/ppt/charts/chart1.xml/Fashion-MNIST",
+      "points": 5,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide22/ppt/charts/chart1.xml/CIFAR-10",
+      "points": 5,
+      "max_absolute_delta": 3.33315597345063e-11,
+      "passed": true
+    },
+    {
+      "label": "slide22/ppt/charts/chart2.xml/MNIST",
+      "points": 5,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide22/ppt/charts/chart2.xml/Fashion-MNIST",
+      "points": 5,
+      "max_absolute_delta": 3.33315597345063e-11,
+      "passed": true
+    },
+    {
+      "label": "slide22/ppt/charts/chart2.xml/CIFAR-10",
+      "points": 5,
+      "max_absolute_delta": 3.33315597345063e-11,
+      "passed": true
+    },
+    {
+      "label": "slide25/ppt/charts/chart3.xml/MNIST",
+      "points": 5,
+      "max_absolute_delta": 3.33333360913457e-11,
+      "passed": true
+    },
+    {
+      "label": "slide25/ppt/charts/chart3.xml/Fashion-MNIST",
+      "points": 5,
+      "max_absolute_delta": 3.33333360913457e-11,
+      "passed": true
+    },
+    {
+      "label": "slide25/ppt/charts/chart3.xml/CIFAR-10",
+      "points": 5,
+      "max_absolute_delta": 3.33315597345063e-11,
+      "passed": true
+    },
+    {
+      "label": "slide25/ppt/charts/chart4.xml/MNIST",
+      "points": 5,
+      "max_absolute_delta": 3.33333360913457e-11,
+      "passed": true
+    },
+    {
+      "label": "slide25/ppt/charts/chart4.xml/Fashion-MNIST",
+      "points": 5,
+      "max_absolute_delta": 3.33333360913457e-11,
+      "passed": true
+    },
+    {
+      "label": "slide25/ppt/charts/chart4.xml/CIFAR-10",
+      "points": 5,
+      "max_absolute_delta": 3.33351124481851e-11,
+      "passed": true
+    },
+    {
+      "label": "slide26/ppt/charts/chart5.xml/MNIST",
+      "points": 5,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide26/ppt/charts/chart5.xml/Fashion-MNIST",
+      "points": 5,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide26/ppt/charts/chart5.xml/CIFAR-10",
+      "points": 5,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide26/ppt/charts/chart6.xml/MNIST",
+      "points": 4,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide26/ppt/charts/chart6.xml/Fashion-MNIST",
+      "points": 4,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide26/ppt/charts/chart6.xml/CIFAR-10",
+      "points": 4,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide27/ppt/charts/chart7.xml/MNIST",
+      "points": 5,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide27/ppt/charts/chart7.xml/Fashion-MNIST",
+      "points": 5,
+      "max_absolute_delta": 4.440892098500626e-16,
+      "passed": true
+    },
+    {
+      "label": "slide27/ppt/charts/chart7.xml/CIFAR-10",
+      "points": 5,
+      "max_absolute_delta": 2.220446049250313e-16,
+      "passed": true
+    },
+    {
+      "label": "slide27/ppt/charts/chart8.xml/MNIST",
+      "points": 5,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide27/ppt/charts/chart8.xml/Fashion-MNIST",
+      "points": 5,
+      "max_absolute_delta": 3.33333360913457e-11,
+      "passed": true
+    },
+    {
+      "label": "slide27/ppt/charts/chart8.xml/CIFAR-10",
+      "points": 5,
+      "max_absolute_delta": 3.33333360913457e-11,
+      "passed": true
+    },
+    {
+      "label": "slide28/ppt/charts/chart9.xml/MNIST",
+      "points": 2,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide28/ppt/charts/chart9.xml/Fashion-MNIST",
+      "points": 2,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide28/ppt/charts/chart9.xml/CIFAR-10",
+      "points": 2,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide28/ppt/charts/chart10.xml/MNIST",
+      "points": 1,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide28/ppt/charts/chart10.xml/Fashion-MNIST",
+      "points": 1,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide28/ppt/charts/chart10.xml/CIFAR-10",
+      "points": 1,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide29/ppt/charts/chart11.xml/MNIST",
+      "points": 2,
+      "max_absolute_delta": 6.938893903907228e-18,
+      "passed": true
+    },
+    {
+      "label": "slide29/ppt/charts/chart11.xml/Fashion-MNIST",
+      "points": 2,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide29/ppt/charts/chart11.xml/CIFAR-10",
+      "points": 2,
+      "max_absolute_delta": 6.938893903907228e-18,
+      "passed": true
+    },
+    {
+      "label": "slide29/ppt/charts/chart12.xml/MNIST",
+      "points": 2,
+      "max_absolute_delta": 3.333333262189875e-11,
+      "passed": true
+    },
+    {
+      "label": "slide29/ppt/charts/chart12.xml/Fashion-MNIST",
+      "points": 2,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide29/ppt/charts/chart12.xml/CIFAR-10",
+      "points": 2,
+      "max_absolute_delta": 3.333333262189875e-11,
+      "passed": true
+    },
+    {
+      "label": "slide30/matched-pair-savings",
+      "points": 3,
+      "max_absolute_delta": 2.8343549729470396e-11,
+      "passed": true
+    },
+    {
+      "label": "slide31/ppt/charts/chart14.xml/Baseline",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide31/ppt/charts/chart14.xml/Masking",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide31/ppt/charts/chart14.xml/Pairwise",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide31/ppt/charts/chart14.xml/Selective HE",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide31/ppt/charts/chart14.xml/Adaptive",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide31/ppt/charts/chart15.xml/Baseline",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide31/ppt/charts/chart15.xml/Masking",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide31/ppt/charts/chart15.xml/Pairwise",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide31/ppt/charts/chart15.xml/Selective HE",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide31/ppt/charts/chart15.xml/Adaptive",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide32/ppt/charts/chart16.xml/Baseline",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide32/ppt/charts/chart16.xml/Masking",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide32/ppt/charts/chart16.xml/Pairwise",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide32/ppt/charts/chart16.xml/Selective HE",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide32/ppt/charts/chart16.xml/Adaptive",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide32/ppt/charts/chart17.xml/Baseline",
+      "points": 20,
+      "max_absolute_delta": 3.33315597345063e-11,
+      "passed": true
+    },
+    {
+      "label": "slide32/ppt/charts/chart17.xml/Masking",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide32/ppt/charts/chart17.xml/Pairwise",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide32/ppt/charts/chart17.xml/Selective HE",
+      "points": 20,
+      "max_absolute_delta": 3.33315597345063e-11,
+      "passed": true
+    },
+    {
+      "label": "slide32/ppt/charts/chart17.xml/Adaptive",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide33/ppt/charts/chart18.xml/Baseline",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide33/ppt/charts/chart18.xml/Masking",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide33/ppt/charts/chart18.xml/Pairwise",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide33/ppt/charts/chart18.xml/Selective HE",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide33/ppt/charts/chart18.xml/Adaptive",
+      "points": 20,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide33/ppt/charts/chart19.xml/Baseline",
+      "points": 20,
+      "max_absolute_delta": 3.33351124481851e-11,
+      "passed": true
+    },
+    {
+      "label": "slide33/ppt/charts/chart19.xml/Masking",
+      "points": 20,
+      "max_absolute_delta": 3.33351124481851e-11,
+      "passed": true
+    },
+    {
+      "label": "slide33/ppt/charts/chart19.xml/Pairwise",
+      "points": 20,
+      "max_absolute_delta": 3.33351124481851e-11,
+      "passed": true
+    },
+    {
+      "label": "slide33/ppt/charts/chart19.xml/Selective HE",
+      "points": 20,
+      "max_absolute_delta": 3.33351124481851e-11,
+      "passed": true
+    },
+    {
+      "label": "slide33/ppt/charts/chart19.xml/Adaptive",
+      "points": 20,
+      "max_absolute_delta": 3.33351124481851e-11,
+      "passed": true
+    },
+    {
+      "label": "slide34/ppt/charts/chart20.xml/MNIST",
+      "points": 5,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide34/ppt/charts/chart20.xml/Fashion-MNIST",
+      "points": 5,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide34/ppt/charts/chart20.xml/CIFAR-10",
+      "points": 5,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide34/ppt/charts/chart21.xml/MNIST",
+      "points": 5,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide34/ppt/charts/chart21.xml/Fashion-MNIST",
+      "points": 5,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide34/ppt/charts/chart21.xml/CIFAR-10",
+      "points": 5,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide35/ppt/charts/chart22.xml/MNIST",
+      "points": 5,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide35/ppt/charts/chart22.xml/Fashion-MNIST",
+      "points": 5,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide35/ppt/charts/chart22.xml/CIFAR-10",
+      "points": 5,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide35/ppt/charts/chart23.xml/MNIST",
+      "points": 5,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide35/ppt/charts/chart23.xml/Fashion-MNIST",
+      "points": 5,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide35/ppt/charts/chart23.xml/CIFAR-10",
+      "points": 5,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide36/ppt/charts/chart24.xml/MNIST",
+      "points": 2,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide36/ppt/charts/chart24.xml/Fashion-MNIST",
+      "points": 2,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide36/ppt/charts/chart24.xml/CIFAR-10",
+      "points": 2,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide36/ppt/charts/chart25.xml/MNIST",
+      "points": 2,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide36/ppt/charts/chart25.xml/Fashion-MNIST",
+      "points": 2,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide36/ppt/charts/chart25.xml/CIFAR-10",
+      "points": 2,
+      "max_absolute_delta": 0.0,
+      "passed": true
+    },
+    {
+      "label": "slide37/ppt/charts/chart26.xml/MNIST",
+      "points": 4,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide37/ppt/charts/chart26.xml/Fashion-MNIST",
+      "points": 4,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide37/ppt/charts/chart26.xml/CIFAR-10",
+      "points": 4,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide37/ppt/charts/chart27.xml/MNIST",
+      "points": 4,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide37/ppt/charts/chart27.xml/Fashion-MNIST",
+      "points": 4,
+      "max_absolute_delta": 3.33315597345063e-11,
+      "passed": true
+    },
+    {
+      "label": "slide37/ppt/charts/chart27.xml/CIFAR-10",
+      "points": 4,
+      "max_absolute_delta": 3.33315597345063e-11,
+      "passed": true
+    },
+    {
+      "label": "slide39/ppt/slides/charts/chart1.xml/Caveman",
+      "points": 6,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide39/ppt/slides/charts/chart1.xml/Caveman/sampleSD",
+      "points": 6,
+      "max_absolute_delta": 4.4636405682751956e-11,
+      "passed": true
+    },
+    {
+      "label": "slide39/ppt/slides/charts/chart1.xml/Barabási–Albert",
+      "points": 6,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide39/ppt/slides/charts/chart1.xml/Barabási–Albert/sampleSD",
+      "points": 6,
+      "max_absolute_delta": 4.223221772292618e-11,
+      "passed": true
+    },
+    {
+      "label": "slide40/ppt/slides/charts/chart4.xml/Caveman",
+      "points": 3,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide40/ppt/slides/charts/chart4.xml/Caveman/sampleSD",
+      "points": 3,
+      "max_absolute_delta": 2.5488944288554194e-11,
+      "passed": true
+    },
+    {
+      "label": "slide40/ppt/slides/charts/chart4.xml/Barabási–Albert",
+      "points": 3,
+      "max_absolute_delta": 3.33351124481851e-11,
+      "passed": true
+    },
+    {
+      "label": "slide40/ppt/slides/charts/chart4.xml/Barabási–Albert/sampleSD",
+      "points": 3,
+      "max_absolute_delta": 3.964295558489539e-11,
+      "passed": true
+    },
+    {
+      "label": "slide40/ppt/slides/charts/chart5.xml/Caveman",
+      "points": 3,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide40/ppt/slides/charts/chart5.xml/Caveman/sampleSD",
+      "points": 3,
+      "max_absolute_delta": 4.4636405682751956e-11,
+      "passed": true
+    },
+    {
+      "label": "slide40/ppt/slides/charts/chart5.xml/Barabási–Albert",
+      "points": 3,
+      "max_absolute_delta": 3.33351124481851e-11,
+      "passed": true
+    },
+    {
+      "label": "slide40/ppt/slides/charts/chart5.xml/Barabási–Albert/sampleSD",
+      "points": 3,
+      "max_absolute_delta": 4.1948666762436915e-11,
+      "passed": true
+    },
+    {
+      "label": "slide41/ppt/slides/charts/chart6.xml/Caveman",
+      "points": 3,
+      "max_absolute_delta": 3.33315597345063e-11,
+      "passed": true
+    },
+    {
+      "label": "slide41/ppt/slides/charts/chart6.xml/Caveman/sampleSD",
+      "points": 3,
+      "max_absolute_delta": 3.3100522323081805e-11,
+      "passed": true
+    },
+    {
+      "label": "slide41/ppt/slides/charts/chart6.xml/Barabási–Albert",
+      "points": 3,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide41/ppt/slides/charts/chart6.xml/Barabási–Albert/sampleSD",
+      "points": 3,
+      "max_absolute_delta": 4.065606185044146e-11,
+      "passed": true
+    },
+    {
+      "label": "slide41/ppt/slides/charts/chart7.xml/Caveman",
+      "points": 3,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide41/ppt/slides/charts/chart7.xml/Caveman/sampleSD",
+      "points": 3,
+      "max_absolute_delta": 4.4636405682751956e-11,
+      "passed": true
+    },
+    {
+      "label": "slide41/ppt/slides/charts/chart7.xml/Barabási–Albert",
+      "points": 3,
+      "max_absolute_delta": 3.33315597345063e-11,
+      "passed": true
+    },
+    {
+      "label": "slide41/ppt/slides/charts/chart7.xml/Barabási–Albert/sampleSD",
+      "points": 3,
+      "max_absolute_delta": 4.1948666762436915e-11,
+      "passed": true
+    },
+    {
+      "label": "slide42/ppt/slides/charts/chart8.xml/Caveman",
+      "points": 5,
+      "max_absolute_delta": 3.33315597345063e-11,
+      "passed": true
+    },
+    {
+      "label": "slide42/ppt/slides/charts/chart8.xml/Caveman/sampleSD",
+      "points": 5,
+      "max_absolute_delta": 3.782352209213968e-11,
+      "passed": true
+    },
+    {
+      "label": "slide42/ppt/slides/charts/chart8.xml/Barabási–Albert",
+      "points": 5,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide42/ppt/slides/charts/chart8.xml/Barabási–Albert/sampleSD",
+      "points": 5,
+      "max_absolute_delta": 3.150724126044224e-11,
+      "passed": true
+    },
+    {
+      "label": "slide43/ppt/slides/charts/chart9.xml/Caveman",
+      "points": 5,
+      "max_absolute_delta": 3.552713678800501e-15,
+      "passed": true
+    },
+    {
+      "label": "slide43/ppt/slides/charts/chart9.xml/Caveman/sampleSD",
+      "points": 5,
+      "max_absolute_delta": 2.597178811532437e-11,
+      "passed": true
+    },
+    {
+      "label": "slide43/ppt/slides/charts/chart9.xml/Barabási–Albert",
+      "points": 5,
+      "max_absolute_delta": 3.33315597345063e-11,
+      "passed": true
+    },
+    {
+      "label": "slide43/ppt/slides/charts/chart9.xml/Barabási–Albert/sampleSD",
+      "points": 5,
+      "max_absolute_delta": 6.016392939400816e-11,
+      "passed": true
+    },
+    {
+      "label": "slide43/ppt/slides/charts/chart10.xml/Caveman",
+      "points": 5,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide43/ppt/slides/charts/chart10.xml/Caveman/sampleSD",
+      "points": 5,
+      "max_absolute_delta": 2.6426713871678317e-11,
+      "passed": true
+    },
+    {
+      "label": "slide43/ppt/slides/charts/chart10.xml/Barabási–Albert",
+      "points": 5,
+      "max_absolute_delta": 3.33315597345063e-11,
+      "passed": true
+    },
+    {
+      "label": "slide43/ppt/slides/charts/chart10.xml/Barabási–Albert/sampleSD",
+      "points": 5,
+      "max_absolute_delta": 8.51105852461842e-11,
+      "passed": true
+    },
+    {
+      "label": "slide44/ppt/slides/charts/chart11.xml/HE time",
+      "points": 2,
+      "max_absolute_delta": 3.333333262189875e-11,
+      "passed": true
+    },
+    {
+      "label": "slide44/ppt/slides/charts/chart11.xml/HE time/sampleSD",
+      "points": 2,
+      "max_absolute_delta": 2.2926795661612487e-11,
+      "passed": true
+    },
+    {
+      "label": "slide44/ppt/slides/charts/chart2.xml/HE time",
+      "points": 2,
+      "max_absolute_delta": 3.33333360913457e-11,
+      "passed": true
+    },
+    {
+      "label": "slide44/ppt/slides/charts/chart2.xml/HE time/sampleSD",
+      "points": 2,
+      "max_absolute_delta": 1.4472817042032737e-11,
+      "passed": true
+    },
+    {
+      "label": "slide45/ppt/slides/charts/chart3.xml/Caveman 5c",
+      "points": 4,
+      "max_absolute_delta": 3.33386651618639e-11,
+      "passed": true
+    },
+    {
+      "label": "slide45/ppt/slides/charts/chart3.xml/Caveman 5c/sampleSD",
+      "points": 4,
+      "max_absolute_delta": 4.565681166468494e-11,
+      "passed": true
+    },
+    {
+      "label": "slide45/ppt/slides/charts/chart3.xml/Barabási 5c",
+      "points": 4,
+      "max_absolute_delta": 3.33351124481851e-11,
+      "passed": true
+    },
+    {
+      "label": "slide45/ppt/slides/charts/chart3.xml/Barabási 5c/sampleSD",
+      "points": 4,
+      "max_absolute_delta": 4.126121666558902e-11,
+      "passed": true
+    },
+    {
+      "label": "slide45/ppt/slides/charts/chart3.xml/Caveman 10c",
+      "points": 4,
+      "max_absolute_delta": 3.33315597345063e-11,
+      "passed": true
+    },
+    {
+      "label": "slide45/ppt/slides/charts/chart3.xml/Caveman 10c/sampleSD",
+      "points": 4,
+      "max_absolute_delta": 4.4640291463338144e-11,
+      "passed": true
+    },
+    {
+      "label": "slide45/ppt/slides/charts/chart3.xml/Barabási 10c",
+      "points": 4,
+      "max_absolute_delta": 3.33351124481851e-11,
+      "passed": true
+    },
+    {
+      "label": "slide45/ppt/slides/charts/chart3.xml/Barabási 10c/sampleSD",
+      "points": 4,
+      "max_absolute_delta": 4.737676917443423e-11,
+      "passed": true
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "updated_on": "2026-11-02",
+  "updated_on": "2026-11-04",
   "documents": [
     {
       "document": "thesis",
@@ -87,9 +87,9 @@
   ],
   "presentation": {
     "repository_path": "docs/Secure_DFL_Thesis_Presentation_UPDATED.pptx",
-    "sha256": "866d2e07b274801cc416eba6712128f7db2a1ea2a8096d55add44a148dc2f037",
+    "sha256": "40fefe888f56f7033b2980b25fdde513c7d1d641dfaf8024d9c12f1f6e358037",
     "slides": 48,
-    "native_charts": 38,
+    "native_charts": 39,
     "native_tables": 2,
     "clarification_slides": [
       22,
@@ -98,6 +98,16 @@
     "original_chart_workbook_parts_preserved": true,
     "native_powerpoint_open_and_render_verified": true,
     "new_native_table_edit_save_reopen_verified": true,
-    "unchanged_original_slide_bodies_pixel_identical": true
+    "unchanged_original_slide_bodies_pixel_identical": true,
+    "chart_review_date": "2026-11-04",
+    "chart_review_source": "dashboard reviewed runs and round-level records",
+    "chart_data_comparisons": 135,
+    "chart_values_checked": 1009,
+    "chart_numeric_mismatches": 0,
+    "slide35_organization": "one chart per dataset, IID and non-IID series, matching dashboard sensitivity cards",
+    "changed_slide": 35,
+    "changed_slide_measured_values_preserved": 30,
+    "unchanged_other_slides": 47,
+    "changed_native_charts_edit_save_reopen_verified": true
   }
 }
