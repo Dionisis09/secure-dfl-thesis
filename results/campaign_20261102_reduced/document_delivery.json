@@ -87,7 +87,7 @@
   ],
   "presentation": {
     "repository_path": "docs/Secure_DFL_Thesis_Presentation_UPDATED.pptx",
-    "sha256": "40fefe888f56f7033b2980b25fdde513c7d1d641dfaf8024d9c12f1f6e358037",
+    "sha256": "854f09a2f9036eae166de9cc59368bab54079ed1911d0e4b9c98d502d985e7f6",
     "slides": 48,
     "native_charts": 39,
     "native_tables": 2,
@@ -108,6 +108,14 @@
     "changed_slide": 35,
     "changed_slide_measured_values_preserved": 30,
     "unchanged_other_slides": 47,
-    "changed_native_charts_edit_save_reopen_verified": true
+    "changed_native_charts_edit_save_reopen_verified": true,
+    "learning_curve_visibility_revision": "Different method glyphs on alternating rounds, all20 points per curve retained",
+    "learning_curve_slides_updated": [
+      31,
+      32,
+      33
+    ],
+    "learning_curve_values_preserved": 600,
+    "learning_curve_other_slides_pixel_identical": 45
   }
 }
