@@ -335,3 +335,7 @@ python src/audit_cli.py tamper-demo --package results/audit_packages/audit_demo 
 python src/audit_cli.py tamper-demo --package results/audit_packages/audit_demo --mode signature
 
 The audit package is still a prototype, but it is closer to a realistic integrity-verification mechanism than the local blockchain simulation.
+
+## Authenticated secure aggregation prototype v4
+
+A separate [v4 protocol implementation](docs/SECURE_PROTOCOL_V4.md) adds authenticated ECDH pairwise masks, signed aggregate approvals, durable replay rejection and real multiparty BFV with noise flooding over mutually authenticated TLS. The [20-process integration gate](results/protocol_v4/protocol20.json) exercises2570-value classifier aggregation and negative requests. CKKS is explicitly disabled pending a suitable verified backend configuration. This trusted-host prototype is not yet integrated into the full training campaign and does not establish arbitrary-collusion, poisoning or production-isolation guarantees. Legacy experiment results remain unchanged.

@@ -1,0 +1,4 @@
+# Tested OpenFHE wheel: Linux x86_64 / Python3.10; no Windows HE fallback.
+openfhe==1.6.1.0.22.4; sys_platform == "linux" and python_version == "3.10"
+cryptography>=46,<51
+numpy>=2,<3

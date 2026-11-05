@@ -1,0 +1,71 @@
+{
+  "status": "verified",
+  "reports": [
+    {
+      "kind": "pairwise",
+      "participants": 20,
+      "processes": 20,
+      "length": 2570,
+      "max_absolute_error": 2.252773909027471e-07,
+      "setup_seconds": 1.9725616879877634,
+      "total_seconds": 2.8814415800006827,
+      "negative_checks": [
+        "individual_ciphertext",
+        "missing_contributor",
+        "duplicate_contributor",
+        "wrong_round",
+        "modified_contribution",
+        "raw_decryption_endpoint",
+        "release_before_approval",
+        "wrong_mtls_client",
+        "missing_mtls_client_certificate",
+        "approval_replay",
+        "release_replay",
+        "duplicate_contribution_replay"
+      ],
+      "mtls": true,
+      "no_aggregator_private_key": true,
+      "scope": "One all-party aggregate, trusted host/passive peers, not full DFL training or independent-host isolation",
+      "serialized_contribution_bytes": 411200,
+      "aggregate_bytes": 20560,
+      "rpc_json_request_bytes": 28003060,
+      "rpc_json_response_bytes": 568944,
+      "rpc_requests": 70,
+      "traffic_scope": "JSON application payloads only; excludes TLS/HTTP headers and independently-issued negative TLS probes"
+    },
+    {
+      "kind": "he_bfv",
+      "participants": 20,
+      "processes": 20,
+      "length": 2570,
+      "max_absolute_error": 3.3073911807068868e-06,
+      "setup_seconds": 10.256658116995823,
+      "total_seconds": 32.4887577269983,
+      "negative_checks": [
+        "individual_ciphertext",
+        "missing_contributor",
+        "duplicate_contributor",
+        "wrong_round",
+        "modified_contribution",
+        "raw_decryption_endpoint",
+        "release_before_approval",
+        "wrong_mtls_client",
+        "missing_mtls_client_certificate",
+        "single_private_share_cannot_recover_own_ciphertext",
+        "approval_replay",
+        "release_replay",
+        "duplicate_contribution_replay"
+      ],
+      "mtls": true,
+      "no_aggregator_private_key": true,
+      "scope": "One all-party aggregate, trusted host/passive peers, not full DFL training or independent-host isolation",
+      "ring_dimension": 16384,
+      "serialized_contribution_bytes": 21006220,
+      "aggregate_bytes": 1050311,
+      "rpc_json_request_bytes": 2263361561,
+      "rpc_json_response_bytes": 70045737,
+      "rpc_requests": 111,
+      "traffic_scope": "JSON application payloads only; excludes TLS/HTTP headers and independently-issued negative TLS probes"
+    }
+  ]
+}
