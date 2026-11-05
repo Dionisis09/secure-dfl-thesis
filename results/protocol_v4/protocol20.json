@@ -6,9 +6,9 @@
       "participants": 20,
       "processes": 20,
       "length": 2570,
-      "max_absolute_error": 2.252773909027471e-07,
-      "setup_seconds": 1.9725616879877634,
-      "total_seconds": 2.8814415800006827,
+      "max_absolute_error": 4.76837158203125e-07,
+      "setup_seconds": 2.014304461001302,
+      "total_seconds": 2.8813896650099196,
       "negative_checks": [
         "individual_ciphertext",
         "missing_contributor",
@@ -25,22 +25,26 @@
       ],
       "mtls": true,
       "no_aggregator_private_key": true,
+      "fixtures_include_range_boundaries": true,
+      "coordinator_knows_fixture_inputs": true,
       "scope": "One all-party aggregate, trusted host/passive peers, not full DFL training or independent-host isolation",
       "serialized_contribution_bytes": 411200,
       "aggregate_bytes": 20560,
       "rpc_json_request_bytes": 28003060,
-      "rpc_json_response_bytes": 568944,
+      "rpc_json_response_bytes": 568690,
+      "positive_rpc_json_request_bytes": 23375500,
+      "positive_rpc_json_response_bytes": 568300,
       "rpc_requests": 70,
-      "traffic_scope": "JSON application payloads only; excludes TLS/HTTP headers and independently-issued negative TLS probes"
+      "traffic_scope": "Totals include setup and negative RPC tests; positive counters include ceremony and one successful aggregate. Excludes TLS/HTTP headers and independent TLS probes. Timings are integration-gate timings, not training benchmarks."
     },
     {
       "kind": "he_bfv",
       "participants": 20,
       "processes": 20,
       "length": 2570,
-      "max_absolute_error": 3.3073911807068868e-06,
-      "setup_seconds": 10.256658116995823,
-      "total_seconds": 32.4887577269983,
+      "max_absolute_error": 7.62939453125e-06,
+      "setup_seconds": 10.45860711899877,
+      "total_seconds": 32.50474018699606,
       "negative_checks": [
         "individual_ciphertext",
         "missing_contributor",
@@ -58,14 +62,42 @@
       ],
       "mtls": true,
       "no_aggregator_private_key": true,
+      "fixtures_include_range_boundaries": true,
+      "coordinator_knows_fixture_inputs": true,
       "scope": "One all-party aggregate, trusted host/passive peers, not full DFL training or independent-host isolation",
       "ring_dimension": 16384,
       "serialized_contribution_bytes": 21006220,
       "aggregate_bytes": 1050311,
       "rpc_json_request_bytes": 2263361561,
-      "rpc_json_response_bytes": 70045737,
+      "rpc_json_response_bytes": 70045483,
+      "positive_rpc_json_request_bytes": 2029442974,
+      "positive_rpc_json_response_bytes": 70045064,
       "rpc_requests": 111,
-      "traffic_scope": "JSON application payloads only; excludes TLS/HTTP headers and independently-issued negative TLS probes"
+      "traffic_scope": "Totals include setup and negative RPC tests; positive counters include ceremony and one successful aggregate. Excludes TLS/HTTP headers and independent TLS probes. Timings are integration-gate timings, not training benchmarks."
     }
-  ]
+  ],
+  "runtime": {
+    "python": "3.10.9",
+    "platform": "Linux-6.8.0-147-generic-x86_64-with-glibc2.39",
+    "packages": {
+      "numpy": "2.2.6",
+      "cryptography": "50.0.2",
+      "openfhe": "1.6.1.0.22.4"
+    }
+  },
+  "source_sha256": {
+    "src/secure_protocol_v4/__init__.py": "1f2df7ee467f940ea018f442b5fd18f5b444d859c593a329b714851fefb4a198",
+    "src/secure_protocol_v4/core.py": "16f0012d4540bde3d0a576b60ad8b694b60031e56bc329f137b0528e69e3adbe",
+    "src/secure_protocol_v4/model_adapter.py": "dc1363db3f6047840e44a3be5139a94e22deb517b28d2a7f3a7a728155d90814",
+    "src/secure_protocol_v4/node.py": "78966535d3d365d5544d933484ae45ceff46237d9f44179615f866248a691830",
+    "src/secure_protocol_v4/openfhe_backend.py": "fb7e6aad53b21d10ab64a5bb991947cb98b57587855de529e9a9f68cf9821bab",
+    "src/secure_protocol_v4/pairwise.py": "383db6d78347786c38bd0efe861bb05219f75b1c82216c4e7e79b250cb81a3cc",
+    "src/secure_protocol_v4/transport.py": "f25b0ea867acc795fe23988130f286473c379f8df98b9e006f0df92f6ba7f393",
+    "scripts/verify_protocol_v4.py": "08426104feee4086c9cf1fa3e475296d9163549f99a00b484105089a424535ca",
+    "tests/test_secure_protocol_v4.py": "014a951a9dbd0461057a8a98865019d472e66aa01669face5a59583321152f5e"
+  },
+  "source_hash_convention": "SHA256 of UTF8 text normalized to LF",
+  "deployment_ready": false,
+  "security_status": "blocked_by_confirmed_active_attacks",
+  "status_scope": "Functional gate only; see verification.json and active_limit.json"
 }

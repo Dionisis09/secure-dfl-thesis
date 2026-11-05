@@ -4,7 +4,7 @@ import hashlib
 import json
 import os
 import sqlite3
-import math
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from cryptography.hazmat.primitives.asymmetric import ed25519, x25519
@@ -34,12 +34,17 @@ class RoundSpec:
     scale: int = 1048576
     bound: float = 32.0
     def __post_init__(self):
-        if (not all(isinstance(v,str) and v for v in [self.run,self.epoch,self.target,self.model,self.schema])
-            or not math.isfinite(self.bound) or not isinstance(self.scale,int)
-            or len(self.roster)<3 or len(set(self.roster))!=len(self.roster)
+        # Node IDs are also used as local filenames by the experiment harness.
+        reserved={'con','prn','aux','nul',*(f'com{i}' for i in range(1,10)),*(f'lpt{i}' for i in range(1,10))}
+        if (not all(isinstance(v,str) and 0<len(v)<=256 for v in [self.run,self.epoch,self.target,self.model,self.schema])
+            or type(self.bound) not in (int,float) or not 0<self.bound<=1000000
+            or any(type(v) is not int for v in (self.scale,self.length,self.round))
+            or type(self.roster) is not tuple or not 3<=len(self.roster)<=100
+            or not all(isinstance(n,str) and re.fullmatch(r'[a-z][a-z0-9_-]{0,47}',n) and n not in reserved for n in self.roster)
+            or len(set(self.roster))!=len(self.roster)
             or tuple(sorted(self.roster))!=self.roster or self.target not in self.roster
             or self.kind not in ('he_bfv','pairwise') or not 1<=self.length<=(4096 if self.kind=='he_bfv' else 2000000)
-            or self.round<1 or self.scale<1 or self.bound<=0
+            or not 1<=self.round<2**63 or not 1<=self.scale<=2**40
             or self.bound*self.scale*len(self.roster)>=((1<<61)-1)//4):
             raise Rejected('invalid round policy')
     def body(self): return dict(self.__dict__)

@@ -1,0 +1,1 @@
+{"dependencies": [{"name": "openfhe", "version": "1.6.1.0.22.4", "vulns": []}, {"name": "cryptography", "version": "50.0.2", "vulns": []}, {"name": "numpy", "version": "2.2.6", "vulns": []}, {"name": "cffi", "version": "2.1.1", "vulns": []}, {"name": "pycparser", "version": "3.11", "vulns": []}], "fixes": []}

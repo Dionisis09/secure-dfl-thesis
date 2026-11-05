@@ -1,5 +1,11 @@
 # Secure aggregation v4 — implementation and measured boundaries
 
+**Security review: NOT deployment-ready.** Synthetic adversarial tests reproduced
+rogue final-key substitution and ciphertext-cancellation attacks by a malicious
+participant. The functional gates below do not establish active security. Read
+the [review and required changes](PROTOCOL_V4_SECURITY_REVIEW_20261105.md) before
+sharing claims or using sensitive data.
+
 This is a separate, working **protocol prototype**, not a silent replacement of
 the legacy training modes. It exposes all-party secure aggregation over real
 mutually authenticated TLS connections between independent worker processes.
@@ -64,8 +70,9 @@ Pairwise and schema/replay tests also run on Windows without OpenFHE. The HE
 integration gate requires the real backend and fails if it is absent.
 
 The integration harness supplies random fixture vectors to each worker at
-startup; they represent private local model inputs on a trusted experiment
-host. Contributions are returned only as signed masked/encrypted payloads.
+startup. **The coordinator already knows every fixture input.** This tests the
+protocol operations on a trusted host, not the privacy of a deployed local-data
+client. Contributions are returned as signed masked/encrypted payloads.
 There is no remote operation to export signing/DH keys, private HE shares or
 decrypt an arbitrary ciphertext. A diagnostic single-share probe is enabled
 only in the test harness, uses only that node's own known fixture, returns a
@@ -102,6 +109,9 @@ ciphertext. Results are recorded in `results/protocol_v4/`.
   full-backbone/dense groups fail closed; streaming/large-model integration is
   not yet validated. Pairwise core accepts vectors up to2million values, but
   the measured20-client case is the classifier vector, not the full CNN.
+- TLS handshake/socket inactivity is bounded to3seconds and connection lifetime
+  to30seconds; framing and JSON envelopes are validated. This remains a loopback
+  research transport, not an Internet-facing production server.
 - The library creates ephemeral workers/keys for a configured group/round.
   A long-running, persistent client service and integration into all training
   and network runners remain separate work. The tensor adapter is not a claim

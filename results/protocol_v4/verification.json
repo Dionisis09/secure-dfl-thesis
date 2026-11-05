@@ -1,7 +1,10 @@
 {
-  "status": "verified_protocol_prototype",
+  "status": "security_blocked_not_deployment_ready",
+  "functional_gates_passed": true,
+  "reviewed_at": "2026-11-05T17:59:25.921942+00:00",
   "protocol": "v4-bfv-all-party",
-  "local_unit_tests": 4,
+  "local_unit_tests": 8,
+  "server_unit_tests": 8,
   "server_participants": 20,
   "server_processes_per_mode": 20,
   "tested_modes": [
@@ -9,20 +12,43 @@
     "he_bfv"
   ],
   "ckks_enabled": false,
-  "backend": "OpenFHE1.6.1.0.22.4",
-  "deployment": "Linux Python3.10 trusted-host separate processes, TLS1.3 mutual certificates",
+  "runtime": {
+    "python": "3.10.9",
+    "platform": "Linux-6.8.0-147-generic-x86_64-with-glibc2.39",
+    "packages": {
+      "numpy": "2.2.6",
+      "cryptography": "50.0.2",
+      "openfhe": "1.6.1.0.22.4"
+    }
+  },
+  "active_security_failures_reproduced": [
+    "adaptive_ciphertext_cancellation",
+    "signed_rogue_final_public_key"
+  ],
+  "malicious_participant_security_verified": false,
+  "independent_client_isolation_verified": false,
+  "coordinator_knows_fixture_inputs": true,
   "training_runner_integration_complete": false,
   "full_model_backbone_transport_validated": false,
-  "source_sha256": {
-    "src/secure_protocol_v4/core.py": "2939617ec8984681355b479d863a2ee1073275304e278659913150694a891ed4",
-    "src/secure_protocol_v4/model_adapter.py": "c29e00e126d5d83192e9256e2cc84b0bd903804f109db05865a02e0a3b284d8d",
-    "src/secure_protocol_v4/node.py": "2e8448d4541ae5218760871fe0ec8b6e45a78a694cd38f7ca972f9acca429904",
-    "src/secure_protocol_v4/openfhe_backend.py": "c4f52e25953ead4b8353475ff27892a0f5cf344859e94731844e2e6a35e26ce2",
-    "src/secure_protocol_v4/pairwise.py": "383db6d78347786c38bd0efe861bb05219f75b1c82216c4e7e79b250cb81a3cc",
-    "src/secure_protocol_v4/transport.py": "35b2171ff4dc72e3a628098bbef4ae0e4a54ffdce285ca48f9564dcc837dfa04",
-    "src/secure_protocol_v4/__init__.py": "1f2df7ee467f940ea018f442b5fd18f5b444d859c593a329b714851fefb4a198",
-    "scripts/verify_protocol_v4.py": "6fa3b3a550fb0a69dccf79c2f87721b031c176c3d7d01a96ed857d7b25523d83",
-    "tests/test_secure_protocol_v4.py": "352307ee620aa76351a536149022bc7392671affa94d82b68355e47612d662d0"
+  "full_training_campaign_authorized_to_start": false,
+  "legacy_training_sources_unchanged": true,
+  "secret_scan": {
+    "status": "no_matches",
+    "scope": "Heuristic scan of current tracked text files plus new review/probe; not Git history or binary documents; not proof of absence of all secrets",
+    "files_checked": 417
   },
-  "source_hash_convention": "SHA256 of UTF8 text normalized to LF for cross-platform Git checkout"
+  "source_sha256": {
+    "src/secure_protocol_v4/__init__.py": "1f2df7ee467f940ea018f442b5fd18f5b444d859c593a329b714851fefb4a198",
+    "src/secure_protocol_v4/core.py": "16f0012d4540bde3d0a576b60ad8b694b60031e56bc329f137b0528e69e3adbe",
+    "src/secure_protocol_v4/model_adapter.py": "dc1363db3f6047840e44a3be5139a94e22deb517b28d2a7f3a7a728155d90814",
+    "src/secure_protocol_v4/node.py": "78966535d3d365d5544d933484ae45ceff46237d9f44179615f866248a691830",
+    "src/secure_protocol_v4/openfhe_backend.py": "fb7e6aad53b21d10ab64a5bb991947cb98b57587855de529e9a9f68cf9821bab",
+    "src/secure_protocol_v4/pairwise.py": "383db6d78347786c38bd0efe861bb05219f75b1c82216c4e7e79b250cb81a3cc",
+    "src/secure_protocol_v4/transport.py": "f25b0ea867acc795fe23988130f286473c379f8df98b9e006f0df92f6ba7f393",
+    "scripts/verify_protocol_v4.py": "08426104feee4086c9cf1fa3e475296d9163549f99a00b484105089a424535ca",
+    "tests/test_secure_protocol_v4.py": "014a951a9dbd0461057a8a98865019d472e66aa01669face5a59583321152f5e",
+    "scripts/probe_protocol_v4_active_limit.py": "a4b6934fcc743118492d2c69889588b90e88345ea32899d815df397d75feaa00"
+  },
+  "source_hash_convention": "SHA256 of UTF8 text normalized to LF for cross-platform Git checkout",
+  "review": "docs/PROTOCOL_V4_SECURITY_REVIEW_20261105.md"
 }

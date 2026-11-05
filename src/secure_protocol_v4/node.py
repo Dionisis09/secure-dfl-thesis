@@ -1,5 +1,6 @@
 """Per-node state machine. Never returns signing/DH keys or HE private shares."""
 import numpy as np
+import copy
 from .core import Identity,Ledger,Rejected,canonical,digest,encode,decode,complete,aggregate_tag
 from . import pairwise
 
@@ -15,10 +16,22 @@ class Node:
             self.crypto=MultipartyBFV(context,parties=len(spec.roster))
     def registration(self):return self.identity.registration()
     def pin(self,roster):
-        if self.roster is not None or set(roster)!=set(self.spec.roster) or roster[self.identity.name]!=self.registration():
+        if self.roster is not None or not isinstance(roster,dict) or set(roster)!=set(self.spec.roster) or roster[self.identity.name]!=self.registration():
             raise Rejected('invalid/pinned identity roster')
+        signing=set();exchange=set()
+        try:
+            for name,entry in roster.items():
+                if set(entry)!={'name','signing','exchange'} or entry['name']!=name:raise Rejected('invalid enrollment entry')
+                a,b=decode(entry['signing']),decode(entry['exchange'])
+                if len(a)!=32 or len(b)!=32 or a in signing or b in exchange:raise Rejected('invalid/duplicate enrollment key')
+                # Reject unusable low-order DH public keys during enrollment.
+                from cryptography.hazmat.primitives.asymmetric import x25519
+                self.identity.exchange.exchange(x25519.X25519PublicKey.from_public_bytes(b))
+                signing.add(a);exchange.add(b)
+        except Rejected:raise
+        except Exception as e:raise Rejected('invalid enrollment key') from e
         # Supplied only by the trusted experiment enrollment/control plane.
-        self.roster=roster
+        self.roster=copy.deepcopy(roster)
     def keygen(self,previous,chain):
         index=self.spec.roster.index(self.identity.name)
         if self.secret is not None or len(chain)!=index:raise Rejected('invalid key ceremony order')

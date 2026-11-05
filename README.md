@@ -1,5 +1,10 @@
 Secure Decentralized Federated Learning
 
+**New protocol status (5 November 2026): research prototype, not deployment-ready.**
+The [security review](docs/PROTOCOL_V4_SECURITY_REVIEW_20261105.md) reproduced
+privacy failures with a malicious HE participant. The published thesis results
+below concern earlier implementations; they are not results of the new protocol.
+
 ## Final results and artifacts
 
 The [reduced three-seed comparison series](results/campaign_20261102_reduced/README.md)
@@ -7,8 +12,9 @@ completed **228/228 selected runs**, with **76 configurations x 3 seeds**.
 It reuses 119 previously completed runs and adds 109 runs within a bounded
 laptop session. Full datasets and original training settings were retained.
 The original 402 plus this subset give **630 unique completed runs**.
-The wider [1440-run design](results/campaign_20261020_full/README.md) is deferred,
-with 1212 runs still pending; it is not a completed campaign.
+The wider [1440-run design](results/campaign_20261020_full/README.md) is not a
+completed campaign. Only the selected 228-run extension is included in this
+published comparison; it must not be confused with later local run progress.
 The [Greek findings note](results/campaign_20261102_reduced/findings_el.md)
 documents the tested scope, mean/sample SD and limitations.
 
@@ -337,5 +343,10 @@ python src/audit_cli.py tamper-demo --package results/audit_packages/audit_demo 
 The audit package is still a prototype, but it is closer to a realistic integrity-verification mechanism than the local blockchain simulation.
 
 ## Authenticated secure aggregation prototype v4
+
+**Not deployment-ready:** the [security review](docs/PROTOCOL_V4_SECURITY_REVIEW_20261105.md)
+reproduced two privacy failures with a malicious HE participant. Functional
+tests pass under the limited semi-honest/trusted-host model. Do not use this
+prototype with sensitive updates or claim malicious-client security.
 
 A separate [v4 protocol implementation](docs/SECURE_PROTOCOL_V4.md) adds authenticated ECDH pairwise masks, signed aggregate approvals, durable replay rejection and real multiparty BFV with noise flooding over mutually authenticated TLS. The [20-process integration gate](results/protocol_v4/protocol20.json) exercises2570-value classifier aggregation and negative requests. CKKS is explicitly disabled pending a suitable verified backend configuration. This trusted-host prototype is not yet integrated into the full training campaign and does not establish arbitrary-collusion, poisoning or production-isolation guarantees. Legacy experiment results remain unchanged.

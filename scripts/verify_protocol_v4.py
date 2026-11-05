@@ -1,5 +1,5 @@
 """Real OpenFHE and mTLS integration gate. No training, no legacy mode substitution."""
-import argparse,json,sys,time,dataclasses,ssl,http.client
+import argparse,json,sys,time,dataclasses,ssl,http.client,hashlib,platform,importlib.metadata
 from pathlib import Path
 import numpy as np
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
@@ -10,9 +10,13 @@ def exercise(kind,n):
     start=time.monotonic();roster=tuple(f'p{i:03}' for i in range(n))
     spec=RoundSpec('integration-v4','fresh-key-epoch',roster[0],1,'model-head','10x256+10',roster,2570,kind)
     rng=np.random.default_rng(77);v={name:rng.uniform(-.1,.1,2570).tolist() for name in roster};checks=[]
+    # Include signed range boundaries, cancellation, zero and quantization ties.
+    for i,name in enumerate(roster):
+        v[name][:8]=[spec.bound,-spec.bound,0,(-1)**i*spec.bound,.5/65536,-.5/65536,.5/spec.scale,-.5/spec.scale]
     with Group(spec,v,testing=True) as group:
         if kind=='he_bfv':group.keygen()
         setup=time.monotonic()-start;messages=group.contributions();candidate=group.average(messages)
+        positive_request_bytes=group.request_bytes;positive_response_bytes=group.response_bytes
         def denied(label,op,**args):
             try:group.call(spec.target,op,**args)
             except Rejected:checks.append(label);return
@@ -41,20 +45,27 @@ def exercise(kind,n):
         checks.append('missing_mtls_client_certificate')
         if kind=='he_bfv':
             assert group.call(spec.target,'probe') is False;checks.append('single_private_share_cannot_recover_own_ciphertext')
+        before_request_bytes=group.request_bytes;before_response_bytes=group.response_bytes
         result=group.finish(messages,candidate);error=float(np.max(np.abs(result-np.mean(list(v.values()),axis=0))))
+        positive_request_bytes+=group.request_bytes-before_request_bytes;positive_response_bytes+=group.response_bytes-before_response_bytes
         assert error<(1e-5 if kind=='he_bfv' else 1/spec.scale),(kind,error)
         denied('approval_replay','approve',messages=messages,candidate=encode(candidate))
         denied('release_replay','release',messages=messages,candidate=encode(candidate),approvals=group.last_approvals)
         denied('duplicate_contribution_replay','contribute')
         assert len(set(group.pids.values()))==n
-        report=dict(kind=kind,participants=n,processes=n,length=2570,max_absolute_error=error,setup_seconds=setup,total_seconds=time.monotonic()-start,negative_checks=checks,mtls=True,no_aggregator_private_key=True,scope='One all-party aggregate, trusted host/passive peers, not full DFL training or independent-host isolation')
+        report=dict(kind=kind,participants=n,processes=n,length=2570,max_absolute_error=error,setup_seconds=setup,total_seconds=time.monotonic()-start,negative_checks=checks,mtls=True,no_aggregator_private_key=True,fixtures_include_range_boundaries=True,coordinator_knows_fixture_inputs=True,scope='One all-party aggregate, trusted host/passive peers, not full DFL training or independent-host isolation')
         if group.crypto:report['ring_dimension']=group.crypto.cc.GetRingDimension()
-        report.update(serialized_contribution_bytes=sum(len(decode(m['body']['payload']['data'])) for m in messages),aggregate_bytes=len(candidate),rpc_json_request_bytes=group.request_bytes,rpc_json_response_bytes=group.response_bytes,rpc_requests=group.request_count,traffic_scope='JSON application payloads only; excludes TLS/HTTP headers and independently-issued negative TLS probes')
+        report.update(serialized_contribution_bytes=sum(len(decode(m['body']['payload']['data'])) for m in messages),aggregate_bytes=len(candidate),rpc_json_request_bytes=group.request_bytes,rpc_json_response_bytes=group.response_bytes,positive_rpc_json_request_bytes=positive_request_bytes,positive_rpc_json_response_bytes=positive_response_bytes,rpc_requests=group.request_count,traffic_scope='Totals include setup and negative RPC tests; positive counters include ceremony and one successful aggregate. Excludes TLS/HTTP headers and independent TLS probes. Timings are integration-gate timings, not training benchmarks.')
     return report
 def main():
     p=argparse.ArgumentParser();p.add_argument('--participants',type=int,default=3);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
     reports=[]
+    root=Path(__file__).resolve().parents[1]
+    files=sorted((root/'src/secure_protocol_v4').glob('*.py'))+[Path(__file__).resolve(),root/'tests/test_secure_protocol_v4.py']
+    source={str(p.relative_to(root)).replace('\\','/'):hashlib.sha256(p.read_text(encoding='utf-8').replace('\r\n','\n').encode()).hexdigest() for p in files}
     for kind in ['pairwise','he_bfv']:
         r=exercise(kind,a.participants);reports.append(r);print(json.dumps(r),flush=True)
-        a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(dict(status='verified' if len(reports)==2 else 'partial',reports=reports),indent=2)+'\n',encoding='utf-8')
+        a.output.parent.mkdir(parents=True,exist_ok=True)
+        runtime=dict(python=platform.python_version(),platform=platform.platform(),packages={k:importlib.metadata.version(k) for k in ['numpy','cryptography','openfhe']}) if len(reports)==2 else {}
+        a.output.write_text(json.dumps(dict(status='verified' if len(reports)==2 else 'partial',reports=reports,runtime=runtime,source_sha256=source,source_hash_convention='SHA256 of UTF8 text normalized to LF'),indent=2)+'\n',encoding='utf-8')
 if __name__=='__main__':main()

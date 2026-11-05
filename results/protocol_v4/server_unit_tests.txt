@@ -1,0 +1,13 @@
+test_bounds_and_missing_participant_fail_closed (test_secure_protocol_v4.ProtocolTests) ... ok
+test_context_tamper_and_durable_replay (test_secure_protocol_v4.ProtocolTests) ... ok
+test_enrollment_is_validated_and_pinned_by_value (test_secure_protocol_v4.ProtocolTests) ... ok
+test_model_schema_and_ckks_fail_closed (test_secure_protocol_v4.ProtocolTests) ... ok
+test_pairwise_mtls_processes_and_negative_requests (test_secure_protocol_v4.ProtocolTests) ... ok
+test_strict_policy_and_safe_node_ids (test_secure_protocol_v4.ProtocolTests) ... ok
+test_tensor_schema_overflow_and_integer_policies (test_secure_protocol_v4.ProtocolTests) ... ok
+test_transport_framing_timeouts_and_error_redaction (test_secure_protocol_v4.ProtocolTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 6.761s
+
+OK

@@ -41,7 +41,8 @@ class MultipartyBFV:
         integers=np.asarray(p.GetPackedValue(),dtype=np.int64)
         integers=np.where(integers>self.MODULUS//2,integers-self.MODULUS,integers)
         v=integers.astype(np.float64)/(self.SCALE*len(spec.roster))
-        if v.shape!=(spec.length,) or not np.isfinite(v).all():raise Rejected('invalid recovered plaintext')
+        if v.shape!=(spec.length,) or not np.isfinite(v).all() or np.abs(v).max()>spec.bound+1/self.SCALE:
+            raise Rejected('invalid recovered plaintext')
         return v
 
 class CKKS:
