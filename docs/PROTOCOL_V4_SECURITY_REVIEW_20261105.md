@@ -1,5 +1,10 @@
 # Protocol v4 security review — 5 November 2026
 
+**Follow-up:** [v5 verified additive HE](SECURE_PROTOCOL_V5.md) replaces the
+vulnerable HE path; both reported attacks are rejected in its 50-process gate.
+V4 BFV is disabled by default. This document remains the historical v4 review,
+not a claim that its unsafe implementation was silently repaired in place.
+
 **Decision: suitable for supervisor review as a research prototype with disclosed
 limits. NOT ready for deployment with sensitive updates or malicious clients.**
 This is an implementation review and synthetic adversarial test, not an

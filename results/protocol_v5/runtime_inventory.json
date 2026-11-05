@@ -1,0 +1,8 @@
+{
+  "rbcl": "1.1.2",
+  "barriers": "1.2.0",
+  "cryptography": "50.0.2",
+  "numpy": "2.2.6",
+  "cffi": "2.1.1",
+  "pycparser": "3.11"
+}

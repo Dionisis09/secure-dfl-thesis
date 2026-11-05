@@ -1,0 +1,4 @@
+# Native libsodium Ristretto wrappers; separate from the BFV v4 prototype.
+rbcl==1.1.2
+cryptography>=46,<51
+numpy>=2,<3

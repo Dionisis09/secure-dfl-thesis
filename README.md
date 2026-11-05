@@ -1,9 +1,11 @@
 Secure Decentralized Federated Learning
 
-**New protocol status (5 November 2026): research prototype, not deployment-ready.**
-The [security review](docs/PROTOCOL_V4_SECURITY_REVIEW_20261105.md) reproduced
-privacy failures with a malicious HE participant. The published thesis results
-below concern earlier implementations; they are not results of the new protocol.
+**Protocol v5 (5 November 2026): the two reproduced HE attacks are rejected.**
+The [verified additive HE implementation](docs/SECURE_PROTOCOL_V5.md) passed a
+50-process mTLS gate with ciphertext/key knowledge proofs and verified decryption
+shares. The vulnerable v4 BFV path is disabled by default. This remains a research
+prototype without an independent security audit or full training integration.
+The published thesis results below concern earlier implementations.
 
 ## Final results and artifacts
 
@@ -342,7 +344,23 @@ python src/audit_cli.py tamper-demo --package results/audit_packages/audit_demo 
 
 The audit package is still a prototype, but it is closer to a realistic integrity-verification mechanism than the local blockchain simulation.
 
-## Authenticated secure aggregation prototype v4
+## Verified additive HE v5
+
+The [v5 protocol](docs/SECURE_PROTOCOL_V5.md) replaces the vulnerable HE path with
+Ristretto255 exponential ElGamal, key-share possession proofs, per-coordinate
+ciphertext knowledge proofs and verified all-party decryption shares. It is
+additive HE, not BFV/CKKS or general FHE. The [50-process receipt](results/protocol_v5/verification.json)
+records 17 rejected attack/error cases, exact agreement with the quantized
+plaintext control and a complete diagnostic gate of about 250 seconds. Pairwise
+masking also passed a separate 50-process gate. These are synthetic protocol
+tests, not new model accuracy results; see the [evidence guide](results/protocol_v5/README.md).
+No range-proof, poisoning-resistance, production-isolation or independent-audit
+claim is made. The large training campaign remains paused.
+
+## Historical authenticated secure aggregation prototype v4
+
+The v4 BFV Node path is **retired by default**. Its old receipts and explicitly
+unsafe attack reproduction remain available for scientific traceability.
 
 **Not deployment-ready:** the [security review](docs/PROTOCOL_V4_SECURITY_REVIEW_20261105.md)
 reproduced two privacy failures with a malicious HE participant. Functional

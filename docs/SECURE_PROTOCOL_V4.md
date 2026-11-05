@@ -1,5 +1,10 @@
 # Secure aggregation v4 — implementation and measured boundaries
 
+**Superseded HE implementation:** the v4 BFV Node path is disabled by default.
+Use [v5 verified additive HE](SECURE_PROTOCOL_V5.md) for the repaired path.
+The instructions and measurements below describe the historical v4 snapshot;
+its deliberately unsafe attack probe has an explicit reproduction-only opt-in.
+
 **Security review: NOT deployment-ready.** Synthetic adversarial tests reproduced
 rogue final-key substitution and ciphertext-cancellation attacks by a malicious
 participant. The functional gates below do not establish active security. Read

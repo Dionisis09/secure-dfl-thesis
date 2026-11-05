@@ -5,8 +5,10 @@ from .core import Identity,Ledger,Rejected,canonical,digest,encode,decode,comple
 from . import pairwise
 
 class Node:
-    def __init__(self,name,spec,ledger_path,context=None):
+    def __init__(self,name,spec,ledger_path,context=None,*,unsafe_legacy_reproduction=False):
         if name not in spec.roster:raise Rejected('unknown node')
+        if spec.kind=='he_bfv' and not unsafe_legacy_reproduction:
+            raise Rejected('v4 BFV retired: known active-security failures; use verified v5 HE. Explicit unsafe opt-in is for historical attack reproduction only.')
         self.identity=Identity(name);self.spec=spec;self.ledger=Ledger(ledger_path);self.roster=None
         self.crypto=None;self.secret=None;self.pk=None;self.own=None
         if spec.kind=='he_bfv':

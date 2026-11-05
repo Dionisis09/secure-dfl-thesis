@@ -1,0 +1,22 @@
+test_bounds_and_missing_participant_fail_closed (test_secure_protocol_v4.ProtocolTests) ... ok
+test_context_tamper_and_durable_replay (test_secure_protocol_v4.ProtocolTests) ... ok
+test_enrollment_is_validated_and_pinned_by_value (test_secure_protocol_v4.ProtocolTests) ... ok
+test_model_schema_and_ckks_fail_closed (test_secure_protocol_v4.ProtocolTests) ... ok
+test_pairwise_mtls_processes_and_negative_requests (test_secure_protocol_v4.ProtocolTests) ... ok
+test_strict_policy_and_safe_node_ids (test_secure_protocol_v4.ProtocolTests) ... ok
+test_tensor_schema_overflow_and_integer_policies (test_secure_protocol_v4.ProtocolTests) ... ok
+test_transport_framing_timeouts_and_error_redaction (test_secure_protocol_v4.ProtocolTests) ... ok
+test_production_default_has_no_diagnostic_signing_oracle (test_secure_protocol_v5.TransportTests) ... ok
+test_all_party_recovery_dleq_and_replays (test_secure_protocol_v5.VerifiedHE) ... ok
+test_key_proof_context_binding_and_own_key_pin (test_secure_protocol_v5.VerifiedHE) ... ok
+test_noncanonical_or_missing_cipher_proofs_rejected (test_secure_protocol_v5.VerifiedHE) ... ok
+test_policy_bounds_no_bfv_fallback (test_secure_protocol_v5.VerifiedHE) ... ok
+test_private_share_does_not_decrypt_individual_ciphertext (test_secure_protocol_v5.VerifiedHE) ... ok
+test_ristretto_scalar_validation_and_signed_decoding (test_secure_protocol_v5.VerifiedHE) ... ok
+test_rogue_public_share_requires_possession (test_secure_protocol_v5.VerifiedHE) ... ok
+test_signed_cancellation_and_copied_cipher_proofs_rejected (test_secure_protocol_v5.VerifiedHE) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 7.307s
+
+OK

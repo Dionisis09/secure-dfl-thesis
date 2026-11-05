@@ -1,0 +1,14 @@
+test_production_default_has_no_diagnostic_signing_oracle (test_secure_protocol_v5.TransportTests.test_production_default_has_no_diagnostic_signing_oracle) ... ok
+test_all_party_recovery_dleq_and_replays (test_secure_protocol_v5.VerifiedHE.test_all_party_recovery_dleq_and_replays) ... ok
+test_key_proof_context_binding_and_own_key_pin (test_secure_protocol_v5.VerifiedHE.test_key_proof_context_binding_and_own_key_pin) ... ok
+test_noncanonical_or_missing_cipher_proofs_rejected (test_secure_protocol_v5.VerifiedHE.test_noncanonical_or_missing_cipher_proofs_rejected) ... ok
+test_policy_bounds_no_bfv_fallback (test_secure_protocol_v5.VerifiedHE.test_policy_bounds_no_bfv_fallback) ... ok
+test_private_share_does_not_decrypt_individual_ciphertext (test_secure_protocol_v5.VerifiedHE.test_private_share_does_not_decrypt_individual_ciphertext) ... ok
+test_ristretto_scalar_validation_and_signed_decoding (test_secure_protocol_v5.VerifiedHE.test_ristretto_scalar_validation_and_signed_decoding) ... ok
+test_rogue_public_share_requires_possession (test_secure_protocol_v5.VerifiedHE.test_rogue_public_share_requires_possession) ... ok
+test_signed_cancellation_and_copied_cipher_proofs_rejected (test_secure_protocol_v5.VerifiedHE.test_signed_cancellation_and_copied_cipher_proofs_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 15.338s
+
+OK

@@ -16,7 +16,7 @@ def cancellation_probe():
     from secure_protocol_v4.openfhe_backend import MultipartyBFV
     public=MultipartyBFV(parties=3)
     with tempfile.TemporaryDirectory() as folder:
-        nodes=[Node(n,spec,Path(folder)/(n+'.sqlite'),public.context()) for n in spec.roster]
+        nodes=[Node(n,spec,Path(folder)/(n+'.sqlite'),public.context(),unsafe_legacy_reproduction=True) for n in spec.roster]
         try:
             roster={n.identity.name:n.registration() for n in nodes}
             for node in nodes:node.pin(roster)
@@ -52,7 +52,7 @@ def rogue_key_probe():
     spec=RoundSpec('rogue-key-probe','synthetic-only','p000',1,'fixture','fixture-schema',('p000','p001','p002'),32,'he_bfv')
     public=MultipartyBFV(parties=3)
     with tempfile.TemporaryDirectory() as folder:
-        nodes=[Node(n,spec,Path(folder)/(n+'.sqlite'),public.context()) for n in spec.roster]
+        nodes=[Node(n,spec,Path(folder)/(n+'.sqlite'),public.context(),unsafe_legacy_reproduction=True) for n in spec.roster]
         try:
             roster={n.identity.name:n.registration() for n in nodes}
             for node in nodes:node.pin(roster)

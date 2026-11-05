@@ -1,0 +1,35 @@
+{
+  "status": "active_security_limits_confirmed",
+  "synthetic_only": true,
+  "participants": 3,
+  "honest_participants": 2,
+  "corrupt_participants": 1,
+  "attacks": [
+    {
+      "attack": "adaptive_ciphertext_cancellation",
+      "all_approvals_accepted": true,
+      "victim_recovered_from_authorized_mean": true,
+      "max_absolute_reconstruction_error": 7.5034550583163995e-06
+    },
+    {
+      "attack": "signed_rogue_final_public_key",
+      "honest_nodes_accepted_key": true,
+      "individual_ciphertext_decrypted_without_approvals": true,
+      "max_absolute_reconstruction_error": 7.384655083417235e-06
+    }
+  ],
+  "source_sha256": {
+    "src/secure_protocol_v4/__init__.py": "1f2df7ee467f940ea018f442b5fd18f5b444d859c593a329b714851fefb4a198",
+    "src/secure_protocol_v4/core.py": "16f0012d4540bde3d0a576b60ad8b694b60031e56bc329f137b0528e69e3adbe",
+    "src/secure_protocol_v4/model_adapter.py": "dc1363db3f6047840e44a3be5139a94e22deb517b28d2a7f3a7a728155d90814",
+    "src/secure_protocol_v4/node.py": "da38c2d725b605292ac8eabd5ec804827f4ac0d84cbb3ee367558b105894ae0c",
+    "src/secure_protocol_v4/openfhe_backend.py": "fb7e6aad53b21d10ab64a5bb991947cb98b57587855de529e9a9f68cf9821bab",
+    "src/secure_protocol_v4/pairwise.py": "383db6d78347786c38bd0efe861bb05219f75b1c82216c4e7e79b250cb81a3cc",
+    "src/secure_protocol_v4/transport.py": "f25b0ea867acc795fe23988130f286473c379f8df98b9e006f0df92f6ba7f393",
+    "scripts/probe_protocol_v4_active_limit.py": "2af8b62de24a8d695aed0271a1032558faa4b5d23e0047f9a8ed3e206197c3b6"
+  },
+  "conclusion": "Signatures do not prove honest joint-key generation or plaintext possession. Do not deploy this prototype against malicious participants.",
+  "protocol": "v4-bfv-unsafe-reproduction",
+  "is_v5_result": false,
+  "scope": "Historical v4 active attacks explicitly enabled as a negative control. V5 rejects these attacks."
+}

@@ -1,0 +1,80 @@
+{
+  "status": "two_reported_HE_attacks_fixed_50_process_gate_passed",
+  "reviewed_at": "2026-11-05T18:37:04.378020+00:00",
+  "protocol": "v5-ristretto255-elgamal-pok",
+  "backend": "Ristretto255 additive ElGamal + PoK/DLEQ",
+  "legacy_v4_BFV_disabled_by_default": true,
+  "local_new_protocol_tests_passed": 9,
+  "server_combined_tests_passed": 17,
+  "HE_negative_checks_passed": 17,
+  "pairwise_negative_checks_passed": 12,
+  "participants": 50,
+  "processes_per_mode": 50,
+  "classifier_values": 2570,
+  "corrected_attacks": [
+    "rogue_final_key_substitution",
+    "adaptive_ciphertext_cancellation"
+  ],
+  "decryption_share_proofs_verified": true,
+  "quantized_control_max_error": 0,
+  "max_absolute_mean_quantization_error": 7.62939453125e-06,
+  "HE_full_gate_seconds": 249.60015329999442,
+  "pairwise_full_gate_seconds": 9.55054266100342,
+  "range_proofs": false,
+  "production_ready": false,
+  "independent_security_audit": false,
+  "formal_whole_protocol_security_proof": false,
+  "independent_host_isolation_verified": false,
+  "training_integration_complete": false,
+  "large_training_campaign_started": false,
+  "runtime": {
+    "python": "3.10.9",
+    "platform": "Linux-6.8.0-147-generic-x86_64-with-glibc2.39",
+    "packages": {
+      "rbcl": "1.1.2",
+      "cryptography": "50.0.2",
+      "numpy": "2.2.6"
+    }
+  },
+  "exact_python_dependency_inventory": {
+    "rbcl": "1.1.2",
+    "barriers": "1.2.0",
+    "cryptography": "50.0.2",
+    "numpy": "2.2.6",
+    "cffi": "2.1.1",
+    "pycparser": "3.11"
+  },
+  "secret_scan": {
+    "status": "no_matches",
+    "files_checked": 437,
+    "scope": "Heuristic current tracked/new text scan; excludes Git history and binary documents; not a proof that all secrets are absent"
+  },
+  "source_sha256": {
+    "src/secure_protocol_v5/__init__.py": "876b21500f05667f66e0e878beec63e4cd4fb0038f8a51ec80f5aedb79adf614",
+    "src/secure_protocol_v5/crypto.py": "c4bd49c73bf3502d9066b6ff21bec9f6e6a2f4ece7cdb20a7b8fa63328ec27cd",
+    "src/secure_protocol_v5/node.py": "654fc2339c035a09a0b55626d987747a80f72f57b91f25bfaa67b6bb9ca4907c",
+    "src/secure_protocol_v5/transport.py": "e2e0f064a26e25f539ff36cc5d5ca76fb8d95eecf3f6a1e0d612b903d652f3b6",
+    "src/secure_protocol_v4/__init__.py": "1f2df7ee467f940ea018f442b5fd18f5b444d859c593a329b714851fefb4a198",
+    "src/secure_protocol_v4/core.py": "16f0012d4540bde3d0a576b60ad8b694b60031e56bc329f137b0528e69e3adbe",
+    "src/secure_protocol_v4/model_adapter.py": "dc1363db3f6047840e44a3be5139a94e22deb517b28d2a7f3a7a728155d90814",
+    "src/secure_protocol_v4/node.py": "da38c2d725b605292ac8eabd5ec804827f4ac0d84cbb3ee367558b105894ae0c",
+    "src/secure_protocol_v4/openfhe_backend.py": "fb7e6aad53b21d10ab64a5bb991947cb98b57587855de529e9a9f68cf9821bab",
+    "src/secure_protocol_v4/pairwise.py": "383db6d78347786c38bd0efe861bb05219f75b1c82216c4e7e79b250cb81a3cc",
+    "src/secure_protocol_v4/transport.py": "f25b0ea867acc795fe23988130f286473c379f8df98b9e006f0df92f6ba7f393",
+    "scripts/verify_protocol_v5.py": "bd180fc397e471c60028ed65d947d0c8d8312f4cbc85359be2e24846325eefb8",
+    "tests/test_secure_protocol_v5.py": "fd858316a88955c4b479c9cfb7d526e7d056323f5fec2f6299b5fd51d076cec9",
+    "scripts/verify_protocol_v4.py": "08426104feee4086c9cf1fa3e475296d9163549f99a00b484105089a424535ca",
+    "scripts/probe_protocol_v4_active_limit.py": "2af8b62de24a8d695aed0271a1032558faa4b5d23e0047f9a8ed3e206197c3b6"
+  },
+  "source_hash_convention": "SHA256 UTF8 text normalized to LF",
+  "artifact_sha256": {
+    "dependency_audit.json": "addfa562d065585bf0c3ec0c2d98802b1724c00d22262cbb2fc08bfe2a37d2a6",
+    "legacy_reproduction.json": "a778f7718966cf0ac3d7cc6ed379f192036a017bac7fa5aa8952ed975c1705fe",
+    "local_unit_tests.txt": "2da3524d23792313e1ec92a96ce1c02aa91d265fb9c57ad6751e952dd0f5ef21",
+    "pairwise50.json": "fc98642d9ae0eceeceb16a149b9064e9704d752fa467410454ed765345f1dca8",
+    "protocol3.json": "8a0122d1d66fad178a355307d1b9a11f2c13e35d6b7cbe4f4b719f8c66b5ee16",
+    "protocol50.json": "9f539f5e9ec65f0b85f7bf4e5091fef97123e9d0dc0ab5c2d251b205d1625caa",
+    "runtime_inventory.json": "5ed49af1aceeeb345c0fc23858f94b1ab2582f85cb4ab0679dcc45a679102f51",
+    "server_unit_tests.txt": "6f08ad229f28628e40425a1221adc301e45c529d732d18cb75c7e568978cabc0"
+  }
+}
