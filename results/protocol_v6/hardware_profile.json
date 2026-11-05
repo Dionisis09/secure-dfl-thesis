@@ -1,0 +1,11 @@
+{
+  "label": "CEID GPU server",
+  "captured_at": "2026-11-05T20:11:52.093412+00:00",
+  "platform": "Linux-6.8.0-147-generic-x86_64-with-glibc2.39",
+  "cpu_model": "AMD Ryzen 9 5950X 16-Core Processor",
+  "cpu_logical": 32,
+  "memory_KiB": 65743108,
+  "gpu_query": "NVIDIA GeForce RTX 4090, 24564, 595.99.02",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "cargo": "cargo 1.99.1 (5f94df478 2026-08-27)"
+}

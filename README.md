@@ -1,11 +1,24 @@
 Secure Decentralized Federated Learning
 
-**Protocol v5 (5 November 2026): the two reproduced HE attacks are rejected.**
-The [verified additive HE implementation](docs/SECURE_PROTOCOL_V5.md) passed a
-50-process mTLS gate with ciphertext/key knowledge proofs and verified decryption
-shares. The vulnerable v4 BFV path is disabled by default. This remains a research
-prototype without an independent security audit or full training integration.
-The published thesis results below concern earlier implementations.
+**Protocol v6 (5 November 2026): range proofs and real MLP/CNN training integration verified.**
+The [v6 protocol](docs/SECURE_PROTOCOL_V6.md) adds two-sided Bulletproof range
+proofs linked to every encrypted classifier coordinate, while streamed pairwise
+masking protects the complete floating backbone. The
+[verification evidence](results/protocol_v6/README.md) includes 27 passing server
+tests and a 50-process mTLS gate rejecting 21 invalid cases. Separate
+[real CIFAR-10 integration pilots](results/protocol_v6_training/README.md) completed
+two rounds for each model with 20 clients, matching the independent quantized
+plaintext control across the complete model state, loss and accuracy. Checkpoint
+resume was verified without repeating completed rounds.
+
+This is a trusted-host research simulator: the trainer holds plaintext local
+states. Independent client deployment, malicious backbone range checks and an
+independent security audit remain outstanding; known dependency advisories are
+recorded with the evidence. These short single-seed pilots are correctness tests,
+not new accuracy benchmarks. The published thesis results below concern earlier
+implementations. The opt-in entry point is `scripts/run_secure_training.py`;
+[build and reproduction instructions](docs/SECURE_PROTOCOL_V6.md) describe the
+required native backend. Legacy runners and historical results are preserved.
 
 ## Final results and artifacts
 

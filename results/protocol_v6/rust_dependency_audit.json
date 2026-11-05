@@ -1,0 +1,18 @@
+{
+  "service": "OSV querybatch",
+  "ecosystem": "crates.io",
+  "packages_checked": 51,
+  "findings": [
+    {
+      "package": "clear_on_drop",
+      "version": "0.2.5",
+      "vulnerabilities": [
+        {
+          "id": "RUSTSEC-2026-0283",
+          "modified": "2026-09-13T20:15:02.837061Z"
+        }
+      ]
+    }
+  ],
+  "scope": "Known public advisories only; not a protocol/native-code security audit"
+}

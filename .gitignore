@@ -20,6 +20,9 @@ platform_mvp/**/__pycache__/
 .claude/
 .pytest_cache/
 .ruff_cache/
+native/dfl_range/target/
+results/protocol_v6_training/**/checkpoint*.pt
+results/protocol_v6_training/**/run.lock
 docs/presentation_preview/
 
 # Local campaign controller diagnostics (final evidence is committed separately)

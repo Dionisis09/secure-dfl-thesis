@@ -1,0 +1,4 @@
+-r requirements-protocol-v5.txt
+torch>=2.2
+torchvision>=0.17
+# Also build native/dfl_range with cargo build --release --locked.

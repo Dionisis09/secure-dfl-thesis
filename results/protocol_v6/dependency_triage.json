@@ -1,0 +1,30 @@
+{
+  "status": "known_advisories_recorded_not_a_clean_scan",
+  "scope": "Recorded trusted-host raw-NPZ/eager-NN pilot only; not deployment approval",
+  "clear_on_drop": {
+    "id": "RUSTSEC-2026-0283",
+    "classification": "informational/unmaintained",
+    "patched_release": null,
+    "mitigation": "No complete secret-memory erasure claim; maintained dependency strategy requires review",
+    "source": "https://rustsec.org/advisories/RUSTSEC-2026-0283.html"
+  },
+  "torch": {
+    "id": "GHSA-rrmf-rvhw-rf47",
+    "affected_surface": "torch.jit.script",
+    "pilot_entrypoint_requests_TorchScript": false,
+    "patched_version": "2.13.0",
+    "source": "https://github.com/advisories/GHSA-rrmf-rvhw-rf47"
+  },
+  "Pillow": {
+    "affected_surface": "image format decoders",
+    "pilot_uses_Pillow_file_decoders": false,
+    "pilot_input": "np.load(allow_pickle=False) uint8 arrays directly to Torch",
+    "patched_version": "13.0.0",
+    "sources": [
+      "https://github.com/advisories/GHSA-22hg-r758-rrw9",
+      "https://github.com/advisories/GHSA-78g4-xqwv-q3g8"
+    ]
+  },
+  "deployment_runtime_must_be_patched_and_revalidated": true,
+  "OS_GPU_driver_audit": false
+}
