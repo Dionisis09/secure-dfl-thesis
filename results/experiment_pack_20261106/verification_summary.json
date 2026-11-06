@@ -1,0 +1,21 @@
+{
+  "status": "package_verified_campaign_not_started",
+  "source_hash": "eb6bf8274ccc96fb88ce276e3fdf2720cb3bfcfc465939e47c159df322ce46eb",
+  "unit_tests": 50,
+  "deployment_clients": 50,
+  "deployment_training_rounds": 0,
+  "scientific_jobs_completed": 0,
+  "full_50client_GPU_calibration": "pending_explicit_start",
+  "fixtures": [
+    "frozen_deploy50",
+    "frozen_mlp_gpu",
+    "frozen_cnn_gpu",
+    "frozen_caveman",
+    "frozen_barabasi"
+  ],
+  "limits": [
+    "Small integration fixtures are correctness checks, not accuracy or throughput benchmarks.",
+    "The test auditor is a trusted operator outside the coordinator.",
+    "Same-host isolation does not establish arbitrary-collusion, host-admin or GPU-side-channel security."
+  ]
+}

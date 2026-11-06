@@ -1,0 +1,20 @@
+test_hybrid_HE (test_experiment_pack.ClientSessionTests) ... ok
+test_legacy_public_mask_ablation (test_experiment_pack.ClientSessionTests) ... ok
+test_pairwise_full_model (test_experiment_pack.ClientSessionTests) ... ok
+test_plain_baseline (test_experiment_pack.ClientSessionTests) ... ok
+test_selective_HE (test_experiment_pack.ClientSessionTests) ... ok
+test_all_dataset_model_inputs_share_2570_head (test_experiment_pack.PackDesignTests) ... ok
+test_build_is_nonexecuting_and_preserves_existing_state (test_experiment_pack.PackDesignTests) ... ok
+test_client_can_replace_python_but_not_execute_shell (test_experiment_pack.PackDesignTests) ... ok
+test_complete_grid_50clients_three_seeds_unique_dependencies (test_experiment_pack.PackDesignTests) ... ok
+test_folds_disjoint_stratified_and_repeatable (test_experiment_pack.PackDesignTests) ... ok
+test_network_dirichlet_50_clients_has_feasible_minimum (test_experiment_pack.PackDesignTests) ... ok
+test_no_test_selection_in_tuning (test_experiment_pack.PackDesignTests) ... ok
+test_outer_envelope_tamper_replay_wrong_recipient (test_experiment_pack.PackDesignTests) ... ok
+test_real_topologies_and_single_target_assignment (test_experiment_pack.PackDesignTests) ... ok
+test_rpc_audit_memory_is_bounded_for_long_campaigns (test_experiment_pack.PackDesignTests) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 130.679s
+
+OK

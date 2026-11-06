@@ -1,0 +1,12 @@
+# Recorded research profile; install CUDA wheels from the official PyTorch index.
+# Known v6 advisories are retained/triaged; this is not a patched production profile.
+torch==2.11.0
+torchvision==0.26.0
+numpy==2.2.6
+networkx==3.4.2
+cryptography==50.0.2
+rbcl==1.1.2
+cffi==2.1.1
+pycparser==3.11
+Pillow==12.3.0
+# Build native/dfl_range using cargo build --release --locked.

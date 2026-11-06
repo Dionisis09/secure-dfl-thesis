@@ -20,6 +20,16 @@ platform_mvp/**/__pycache__/
 .claude/
 .pytest_cache/
 .ruff_cache/
+# Private v8 roles, official cache and local correctness-fixture credentials
+private-campaign/
+data-cache/
+checks/
+experiment_pack_50c_3seeds_v8/controller.lock
+experiment_pack_50c_3seeds_v8/pause.request
+experiment_pack_50c_3seeds_v8/results/
+experiment_pack_50c_3seeds_v8/runtime_profile.json
+experiment_pack_50c_3seeds_v8/learning_rate_selection.json
+experiment_pack_50c_3seeds_v8/calibration_budget.json
 native/dfl_range/target/
 private-jobs/
 results/protocol_v6_training/**/checkpoint*.pt

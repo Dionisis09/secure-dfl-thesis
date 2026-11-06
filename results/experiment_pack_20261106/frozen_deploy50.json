@@ -1,0 +1,1024 @@
+{
+  "status": "preflight_only",
+  "job_id": "ec5f71272f3ccf596d88030480a4ca35f6251b7dfa2f3e7682c1cf9485e3a3c8",
+  "clients": 50,
+  "completed_rounds": 0,
+  "records": [],
+  "isolation": {
+    "landlock_abi": 4,
+    "filesystem_restricted": true,
+    "non_dumpable": true,
+    "core_dumps_disabled": true,
+    "host_admin_is_trusted": true,
+    "tcp_ports_restricted": true,
+    "unix_sockets_blocked": true,
+    "seccomp_enforced": true,
+    "GPU_seqpacket_only": false,
+    "client_outbound_connect_blocked": false,
+    "denial_probes": [
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "private_file_read",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      },
+      {
+        "kind": "process_vm_readv",
+        "denied": true
+      }
+    ]
+  },
+  "no_training_performed": true,
+  "coordinator_receives_individual_or_neighborhood_models": false,
+  "supervisor_wall_seconds": 6.4530644340002254
+}

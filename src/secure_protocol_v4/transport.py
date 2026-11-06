@@ -44,12 +44,12 @@ def strict_object(pairs):
     return result
 
 def reject_constant(value):raise Rejected('non-finite JSON value')
-def certificates(folder,names):
+def certificates(folder,names,validity_days=1):
     root=Path(folder);os.chmod(root,0o700)
     key=ec.generate_private_key(ec.SECP256R1());now=dt.datetime.now(dt.timezone.utc)
     ca_name=x509.Name([x509.NameAttribute(NameOID.COMMON_NAME,'DFL v4 ephemeral experiment CA')])
     def builder(subject,issuer,pub):
-        return x509.CertificateBuilder().subject_name(subject).issuer_name(issuer).public_key(pub).serial_number(x509.random_serial_number()).not_valid_before(now-dt.timedelta(minutes=5)).not_valid_after(now+dt.timedelta(days=1))
+        return x509.CertificateBuilder().subject_name(subject).issuer_name(issuer).public_key(pub).serial_number(x509.random_serial_number()).not_valid_before(now-dt.timedelta(minutes=5)).not_valid_after(now+dt.timedelta(days=validity_days))
     ca=builder(ca_name,ca_name,key.public_key()).add_extension(x509.BasicConstraints(ca=True,path_length=0),True).sign(key,hashes.SHA256())
     (root/'ca.pem').write_bytes(ca.public_bytes(serialization.Encoding.PEM))
     for name in names:

@@ -1,5 +1,18 @@
 Secure Decentralized Federated Learning
 
+**GPU pack v8 (6 November 2026): prepared, no scientific jobs started.**
+The [50-client, three-seed package](docs/GPU_EXPERIMENT_PACK_50C_3SEEDS.md)
+freezes matched MLP/CNN experiments across three datasets, four topologies,
+five distributions and six security/ablation modes. Its 3,110 planned jobs
+include 3,060 scientific validation/sensitivity/network jobs and 50 separate
+calibration, smoke and tuning jobs. The [frozen manifest](experiment_pack_50c_3seeds_v8/manifest.json)
+does not execute on opening/building. Independent clients keep their local
+training and per-neighborhood models private from the opaque relay coordinator.
+The RTX 4090 is available again following a server reboot. The
+[verification evidence](results/experiment_pack_20261106/README.md) distinguishes
+small functional tests from the still-pending full 50-client GPU calibration.
+Historical results and final thesis artifacts below remain unchanged.
+
 **Protocol v7 (6 November 2026): independent clients; aggregate-only coordinator.**
 The [independent-client services](docs/INDEPENDENT_CLIENTS_V7.md) perform local
 training, masking and HE inside each client. The coordinator receives protected

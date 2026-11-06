@@ -1,0 +1,8 @@
+{
+  "status": "prepared_not_started",
+  "completed": [],
+  "failed": [],
+  "current": null,
+  "GPU_validated": false,
+  "data_ready": true
+}

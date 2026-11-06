@@ -22,7 +22,7 @@ def protect_memory():
     return libc
 
 
-def restrict_files(private_dir, extra_read=(), *, gpu=False,connect_ports=(),bind_ports=()):
+def restrict_files(private_dir, extra_read=(), *, gpu=False,connect_ports=(),bind_ports=(),allow_python_exec=False):
     libc = protect_memory()
     # Landlock restricts the calling thread and its future children, not existing
     # sibling threads. Refuse an already multithreaded startup instead of leaving
@@ -51,7 +51,7 @@ def restrict_files(private_dir, extra_read=(), *, gpu=False,connect_ports=(),bin
     if fd < 0:
         raise OSError(ctypes.get_errno(), 'cannot create Landlock ruleset')
     try:
-        def allow(path, writable=False, executable=False):
+        def allow(path, writable=False, executable=False, rights_override=None):
             path = Path(path).resolve()
             if not path.exists():
                 return
@@ -60,6 +60,7 @@ def restrict_files(private_dir, extra_read=(), *, gpu=False,connect_ports=(),bin
                 rights = handled & ~1 if path.is_dir() else (2 | 4 | (1 << 14))
             if executable:
                 rights |= 1
+            if rights_override is not None:rights=rights_override
             parent = os.open(path, os.O_PATH | os.O_CLOEXEC)
             try:
                 rule = PathBeneath(rights, parent)
@@ -77,11 +78,25 @@ def restrict_files(private_dir, extra_read=(), *, gpu=False,connect_ports=(),bin
                  f'/proc/{os.getpid()}', *extra_read]
         for path in paths:
             allow(path)
+        if allow_python_exec:
+            allow(sys.executable,executable=True)
+            # The kernel also executes the ELF interpreter of a dynamic Python
+            # binary; permitting Python alone would fail before worker startup.
+            for loader in ['/lib64/ld-linux-x86-64.so.2','/lib/ld-linux-aarch64.so.1']:
+                allow(loader,executable=True)
         for path in ['/dev/null', '/dev/urandom', '/dev/random']:
             allow(path, writable=True)
         if gpu:
             allow('/proc/driver/nvidia')
-            for path in Path('/dev').glob('nvidia*'):
+            allow('/proc/devices')
+            allow('/proc/sys/vm/mmap_min_addr')
+            # CUDA names its own helper threads via task/*/comm. No foreign
+            # process directory or system-wide writable proc path is allowed.
+            allow(f'/proc/{os.getpid()}/task',rights_override=4|8|2|(1<<14))
+            # Explicit single-GPU device paths remain usable after exec. An
+            # inherited profile intentionally cannot list all of /dev, so glob
+            # discovery in a second layer would silently omit these devices.
+            for path in ['/dev/nvidia0','/dev/nvidiactl','/dev/nvidia-modeset','/dev/nvidia-uvm','/dev/nvidia-uvm-tools','/dev/nvidia-caps']:
                 allow(path, writable=True)
             allow('/sys/devices', executable=False)
         allow(private_dir, writable=True)
@@ -97,13 +112,14 @@ def restrict_files(private_dir, extra_read=(), *, gpu=False,connect_ports=(),bin
             raise OSError(ctypes.get_errno(), 'cannot enforce Landlock')
     finally:
         os.close(fd)
-    restrict_syscalls(libc)
+    restrict_syscalls(libc,allow_python_exec=allow_python_exec,gpu_ipc=gpu)
     return dict(landlock_abi=abi,filesystem_restricted=True,non_dumpable=True,
                 core_dumps_disabled=True,host_admin_is_trusted=True,
-                tcp_ports_restricted=True,unix_sockets_blocked=True,seccomp_enforced=True)
+                tcp_ports_restricted=True,unix_sockets_blocked=not gpu,seccomp_enforced=True,
+                GPU_seqpacket_only=gpu,client_outbound_connect_blocked=gpu)
 
 
-def restrict_syscalls(libc):
+def restrict_syscalls(libc,*,allow_python_exec=False,gpu_ipc=False):
     """Block local control-plane IPC and routes around the filesystem/TCP rules.
 
     In particular, an unrestricted Unix socket to the same-UID systemd user
@@ -121,6 +137,16 @@ def restrict_syscalls(libc):
                 53,54,55,5,6,7,14,15,16]
     else:raise RuntimeError('unsupported seccomp architecture')
     denied += [425,426,427,428,429,430,431,432,433,438,442,452]
+    if allow_python_exec:
+        # Only client roles may replace themselves with the same read-only Python
+        # interpreter. Coordinator defaults remain immutable and deny all exec.
+        exec_numbers=(59,322) if machine=='x86_64' else (221,281)
+        denied=[n for n in denied if n not in exec_numbers]
+    if gpu_ipc:
+        # NVIDIA creates a SEQPACKET FD for its driver. This is not permission
+        # to contact local user managers: all outbound connect calls are denied
+        # for the GPU client (the coordinator is TCP-only, never this profile).
+        denied.append(42 if machine=='x86_64' else 203)
     # Classic BPF: load arch, kill foreign ABIs; reject x32; then syscall filters.
     LD=0x20;JEQ=0x15;JSET=0x45;AND=0x54;RET=0x06
     DENY=0x00050000|errno.EPERM;ALLOW=0x7fff0000
@@ -130,6 +156,14 @@ def restrict_syscalls(libc):
     socket_rules=[(LD,0,0,16),(JEQ,2,0,2),(JEQ,1,0,10),(RET,0,0,DENY),
                   (LD,0,0,24),(AND,0,0,15),(JEQ,1,0,1),(RET,0,0,DENY),
                   (LD,0,0,32),(JEQ,2,0,0),(JEQ,1,0,6),(RET,0,0,DENY),(RET,0,0,ALLOW)]
+    if gpu_ipc:
+        # IF AF_UNIX: permit only SOCK_SEQPACKET, protocol0. STREAM/DGRAM,
+        # socketpair and all connect() calls remain blocked in this profile.
+        unix_rules=[(LD,0,0,16),(JEQ,0,6,1),(LD,0,0,24),(AND,0,0,15),(JEQ,0,3,5),
+                    (LD,0,0,32),(JEQ,0,1,0),(RET,0,0,ALLOW),(RET,0,0,DENY)]
+        # The AF_UNIX mismatch must fall through to the normal TCP checks.
+        unix_rules[1]=(JEQ,0,len(unix_rules)-2,1)
+        socket_rules=unix_rules+socket_rules
     program += [(JEQ,0,len(socket_rules),socket_number),*socket_rules,(RET,0,0,ALLOW)]
     class Filter(ctypes.Structure):
         _fields_=[('code',ctypes.c_ushort),('jt',ctypes.c_ubyte),('jf',ctypes.c_ubyte),('k',ctypes.c_uint)]

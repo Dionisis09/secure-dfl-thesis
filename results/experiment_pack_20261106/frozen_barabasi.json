@@ -1,0 +1,30 @@
+{
+  "status": "verified",
+  "model": "mlp",
+  "dataset": "fashion_mnist",
+  "topology": "barabasi_albert",
+  "mode": "pairwise_masking",
+  "clients": 6,
+  "rounds": 1,
+  "device": "cpu",
+  "records": [
+    {
+      "round": 1,
+      "neighbor_state_exact": true,
+      "metric_mean_exact": true,
+      "state_hashes": {
+        "p000": "113c061c87fc2a0607319e9cc7dfd54748c4bd7d986faac3b61614226828f7fe",
+        "p001": "ab0fcec077ec942d340c51b7f3660fe20325375c4f8da4f4a5d23a73bb2bfd56",
+        "p002": "113c061c87fc2a0607319e9cc7dfd54748c4bd7d986faac3b61614226828f7fe",
+        "p003": "5d9bb7c7201718c52826580486e4f3edd4cc31df48463374fe5ac3adc81504e3",
+        "p004": "52c27a60be980cd8a08bb698a1c4be7da7bf5c9a949ed6cac92fe3480b6995c1",
+        "p005": "62bcd40842d8aa32fd526f070dd058ffe3182d40931610bd615d2ac7157e26ea"
+      }
+    }
+  ],
+  "complete_resume_does_not_train": true,
+  "private_best_checkpoint_exact": true,
+  "source_hash": "eb6bf8274ccc96fb88ce276e3fdf2720cb3bfcfc465939e47c159df322ce46eb",
+  "all_services_stopped": true,
+  "scope": "small correctness fixture; not a scientific campaign or accuracy benchmark"
+}

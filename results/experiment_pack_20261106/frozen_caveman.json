@@ -1,0 +1,32 @@
+{
+  "status": "verified",
+  "model": "cnn",
+  "dataset": "cifar10",
+  "topology": "caveman",
+  "mode": "none",
+  "clients": 8,
+  "rounds": 1,
+  "device": "cpu",
+  "records": [
+    {
+      "round": 1,
+      "neighbor_state_exact": true,
+      "metric_mean_exact": true,
+      "state_hashes": {
+        "p000": "7e9364f88129083514c8790b305f2f1ffdb19db3de280684f3a677fb79269a16",
+        "p001": "4af7d4d7e6300bd1aaa6ebcd165910c38e8e0bc4f5e257b7e37b2b14115942bf",
+        "p002": "e909a3e855d9c1954a30ccfdbf1b304a87977482c2cfe9e7287844b47ce5b486",
+        "p003": "173b213640c4064a1a206012ae7b0b7ed2c2058e63684d493b7dfefc3e1cf08f",
+        "p004": "fbf6142d89e9f915e60723c4264a8fec182329f3feb3e4856f9e769e0f59a8aa",
+        "p005": "2b7ef1228b980ec716f720d973ed76a8977f1decc3888b2b5540d5fab4606d04",
+        "p006": "148fdb3f79dabed3a91eedd66bae6ca90d5a283bb78ae5d41f962b0cbcc4ea6e",
+        "p007": "bf64d865e2b09789e064d4a263e9d5cc2d819acd494e8ba3d1c003589ca6a7a5"
+      }
+    }
+  ],
+  "complete_resume_does_not_train": true,
+  "private_best_checkpoint_exact": true,
+  "source_hash": "eb6bf8274ccc96fb88ce276e3fdf2720cb3bfcfc465939e47c159df322ce46eb",
+  "all_services_stopped": true,
+  "scope": "small correctness fixture; not a scientific campaign or accuracy benchmark"
+}
