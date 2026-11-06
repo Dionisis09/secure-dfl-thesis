@@ -1,6 +1,24 @@
 Secure Decentralized Federated Learning
 
-**Protocol v6 (5 November 2026): range proofs and real MLP/CNN training integration verified.**
+**Protocol v7 (6 November 2026): independent clients; aggregate-only coordinator.**
+The [independent-client services](docs/INDEPENDENT_CLIENTS_V7.md) perform local
+training, masking and HE inside each client. The coordinator receives protected
+updates and the common aggregate, without local trained models, datasets or
+optimizer/RNG state. Linux Landlock and seccomp restrict each role's files,
+memory-access operations and network/control-plane access; startup fails closed
+if the required isolation cannot be enforced.
+
+The [published evidence](results/independent_clients/README.md) contains **35/35
+passing server tests**, real CIFAR-10 pilots with **20 clients for MLP and CNN**,
+and a two-round recovery pilot including mixed partial commit and restart of all
+clients. Full-state hashes exactly match a separate trusted test auditor. These
+are CPU correctness/boundary pilots, not accuracy benchmarks. SSH access worked
+while unrestricted server GPU checks failed. The host administrator and trusted
+provisioning/audit operator remain outside the trainer privacy boundary; physical
+cross-host/GPU isolation and independent production security certification are
+not established. Historical campaign, thesis and dashboard results are preserved.
+
+**Predecessor v6 (5 November 2026): range proofs and simulator training integration.**
 The [v6 protocol](docs/SECURE_PROTOCOL_V6.md) adds two-sided Bulletproof range
 proofs linked to every encrypted classifier coordinate, while streamed pairwise
 masking protects the complete floating backbone. The

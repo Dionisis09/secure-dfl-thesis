@@ -1,0 +1,170 @@
+{
+  "version": 7,
+  "model": "mlp",
+  "input_shape": [
+    3,
+    32,
+    32
+  ],
+  "roster": [
+    "p000",
+    "p001",
+    "p002",
+    "p003",
+    "p004",
+    "p005",
+    "p006",
+    "p007",
+    "p008",
+    "p009",
+    "p010",
+    "p011",
+    "p012",
+    "p013",
+    "p014",
+    "p015",
+    "p016",
+    "p017",
+    "p018",
+    "p019"
+  ],
+  "enrollment": {
+    "p000": {
+      "name": "p000",
+      "signing": "1+Z/LAqEGzYLZ4QoitwFC0Hwuknw1LjeClN9nt2mAXM=",
+      "exchange": "L1DyEiO6oEfPuk2ns6Or85tHFzduCWqyor91bu1JSVo="
+    },
+    "p001": {
+      "name": "p001",
+      "signing": "7Om+vJjuD4ai4eD6qczfzAZMZ+C8SBfejuPLowoxGQw=",
+      "exchange": "gZzJabSru6Psu9tFDuzQm9YFaf2Wwaoq03TfTkgxiUE="
+    },
+    "p002": {
+      "name": "p002",
+      "signing": "IzLGkkHWtW70yFYz82t859KgI4MGa40aIKIA3Svei7w=",
+      "exchange": "dNBMVnOwRwX86RgmG34nXYfkPm1ChmbywAu1ZSa0BVQ="
+    },
+    "p003": {
+      "name": "p003",
+      "signing": "oGs+EVCjKPMzOzT0GCHsctjz8nRDkRfGRQs2Q+Gq6tI=",
+      "exchange": "7kxz78NnoJYsbLLW+xYmf0ElAeE4UupV6ZsKo4qDLXw="
+    },
+    "p004": {
+      "name": "p004",
+      "signing": "vNW4dqbi8d42K6aNpmc0ZmopzKza4yQ/CUN5oLqnIlg=",
+      "exchange": "mT+QcLkKyHRXiFbcDJw5WhUw15JUdm0XH36gCvLrcDI="
+    },
+    "p005": {
+      "name": "p005",
+      "signing": "/UWQabGM9RORsIgCoABq+6MBg8eQ1M7J/1e5NirRWvA=",
+      "exchange": "T1janYzs3PDxN1CirfhvXpuBEL7o/NPzn6GmO9a5XEs="
+    },
+    "p006": {
+      "name": "p006",
+      "signing": "t2GvGsrwFkDlKaX32BfFyUqvuj4QpVhflG300nXj5Vo=",
+      "exchange": "Ce/l0S+3JC2uzIL8FwpGJfe0SKKBSltjjxeuX6WMb3Y="
+    },
+    "p007": {
+      "name": "p007",
+      "signing": "io2sHk+IuSl0xVtec2y2VeSiyR8z35l97GkF96XRQ08=",
+      "exchange": "A6Mucy361iQFZy/1nEVxAXPvjEtL0C2B3WS529OBFhE="
+    },
+    "p008": {
+      "name": "p008",
+      "signing": "oC/U7il2Nr8iZLZ4/Od6KeNC9APxhOve+oWP6Nh0cdQ=",
+      "exchange": "l1+B8J+UggvUwY/3mm8YuWEn2DCnizvgxCuWNIIsJEo="
+    },
+    "p009": {
+      "name": "p009",
+      "signing": "OtGiATT4OSD534h/EVXCOjDZAynrqBYIxhyNp4vhfXg=",
+      "exchange": "CLpEAjxQav+/TX9kuxfb31Be0rGyHyjfhvejRi1w5SE="
+    },
+    "p010": {
+      "name": "p010",
+      "signing": "zp4oonxCG9rfKy6RqgZLLo8jTSVV5vdJGRRrY7s4hYU=",
+      "exchange": "EA/+oDh3/djWULuUFiSD0LW6fzeYCjwrak3R5luxNE4="
+    },
+    "p011": {
+      "name": "p011",
+      "signing": "DadbqAb4eqeKXewlFjhC+2wXZZ2lX0Z6m+c532hZu3Y=",
+      "exchange": "daGPNu2T7dy7U4Zs3aPlMk8vIm8leU4kjZeQkBvijD4="
+    },
+    "p012": {
+      "name": "p012",
+      "signing": "D0gxdcqkJEb7VjMoq08NTsqDVsKXwtAgVUpUy4Cs824=",
+      "exchange": "DAPWplBQCkB2trnMHk12Z/JpWsjF4GPCYDnLqgeiOQs="
+    },
+    "p013": {
+      "name": "p013",
+      "signing": "orSqYoYqEmK8twwBIMlq9e0q5JCE6u1gNdwJtaZRUEE=",
+      "exchange": "cWix21neqaTYQipL/jYZlo7PpjmWMPgiqGQJHoAhaUE="
+    },
+    "p014": {
+      "name": "p014",
+      "signing": "4QM0tBa+1n7dGjEuWO+a4yL0vIqGoaRkxTZLQu8BvW4=",
+      "exchange": "BWLXWwA2xcBQMdBx9AtBoP+LaVJHon3zNWEpsi/bfxY="
+    },
+    "p015": {
+      "name": "p015",
+      "signing": "jjc7zoPODG+JMCmbkkw4/RnzH+psRJUdDsVfPnXDOHE=",
+      "exchange": "pCM+BTHavCeSixoJdPNPsfhM0XBD75MoRVYN6MjQQSk="
+    },
+    "p016": {
+      "name": "p016",
+      "signing": "uWwLXsM4/9mt93Vhyz7ymlu2Oe6B6vSuKJ98xXmZRBw=",
+      "exchange": "H5v4+fRhmYpgQUnxthKaN5oKjekcfuulIjtvmRELC3Y="
+    },
+    "p017": {
+      "name": "p017",
+      "signing": "7JlR/vFLxvyjhNWS3EY1REWSSZcKeevtUioDgegC1to=",
+      "exchange": "3t5/cEnOLbBdigr4S1fGYXz1TY2LhdR8GqD/80u4ZGI="
+    },
+    "p018": {
+      "name": "p018",
+      "signing": "UItTYRk1NCgPZryM5PG2n3p01RsdQ8RDzMDVB9fPBzo=",
+      "exchange": "V15kaiFJ8vPkDYOVeCrfh6+VDJqrcI0bH2ffBgvJ3UU="
+    },
+    "p019": {
+      "name": "p019",
+      "signing": "J3J6FZNdBimEMvKU3bsE3+w635ndKB1YiypbY5tAL0I=",
+      "exchange": "Xt4ePgQy+ERsrNEgbuDJ+CT0CqZc4e9+2isoAuJOkVg="
+    }
+  },
+  "rounds": 1,
+  "batch_size": 16,
+  "local_epochs": 1,
+  "learning_rate": 0.01,
+  "initial_seed": 1,
+  "initial_state_hash": "f817d5bc16af839201ebadea82ab18fc4cc15fe0ee08fcfd05ac4a5fb9f6557c",
+  "partition_sizes": [
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32
+  ],
+  "topology": "full",
+  "weights": "uniform",
+  "scale": 65536,
+  "head_bound": 1.0,
+  "backbone_bound": 32.0,
+  "source_hash": "328352150a7297a5c02ef60e2356a61115bea119b36e7aa7a3bac18ab9e9a343",
+  "native_binary_sha256": "610bb5782f6b824a5e3c9e8ffe702886a89e543cb9cd494614b230ada4a8fa29",
+  "deployment_id": "8e24368267eba4ff4c7b3ea76020b7e9",
+  "job_id": "2b1b3d67f4ea9725c4d2bf73dac927c8317d0b2381d27531113884c1d004383d"
+}

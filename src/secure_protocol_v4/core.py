@@ -92,7 +92,12 @@ class Ledger:
         self.db=sqlite3.connect(path)
         self.db.execute('CREATE TABLE IF NOT EXISTS approvals(slot TEXT PRIMARY KEY, hash TEXT NOT NULL, used INTEGER NOT NULL)')
         self.db.commit()
-        if os.name!='nt': os.chmod(path,0o600)
+        if os.name!='nt':
+            # Set permissions on an authorized open descriptor. Independent
+            # services block path-based chmod to protect other same-UID clients.
+            fd=os.open(path,os.O_WRONLY|os.O_NOFOLLOW|os.O_CLOEXEC)
+            try:os.fchmod(fd,0o600)
+            finally:os.close(fd)
     def approve(self,slot,value):
         try:
             with self.db:self.db.execute('INSERT INTO approvals VALUES(?,?,0)',(slot,value))

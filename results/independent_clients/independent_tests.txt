@@ -1,0 +1,13 @@
+test_aggregate_wire_exact_and_rejects_trailing_bytes (test_independent_clients.IndependentClientTests) ... ok
+test_coordinator_checkpoint_and_rpc_code_has_no_local_training (test_independent_clients.IndependentClientTests) ... ok
+test_ephemeral_enrollment_rejects_replay_substitution_and_omission (test_independent_clients.IndependentClientTests) ... ok
+test_integer_counters_have_public_fixed_policy (test_independent_clients.IndependentClientTests) ... ok
+test_local_control_plane_and_unenrolled_network_fail_closed (test_independent_clients.IndependentClientTests) ... ok
+test_no_plaintext_model_or_remote_path_api (test_independent_clients.IndependentClientTests) ... ok
+test_preexisting_thread_fails_closed (test_independent_clients.IndependentClientTests) ... ok
+test_real_filesystem_denial_including_future_thread (test_independent_clients.IndependentClientTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.196s
+
+OK

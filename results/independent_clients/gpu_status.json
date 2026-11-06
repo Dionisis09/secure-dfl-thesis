@@ -1,0 +1,11 @@
+{
+  "collected_at_utc": "2026-11-06T10:42:41.931168+00:00",
+  "check_scope": "unrestricted operator process outside Landlock/seccomp roles",
+  "nvidia_smi_returncode": 255,
+  "nvidia_smi_stdout": "Unable to determine the device handle for gpu 0000:0B:00.0: Unknown Error\n",
+  "nvidia_smi_stderr": "",
+  "torch_version": "2.11.0+cu128",
+  "cuda_available": false,
+  "cuda_init_ok": false,
+  "cuda_init_error": "CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero."
+}

@@ -21,6 +21,7 @@ platform_mvp/**/__pycache__/
 .pytest_cache/
 .ruff_cache/
 native/dfl_range/target/
+private-jobs/
 results/protocol_v6_training/**/checkpoint*.pt
 results/protocol_v6_training/**/run.lock
 docs/presentation_preview/

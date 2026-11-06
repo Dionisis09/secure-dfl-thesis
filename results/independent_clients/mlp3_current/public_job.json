@@ -1,0 +1,51 @@
+{
+  "version": 7,
+  "model": "mlp",
+  "input_shape": [
+    3,
+    32,
+    32
+  ],
+  "roster": [
+    "p000",
+    "p001",
+    "p002"
+  ],
+  "enrollment": {
+    "p000": {
+      "name": "p000",
+      "signing": "lVqR91B2p6UQzxn3+r9GsvLsNzuekUdD+WBJji3EaPA=",
+      "exchange": "R9/jnxrGNU3WdsgP8NYa45cGVREbo11Cgw9Eb2PstBI="
+    },
+    "p001": {
+      "name": "p001",
+      "signing": "Q2WYbBflnnzqRAA5SjWGJ4bjmDJq6F0jX4agJKjeG4M=",
+      "exchange": "0ZKcMxSDsE9PvJCVF4WGEzxW69ZmXfUDRrzVo5xQclM="
+    },
+    "p002": {
+      "name": "p002",
+      "signing": "yAwRtNDyH9jD+gd5b1VeK3DGjnEwlN4HmxnIGgIu4ps=",
+      "exchange": "tKjX/VveVNy/PCVgaUxPIXESMlCBj/NT4SjdVvIluWw="
+    }
+  },
+  "rounds": 2,
+  "batch_size": 16,
+  "local_epochs": 1,
+  "learning_rate": 0.01,
+  "initial_seed": 1,
+  "initial_state_hash": "f817d5bc16af839201ebadea82ab18fc4cc15fe0ee08fcfd05ac4a5fb9f6557c",
+  "partition_sizes": [
+    32,
+    32,
+    32
+  ],
+  "topology": "full",
+  "weights": "uniform",
+  "scale": 65536,
+  "head_bound": 1.0,
+  "backbone_bound": 32.0,
+  "source_hash": "328352150a7297a5c02ef60e2356a61115bea119b36e7aa7a3bac18ab9e9a343",
+  "native_binary_sha256": "610bb5782f6b824a5e3c9e8ffe702886a89e543cb9cd494614b230ada4a8fa29",
+  "deployment_id": "e939478cbe88e7c1de9e39ab74b50dc5",
+  "job_id": "bf15b852d5169ee3dd8e468441960d9259f63ceaa86f42975d5480da9a4f373a"
+}
