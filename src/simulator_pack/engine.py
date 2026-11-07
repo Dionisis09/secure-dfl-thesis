@@ -36,20 +36,23 @@ def runtime(device):
     import platform,importlib.metadata
     return dict(platform=platform.platform(),python=platform.python_version(),device=device,
         GPU=torch.cuda.get_device_name(0) if device=='cuda' else None,cuda=torch.version.cuda if device=='cuda' else None,
+        GPU_memory_bytes=torch.cuda.get_device_properties(0).total_memory if device=='cuda' else 0,
         packages={n:importlib.metadata.version(n) for n in ['torch','torchvision','numpy','networkx','tenseal']},FP32=True,torch_threads=1,deterministic=True)
-def completed(folder,cfg=None,expected_source=None):
+def completed(folder,cfg=None,expected_source=None,expected_runtime=None,expected_data=None):
     folder=Path(folder)
     try:
         r=json.loads((folder/'complete.json').read_text());checks=json.loads((folder/'checksums.json').read_text())
         if r['status']!='completed' or r['completed_rounds']!=r['config']['rounds'] or (cfg is not None and digest(cfg)!=r['config_sha256']):return False
         if expected_source is not None and r['source_hash']!=expected_source:return False
+        if expected_runtime is not None and r['runtime_sha256']!=expected_runtime:return False
+        if expected_data is not None and r['data_receipt_sha256']!=expected_data:return False
         if not {'complete.json','metrics.json','identity.json'}<=set(checks) or any(Path(n).name!=n for n in checks):return False
         return all(hashlib.sha256((folder/n).read_bytes()).hexdigest()==h for n,h in checks.items())
     except (OSError,ValueError,KeyError):return False
 
 def execute(folder,cfg,cache,*,device='cuda',deadline=None,max_new_rounds=None,keep_checkpoint=False):
     folder=Path(folder).resolve();folder.mkdir(parents=True,exist_ok=True);source=source_snapshot()['hash']
-    if cfg['clients']!=50 and not cfg.get('test_fixture'):raise ValueError('main experiments require50clients')
+    if cfg['clients'] not in (20,50,100) and not cfg.get('test_fixture'):raise ValueError('supported scientific client counts are20/50/100')
     if completed(folder,cfg):
         receipt=json.loads((folder/'complete.json').read_text())
         if receipt['source_hash']!=source:raise RuntimeError('completed result has a different source snapshot')

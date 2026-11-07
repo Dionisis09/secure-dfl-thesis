@@ -8,6 +8,7 @@ def main():
     p=argparse.ArgumentParser();s=p.add_subparsers(dest='command',required=True)
     for name in ['prepare','status','plan','summarize','preflight']:
         q=s.add_parser(name);q.add_argument('--pack',required=True)
+        if name=='prepare':q.add_argument('--scaling4090',action='store_true');q.add_argument('--clock-from')
     q=s.add_parser('prepare-data');q.add_argument('--pack',required=True);q.add_argument('--cache',required=True);q.add_argument('--official-data',default='data')
     q=s.add_parser('calibrate');q.add_argument('--pack',required=True);q.add_argument('--cache',required=True);q.add_argument('--topologies',default='ring')
     q=s.add_parser('run');q.add_argument('--pack',required=True);q.add_argument('--cache',required=True)
@@ -15,7 +16,7 @@ def main():
     a=p.parse_args()
     from simulator_pack.design import prepare,atomic,source_snapshot,digest,TOPOLOGIES
     if a.command=='prepare':
-        m=prepare(a.pack);print(json.dumps(dict(status='prepared_not_started',candidate_jobs=m['candidate_jobs'],bundles=len(m['bundles']),clients=50,seeds=[1,2,3])))
+        m=prepare(a.pack,scaling4090=a.scaling4090,clock_from=a.clock_from);print(json.dumps(dict(status='prepared_not_started',candidate_jobs=m['candidate_jobs'],bundles=len(m['bundles']),clients=m['clients'],seeds=[1,2,3])))
     elif a.command=='status':print((Path(a.pack)/'state.json').read_text())
     elif a.command=='prepare-data':
         from simulator_pack.data import prepare as data
@@ -25,8 +26,10 @@ def main():
     elif a.command=='preflight':
         import torch
         from simulator_pack.engine import runtime
+        from simulator_pack.campaign import require_target,check_source
         from simulator_pack.protection import context
         if not torch.cuda.is_available():raise RuntimeError('CUDA unavailable; no CPU fallback')
+        check_source(a.pack);require_target(json.loads((Path(a.pack)/'manifest.json').read_text()),runtime('cuda'))
         x=torch.ones(16,16,device='cuda');x@x;torch.cuda.synchronize()
         c=context(dict(poly_modulus_degree=8192,coeff_mod_bit_sizes=[60,40,40,60],scale_bits=40,threads=1))
         import tenseal as ts

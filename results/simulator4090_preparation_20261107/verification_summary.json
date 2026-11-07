@@ -1,0 +1,40 @@
+{
+  "status": "prepared_requires_actual_4090_calibration",
+  "unit_tests_passed": 16,
+  "source_hash": "a9a56d44e096a04274470eb3c3affd389d95ce6ffe238df07aeb71e5e84581d8",
+  "manifest_sha256": "2ed89a1657430f056ee3f3ae51c3f756acb24110eff128d2b0aa3fa1ae2fedb8",
+  "client_counts": [
+    20,
+    50,
+    100
+  ],
+  "scientific_seeds": [
+    1,
+    2,
+    3
+  ],
+  "scaling_cases": 36,
+  "new_scaling_jobs": 24,
+  "shared_50client_references": 12,
+  "candidate_unique_jobs": 492,
+  "mandatory_unique_jobs": 114,
+  "selected_jobs": null,
+  "server_calibration_jobs_completed": 0,
+  "main_jobs_started": 0,
+  "started_UTC": "2026-11-07T11:35:56.126814+00:00",
+  "deadline_UTC": "2026-11-12T11:35:56.126814+00:00",
+  "clock_inherited": true,
+  "hard_wall_hours": 120,
+  "reserve_hours": 24,
+  "server_runtime_benchmark_pending": true,
+  "full100client_GPU_training_pending": true,
+  "server_upload_performed": false,
+  "tests_scope": "CPU unit/regression controls and real CKKS100logical-client head arithmetic; no GPU scientific/calibration runs started",
+  "trainer_has_plaintext_and_keys": true,
+  "historical_results_unchanged": true,
+  "helper_sha256": {
+    "scripts/simulator4090.sh": "c721058b9cb66be6cfdb6c51f4d81eabb8e1c747d69bcfb7f3c692a0837a3923",
+    "scripts/simulator50_status.py": "ab285f1cbac507a03995eee407f63d6e855c9fcffa5a09a95608b7c201e36d24",
+    "tests/test_simulator4090_scaling.py": "ab49ca01d8021a22b77ee3280eb1da7b7ef282f417cdf093de1180775f7973f7"
+  }
+}

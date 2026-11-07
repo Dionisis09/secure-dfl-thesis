@@ -1,23 +1,30 @@
 Secure Decentralized Federated Learning
 
-**Current prepared series: trusted simulator50 (7 November 2026).**
-The [new package](simulator50_pack_20261107/START_HERE_EL.md) uses50 logical
-clients, parameter-budget matched CNN/MLP (within0.6%),20rounds and seeds1/2/3.
-It follows the original single-process experiment style, with actual TenSEAL
-CKKS head operations and reproducible masking. The trainer holds plaintext
-models/private keys; independent-client privacy and network-traffic guarantees
-are not claimed for this runner. Each main method trains its own trajectory.
+**Current prepared pack: RTX4090 scaling20/50/100clients (7 November2026).**
+The [server package](simulator4090_scaling_pack_20261107/START_HERE_EL.md)
+adds36CIFAR/ring/Dirichlet0.5 scaling cases: two parameter-matched CNN/MLP
+models, baseline/adaptive hybrid, seeds1/2/3 and20rounds. Twelve50client cases
+reuse main-job references; only24new unique jobs are added. There are492unique
+candidates, with114mandatory jobs; optional scope requires measured admission.
+**No server calibration or main jobs have started.** Actual4090 calibration is
+required before bulk execution; laptop timings are not substituted.16functional/
+regression tests passed, including a real CKKS100logical-client head fixture.
+Full100model GPU training/memory/performance remains unverified until calibration.
+The [plan](docs/SIMULATOR4090_SCALING_PLAN.md) and
+[preparation evidence](results/simulator4090_preparation_20261107/README.md)
+describe the inherited120h clock,24h reserve, and refusal if required scope
+cannot fit. Deadline:12November2026,11:35UTC(13:35Athens), unchanged on migration.
+The trainer holds plaintext models/keys; this is a trusted single-process
+simulation with actual CKKS operations, not independent-client privacy or a
+physical distributed GPU-scaling benchmark. Historical402/228results and final
+thesis/PowerPoint/dashboard files are preserved.
 
-**30/30 full-data calibration jobs and8 regression tests passed** on the laptop
-RTX5070. The [selected plan](simulator50_pack_20261107/selected_plan.json) admits
-**438 runs (146configurations×3seeds)** across three datasets, ring/Caveman/BA,
-selected distributions and five methods/sensitivity. Its conservative stage-cost
-forecast is73.6h (including a2× factor), with24h reserve inside a fixed120h clock.
-The30 uncalibrated fully-connected candidates are excluded. **Main scientific
-runs started:0.** [Evidence](results/simulator50_preparation_20261107/README.md)
-and the [method/budget guide](docs/SIMULATOR50_TRUSTED_PLAN.md) explain scope and
-assumptions. The deadline is12November2026,11:35UTC(13:35Athens); resume does not
-restart it. Historical thesis/PowerPoint/dashboard artifacts remain unchanged.
+**Historical laptop simulator50 preparation:**30verified calibration jobs,
+438selected main candidates and73.6h conservative admission estimate on RTX5070.
+These are [separate laptop cost evidence](results/simulator50_preparation_20261107/README.md),
+not a4090 estimate. Main jobs started:0. Preserve its frozen manifest/receipts;
+use the archived source ZIP or Git commit `df9aa08` to reproduce that source.
+The current changed runner must not resume the old source-frozen pack.
 
 **50-client calibration (7 November 2026): cost review required before bulk runs.**
 The [measured calibration and archive incident](results/calibration_50c_20261107/README.md)

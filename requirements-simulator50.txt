@@ -1,4 +1,5 @@
-# Recorded laptop simulator profile. Trusted-process CKKS, no distributed privacy claim.
+# Pinned simulator packages; calibrate actual server runtime separately. Python3.12.
+# Trusted-process CKKS, no distributed privacy claim.
 --extra-index-url https://download.pytorch.org/whl/cu128
 torch==2.11.0+cu128
 torchvision==0.26.0+cu128

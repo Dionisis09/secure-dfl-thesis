@@ -24,6 +24,12 @@ simulator50_pack_20261107/calibration/
 simulator50_pack_20261107/results/
 simulator50_pack_20261107/controller.lock
 simulator50_pack_20261107/pause.request
+simulator4090_scaling_pack_20261107/calibration/
+simulator4090_scaling_pack_20261107/results/
+simulator4090_scaling_pack_20261107/controller.lock
+simulator4090_scaling_pack_20261107/pause.request
+simulator4090_scaling_pack_20261107/preflight.json
+.venv4090/
 # Private v8 roles, official cache and local correctness-fixture credentials
 private-campaign/
 data-cache/

@@ -22,9 +22,15 @@ def status(pack):
         if p.exists():
             value=json.loads(p.read_text());active=dict(job=state['current'],completed_rounds=value['completed'],planned_rounds=value['planned'])
         else:active=dict(job=state['current'],stage='startup_or_first_round')
-    return dict(stage=state['status'],candidate_runs=manifest['candidate_jobs'],selected_runs=len(ids),verified_completed_runs=len(done),selected_pending=len(ids)-len(done),
+    value=dict(stage=state['status'],candidate_runs=manifest['candidate_jobs'],selected_runs=len(ids),verified_completed_runs=len(done),selected_pending=len(ids)-len(done),
         selected_bundles=len(selection['selected']) if selection else 0,complete_paired_bundles=sum(set(b['job_ids'])<=done for b in selection['selected']) if selection else 0,
         verified_calibration_jobs=calibrated,calibration_seed=0,scientific_seeds=[1,2,3],invalid_completed_archives=invalid,active=active,deadline_UTC=state['deadline_UTC'])
+    if manifest.get('scaling'):
+        s=manifest['scaling'];cases=set(s['new_job_ids']+s['reference_50_job_ids'])
+        value['scaling']=dict(client_counts=s['client_counts'],required_cases=36,new_jobs=24,reused_50_jobs=12,
+            selected_cases=len(cases&set(ids)),verified_completed_cases=len(cases&done),requires_fresh_RTX4090_calibration=True)
+        value['remaining_wall_hours']=max(0,(__import__('datetime').datetime.fromisoformat(state['deadline_UTC']).timestamp()-__import__('time').time())/3600)
+    return value
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--pack',required=True);a=p.parse_args();print(json.dumps(status(a.pack),indent=2))
