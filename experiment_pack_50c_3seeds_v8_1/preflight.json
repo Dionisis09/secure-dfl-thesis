@@ -1,0 +1,21 @@
+{
+  "platform": "Linux-6.8.0-147-generic-x86_64-with-glibc2.39",
+  "python": "3.10.9",
+  "linux": true,
+  "GPU_available": false,
+  "blocked_reason": "/home/up1093449/.venvs/secure-dfl-bench/lib/python3.10/site-packages/torch/cuda/__init__.py:180: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:119.)\n  return torch._C._cuda_getDeviceCount() > 0\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nAssertionError: CUDA unavailable\n",
+  "free_disk_GiB": 33.56147384643555,
+  "landlock_abi": 4,
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "torchvision": "0.26.0+cu128",
+    "numpy": "2.2.6",
+    "networkx": "3.4.2",
+    "cryptography": "50.0.2",
+    "rbcl": "1.1.2",
+    "Pillow": "12.3.0",
+    "cffi": "2.1.1",
+    "pycparser": "3.11"
+  },
+  "native_binary_sha256": "610bb5782f6b824a5e3c9e8ffe702886a89e543cb9cd494614b230ada4a8fa29"
+}

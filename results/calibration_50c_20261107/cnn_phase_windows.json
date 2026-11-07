@@ -1,0 +1,17 @@
+{
+  "rows": [
+    {
+      "round": 1,
+      "model_blob_window_seconds": 2493,
+      "model_HE_window_seconds": 3715,
+      "method": "Approximate phase windows from earliest per-client SQLite file birth timestamps; not instrumentation of individual cryptographic operations."
+    },
+    {
+      "round": 2,
+      "model_blob_window_seconds": 2215,
+      "model_HE_window_seconds": 3754,
+      "method": "Approximate phase windows from earliest per-client SQLite file birth timestamps; not instrumentation of individual cryptographic operations."
+    }
+  ],
+  "metadata_only": true
+}

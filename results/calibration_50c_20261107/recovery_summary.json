@@ -1,0 +1,11 @@
+{
+  "status": "CNN_archive_verified_MLP_receipt_missing",
+  "cnn_job": "gpu_gate-22e6d04cadffa42abc7ad785",
+  "mlp_job": "gpu_gate-ea112726cc4b6ab5434b5c06",
+  "training_rounds_repeated": 0,
+  "private_CNN_retained": true,
+  "source_of_measurements": "eb6bf8274ccc96fb88ce276e3fdf2720cb3bfcfc465939e47c159df322ce46eb",
+  "protocol_training_or_cryptography_changed": false,
+  "supervisor_archive_bug_fixed": true,
+  "main_campaign_started": false
+}

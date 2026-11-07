@@ -1,0 +1,18 @@
+{
+  "status": "blocked_archive_requires_review",
+  "completed": [
+    "gpu_gate-22e6d04cadffa42abc7ad785"
+  ],
+  "failed": [],
+  "current": null,
+  "GPU_validated": false,
+  "data_ready": true,
+  "archive_review_required": [
+    "gpu_gate-ea112726cc4b6ab5434b5c06"
+  ],
+  "execution_completed_without_receipt": [
+    "gpu_gate-ea112726cc4b6ab5434b5c06"
+  ],
+  "calibration_execution_finished": true,
+  "no_automatic_retraining": true
+}

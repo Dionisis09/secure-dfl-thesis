@@ -1,0 +1,10 @@
+{
+  "status": "prepared_GPU_and_cost_review_required",
+  "completed": [],
+  "failed": [],
+  "current": null,
+  "GPU_validated": false,
+  "data_ready": true,
+  "bulk_execution_recommended": false,
+  "previous_calibration_evidence": "results/calibration_50c_20261107/README.md"
+}

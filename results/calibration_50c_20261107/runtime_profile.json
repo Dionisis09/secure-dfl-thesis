@@ -1,0 +1,29 @@
+{
+  "sha256": "cf9242933683a74fc502868052f4a8434cc47883b47846e16c0edde8807a520a",
+  "profile": {
+    "platform": "Linux-6.8.0-147-generic-x86_64-with-glibc2.39",
+    "python": "3.10.9",
+    "linux": true,
+    "GPU_available": true,
+    "GPU": {
+      "device": "NVIDIA GeForce RTX 4090",
+      "memory": 25250627584,
+      "torch": "2.11.0+cu128",
+      "cuda": "12.8"
+    },
+    "landlock_abi": 4,
+    "packages": {
+      "torch": "2.11.0+cu128",
+      "torchvision": "0.26.0+cu128",
+      "numpy": "2.2.6",
+      "networkx": "3.4.2",
+      "cryptography": "50.0.2",
+      "rbcl": "1.1.2",
+      "Pillow": "12.3.0",
+      "cffi": "2.1.1",
+      "pycparser": "3.11"
+    },
+    "native_binary_sha256": "610bb5782f6b824a5e3c9e8ffe702886a89e543cb9cd494614b230ada4a8fa29",
+    "driver": "595.99.02"
+  }
+}

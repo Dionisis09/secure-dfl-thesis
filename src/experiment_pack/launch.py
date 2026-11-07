@@ -63,15 +63,34 @@ def export_and_prune(root,destination,work_root,receipt,*,prune=True):
     if root.parent!=work_root or root==work_root or not (root/'.experiment-pack-owned').is_file():raise RuntimeError('refusing unsafe cleanup path')
     job=json.loads((root/'public_job.json').read_text())
     if (root/'.experiment-pack-owned').read_text()!=job['job_id'] or receipt['status']!='completed' or receipt['job_id']!=job['job_id']:raise RuntimeError('unverified completion; never prune')
+    journal=json.loads((root/'coordinator/journal.json').read_text())
+    if (receipt['completed_rounds']!=job['config']['rounds'] or
+        [r['round'] for r in receipt['records']]!=list(range(1,job['config']['rounds']+1)) or
+        journal['job_id']!=job['job_id'] or journal['completed']!=receipt['completed_rounds'] or journal['records']!=receipt['records'] or journal.get('pending')):
+        raise RuntimeError('incomplete/mismatched durable journal; never prune')
+    if destination==root or root in destination.parents:raise RuntimeError('archive must be outside private workspace')
+    prior=destination/'public_job.json'
+    if prior.exists() and json.loads(prior.read_text())['job_id']!=job['job_id']:raise RuntimeError('archive belongs to another job; never overwrite or prune')
     destination.mkdir(parents=True,exist_ok=True)
     atomic_json(destination/'verification.json',receipt);atomic_json(destination/'public_job.json',job)
     for name in ['journal.json','rpc_audit.json']:
         path=root/'coordinator'/name
-        if path.exists():shutil.copyfile(path,destination/name)
-    checks={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in destination.iterdir() if p.is_file()}
+        if path.exists():
+            temporary=destination/(name+'.tmp')
+            with path.open('rb') as source,temporary.open('wb') as target:
+                shutil.copyfileobj(source,target);target.flush();os.fsync(target.fileno())
+            os.replace(temporary,destination/name)
+    names=['verification.json','public_job.json','journal.json']
+    if (destination/'rpc_audit.json').exists():names.append('rpc_audit.json')
+    checks={name:hashlib.sha256((destination/name).read_bytes()).hexdigest() for name in names}
     atomic_json(destination/'checksums.json',checks)
     for name,value in checks.items():
         if hashlib.sha256((destination/name).read_bytes()).hexdigest()!=value:raise RuntimeError('archive verification failed')
+    from .controller import verify_completed
+    if not verify_completed(destination,job['config']['declared_config_sha256']):raise RuntimeError('archive semantic verification failed; never prune')
+    descriptor=os.open(destination,os.O_RDONLY|os.O_DIRECTORY)
+    try:os.fsync(descriptor)
+    finally:os.close(descriptor)
     if prune:
         # Contains only this controller's fresh job artifacts. Official shared
         # data cache and all historical project directories are outside root.

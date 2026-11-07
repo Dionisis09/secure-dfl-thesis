@@ -1,0 +1,1113 @@
+{
+  "counts": {
+    "gpu_gate": 2,
+    "smoke": 12,
+    "tuning": 36,
+    "validation": 2160,
+    "sensitivity": 360,
+    "network": 540
+  },
+  "rounds": {
+    "gpu_gate": 4,
+    "smoke": 24,
+    "tuning": 2160,
+    "validation": 129600,
+    "sensitivity": 21600,
+    "network": 1080
+  },
+  "total_rounds": 154468,
+  "rows": [
+    {
+      "key": [
+        "mlp",
+        "gpu_gate",
+        "fully_connected",
+        "hybrid_pairwise_head_he"
+      ],
+      "jobs": 1,
+      "rounds": 2,
+      "pair_routes": 5000,
+      "group_members": 100,
+      "groups": 2,
+      "HE_pair_routes": 5000
+    },
+    {
+      "key": [
+        "cnn",
+        "gpu_gate",
+        "fully_connected",
+        "hybrid_pairwise_head_he"
+      ],
+      "jobs": 1,
+      "rounds": 2,
+      "pair_routes": 5000,
+      "group_members": 100,
+      "groups": 2,
+      "HE_pair_routes": 5000
+    },
+    {
+      "key": [
+        "mlp",
+        "smoke",
+        "ring",
+        "none"
+      ],
+      "jobs": 1,
+      "rounds": 2,
+      "pair_routes": 900,
+      "group_members": 300,
+      "groups": 100,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "smoke",
+        "ring",
+        "masking"
+      ],
+      "jobs": 1,
+      "rounds": 2,
+      "pair_routes": 900,
+      "group_members": 300,
+      "groups": 100,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "smoke",
+        "ring",
+        "pairwise_masking"
+      ],
+      "jobs": 1,
+      "rounds": 2,
+      "pair_routes": 900,
+      "group_members": 300,
+      "groups": 100,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "smoke",
+        "ring",
+        "selective_he"
+      ],
+      "jobs": 1,
+      "rounds": 2,
+      "pair_routes": 900,
+      "group_members": 300,
+      "groups": 100,
+      "HE_pair_routes": 900
+    },
+    {
+      "key": [
+        "mlp",
+        "smoke",
+        "ring",
+        "hybrid_pairwise_head_he"
+      ],
+      "jobs": 1,
+      "rounds": 2,
+      "pair_routes": 900,
+      "group_members": 300,
+      "groups": 100,
+      "HE_pair_routes": 900
+    },
+    {
+      "key": [
+        "mlp",
+        "smoke",
+        "ring",
+        "adaptive_hybrid"
+      ],
+      "jobs": 1,
+      "rounds": 2,
+      "pair_routes": 900,
+      "group_members": 300,
+      "groups": 100,
+      "HE_pair_routes": 360
+    },
+    {
+      "key": [
+        "cnn",
+        "smoke",
+        "ring",
+        "none"
+      ],
+      "jobs": 1,
+      "rounds": 2,
+      "pair_routes": 900,
+      "group_members": 300,
+      "groups": 100,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "smoke",
+        "ring",
+        "masking"
+      ],
+      "jobs": 1,
+      "rounds": 2,
+      "pair_routes": 900,
+      "group_members": 300,
+      "groups": 100,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "smoke",
+        "ring",
+        "pairwise_masking"
+      ],
+      "jobs": 1,
+      "rounds": 2,
+      "pair_routes": 900,
+      "group_members": 300,
+      "groups": 100,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "smoke",
+        "ring",
+        "selective_he"
+      ],
+      "jobs": 1,
+      "rounds": 2,
+      "pair_routes": 900,
+      "group_members": 300,
+      "groups": 100,
+      "HE_pair_routes": 900
+    },
+    {
+      "key": [
+        "cnn",
+        "smoke",
+        "ring",
+        "hybrid_pairwise_head_he"
+      ],
+      "jobs": 1,
+      "rounds": 2,
+      "pair_routes": 900,
+      "group_members": 300,
+      "groups": 100,
+      "HE_pair_routes": 900
+    },
+    {
+      "key": [
+        "cnn",
+        "smoke",
+        "ring",
+        "adaptive_hybrid"
+      ],
+      "jobs": 1,
+      "rounds": 2,
+      "pair_routes": 900,
+      "group_members": 300,
+      "groups": 100,
+      "HE_pair_routes": 360
+    },
+    {
+      "key": [
+        "mlp",
+        "tuning",
+        "ring",
+        "none"
+      ],
+      "jobs": 18,
+      "rounds": 1080,
+      "pair_routes": 486000,
+      "group_members": 162000,
+      "groups": 54000,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "tuning",
+        "ring",
+        "none"
+      ],
+      "jobs": 18,
+      "rounds": 1080,
+      "pair_routes": 486000,
+      "group_members": 162000,
+      "groups": 54000,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "ring",
+        "none"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 1215000,
+      "group_members": 405000,
+      "groups": 135000,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "ring",
+        "masking"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 1215000,
+      "group_members": 405000,
+      "groups": 135000,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "ring",
+        "pairwise_masking"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 1215000,
+      "group_members": 405000,
+      "groups": 135000,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "ring",
+        "selective_he"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 1215000,
+      "group_members": 405000,
+      "groups": 135000,
+      "HE_pair_routes": 1215000
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "ring",
+        "hybrid_pairwise_head_he"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 1215000,
+      "group_members": 405000,
+      "groups": 135000,
+      "HE_pair_routes": 1215000
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "ring",
+        "adaptive_hybrid"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 1215000,
+      "group_members": 405000,
+      "groups": 135000,
+      "HE_pair_routes": 486000
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "fully_connected",
+        "none"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 6750000,
+      "group_members": 135000,
+      "groups": 2700,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "fully_connected",
+        "masking"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 6750000,
+      "group_members": 135000,
+      "groups": 2700,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "fully_connected",
+        "pairwise_masking"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 6750000,
+      "group_members": 135000,
+      "groups": 2700,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "fully_connected",
+        "selective_he"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 6750000,
+      "group_members": 135000,
+      "groups": 2700,
+      "HE_pair_routes": 6750000
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "fully_connected",
+        "hybrid_pairwise_head_he"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 6750000,
+      "group_members": 135000,
+      "groups": 2700,
+      "HE_pair_routes": 6750000
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "fully_connected",
+        "adaptive_hybrid"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 13500000,
+      "group_members": 270000,
+      "groups": 5400,
+      "HE_pair_routes": 6750000
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "caveman",
+        "none"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 13510800,
+      "group_members": 540000,
+      "groups": 21600,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "caveman",
+        "masking"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 13510800,
+      "group_members": 540000,
+      "groups": 21600,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "caveman",
+        "pairwise_masking"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 13510800,
+      "group_members": 540000,
+      "groups": 21600,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "caveman",
+        "selective_he"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 13510800,
+      "group_members": 540000,
+      "groups": 21600,
+      "HE_pair_routes": 13510800
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "caveman",
+        "hybrid_pairwise_head_he"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 13510800,
+      "group_members": 540000,
+      "groups": 21600,
+      "HE_pair_routes": 13510800
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "caveman",
+        "adaptive_hybrid"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 15198300,
+      "group_members": 607500,
+      "groups": 24300,
+      "HE_pair_routes": 7025400
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "barabasi_albert",
+        "none"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 4554000,
+      "group_members": 658800,
+      "groups": 135000,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "barabasi_albert",
+        "masking"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 4554000,
+      "group_members": 658800,
+      "groups": 135000,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "barabasi_albert",
+        "pairwise_masking"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 4554000,
+      "group_members": 658800,
+      "groups": 135000,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "barabasi_albert",
+        "selective_he"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 4554000,
+      "group_members": 658800,
+      "groups": 135000,
+      "HE_pair_routes": 4554000
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "barabasi_albert",
+        "hybrid_pairwise_head_he"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 4554000,
+      "group_members": 658800,
+      "groups": 135000,
+      "HE_pair_routes": 4554000
+    },
+    {
+      "key": [
+        "mlp",
+        "validation",
+        "barabasi_albert",
+        "adaptive_hybrid"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 4554000,
+      "group_members": 658800,
+      "groups": 135000,
+      "HE_pair_routes": 3673800
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "ring",
+        "none"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 1215000,
+      "group_members": 405000,
+      "groups": 135000,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "ring",
+        "masking"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 1215000,
+      "group_members": 405000,
+      "groups": 135000,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "ring",
+        "pairwise_masking"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 1215000,
+      "group_members": 405000,
+      "groups": 135000,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "ring",
+        "selective_he"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 1215000,
+      "group_members": 405000,
+      "groups": 135000,
+      "HE_pair_routes": 1215000
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "ring",
+        "hybrid_pairwise_head_he"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 1215000,
+      "group_members": 405000,
+      "groups": 135000,
+      "HE_pair_routes": 1215000
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "ring",
+        "adaptive_hybrid"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 1215000,
+      "group_members": 405000,
+      "groups": 135000,
+      "HE_pair_routes": 486000
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "fully_connected",
+        "none"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 6750000,
+      "group_members": 135000,
+      "groups": 2700,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "fully_connected",
+        "masking"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 6750000,
+      "group_members": 135000,
+      "groups": 2700,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "fully_connected",
+        "pairwise_masking"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 6750000,
+      "group_members": 135000,
+      "groups": 2700,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "fully_connected",
+        "selective_he"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 6750000,
+      "group_members": 135000,
+      "groups": 2700,
+      "HE_pair_routes": 6750000
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "fully_connected",
+        "hybrid_pairwise_head_he"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 6750000,
+      "group_members": 135000,
+      "groups": 2700,
+      "HE_pair_routes": 6750000
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "fully_connected",
+        "adaptive_hybrid"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 13500000,
+      "group_members": 270000,
+      "groups": 5400,
+      "HE_pair_routes": 6750000
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "caveman",
+        "none"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 13510800,
+      "group_members": 540000,
+      "groups": 21600,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "caveman",
+        "masking"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 13510800,
+      "group_members": 540000,
+      "groups": 21600,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "caveman",
+        "pairwise_masking"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 13510800,
+      "group_members": 540000,
+      "groups": 21600,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "caveman",
+        "selective_he"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 13510800,
+      "group_members": 540000,
+      "groups": 21600,
+      "HE_pair_routes": 13510800
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "caveman",
+        "hybrid_pairwise_head_he"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 13510800,
+      "group_members": 540000,
+      "groups": 21600,
+      "HE_pair_routes": 13510800
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "caveman",
+        "adaptive_hybrid"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 15198300,
+      "group_members": 607500,
+      "groups": 24300,
+      "HE_pair_routes": 7025400
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "barabasi_albert",
+        "none"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 4554000,
+      "group_members": 658800,
+      "groups": 135000,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "barabasi_albert",
+        "masking"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 4554000,
+      "group_members": 658800,
+      "groups": 135000,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "barabasi_albert",
+        "pairwise_masking"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 4554000,
+      "group_members": 658800,
+      "groups": 135000,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "barabasi_albert",
+        "selective_he"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 4554000,
+      "group_members": 658800,
+      "groups": 135000,
+      "HE_pair_routes": 4554000
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "barabasi_albert",
+        "hybrid_pairwise_head_he"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 4554000,
+      "group_members": 658800,
+      "groups": 135000,
+      "HE_pair_routes": 4554000
+    },
+    {
+      "key": [
+        "cnn",
+        "validation",
+        "barabasi_albert",
+        "adaptive_hybrid"
+      ],
+      "jobs": 45,
+      "rounds": 2700,
+      "pair_routes": 4554000,
+      "group_members": 658800,
+      "groups": 135000,
+      "HE_pair_routes": 3673800
+    },
+    {
+      "key": [
+        "mlp",
+        "sensitivity",
+        "ring",
+        "adaptive_hybrid"
+      ],
+      "jobs": 180,
+      "rounds": 10800,
+      "pair_routes": 4860000,
+      "group_members": 1620000,
+      "groups": 540000,
+      "HE_pair_routes": 3159000
+    },
+    {
+      "key": [
+        "cnn",
+        "sensitivity",
+        "ring",
+        "adaptive_hybrid"
+      ],
+      "jobs": 180,
+      "rounds": 10800,
+      "pair_routes": 4860000,
+      "group_members": 1620000,
+      "groups": 540000,
+      "HE_pair_routes": 3159000
+    },
+    {
+      "key": [
+        "mlp",
+        "network",
+        "ring",
+        "none"
+      ],
+      "jobs": 45,
+      "rounds": 90,
+      "pair_routes": 40500,
+      "group_members": 13500,
+      "groups": 4500,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "network",
+        "ring",
+        "masking"
+      ],
+      "jobs": 45,
+      "rounds": 90,
+      "pair_routes": 40500,
+      "group_members": 13500,
+      "groups": 4500,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "network",
+        "ring",
+        "pairwise_masking"
+      ],
+      "jobs": 45,
+      "rounds": 90,
+      "pair_routes": 40500,
+      "group_members": 13500,
+      "groups": 4500,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "mlp",
+        "network",
+        "ring",
+        "selective_he"
+      ],
+      "jobs": 45,
+      "rounds": 90,
+      "pair_routes": 40500,
+      "group_members": 13500,
+      "groups": 4500,
+      "HE_pair_routes": 40500
+    },
+    {
+      "key": [
+        "mlp",
+        "network",
+        "ring",
+        "hybrid_pairwise_head_he"
+      ],
+      "jobs": 45,
+      "rounds": 90,
+      "pair_routes": 40500,
+      "group_members": 13500,
+      "groups": 4500,
+      "HE_pair_routes": 40500
+    },
+    {
+      "key": [
+        "mlp",
+        "network",
+        "ring",
+        "adaptive_hybrid"
+      ],
+      "jobs": 45,
+      "rounds": 90,
+      "pair_routes": 40500,
+      "group_members": 13500,
+      "groups": 4500,
+      "HE_pair_routes": 16200
+    },
+    {
+      "key": [
+        "cnn",
+        "network",
+        "ring",
+        "none"
+      ],
+      "jobs": 45,
+      "rounds": 90,
+      "pair_routes": 40500,
+      "group_members": 13500,
+      "groups": 4500,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "network",
+        "ring",
+        "masking"
+      ],
+      "jobs": 45,
+      "rounds": 90,
+      "pair_routes": 40500,
+      "group_members": 13500,
+      "groups": 4500,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "network",
+        "ring",
+        "pairwise_masking"
+      ],
+      "jobs": 45,
+      "rounds": 90,
+      "pair_routes": 40500,
+      "group_members": 13500,
+      "groups": 4500,
+      "HE_pair_routes": 0
+    },
+    {
+      "key": [
+        "cnn",
+        "network",
+        "ring",
+        "selective_he"
+      ],
+      "jobs": 45,
+      "rounds": 90,
+      "pair_routes": 40500,
+      "group_members": 13500,
+      "groups": 4500,
+      "HE_pair_routes": 40500
+    },
+    {
+      "key": [
+        "cnn",
+        "network",
+        "ring",
+        "hybrid_pairwise_head_he"
+      ],
+      "jobs": 45,
+      "rounds": 90,
+      "pair_routes": 40500,
+      "group_members": 13500,
+      "groups": 4500,
+      "HE_pair_routes": 40500
+    },
+    {
+      "key": [
+        "cnn",
+        "network",
+        "ring",
+        "adaptive_hybrid"
+      ],
+      "jobs": 45,
+      "rounds": 90,
+      "pair_routes": 40500,
+      "group_members": 13500,
+      "groups": 4500,
+      "HE_pair_routes": 16200
+    }
+  ]
+}

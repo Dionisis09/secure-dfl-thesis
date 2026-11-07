@@ -1,5 +1,20 @@
 Secure Decentralized Federated Learning
 
+**50-client calibration (7 November 2026): cost review required before bulk runs.**
+The [measured calibration and archive incident](results/calibration_50c_20261107/README.md)
+show a verified CNN mean of **106.4 minutes per round** for the dense hybrid
+configuration; 95.4% is secure aggregation. A same-cost 60-round job is about
+4.4 days, so the full grid needs redesign/optimization before execution.
+MLP execution was recorded, but its detailed receipt was overwritten by an
+archive-path bug; only an approximate 3h38 transition window is retained.
+The exporter/controller are repaired with four regression tests, and the
+[corrected package](experiment_pack_50c_3seeds_v8_1/START_HERE_EL.md) is separately
+frozen. No scientific campaign was started; incomplete evidence is not labelled
+as two verified calibration jobs. Historical documents/charts remain unchanged.
+The final idle check on7November also found `nvidia-smi`/CUDA unavailable again
+(`Unknown Error`); no server reset/reboot was attempted. The captured CUDA-training
+receipts describe earlier successful execution, not present GPU availability.
+
 **GPU pack v8 (6 November 2026): prepared, no scientific jobs started.**
 The [50-client, three-seed package](docs/GPU_EXPERIMENT_PACK_50C_3SEEDS.md)
 freezes matched MLP/CNN experiments across three datasets, four topologies,

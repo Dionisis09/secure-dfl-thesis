@@ -1,0 +1,676 @@
+{
+  "job_id": "2886c8964ba19c1750c82905b366de083db35452956d1fba79c84095663c4bd0",
+  "completed": 2,
+  "records": [
+    {
+      "round": 1,
+      "metrics": {
+        "train_loss": 3.03294813154,
+        "validation_accuracy": null,
+        "validation_loss": null,
+        "best_round": 0,
+        "best_validation_accuracy": -100.0,
+        "test_final_accuracy": null,
+        "test_final_loss": null,
+        "test_best_accuracy": null,
+        "test_best_loss": null
+      },
+      "seconds": 6427.682569095003,
+      "training_execution": [
+        {
+          "device": "cuda",
+          "training_seconds": 0.4238256200005708,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38695036900026025,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38511981400006334,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3885127800022019,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3854231869991054,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3857593709981302,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38910824400227284,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3898501549992943,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38448250999863376,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.4065917529987928,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.39010616800078424,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.383402682000451,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3844761580003251,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3839175039975089,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3815354969992768,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.39754697700118413,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3853904950010474,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.39372934799757786,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3790181639997172,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38425237699993886,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.39007106099961675,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3853122170003189,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3950177110018558,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3868327780000982,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3871993600005226,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3908262180011661,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38553203199990094,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3985086520006007,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3799878940008057,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3802892839994456,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38357952600199496,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38147319899871945,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3939553950003756,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3833455839994713,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38379442199948244,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38283709400275256,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38516312599676894,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38352705700162915,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3924357069990947,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3836561200005235,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.397175475001859,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3809778239992738,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38962547999835806,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38668373699692893,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3857125529975747,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3913045899971621,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38550606300123036,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38243239000075846,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38485115699950256,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.381892441000673,
+          "peak_GPU_allocated": 338114048,
+          "peak_GPU_reserved": 553648128
+        }
+      ],
+      "request_bytes": 63447973200,
+      "response_bytes": 63416633936,
+      "training_stage_seconds": 167.93367792299978,
+      "aggregation_seconds": 6208.088733141001,
+      "reporting_seconds": 49.94353883900112,
+      "HE_group_stats": [
+        {
+          "group": "g72b36c615208397fafa7",
+          "native_ciphertext_bytes": 37008000,
+          "range_proof_bytes": 359400
+        }
+      ],
+      "logical_HE_targets": 50,
+      "unique_mixing_groups": 1,
+      "timing_complete": true,
+      "individual_or_neighborhood_model_plaintexts_received": false,
+      "commit_seconds": 1.4560796750010923
+    },
+    {
+      "round": 2,
+      "metrics": {
+        "train_loss": 2.26801160816,
+        "validation_accuracy": 9.6,
+        "validation_loss": 2.291921762,
+        "best_round": 2,
+        "best_validation_accuracy": 9.6,
+        "test_final_accuracy": 11.799999999999999,
+        "test_final_loss": 2.290221193,
+        "test_best_accuracy": 11.799999999999999,
+        "test_best_loss": 2.290221193
+      },
+      "seconds": 6340.186557603003,
+      "training_execution": [
+        {
+          "device": "cuda",
+          "training_seconds": 0.38685533399984706,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38858769400030724,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3882396480003081,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38806827399821486,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3917457870011276,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3893826960011211,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3851448249988607,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38683305199811,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3887300529968343,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38851205199898686,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3974003619987343,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3805133220012067,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38342018899857067,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3845576159983466,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38521999799922924,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3791343179982505,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3872419540020928,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38799656899936963,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3847706990018196,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38835209000171744,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38418922100026975,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.387315703999775,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38918639500116115,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3871580660015752,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.37852866500179516,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3857366420015751,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3952719740009343,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38630252100119833,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.39115422000031685,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3866484939971997,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38693634800074506,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3893792790004227,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38429934899977525,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3804689469980076,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38992248499926063,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38818476399683277,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3859546340027009,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3889802360026806,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3826253090010141,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.389763324001251,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3870338319975417,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3883807940001134,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3824772389998543,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3901733780003269,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3826038779989176,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.38733482899988303,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.39898323099987465,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3878375690001121,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3895921110015479,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        },
+        {
+          "device": "cuda",
+          "training_seconds": 0.3863959970003634,
+          "peak_GPU_allocated": 350633472,
+          "peak_GPU_reserved": 587202560
+        }
+      ],
+      "request_bytes": 63457835000,
+      "response_bytes": 63424790380,
+      "training_stage_seconds": 168.431696388001,
+      "aggregation_seconds": 5966.425352235998,
+      "reporting_seconds": 203.7749733749988,
+      "HE_group_stats": [
+        {
+          "group": "g72b36c615208397fafa7",
+          "native_ciphertext_bytes": 37008000,
+          "range_proof_bytes": 359400
+        }
+      ],
+      "logical_HE_targets": 50,
+      "unique_mixing_groups": 1,
+      "timing_complete": true,
+      "individual_or_neighborhood_model_plaintexts_received": false,
+      "commit_seconds": 1.2562369929983106
+    }
+  ],
+  "active": null,
+  "pending": null
+}

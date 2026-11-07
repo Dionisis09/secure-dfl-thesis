@@ -1,0 +1,42 @@
+{
+  "scope": "50-client dense CIFAR hybrid calibration, seed0, 6400 train / 500 evaluation, two rounds; not an accuracy benchmark",
+  "cnn_verified_rounds": 2,
+  "cnn_mean": {
+    "seconds": 6383.934563349003,
+    "training_stage_seconds": 168.1826871555004,
+    "aggregation_seconds": 6087.2570426884995,
+    "reporting_seconds": 126.85925610699996,
+    "commit_seconds": 1.3561583339997014,
+    "request_bytes": 63452904100,
+    "response_bytes": 63420712158,
+    "native_GPU_training_seconds_sum": 19.37401564349784
+  },
+  "cnn_supervisor_wall_seconds": 12774.076987704,
+  "secure_aggregation_fraction": 0.953527480941962,
+  "same_cost_60_round_job_hours": 106.39890938915005,
+  "full_design_unique_jobs": 3110,
+  "full_design_rounds": 154468,
+  "arithmetic_scenarios": {
+    "uniform_dense_years": 31.248054482324186,
+    "graph_pair_count_scaling_years": 18.16111499784521,
+    "definition": "Illustrative serial 24/7 workload arithmetic, NOT a calibrated full-grid ETA. Uniform scenario assigns the dense hybrid mean to every round. Graph scenario scales blob time by sum(cohort_size^2)/2500, HE time by HE-only sum(cohort_size^2)/2500, and assigns 168.2s training-stage +50s reporting per round. It omits full-data training growth, different-model/dataset costs, extra cohort setup and unsampled validation/network effects; all are unvalidated assumptions."
+  },
+  "limitations": [
+    "Only CNN has a recovered verifiable per-round archive. MLP has an approximate timestamp window, not reconstructed metrics.",
+    "Two dense hybrid rounds cannot estimate every topology/mode/dataset with a defensible narrow range.",
+    "Serialized RPC JSON bytes are not NIC/TLS wire traffic. Roles ran on one host.",
+    "Main training uses full datasets and 60 rounds; calibration is a subset with two rounds.",
+    "The full campaign remains unstarted. No new thesis/dashboard accuracy results are asserted."
+  ],
+  "conclusion": "Full grid is impractical in the current serial all-peer-verification implementation; optimize protocol/transport and redesign scope before bulk execution.",
+  "measured_source_hash": "eb6bf8274ccc96fb88ce276e3fdf2720cb3bfcfc465939e47c159df322ce46eb",
+  "measurement_source_commit": "4197686c021be856a4efc11f42ee20ebd04c5fed",
+  "corrected_supervisor_source_hash": "274c9f2ab6fe457a6c9fedaa0107440d8b5bc097461025d54669a2a91e03be21",
+  "final_idle_GPU_status": {
+    "UTC": "2026-11-07T09:00:54Z",
+    "available": false,
+    "nvidia_smi_exit": 255,
+    "CUDA_available": false,
+    "server_reset_attempted": false
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "status": "prepared_not_started",
+  "completed": [],
+  "failed": [],
+  "current": null,
+  "GPU_validated": false,
+  "data_ready": true
+}
+
+{"platform": "Linux-6.8.0-147-generic-x86_64-with-glibc2.39", "python": "3.10.9", "linux": true, "GPU_available": true, "GPU": {"device": "NVIDIA GeForce RTX 4090", "memory": 25250627584, "torch": "2.11.0+cu128", "cuda": "12.8"}, "free_disk_GiB": 35.45378494262695, "landlock_abi": 4, "packages": {"torch": "2.11.0+cu128", "torchvision": "0.26.0+cu128", "numpy": "2.2.6", "networkx": "3.4.2", "cryptography": "50.0.2", "rbcl": "1.1.2", "Pillow": "12.3.0", "cffi": "2.1.1", "pycparser": "3.11"}, "native_binary_sha256": "610bb5782f6b824a5e3c9e8ffe702886a89e543cb9cd494614b230ada4a8fa29", "driver": "595.99.02"}
+Traceback (most recent call last):
+  File "/home/up1093449/secure-dfl-gpu-pack/scripts/pack_campaign.py", line 33, in <module>
+    if __name__=='__main__':main()
+  File "/home/up1093449/secure-dfl-gpu-pack/scripts/pack_campaign.py", line 32, in main
+    else:print(json.dumps(execute(args.pack,args.work_root,args.data_cache,until=args.until,max_estimated_hours=args.max_estimated_hours,retain_private=args.retain_private)))
+  File "/home/up1093449/secure-dfl-gpu-pack/src/experiment_pack/controller.py", line 162, in execute
+    export_and_prune(workspace,destination,work_root,receipt,prune=not retain_private)
+  File "/home/up1093449/secure-dfl-gpu-pack/src/experiment_pack/launch.py", line 74, in export_and_prune
+    if hashlib.sha256((destination/name).read_bytes()).hexdigest()!=value:raise RuntimeError('archive verification failed')
+RuntimeError: archive verification failed

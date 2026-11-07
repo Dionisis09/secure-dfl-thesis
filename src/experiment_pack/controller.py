@@ -114,11 +114,15 @@ def execute(pack,work_root,data_cache,*,until='gpu_gate',max_estimated_hours=168
             if json.loads((pack/'runtime_profile.json').read_text())['sha256']!=profile_sha:raise RuntimeError('runtime changed since calibration; do not mix environments')
         else:dump(pack/'runtime_profile.json',dict(sha256=profile_sha,profile=profile))
         state=json.loads((pack/'state.json').read_text());completed=set(state['completed'])
+        if state.get('archive_review_required'):raise RuntimeError('archive recovery requires operator review; no jobs started')
         for job in manifest['jobs']:
-            destination=pack/'results'/job['id']
-            if verify_completed(destination,job['config_sha256']):completed.add(job['id'])
-            else:completed.discard(job['id'])
+            archived=pack/'results'/job['id']
+            if verify_completed(archived,job['config_sha256']):completed.add(job['id'])
+            elif job['id'] in completed:
+                state.update(status='blocked_archive_requires_review',current=None,archive_review_required=[job['id']]);dump(pack/'state.json',state)
+                raise RuntimeError('recorded completion has missing/invalid archive; never retrain automatically')
         for record in manifest['jobs']:
+            destination=pack/'results'/record['id']
             cfg=record['config']
             if record['id'] in completed or cfg['workflow'] not in allowed:continue
             if not set(record['depends_on'])<=completed:raise RuntimeError('upstream gate/tuning not complete')
@@ -133,7 +137,7 @@ def execute(pack,work_root,data_cache,*,until='gpu_gate',max_estimated_hours=168
                 if key not in selection['selection']:raise RuntimeError('validation-only LR selection incomplete')
                 effective['learning_rate']=selection['selection'][key]['learning_rate'];effective['selection_sha256']=selection['selection_sha256']
             # A conservative calibration budget guard, never an unsupported ETA.
-            if cfg['workflow']=='validation':
+            if cfg['workflow']!='gpu_gate':
                 gate_records=[]
                 for j in manifest['jobs']:
                     if j['config']['workflow']=='gpu_gate':
@@ -141,7 +145,7 @@ def execute(pack,work_root,data_cache,*,until='gpu_gate',max_estimated_hours=168
                         if p.exists():gate_records+=json.loads(p.read_text())['records']
                 if not gate_records:raise RuntimeError('calibration missing')
                 upper_round=max(r['seconds'] for r in gate_records)*4
-                pending_rounds=sum(j['config']['rounds'] for j in manifest['jobs'] if j['id'] not in completed and j['config']['workflow'] in ('validation','sensitivity','network'))
+                pending_rounds=sum(j['config']['rounds'] for j in manifest['jobs'] if j['id'] not in completed and j['config']['workflow'] in allowed)
                 forecast=dict(rough_upper_hours=upper_round*pending_rounds/3600,method='4x worst measured dense GPU-gate round; scheduling guard, not performance estimate')
                 dump(pack/'calibration_budget.json',forecast)
                 if forecast['rough_upper_hours']>max_estimated_hours:raise RuntimeError('measured calibration exceeds configured campaign budget; bulk jobs remain pending')
@@ -154,13 +158,15 @@ def execute(pack,work_root,data_cache,*,until='gpu_gate',max_estimated_hours=168
                 existing=json.loads((workspace/'public_job.json').read_text())
                 if existing['config']!=effective or existing['source_hash']!=source_hash():raise RuntimeError('existing private job/config mismatch')
             state.update(status='running',current=record['id'],completed=sorted(completed));dump(pack/'state.json',state)
-            try:receipt=launch(workspace)
+            try:
+                receipt=launch(workspace)
+                if receipt['status']=='completed':
+                    receipt['runtime_profile_sha256']=profile_sha
+                    export_and_prune(workspace,destination,work_root,receipt,prune=not retain_private)
+                    if not verify_completed(destination,record['config_sha256']):raise RuntimeError('completed receipt verification failed')
             except BaseException:
                 state.update(status='blocked_job_requires_review',current=record['id']);state['failed']=sorted(set(state['failed'])|{record['id']});dump(pack/'state.json',state);raise
             if receipt['status']!='completed':state.update(status='paused',current=record['id']);dump(pack/'state.json',state);return state
-            receipt['runtime_profile_sha256']=profile_sha
-            export_and_prune(workspace,destination,work_root,receipt,prune=not retain_private)
-            if not verify_completed(destination,record['config_sha256']):raise RuntimeError('completed receipt verification failed')
             completed.add(record['id']);state.update(completed=sorted(completed),current=None,status='between_jobs',GPU_validated=all(j['id'] in completed for j in manifest['jobs'] if j['config']['workflow']=='gpu_gate'));dump(pack/'state.json',state)
         state.update(status='completed' if len(completed)==manifest['unique_jobs'] else 'stage_complete_or_paused',completed=sorted(completed),current=None);dump(pack/'state.json',state)
         return state

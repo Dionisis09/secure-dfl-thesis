@@ -1,0 +1,20 @@
+{
+  "archive_regression.txt": "6d06525690c8cbd5bef1a1484b44d60c6516da184eac40f8a2386ff7190c7834",
+  "cnn/checksums.json": "5c921841f6f09acbcef391e6b2a7ee1573f80e50f4871df6c26bd32bc2e40dc2",
+  "cnn/journal.json": "2a8402ab1d7ac4cd22ead69bba5f5dfe1a8e4d134f04e6c20994f4ba917c986f",
+  "cnn/public_job.json": "2234f0c1d565ae2cc6b81879a1b25dfb2e43bd90af27d5327382d938bb6c7004",
+  "cnn/rpc_audit.json": "8a3a57fd6899cd29532eb7ee0f74a59cf4addc87e4a5d5d29709b04f397c6fa1",
+  "cnn/verification.json": "8b6a88c89014bf8237fc46c0a5ab77dd4654f0e8995c1669e6b5e6fb032f401d",
+  "cnn_phase_windows.json": "ca1766de2941e045f70e2685ca9b495b2cd10b0867b196e8eb1ea7a5f06a5df4",
+  "controller_before_repair.log": "84278dd3ff4c27378543d6108905ffd15073b6c558b1cb3005b6959c3b566e9e",
+  "design_workload.json": "dbadd1fb438c25d85684f09e05bb2f059c7b82cd8b41b8382b3f412392027df3",
+  "gpu_status_20261107.txt": "3847ca41e479b6b53e9242a8d20fd554cc934d56b74de61e06f0a26298be2c26",
+  "mlp_timing_window.json": "1885a631aa872df8b76eab59d263789d4cd53df8398db619987fbebffbab3ef3",
+  "README.md": "ec5775f8a48c26b07fac70a5f33a0d81a6a4b800a8e6291d64d0fe0a23b457e7",
+  "recovery_summary.json": "8b3d18beca5d9502dc4b983236bfaa4df3b72b14a6190c5aec5328e10bacf245",
+  "runtime_profile.json": "fc8d8883d8dc5537ce9cb2bf2e9e73742489fbaac09487b09cfb6a502edd0437",
+  "source_snapshot.json": "9df90b396d7a6c8091a5699bb80f3c9e81e15445d319df5c10bd20ea4eee598a",
+  "state.json": "75dfd1dbf4e14a270e7afbe7da29106d0dd0cf7dbd215881f112204083b17b67",
+  "state_before_repair.json": "1a248bf408391fb65da8239808598631ea386b1b05d1de73f85c048457457ba5",
+  "timing_summary.json": "50f3436442fa9f5d23df44485b02f20175db790348a67e764ed5af93a0ecdcba"
+}

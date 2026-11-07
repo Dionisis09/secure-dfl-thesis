@@ -30,6 +30,12 @@ experiment_pack_50c_3seeds_v8/results/
 experiment_pack_50c_3seeds_v8/runtime_profile.json
 experiment_pack_50c_3seeds_v8/learning_rate_selection.json
 experiment_pack_50c_3seeds_v8/calibration_budget.json
+experiment_pack_50c_3seeds_v8_1/controller.lock
+experiment_pack_50c_3seeds_v8_1/pause.request
+experiment_pack_50c_3seeds_v8_1/results/
+experiment_pack_50c_3seeds_v8_1/runtime_profile.json
+experiment_pack_50c_3seeds_v8_1/learning_rate_selection.json
+experiment_pack_50c_3seeds_v8_1/calibration_budget.json
 native/dfl_range/target/
 private-jobs/
 results/protocol_v6_training/**/checkpoint*.pt

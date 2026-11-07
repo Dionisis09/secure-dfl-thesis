@@ -1,5 +1,13 @@
 # GPU experiment pack — 50 clients, seeds 1/2/3
 
+**7 November correction:** use the separately frozen
+`experiment_pack_50c_3seeds_v8_1` supervisor revision. The original calibration
+completed CNN rounds at106.4minutes/round; its MLP detailed receipt was lost in
+an archive-path collision. [Measured evidence and incident](../results/calibration_50c_20261107/README.md)
+explain the limitations. The full grid is not practical at the measured cost.
+No bulk run is recommended before redesign/optimization. The original v8 folder
+is historical and blocked for archive review; it must not be refrozen in place.
+
 Prepared on 6 November 2026. **Building, uploading or opening the package does
 not start experiments.** The GPU has reappeared after a server reboot. An explicit
 `run` command starts the mandatory calibration stage; the scientific campaign
@@ -150,7 +158,7 @@ cd ~/secure-dfl-gpu-pack
 export DFL_RANGE_LIB="$HOME/secure-dfl-protocol-v6/native/dfl_range/target/release/libdfl_range.so"
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 CUBLAS_WORKSPACE_CONFIG=:4096:8
 PY="$HOME/.venvs/secure-dfl-bench/bin/python"
-PACK=experiment_pack_50c_3seeds_v8
+PACK=experiment_pack_50c_3seeds_v8_1
 
 "$PY" scripts/pack_campaign.py status --pack "$PACK"
 "$PY" scripts/pack_campaign.py preflight --pack "$PACK"
@@ -162,7 +170,7 @@ PACK=experiment_pack_50c_3seeds_v8
 Then continue the same controller with `--until smoke`, `--until tuning`, and
 finally `--until network` to include all stages. Default continuation stops at
 the GPU gates, never silently launching3,110 jobs. Before main validation, a
-conservative measured calibration budget is checked against
+conservative measured calibration budget is checked before any non-gate stage against
 `--max-estimated-hours` (default168). An exceeded budget stops with jobs pending;
 it is not permission to truncate rounds/seeds or claim a trustworthy fixed ETA.
 Choose any larger budget deliberately after reviewing calibration.
@@ -209,3 +217,9 @@ Recovered commit timings are marked incomplete. Earlier results are not mixed.
 The package's own verification fixtures are small tests only; their accuracies
 must not be added to thesis performance charts. No new campaign, PowerPoint,
 Word or dashboard performance results are claimed while its jobs are pending.
+
+The repaired supervisor assigns the archive path inside the current-job loop,
+rejects another job's archive before writing, excludes `checksums.json` from its
+own hash list, fsyncs evidence and verifies the complete durable journal before
+private cleanup. Re-export is idempotent. A recorded completion whose archive
+is missing blocks automatic retraining and requires explicit recovery review.

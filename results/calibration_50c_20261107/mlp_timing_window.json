@@ -1,0 +1,12 @@
+{
+  "model": "mlp",
+  "execution_claimed_completed_in_original_controller_state": true,
+  "per_round_receipt_available": false,
+  "precise_round_timings_available": false,
+  "start_log_birth_UTC": "2026-11-06T12:57:49Z",
+  "cnn_workspace_birth_UTC": "2026-11-06T16:36:10Z",
+  "transition_window_seconds": 13101,
+  "interpretation": "Approximate MLP job window includes preflight/provisioning and handoff, not a recovered per-round measurement.",
+  "incident": "Original controller reused final manifest destination; CNN overwrote MLP public archive after private MLP retention cleanup. Original state was not an independent verified receipt.",
+  "no_experiments_repeated": true
+}
