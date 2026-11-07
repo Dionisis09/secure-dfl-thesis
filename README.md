@@ -1,5 +1,24 @@
 Secure Decentralized Federated Learning
 
+**Current prepared series: trusted simulator50 (7 November 2026).**
+The [new package](simulator50_pack_20261107/START_HERE_EL.md) uses50 logical
+clients, parameter-budget matched CNN/MLP (within0.6%),20rounds and seeds1/2/3.
+It follows the original single-process experiment style, with actual TenSEAL
+CKKS head operations and reproducible masking. The trainer holds plaintext
+models/private keys; independent-client privacy and network-traffic guarantees
+are not claimed for this runner. Each main method trains its own trajectory.
+
+**30/30 full-data calibration jobs and8 regression tests passed** on the laptop
+RTX5070. The [selected plan](simulator50_pack_20261107/selected_plan.json) admits
+**438 runs (146configurations×3seeds)** across three datasets, ring/Caveman/BA,
+selected distributions and five methods/sensitivity. Its conservative stage-cost
+forecast is73.6h (including a2× factor), with24h reserve inside a fixed120h clock.
+The30 uncalibrated fully-connected candidates are excluded. **Main scientific
+runs started:0.** [Evidence](results/simulator50_preparation_20261107/README.md)
+and the [method/budget guide](docs/SIMULATOR50_TRUSTED_PLAN.md) explain scope and
+assumptions. The deadline is12November2026,11:35UTC(13:35Athens); resume does not
+restart it. Historical thesis/PowerPoint/dashboard artifacts remain unchanged.
+
 **50-client calibration (7 November 2026): cost review required before bulk runs.**
 The [measured calibration and archive incident](results/calibration_50c_20261107/README.md)
 show a verified CNN mean of **106.4 minutes per round** for the dense hybrid

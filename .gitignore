@@ -20,6 +20,10 @@ platform_mvp/**/__pycache__/
 .claude/
 .pytest_cache/
 .ruff_cache/
+simulator50_pack_20261107/calibration/
+simulator50_pack_20261107/results/
+simulator50_pack_20261107/controller.lock
+simulator50_pack_20261107/pause.request
 # Private v8 roles, official cache and local correctness-fixture credentials
 private-campaign/
 data-cache/

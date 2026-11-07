@@ -1,0 +1,17 @@
+test_all_five_modes_reconstruct_real_CKKS_and_preserve_integer_semantics (test_simulator50.SimulatorTests.test_all_five_modes_reconstruct_real_CKKS_and_preserve_integer_semantics) ... ok
+test_budget_selection_keeps_whole_groups_and_excludes_uncalibrated_graphs (test_simulator50.SimulatorTests.test_budget_selection_keeps_whole_groups_and_excludes_uncalibrated_graphs) ... ok
+test_data_tamper_is_rejected (test_simulator50.SimulatorTests.test_data_tamper_is_rejected) ... ok
+test_deadline_never_resets_on_resume (test_simulator50.SimulatorTests.test_deadline_never_resets_on_resume) ... ok
+test_design_balanced_models_modes_seeds_no_autostart (test_simulator50.SimulatorTests.test_design_balanced_models_modes_seeds_no_autostart) ... ok
+test_expired_job_deadline_never_trains (test_simulator50.SimulatorTests.test_expired_job_deadline_never_trains) ... ok
+test_matched_budget_and_shared_head_for_native_shapes (test_simulator50.SimulatorTests.test_matched_budget_and_shared_head_for_native_shapes) ... ok
+{"round": 1, "planned": 2, "round_seconds": 0.27572539998800494, "validation": {"accuracy": 0.0, "loss": 2.6648886998494468}}
+{"round": 2, "planned": 2, "round_seconds": 0.2314675000088755, "validation": {"accuracy": 0.0, "loss": 2.6437116463979087}}
+{"round": 1, "planned": 2, "round_seconds": 0.24372630001744255, "validation": {"accuracy": 0.0, "loss": 2.6648886998494468}}
+{"round": 2, "planned": 2, "round_seconds": 0.22025379998376593, "validation": {"accuracy": 0.0, "loss": 2.6437116463979087}}
+test_resume_equals_continuous_training_and_completed_is_noop (test_simulator50.SimulatorTests.test_resume_equals_continuous_training_and_completed_is_noop) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 2.549s
+
+OK

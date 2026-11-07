@@ -1,0 +1,23 @@
+{
+  "status": "passed_no_training",
+  "runtime": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.12.14",
+    "device": "cuda",
+    "GPU": "NVIDIA GeForce RTX 5070 Laptop GPU",
+    "cuda": "12.8",
+    "packages": {
+      "torch": "2.11.0+cu128",
+      "torchvision": "0.26.0+cu128",
+      "numpy": "2.5.2",
+      "networkx": "3.6.1",
+      "tenseal": "0.3.16"
+    },
+    "FP32": true,
+    "torch_threads": 1,
+    "deterministic": true
+  },
+  "source": "ce0e9991a75f974a148aff749e8837ad6c39819602fd2deaf2731f4c58ca0412",
+  "cuda_memory": 8518369280,
+  "CKKS_encryption_addition_decryption": true
+}

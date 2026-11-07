@@ -1,0 +1,10 @@
+{
+  "status": "prepared_selected_main_not_started",
+  "completed": [],
+  "started_UTC": "2026-11-07T11:35:56.126814+00:00",
+  "deadline_UTC": "2026-11-12T11:35:56.126814+00:00",
+  "current": null,
+  "selected_jobs": 438,
+  "forecast_hours": 73.57664548566768,
+  "verified_calibration_jobs": 30
+}

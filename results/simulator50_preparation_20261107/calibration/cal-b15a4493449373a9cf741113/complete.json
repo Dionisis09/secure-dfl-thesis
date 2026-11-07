@@ -1,0 +1,87 @@
+{
+  "status": "completed",
+  "config": {
+    "model": "mlp",
+    "dataset": "cifar10",
+    "clients": 50,
+    "seed": 0,
+    "mode": "adaptive_hybrid",
+    "split": "iid",
+    "alpha": null,
+    "topology": "caveman",
+    "caveman_cliques": 2,
+    "barabasi_m": 2,
+    "shards_per_client": 2,
+    "dirichlet_min_samples": 10,
+    "rounds": 2,
+    "local_epochs": 1,
+    "batch_size": 128,
+    "learning_rate": 0.001,
+    "optimizer": "AdamW",
+    "weight_decay": 0.01,
+    "warmup_rounds": 3,
+    "schedule_rounds": 20,
+    "validation_every": 5,
+    "HE_ratio": 0.4,
+    "HE_policy": "legacy_update_norm_topk",
+    "CKKS": {
+      "poly_modulus_degree": 8192,
+      "coeff_mod_bit_sizes": [
+        60,
+        40,
+        40,
+        60
+      ],
+      "scale_bits": 40,
+      "threads": 1
+    },
+    "normalization": "training_fold_only",
+    "data_fold_seed": 20261106,
+    "augmentation": "cifar_random_crop_flip_only",
+    "stage": "calibration",
+    "threat_model": "trusted_single_process_simulation",
+    "communication": "calculated_payload_bytes_not_measured_network"
+  },
+  "config_sha256": "b15a4493449373a9cf741113485f9c2c7519f31e7969fd10dbd6a00e3ceaf69b",
+  "source_hash": "ce0e9991a75f974a148aff749e8837ad6c39819602fd2deaf2731f4c58ca0412",
+  "data_receipt_sha256": "f896d07cff097decf488c53f9342582cf105bd03c32a1d82b11e7ee29dbd78a7",
+  "runtime_profile": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.12.14",
+    "device": "cuda",
+    "GPU": "NVIDIA GeForce RTX 5070 Laptop GPU",
+    "cuda": "12.8",
+    "packages": {
+      "torch": "2.11.0+cu128",
+      "torchvision": "0.26.0+cu128",
+      "numpy": "2.5.2",
+      "networkx": "3.6.1",
+      "tenseal": "0.3.16"
+    },
+    "FP32": true,
+    "torch_threads": 1,
+    "deterministic": true
+  },
+  "runtime_sha256": "0010e013b1957bb14a2bcf294d89e494501cad4889760b1d162b38d814e98e2b",
+  "completed_rounds": 2,
+  "setup_seconds": 11.02395199998864,
+  "session_wall_seconds": 241.94068069997593,
+  "resume_count": 0,
+  "final_test": {
+    "accuracy": 32.8942,
+    "loss": 1.9055006308670044
+  },
+  "best_validation_test": {
+    "accuracy": 32.8942,
+    "loss": 1.9055006308670044
+  },
+  "best_validation_accuracy": 32.4656,
+  "test_final_seconds": 5.630143099988345,
+  "test_best_seconds": 5.6860798000125214,
+  "final_state_hash": "25a6a5a33d1873f74aab183a2a66758386d1cae9386609c4bbc925c5dc2ac697",
+  "checkpoint_retained": false,
+  "threat_model": "trusted_single_process_simulation",
+  "communication": "calculated state/ciphertext payload; not measured network",
+  "test_used_for_tuning": false,
+  "recorded_job_seconds": 241.8599049000186
+}

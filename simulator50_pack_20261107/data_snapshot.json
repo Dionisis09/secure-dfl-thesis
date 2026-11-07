@@ -1,0 +1,93 @@
+{
+  "datasets": {
+    "mnist": {
+      "dataset": "mnist",
+      "input_shape": [
+        1,
+        28,
+        28
+      ],
+      "train": 54001,
+      "validation": 5999,
+      "test": 10000,
+      "fold_seed": 20261106,
+      "normalization": {
+        "mean": [
+          0.13059801965637272
+        ],
+        "std": [
+          0.30803277319080546
+        ]
+      },
+      "train_indices_sha256": "aff8cb8d3647130bfc6d208d98260405fba12464b23b0c7de0a66e81691e1e07",
+      "validation_indices_sha256": "86b3ab32091925e8e8a3a302b5b882c5aa82a97d60ce753aa83856664cf918cb",
+      "sha256": {
+        "train.npz": "8dbe41a1b60a97a1dbf7ca871b387b590c8c619baf762c234e4cabfe64bc4c15",
+        "validation.npz": "b378fd94dfe7e1ad8237eac9581b6d891e2153b5f07653d67518ae43d85680bb",
+        "test.npz": "14a95da69ee0963852fc343b4825fec7e72f29b73a802847e1bb10d61f750793"
+      },
+      "receipt_sha256": "df91a6ba1b0cf7894674b102b7e410e6ec73d36650aaca65b4019ac523baf751"
+    },
+    "fashion_mnist": {
+      "dataset": "fashion_mnist",
+      "input_shape": [
+        1,
+        28,
+        28
+      ],
+      "train": 54000,
+      "validation": 6000,
+      "test": 10000,
+      "fold_seed": 20261106,
+      "normalization": {
+        "mean": [
+          0.2860151136380478
+        ],
+        "std": [
+          0.3529824738272199
+        ]
+      },
+      "train_indices_sha256": "ad8ac355f55bb1dfdec9aee6203b8838d33ae267e1d46bbb9592c3884f79c4e5",
+      "validation_indices_sha256": "16d30f9ca025e13b46f2e9ff23970e041fb544f759f9dd63f954301925fa0309",
+      "sha256": {
+        "train.npz": "ae58a6b647e0e959470815ff1eb0a52c9cc6dfd8d9f4c42e2c154427e7a2dcca",
+        "validation.npz": "97f5520e880038647f4c998b06af16a666e2d643a03e497d1b8a68126d2cade7",
+        "test.npz": "8540cdc065489351653c70b1b825c4a5f2931212adef492430ddf455bcd811c0"
+      },
+      "receipt_sha256": "ce41c9f34772d29bbbd50d22a2d67517c2aca5c12591052d4f5abb9d033df14f"
+    },
+    "cifar10": {
+      "dataset": "cifar10",
+      "input_shape": [
+        3,
+        32,
+        32
+      ],
+      "train": 45000,
+      "validation": 5000,
+      "test": 10000,
+      "fold_seed": 20261106,
+      "normalization": {
+        "mean": [
+          0.49125380650871464,
+          0.48214666726239147,
+          0.4465734215856481
+        ],
+        "std": [
+          0.24707873637477404,
+          0.24345751574591187,
+          0.2616443448165489
+        ]
+      },
+      "train_indices_sha256": "57ad3342e73353cd635116ef2656459b128772b5036c30a767542016dac70733",
+      "validation_indices_sha256": "28e1fcc1cda748f411f3a04a71454a4422e229e061cf999f4a9ee138ff1757a5",
+      "sha256": {
+        "train.npz": "39c1d7ecef53a9baa09ec06945ad5a9e28a46dedf6929d9bc38028e4cd26a377",
+        "validation.npz": "63c1fd7f9e8fafcb2bc313403b99f974d1047eed944b3067ec5a2fe6e2eaa8ad",
+        "test.npz": "b4a917234110d25d34a8439179771c0d725fb726e5ca15677f0f86c1a474a184"
+      },
+      "receipt_sha256": "f896d07cff097decf488c53f9342582cf105bd03c32a1d82b11e7ee29dbd78a7"
+    }
+  },
+  "sha256": "317d32b4707d4f58ba16966123041a4adf9d90ac696d1f579145b1f575c7c1c1"
+}
