@@ -1,0 +1,12 @@
+test_budget_removes_optional_whole_bundles_before_primary (test_laptop24.LaptopTests.test_budget_removes_optional_whole_bundles_before_primary) ... ok
+test_existing_server_source_snapshot_remains_valid (test_laptop24.LaptopTests.test_existing_server_source_snapshot_remains_valid) ... ok
+test_missing_50_or_topology_calibration_never_extrapolates (test_laptop24.LaptopTests.test_missing_50_or_topology_calibration_never_extrapolates) ... ok
+test_new_clock_starts_once_and_is_exactly24hours (test_laptop24.LaptopTests.test_new_clock_starts_once_and_is_exactly24hours) ... ok
+test_plan_provenance_binds_source_hardware_clock_and_design (test_laptop24.LaptopTests.test_plan_provenance_binds_source_hardware_clock_and_design) ... ok
+test_reduced_scope_preserves_recipe_seeds_and_modes (test_laptop24.LaptopTests.test_reduced_scope_preserves_recipe_seeds_and_modes) ... ok
+test_statistics_require_complete_three_seed_groups (test_laptop24.LaptopTests.test_statistics_require_complete_three_seed_groups) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.087s
+
+OK

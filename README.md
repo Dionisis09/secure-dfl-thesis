@@ -1,6 +1,26 @@
 Secure Decentralized Federated Learning
 
-**Current prepared pack: RTX4090 scaling20/50/100clients (7 November2026).**
+**Current laptop series: 24-hour matched CNN/MLP comparison (10 November 2026).**
+The [smaller laptop pack](laptop24_pack_20261110/START_HERE_EL.md) retains full
+datasets, the existing models, 20 rounds and seeds 1/2/3. The primary comparison
+uses 20 clients: CIFAR-10, ring, IID/Dirichlet alpha0.5 and all five methods
+(60 mandatory runs). Optional MNIST/Fashion-MNIST, BA/Caveman and 50-client
+baseline/adaptive controls bring the candidate pool to144. A measured,
+whole-bundle admission policy leaves4hours reserve within a new24hour window;
+it refuses bulk execution if the primary comparison does not fit. Calibration
+and preparation do not start scientific seeds. **22/22 full-data laptop
+calibrations and23tests passed; all144candidate runs were admitted**, with a
+conservative12.91h forecast including the2x admission factor. Main runs started:0.
+The deadline is11November2026,12:50UTC(14:50Athens); pause/resume does not reset it.
+See the
+[design and commands](docs/LAPTOP24_EXPERIMENTS_EL.md) and
+[actual preparation evidence](results/laptop24_preparation_20261110/README.md)
+for the selected scope, forecast and limitations. No accuracy threshold is
+guaranteed. Original server source,402/228runs, Word/PowerPoint/dashboard stay
+separate. This remains a trusted trainer simulator with real CKKS operations;
+it does not claim privacy from the trainer or physical multi-machine scaling.
+
+**Separate prepared server pack: RTX4090 scaling20/50/100clients (7 November2026).**
 The [server package](simulator4090_scaling_pack_20261107/START_HERE_EL.md)
 adds36CIFAR/ring/Dirichlet0.5 scaling cases: two parameter-matched CNN/MLP
 models, baseline/adaptive hybrid, seeds1/2/3 and20rounds. Twelve50client cases

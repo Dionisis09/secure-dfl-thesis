@@ -1,0 +1,207 @@
+{
+  "status": "calibrated_selected_main_not_started",
+  "unit_tests_passed": 23,
+  "actual_full_data_calibration_jobs": 22,
+  "calibration_seed": 0,
+  "scientific_seeds": [
+    1,
+    2,
+    3
+  ],
+  "primary_clients": 20,
+  "optional_clients": 50,
+  "candidate_jobs": 144,
+  "required_jobs": 60,
+  "selected_jobs": 144,
+  "conservative_selected_hours": 12.913061555847525,
+  "maximum_wall_hours": 24,
+  "reserve_hours": 4,
+  "main_jobs_started": 0,
+  "laptop_source_hash": "0f3bd09e4aa5df2112bf7900f27b343cac0f0667d13660d064b3171f8961d118",
+  "engine_source_hash": "a9a56d44e096a04274470eb3c3affd389d95ce6ffe238df07aeb71e5e84581d8",
+  "driver": "621.14",
+  "started_UTC": "2026-11-10T12:50:33.714737+00:00",
+  "deadline_UTC": "2026-11-11T12:50:33.714737+00:00",
+  "calibrations": [
+    {
+      "id": "cal-d2907ddabc4aa58fa4e39e0e",
+      "model": "cnn",
+      "mode": "none",
+      "clients": 20,
+      "topology": "ring",
+      "recorded_job_seconds": 32.85314849996939
+    },
+    {
+      "id": "cal-148c13b10db568c29d170948",
+      "model": "cnn",
+      "mode": "masking",
+      "clients": 20,
+      "topology": "ring",
+      "recorded_job_seconds": 28.172969699953683
+    },
+    {
+      "id": "cal-309755235f39ec80f95d711f",
+      "model": "cnn",
+      "mode": "pairwise_masking",
+      "clients": 20,
+      "topology": "ring",
+      "recorded_job_seconds": 28.786937199998647
+    },
+    {
+      "id": "cal-d16e4575847a3d97305ae9e4",
+      "model": "cnn",
+      "mode": "selective_he",
+      "clients": 20,
+      "topology": "ring",
+      "recorded_job_seconds": 32.71752139989985
+    },
+    {
+      "id": "cal-d1f25501eb2fbd34610f5757",
+      "model": "cnn",
+      "mode": "adaptive_hybrid",
+      "clients": 20,
+      "topology": "ring",
+      "recorded_job_seconds": 32.89151950000087
+    },
+    {
+      "id": "cal-9131d4dca84101f583e1335c",
+      "model": "mlp",
+      "mode": "none",
+      "clients": 20,
+      "topology": "ring",
+      "recorded_job_seconds": 13.017700999916997
+    },
+    {
+      "id": "cal-518d45aef778241b7ab5a5ea",
+      "model": "mlp",
+      "mode": "masking",
+      "clients": 20,
+      "topology": "ring",
+      "recorded_job_seconds": 13.31867870001588
+    },
+    {
+      "id": "cal-ec54eca3e260ff2a08dceb37",
+      "model": "mlp",
+      "mode": "pairwise_masking",
+      "clients": 20,
+      "topology": "ring",
+      "recorded_job_seconds": 13.724767100007739
+    },
+    {
+      "id": "cal-6d8ce715609f4ad0b574cd41",
+      "model": "mlp",
+      "mode": "selective_he",
+      "clients": 20,
+      "topology": "ring",
+      "recorded_job_seconds": 18.05586690007476
+    },
+    {
+      "id": "cal-b731bb045102f8f13bce0102",
+      "model": "mlp",
+      "mode": "adaptive_hybrid",
+      "clients": 20,
+      "topology": "ring",
+      "recorded_job_seconds": 18.69715319998795
+    },
+    {
+      "id": "cal-2c7915bdfe54cd2860c8ce01",
+      "model": "cnn",
+      "mode": "none",
+      "clients": 20,
+      "topology": "barabasi_albert",
+      "recorded_job_seconds": 31.3966184000019
+    },
+    {
+      "id": "cal-f0360df7ce9892553bc6de3b",
+      "model": "cnn",
+      "mode": "adaptive_hybrid",
+      "clients": 20,
+      "topology": "barabasi_albert",
+      "recorded_job_seconds": 34.99733400007244
+    },
+    {
+      "id": "cal-864c35c4387135731a5f121e",
+      "model": "mlp",
+      "mode": "none",
+      "clients": 20,
+      "topology": "barabasi_albert",
+      "recorded_job_seconds": 12.35775610001292
+    },
+    {
+      "id": "cal-975c1073aca9a65dcecac8b0",
+      "model": "mlp",
+      "mode": "adaptive_hybrid",
+      "clients": 20,
+      "topology": "barabasi_albert",
+      "recorded_job_seconds": 20.407346500025596
+    },
+    {
+      "id": "cal-f3086875b12ad019162bc802",
+      "model": "cnn",
+      "mode": "none",
+      "clients": 20,
+      "topology": "caveman",
+      "recorded_job_seconds": 26.736207400041167
+    },
+    {
+      "id": "cal-ae39953079b7c9d85e0b561d",
+      "model": "cnn",
+      "mode": "adaptive_hybrid",
+      "clients": 20,
+      "topology": "caveman",
+      "recorded_job_seconds": 42.221961899951566
+    },
+    {
+      "id": "cal-7132702661c5e76ce13c7ce6",
+      "model": "mlp",
+      "mode": "none",
+      "clients": 20,
+      "topology": "caveman",
+      "recorded_job_seconds": 12.291721699992195
+    },
+    {
+      "id": "cal-2535d24e0be08b54ceb3bd80",
+      "model": "mlp",
+      "mode": "adaptive_hybrid",
+      "clients": 20,
+      "topology": "caveman",
+      "recorded_job_seconds": 29.22899169998709
+    },
+    {
+      "id": "cal-7aa9efcc882a79a882735aee",
+      "model": "cnn",
+      "mode": "none",
+      "clients": 50,
+      "topology": "ring",
+      "recorded_job_seconds": 49.5708478000015
+    },
+    {
+      "id": "cal-9038d36b7410d72bfac9f33a",
+      "model": "cnn",
+      "mode": "adaptive_hybrid",
+      "clients": 50,
+      "topology": "ring",
+      "recorded_job_seconds": 61.60921380005311
+    },
+    {
+      "id": "cal-d10a282b98deecaf920b6591",
+      "model": "mlp",
+      "mode": "none",
+      "clients": 50,
+      "topology": "ring",
+      "recorded_job_seconds": 23.11399149999488
+    },
+    {
+      "id": "cal-c36dd219c6ca8d347f3ad6e1",
+      "model": "mlp",
+      "mode": "adaptive_hybrid",
+      "clients": 50,
+      "topology": "ring",
+      "recorded_job_seconds": 36.48080780002056
+    }
+  ],
+  "server_engine_unchanged": true,
+  "scientific_accuracy_results_available": false,
+  "historical_artifacts_unchanged": true,
+  "scope": "Actual seed0 two-round full-data laptop cost/function checks, not three-seed thesis accuracy results"
+}

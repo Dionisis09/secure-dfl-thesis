@@ -1,0 +1,22 @@
+{
+  "engine_runtime": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.12.14",
+    "device": "cuda",
+    "GPU": "NVIDIA GeForce RTX 5070 Laptop GPU",
+    "cuda": "12.8",
+    "GPU_memory_bytes": 8518369280,
+    "packages": {
+      "torch": "2.11.0+cu128",
+      "torchvision": "0.26.0+cu128",
+      "numpy": "2.5.2",
+      "networkx": "3.6.1",
+      "tenseal": "0.3.16"
+    },
+    "FP32": true,
+    "torch_threads": 1,
+    "deterministic": true
+  },
+  "engine_runtime_sha256": "9a7f4bcda82b62ff0810e256626195f94d7de8af21246cd1e578c9e865bbb54f",
+  "driver": "621.14"
+}

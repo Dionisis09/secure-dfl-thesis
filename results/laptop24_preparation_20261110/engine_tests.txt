@@ -1,0 +1,25 @@
+test_budget_refuses_partial_scaling_and_rejects_laptop_receipts (test_simulator4090_scaling.ScalingTests.test_budget_refuses_partial_scaling_and_rejects_laptop_receipts) ... ok
+test_inherited_clock_survives_migration_and_rejects_reset (test_simulator4090_scaling.ScalingTests.test_inherited_clock_survives_migration_and_rejects_reset) ... ok
+test_laptop_cpu_and_low_vram_cannot_admit_target (test_simulator4090_scaling.ScalingTests.test_laptop_cpu_and_low_vram_cannot_admit_target) ... ok
+test_no_extrapolation_to100_and_replan_after_calibration (test_simulator4090_scaling.ScalingTests.test_no_extrapolation_to100_and_replan_after_calibration) ... ok
+test_official_fold_partition_coverage_and_minimum_for20_50_100 (test_simulator4090_scaling.ScalingTests.test_official_fold_partition_coverage_and_minimum_for20_50_100) ... ok
+test_real_CKKS100_logical_clients_with2570_value_head (test_simulator4090_scaling.ScalingTests.test_real_CKKS100_logical_clients_with2570_value_head) ... ok
+test_report_keeps_client_counts_separate_and_requires_all_three_seeds (test_simulator4090_scaling.ScalingTests.test_report_keeps_client_counts_separate_and_requires_all_three_seeds) ... ok
+test_shared_50_references_and_balanced_new24 (test_simulator4090_scaling.ScalingTests.test_shared_50_references_and_balanced_new24) ... ok
+test_all_five_modes_reconstruct_real_CKKS_and_preserve_integer_semantics (test_simulator50.SimulatorTests.test_all_five_modes_reconstruct_real_CKKS_and_preserve_integer_semantics) ... ok
+test_budget_selection_keeps_whole_groups_and_excludes_uncalibrated_graphs (test_simulator50.SimulatorTests.test_budget_selection_keeps_whole_groups_and_excludes_uncalibrated_graphs) ... ok
+test_data_tamper_is_rejected (test_simulator50.SimulatorTests.test_data_tamper_is_rejected) ... ok
+test_deadline_never_resets_on_resume (test_simulator50.SimulatorTests.test_deadline_never_resets_on_resume) ... ok
+test_design_balanced_models_modes_seeds_no_autostart (test_simulator50.SimulatorTests.test_design_balanced_models_modes_seeds_no_autostart) ... ok
+test_expired_job_deadline_never_trains (test_simulator50.SimulatorTests.test_expired_job_deadline_never_trains) ... ok
+test_matched_budget_and_shared_head_for_native_shapes (test_simulator50.SimulatorTests.test_matched_budget_and_shared_head_for_native_shapes) ... ok
+{"round": 1, "planned": 2, "round_seconds": 0.3478764000465162, "validation": {"accuracy": 0.0, "loss": 2.6648886998494468}}
+{"round": 2, "planned": 2, "round_seconds": 0.2695180000155233, "validation": {"accuracy": 0.0, "loss": 2.6437116463979087}}
+{"round": 1, "planned": 2, "round_seconds": 0.2844737999839708, "validation": {"accuracy": 0.0, "loss": 2.6648886998494468}}
+{"round": 2, "planned": 2, "round_seconds": 0.2940979999839328, "validation": {"accuracy": 0.0, "loss": 2.6437116463979087}}
+test_resume_equals_continuous_training_and_completed_is_noop (test_simulator50.SimulatorTests.test_resume_equals_continuous_training_and_completed_is_noop) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 5.231s
+
+OK
