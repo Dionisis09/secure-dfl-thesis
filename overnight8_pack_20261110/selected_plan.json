@@ -1,0 +1,84 @@
+{
+  "status": "ready",
+  "selected": [
+    {
+      "bundle": "bundle-366947db2b959bb4c7d8",
+      "job_ids": [
+        "sim-736f9ae2881c94c1dcccfd2b",
+        "sim-b8070589670eafc1c0634ee4",
+        "sim-9f4da705ddfa6e1725e7a7f8",
+        "sim-b0a94a6adf00ac9877f02937",
+        "sim-b01dbe7fc72f8926f05d70ea",
+        "sim-084be389311e62fd19b0fe2e",
+        "sim-a598b945e44df1c935d14101",
+        "sim-d6bd966e53f25290feea61b6",
+        "sim-c2652e543f800496b2a7ad2d",
+        "sim-dadfc6d3539a2c911a5e16b5",
+        "sim-3fd44f035b085f9fc0f7b7eb",
+        "sim-5b0aa0a0debba6c7b8d340a0"
+      ],
+      "estimated_seconds": 8175.6428129891865,
+      "job_estimated_seconds": {
+        "sim-736f9ae2881c94c1dcccfd2b": 795.9039661985589,
+        "sim-b8070589670eafc1c0634ee4": 795.9039661985589,
+        "sim-9f4da705ddfa6e1725e7a7f8": 795.9039661985589,
+        "sim-b0a94a6adf00ac9877f02937": 866.2320999995572,
+        "sim-b01dbe7fc72f8926f05d70ea": 866.2320999995572,
+        "sim-084be389311e62fd19b0fe2e": 866.2320999995572,
+        "sim-a598b945e44df1c935d14101": 538.2807031999109,
+        "sim-d6bd966e53f25290feea61b6": 538.2807031999109,
+        "sim-c2652e543f800496b2a7ad2d": 538.2807031999109,
+        "sim-dadfc6d3539a2c911a5e16b5": 524.7975015983684,
+        "sim-3fd44f035b085f9fc0f7b7eb": 524.7975015983684,
+        "sim-5b0aa0a0debba6c7b8d340a0": 524.7975015983684
+      }
+    },
+    {
+      "bundle": "bundle-a0d9fb1fe533def766db",
+      "job_ids": [
+        "sim-0cba2194f9bf02491888d79a",
+        "sim-f4edafe3c6872142e7fc4898",
+        "sim-bc12a10f659c37ece3de2dd5",
+        "sim-b8a2cea1351702aa42d1e8da",
+        "sim-b39a177715004f363c3a21c1",
+        "sim-cd93f98d5f5a74f5a04d7603",
+        "sim-668dc5612e6f57eb9c3e7678",
+        "sim-fabf4ef669201789a3af3166",
+        "sim-fb1bab4856fed696515d4c19",
+        "sim-0874ee2c04bc1b1b219b5921",
+        "sim-d21a632797f444907bd0eae5",
+        "sim-bf1cd9d4112c77b612a7d054"
+      ],
+      "estimated_seconds": 8004.218749805703,
+      "job_estimated_seconds": {
+        "sim-0cba2194f9bf02491888d79a": 811.325418801629,
+        "sim-f4edafe3c6872142e7fc4898": 811.325418801629,
+        "sim-bc12a10f659c37ece3de2dd5": 811.325418801629,
+        "sim-b8a2cea1351702aa42d1e8da": 904.5437692007981,
+        "sim-b39a177715004f363c3a21c1": 904.5437692007981,
+        "sim-cd93f98d5f5a74f5a04d7603": 904.5437692007981,
+        "sim-668dc5612e6f57eb9c3e7678": 436.9742561989697,
+        "sim-fabf4ef669201789a3af3166": 436.9742561989697,
+        "sim-fb1bab4856fed696515d4c19": 436.9742561989697,
+        "sim-0874ee2c04bc1b1b219b5921": 515.2294724005042,
+        "sim-d21a632797f444907bd0eae5": 515.2294724005042,
+        "sim-bf1cd9d4112c77b612a7d054": 515.2294724005042
+      }
+    }
+  ],
+  "excluded": [
+    {
+      "bundle": "bundle-e8410336263104f27887",
+      "reason": "does not fit8hour budget",
+      "estimated_seconds": 9009.968812722014
+    }
+  ],
+  "estimated_seconds": 16179.86156279489,
+  "deadline_UTC": "2026-11-11T06:03:13.456338+00:00",
+  "manifest_sha256": "51d8325ef1c42967440b9c01658bf0845e6da818c56ec6ff4fda6273a5116376",
+  "source_hash": "2aa4ab78d1bfa5c250b7d1dbcf068a7888d54d4530413acc47d08edf8b25f760",
+  "hardware_sha256": "5c1b45a16150794d71aa54f14dc36c3a203bd956d4c11418d69d6706066899fd",
+  "reference_sha256": "0049b733d046f73c8d982cddbea263b9c5d5b291e8a34457a47e64fd3a590262",
+  "assumptions": "2x max-seed measured stages projected to60rounds/12validation checks; alpha0.1 measured separately; setup/test constant; no accuracy-based admission",
+  "sha256": "4b6ed60e3cc8bbe4c4f54706def3681ac4156d4fc178d1d16894b31d9e44b08e"
+}

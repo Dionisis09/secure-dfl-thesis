@@ -1,0 +1,7 @@
+{
+  "launcher_PID": 31980,
+  "actual_python_PID": 29408,
+  "launcher_stopped": true,
+  "actual_child_stopped": true,
+  "test": "realWindowsvenvsubtreehardstop_no_training"
+}

@@ -1,0 +1,45 @@
+{
+  "status": "preparation_snapshot_main_running",
+  "live_status_at_export": {
+    "stage": "running",
+    "selected_runs": 24,
+    "verified_completed": 0,
+    "pending": 24,
+    "candidate_runs": 36,
+    "rounds": 60,
+    "verified_calibrations": 4,
+    "current": "sim-736f9ae2881c94c1dcccfd2b",
+    "started_UTC": "2026-11-10T22:03:13.456338+00:00",
+    "deadline_UTC": "2026-11-11T06:03:13.456338+00:00"
+  },
+  "selected_scientific_runs": 24,
+  "rounds": 60,
+  "models": [
+    "cnn",
+    "mlp"
+  ],
+  "modes": [
+    "none",
+    "adaptive_hybrid"
+  ],
+  "clients": 20,
+  "seeds": [
+    1,
+    2,
+    3
+  ],
+  "calibration_jobs_verified": 4,
+  "alpha0_1_scientific_runs_admitted": false,
+  "unit_tests_passed": 7,
+  "actual_Windows_subtree_stop_gate_passed": true,
+  "conservative_selected_hours": 4.494405989665247,
+  "hard_wall_hours": 8,
+  "reserve_hours": 1,
+  "source_hash": "2aa4ab78d1bfa5c250b7d1dbcf068a7888d54d4530413acc47d08edf8b25f760",
+  "engine_source_hash": "a9a56d44e096a04274470eb3c3affd389d95ce6ffe238df07aeb71e5e84581d8",
+  "parent_laptop_source_unchanged": true,
+  "power_helper_sha256": "1b68d843e819f987c52d1c523930d23ec00d163fb2f7e77ea8a09526ec5fa118",
+  "scientific_results_complete": false,
+  "previous_144_runs_preserved": true,
+  "interpretation": "Fresh60round schedule; validation-led convergence question; no test-based admission. Trusted trainer holds plaintext models/private keys."
+}

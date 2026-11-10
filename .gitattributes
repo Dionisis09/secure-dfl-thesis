@@ -5,6 +5,7 @@ results/calibration_50c_20261107/** text eol=lf
 results/simulator50_preparation_20261107/** text eol=lf
 results/simulator4090_preparation_20261107/** text eol=lf
 results/laptop24_preparation_20261110/** text eol=lf
+results/overnight8_preparation_20261110/** text eol=lf
 results/logs/campaign_20261014_*_metrics.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/logs/speedcheck_20261014_*_metrics.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/campaign_20261014/**/*.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

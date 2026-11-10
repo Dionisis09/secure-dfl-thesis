@@ -1,0 +1,12 @@
+test_eight_hour_clock_never_restarts_or_extends (test_overnight8.OvernightTests.test_eight_hour_clock_never_restarts_or_extends) ... ok
+test_existing_laptop_and_server_frozen_sources_are_preserved (test_overnight8.OvernightTests.test_existing_laptop_and_server_frozen_sources_are_preserved) ... ok
+test_no_alpha0_1_admission_from_alpha0_5_alone (test_overnight8.OvernightTests.test_no_alpha0_1_admission_from_alpha0_5_alone) ... ok
+test_optional_stress_is_dropped_before_required_convergence (test_overnight8.OvernightTests.test_optional_stress_is_dropped_before_required_convergence) ... ok
+test_prespecified_design_and_schedule (test_overnight8.OvernightTests.test_prespecified_design_and_schedule) ... ok
+test_projection_accounts_for60rounds12validations_two_tests_and_margin (test_overnight8.OvernightTests.test_projection_accounts_for60rounds12validations_two_tests_and_margin) ... ok
+test_windows_stop_includes_own_child_subtree (test_overnight8.OvernightTests.test_windows_stop_includes_own_child_subtree) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.016s
+
+OK

@@ -1,5 +1,23 @@
 Secure Decentralized Federated Learning
 
+**Active overnight convergence study, 10–11 November 2026.**
+The [eight-hour pack](overnight8_pack_20261110/START_HERE_EL.md) starts fresh
+60-round CIFAR-10 training with20clients, ring, CNN/MLP, baseline/adaptive and
+seeds1/2/3. **24runs were admitted**, covering IID and Dirichlet alpha0.5, with
+a conservative4.49h forecast (already2x the max-seed measured stage projection).
+Four separate alpha0.1 calibration jobs passed; its12scientific candidates were
+excluded to retain the declared1h reserve inside8h. The new cosine schedule
+spans60rounds; this changes both horizon and schedule relative to20round runs.
+The hard deadline is11November06:03UTC(08:03Athens); pause/resume never resets it.
+Seven new control tests and a real Windows child-process-tree stop gate passed.
+The process is running; this preparation does not claim completed overnight
+results. [Design/commands](docs/OVERNIGHT8_EL.md) and
+[reference/calibration evidence](results/overnight8_preparation_20261110/README.md)
+describe admission, provenance and limits. The previous20round laptop series
+has now completed144/144runs,48complete three-seed groups; its artifacts remain
+separate. Existing Word/PowerPoint/dashboard have not yet been updated with
+these completed laptop or ongoing overnight results.
+
 **Current laptop series: 24-hour matched CNN/MLP comparison (10 November 2026).**
 The [smaller laptop pack](laptop24_pack_20261110/START_HERE_EL.md) retains full
 datasets, the existing models, 20 rounds and seeds 1/2/3. The primary comparison

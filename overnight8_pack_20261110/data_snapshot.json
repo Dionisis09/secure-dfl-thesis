@@ -1,0 +1,37 @@
+{
+  "datasets": {
+    "cifar10": {
+      "dataset": "cifar10",
+      "input_shape": [
+        3,
+        32,
+        32
+      ],
+      "train": 45000,
+      "validation": 5000,
+      "test": 10000,
+      "fold_seed": 20261106,
+      "normalization": {
+        "mean": [
+          0.49125380650871464,
+          0.48214666726239147,
+          0.4465734215856481
+        ],
+        "std": [
+          0.24707873637477404,
+          0.24345751574591187,
+          0.2616443448165489
+        ]
+      },
+      "train_indices_sha256": "57ad3342e73353cd635116ef2656459b128772b5036c30a767542016dac70733",
+      "validation_indices_sha256": "28e1fcc1cda748f411f3a04a71454a4422e229e061cf999f4a9ee138ff1757a5",
+      "sha256": {
+        "train.npz": "39c1d7ecef53a9baa09ec06945ad5a9e28a46dedf6929d9bc38028e4cd26a377",
+        "validation.npz": "63c1fd7f9e8fafcb2bc313403b99f974d1047eed944b3067ec5a2fe6e2eaa8ad",
+        "test.npz": "b4a917234110d25d34a8439179771c0d725fb726e5ca15677f0f86c1a474a184"
+      },
+      "receipt_sha256": "f896d07cff097decf488c53f9342582cf105bd03c32a1d82b11e7ee29dbd78a7"
+    }
+  },
+  "sha256": "628e2d081306078fbdc674dee3d5175b12834d673e033a69fed70a0534b832ff"
+}

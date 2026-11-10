@@ -35,6 +35,12 @@ laptop24_pack_20261110/results/
 laptop24_pack_20261110/controller.lock
 laptop24_pack_20261110/pause.request
 laptop24_pack_20261110/controller.log
+overnight8_pack_20261110/calibration/
+overnight8_pack_20261110/results/
+overnight8_pack_20261110/controller.lock
+overnight8_pack_20261110/pause.request
+overnight8_pack_20261110/controller.log
+overnight8_pack_20261110/controller-error.log
 # Private v8 roles, official cache and local correctness-fixture credentials
 private-campaign/
 data-cache/
